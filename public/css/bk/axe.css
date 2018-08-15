@@ -1,0 +1,45 @@
+@charset "UTF-8";
+@import url(https://fonts.googleapis.com/css?family=Lato:400,700);
+
+body {
+	-webkit-font-smoothing: antialiased;
+	font-size: 13px;
+	line-height: 1.8;
+	font-family: Lato,"Noto sans", "ŸàƒSƒVƒbƒN Medium", "ŸàƒSƒVƒbƒN‘Ì", "Yu Gothic Medium", YuGothic, "ƒqƒ‰ƒMƒmŠpƒS ProN", "Hiragino Kaku Gothic ProN", "ƒƒCƒŠƒI", Meiryo, "‚l‚r ‚oƒSƒVƒbƒN", "MS PGothic", sans-serif;
+/*	color: #000000; */
+	background-color: #FFFFFF;
+	margin: 0px;
+	-webkit-text-size-adjust: 100%;
+/*	background-image: url(../img/bg.png); */
+	background-attachment: fixed;
+	background-repeat: repeat;
+	background-position: 50% 0%;
+}
+a {
+	-webkit-transition: border-color 0.3s linear, color 0.3s linear, background-color 0.3s linear, opacity 0.3s linear;
+	-webkit-transition-delay: 0s, 0s, 0s, 0s;
+	-moz-transition: border-color 0.3s linear 0s, color 0.3s linear 0s, background-color 0.3s linear 0s, opacity 0.3s linear 0s;
+	-o-transition: border-color 0.3s linear 0s, color 0.3s linear 0s, background-color 0.3s linear 0s, opacity 0.3s linear 0s;
+	transition: border-color 0.3s linear 0s, color 0.3s linear 0s, background-color 0.3s linear 0s, opacity 0.3s linear 0s;
+}
+a:link,
+a:visited {
+/*	color: #000000; */
+/*	text-decoration: underline; */
+}
+
+a:hover,
+a:active  {
+	color: #FF0000;
+	text-decoration: underline;
+}
+
+.my-big {
+    font-size:1.2em;
+    margin-left:0.5em;
+    margin-right:0.5em;
+    border:1px solid; 
+    border-color:#EEEEEE;
+
+}
+

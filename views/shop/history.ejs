@@ -8,7 +8,7 @@
 <!--- side left ------->
 <div class="well col-md-2 col-sm-12" style="color:black">
 <% if(usr) { %> 
-<div class="label label-info">"<%= usr%>"&nbsp;さん </div>
+<div class="label label-info"><%= usr%>&nbsp;さん </div>
 <br><br>
 
 <% include par/out %>
@@ -42,11 +42,15 @@ price&nbsp;<div class="label label-default"><%=oite[i].unit_price%></div><br><br
 <%}%>
 
 <!--- pal ------->
-<%if(aite){%>
+<%if(allpal){%>
 <h3><div class="label label-warning">paypal 購入済商品</div></h3>
-<%=aite.name%><br>
-<%}%>
 
+<%=allpal.length%><br>
+
+<%}else{%>
+no allpal
+
+<%}%>
 </div>
 
 <% include par/2side %>

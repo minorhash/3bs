@@ -178,6 +178,7 @@ var chk = function(req, res, next) {
   console.log('=== cart ===================');
   console.log(email);
   console.log(mailtmp);
+  if(req.session){console.log(req.session)}
   ////console.log(skua)
   next();
 };

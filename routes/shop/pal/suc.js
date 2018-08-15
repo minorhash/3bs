@@ -95,7 +95,7 @@ next()};
 var exePal= function(req, res, next) {
 
 paypal.payment.execute(pid, exeJson, function(error, pay) {
-if (error) {console.log("exe fail");      throw error;    } 
+if (error) {console.log("exe fail");      throw error;    }
 else {
 
 item=pay.transactions[0].item_list.items[0]
@@ -117,7 +117,7 @@ adb.insPal(email,pid,sitem)
 var getPay= function(req, res, next) {
 for (var i = 0; i < atok.length; i++) {
 paypal.payment.get(atok[i], function (err, pay) {
-if (err) {        console.log(err);        throw err;} 
+if (err) {        console.log(err);        throw err;}
 else {
 aite=[]
 palid=pay.id

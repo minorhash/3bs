@@ -1,0 +1,28 @@
+{
+"intent": "sale",
+"payer": {
+"payment_method": "paypal"
+},
+"redirect_urls": {
+"return_url": "http://localhost:3023/shop/paypal/success",
+"cancel_url": "http://localhost:3023/shop/paypal/cancel"
+},
+"transactions": [{
+"item_list": {"items": []},
+"amount": {
+"currency": "JPY",
+"total": "0",
+"details": 
+{
+          "subtotal": "0",
+          "tax": "0",
+          "shipping": "650",
+          "handling_fee": "0",
+          "shipping_discount": "0",
+          "insurance": "0"
+
+}
+},
+"description": "This is the payment description."
+}]
+}

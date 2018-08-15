@@ -1,0 +1,43 @@
+{
+  "_from": "mypal",
+  "_id": "mypal@1.2.0",
+  "_inBundle": false,
+  "_integrity": "sha512-lNRWSJo0RVMX6b4o6q2b7BaJfYLmRXEU+QAgydAzUJcJ7KrYSoUlYDX6xfsqN6f4UOFgpXs9VHNLOyampDZqCA==",
+  "_location": "/mypal",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "tag",
+    "registry": true,
+    "raw": "mypal",
+    "name": "mypal",
+    "escapedName": "mypal",
+    "rawSpec": "",
+    "saveSpec": null,
+    "fetchSpec": "latest"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/mypal/-/mypal-1.2.0.tgz",
+  "_shasum": "8add1825d81001e0aaab3869785f7973394c323f",
+  "_spec": "mypal",
+  "_where": "/mnt/dat/exp/aid/3bs",
+  "author": "",
+  "bundleDependencies": false,
+  "dependencies": {
+    "paypal-rest-sdk": "latest"
+  },
+  "deprecated": false,
+  "description": "import paypal array",
+  "keywords": [
+    "paypal"
+  ],
+  "license": "ISC",
+  "main": "index.js",
+  "name": "mypal",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "version": "1.2.0"
+}

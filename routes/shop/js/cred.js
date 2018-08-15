@@ -2,6 +2,8 @@ var adb = require('usrdb');
 var cred = {
   ema: function(req) {
 if (req.session) {
+email = req.session.email;
+//email="successful.payment@paidy.com"
 //email = req.session.email;
 email="successful.payment@paidy.com"
       return email;
@@ -12,7 +14,7 @@ email="successful.payment@paidy.com"
   },
   usr: function(email) {
     if (email) {
-      try {        mailusr = adb.mailUsr(email);      } 
+      try {        mailusr = adb.mailUsr(email);      }
       catch (err) {        console.log(err);      }
       usr = mailusr.name;
       return usr;
@@ -20,7 +22,7 @@ email="successful.payment@paidy.com"
   },
   pss: function(email) {
     if (email) {
-      try {        mailusr = adb.mailUsr(email);      } 
+      try {        mailusr = adb.mailUsr(email);      }
       catch (err) {        console.log(err);      }
       pss= mailusr.pss;
       return usr;

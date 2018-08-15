@@ -1,39 +1,45 @@
-var url = 'http://localhost:3023';
+var url = 'http://localhost:3000';
 
 var app = require('../app'),
-  chai = require('chai'),
-  request = require('supertest'),
-  age = require('superagent'),
-  expect = chai.expect;
+ema = require('../routes/shop/son/ema'),
+chai = require('chai'),
+request = require('supertest'),
+age = require('superagent'),
+expect = chai.expect;
 
-//var arr=[
-//"paypal/cancel"
-//]
+var ses = require('supertest-session');
+var testSes = null;
 
-var arr = [
-  'usr/adr',
-  'note/agmt',
-  'cart',
-  'note/guide',
-  'history',
-  'my',
-  'note/notation',
-  'usr/sig',
-  'paypal/pay'
-];
+var email=ema.AID
+var pss=ema.APSS
 
-describe('GET', function() {
-  //
-  for (let i = 0; i < arr.length; i++) {
-    console.log(arr[i]);
-    it('get', function(done) {
-      request(app)
-        .get('/shop/' + arr[i])
-        .end(function(err, res) {
-          expect(res.statusCode).to.equal(200);
-          done();
+var arr=[
+"shop","shop/cart"
+]
+
+
+describe('POST', function() {
+beforeEach(function () {
+testSes = ses(app);
+});
+it('should sign in', function (done) {
+    testSes.post("/shop")
+    .send({ email:email , pss:pss}) 
+    .expect(200)
+.end(function(err){
+if(err) return done(err)
+return done()
+})
+});
+
+})
+<<<<<<< HEAD
+=======
+done();
           //console.log(res.req)
-        });
-    });
-  }
-}); //describe
+});//end
+});//it
+}//for
+});//des
+
+>>>>>>> cb3010d2fc20a996213c1119dc87ae1af29f9973

@@ -9,7 +9,7 @@ var mypal = pal.myPal();
 //var trans=mypal.transactions[0];
 
 var tmp_a = [],  mer_a = [],  sum_a = [],  uni_s = [],  pri_s = [];
-var email, usr, mer, sum, add 
+var email, usr, mer, sum, add
 var mailtmp, mailusr;
 
 // === db
@@ -89,9 +89,9 @@ next()};
 var goPal = function(req, res, next) {
 paypal.payment.create(mypal, function(err, pay) {
 if (err) {
-    console.log(err.response.name);        
-    console.log(err.response.details);        
-    throw err.message;      } 
+    console.log(err.response.name);
+    console.log(err.response.details);
+    throw err.message;      }
 else {
 //console.log(pay.transactions[0].amount)
 for (let i = 0; i < pay.links.length; i++) {
@@ -102,7 +102,7 @@ res.redirect(pay.links[i].href.replace(' =', '='));
         } //for
       } //else
     });
-  
+
   next()};
 
 //var json=JSON.stringify(mypal);
@@ -115,7 +115,8 @@ var chk = function(req, res, next) {
   console.log(add);
 //  console.log(full.transactions[0].amount.details.shipping);
 //  console.log(mypal.transactions[0].amount.details)
-};
+
+next()};
 
 var rcb = function(req, res, next) {
   res.render('shop/paypal/pay', {
@@ -128,14 +129,7 @@ var rcb = function(req, res, next) {
 };
 
 router.get('/shop/paypal/pay', [
-  getEma,
-  getUsr,
-  putMer,
-  putTmp,
-  putMer,
-  getSum,
-  goPal,
-  chk
-]);
+getEma,  getUsr,  putMer,  putTmp,  putMer,  getSum,goPal,chk
+  ]);
 
 module.exports = router;

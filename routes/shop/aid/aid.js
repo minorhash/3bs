@@ -22,7 +22,7 @@ var getUsr = function(req, res, next) {
   var cred = require('../js/cred');
   usr = cred.usr(email);
     if(email){
-  mailusr = adb.mailUsr(email);   
+  mailusr = adb.mailUsr(email);
   usr = mailusr.name;
     }else{console.log("no mail")}
   next()};
@@ -171,13 +171,13 @@ fs.stat(son, function(err, stats) {
     console.log(son);
 })
 fs.unlink(son,function(err) {
-if (err) {return console.log(err);    } 
+if (err) {return console.log(err);    }
 else {console.log('no err');    }
 console.log('unlink!');
 });
 
 fs.writeFile(son, sson, function(err) {
-if (err) {return console.log(err);    } 
+if (err) {return console.log(err);    }
 else {console.log('no err');    }
     console.log('The file was saved!');
 });
@@ -191,7 +191,7 @@ console.log(tsum);
 //console.log(mailson);
 };
 
-router.put('/shop/aid/aid', 
-[  getEma,  getUsr,  getAdr,getTmp,putMer,putSum,redSum,getTai,chkDl,putTai,fsSon,chk]); //put
+router.put('/shop/aid/aid',
+[  getEma,  getUsr,  getAdr,getTmp,putMer,putSum,redSum,getTai,chkDl,putTai,chk]); //put
 
 module.exports = router;

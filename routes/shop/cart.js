@@ -69,6 +69,7 @@ var putSum = function(req, res, next) {
 };
 
 // === chk dl ===
+// check for dl mer. if sku is 4 digit, then its dl.
 var chkDl= function(req, res, next) {
 
 boo=[]

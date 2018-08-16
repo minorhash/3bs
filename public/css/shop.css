@@ -152,7 +152,26 @@
 
 
 
+.box199 {
+    padding: 0.5em 0.5em;
+    margin: 0em 0;
+    color: #000000;
+    background: #ffffff;
+    border-top: solid 5px #778899;
+}
+.box199 p {
+    margin: 0; 
+    padding: 0;
+}
 
-
-
+.box222 {
+    padding: 0.5em 0.5em;
+    margin: 0em 0;
+    font-weight: ;
+   border: solid 0.3px #A9A9A9;
+}
+.box222 p {
+    margin: 0; 
+    padding: 0;
+}
 

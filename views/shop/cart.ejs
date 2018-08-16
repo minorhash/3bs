@@ -63,7 +63,7 @@
 
 
 
-<div class="well col-md-12" style="color:black" align="center" >
+<div class="col-md-12" style="color:black" align="center" >
 <form method="post" action="/shop/cart">
 <input type="hidden" name="clr" value="yes">
 <button type="submit" >カートをクリア</button>
@@ -92,7 +92,7 @@
 
 <script>
 var xhr = new XMLHttpRequest();
-xhr.open("PUT", "http://localhost:3023/shop/aid/aid", true);
+xhr.open("PUT", "http://localhost:3023/shop/aid", true);
 xhr.setRequestHeader('Content-Type', 'application/json');
 xhr.send();
 </script>
@@ -115,7 +115,7 @@ xhr.send();
 <button type="submit" >paidy</button>
 <h4>&nbsp;（コンビニ、銀行振込決済）</form></h4>
 
-<form action="/shop/paypal/pay" method="get">
+<form action="/shop/pay" method="post">
 <button type="submit" >PayPal</button>
 <h4>&nbsp;（クレジットカード決済）</form></h4>
 

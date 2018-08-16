@@ -7,54 +7,92 @@
 
 <!--- side left ------->
 <div class="well col-md-2 col-sm-12" style="color:black">
-<% if(usr) { %> 
+<% if(usr) {%> 
 <div class="label label-info"><%= usr%>&nbsp;さん </div>
 <br><br>
 
 <% include par/out %>
-<% }else{ %>
+<%}else{ %>
 <% include par/login %>
 <%} %>
 </div>
 
 <!--- main ------->
 
-<div class="well col-lg-8 col-sm-12" style="color:black">
+<div class="col-lg-8 col-sm-12" style="color:black">
 <%if(!allpid.length==0){%>
 
-<div class="box90">購入履歴</div>
-<br>
-
+<div class="box90">購入履歴詳細</div><br>
 <%}else{%>
 ログインしてください。
-<%}%>
 
-<!--- main ------->
+
+<%}%>
 <%if(!oite.length==0){%>
-<h3><div class="label label-warning">paidy 購入済商品</div></h3>
+
+
 <%for(var i=0;i<oite.length;i++){%>
 
-<div valign="top"><img src="../img/cd/<%=oite[i].id%>.png"></div>
-sku&nbsp;<div class="label label-default"><%=oite[i].id%></div>
-price&nbsp;<div class="label label-default"><%=oite[i].unit_price%></div><br><br>
-<%}%>
+
+ 
+&nbsp;&nbsp;&nbsp;&nbsp;<h4><span class="label label-default">paypal</span></h4>
+
+
+<div class="box222">
+
+<u>&nbsp;&nbsp;&nbsp;&nbsp;購入日時：</u><br>
+<u>&nbsp;&nbsp;&nbsp;&nbsp;注文番号：</u><br>
+</div>
+
+
+<br>
+<div class="col-md-3">
+<div valign="top" align="center"><img src="../img/cd/<%=oite[i].id%>.png" width="150cm" hight="150mm"></div>
+</div>
+
+<div class="col-md-9">
+<div class="note">
+
+
+商品タイトル：<%=oite[i].name%><br>
+品番：TMS-&nbsp;<%=oite[i].id%>&nbsp; <br>
+商品単価：&nbsp;<%=oite[i].unit_price%>円&nbsp; (税抜）<br>
+数量：<br>
+送料：650円<br>
+合計金額：<br>
+
+<div class="border-bottom"></div>
+
+
+</div></div>
+  
+
 
 <%}%>
 
-<!--- pal ------->
-<%if(allpal){%>
-<h3><div class="label label-warning">paypal 購入済商品</div></h3>
-
-<%=allpal.length%><br>
-
-<%}else{%>
-no allpal
-
 <%}%>
+
+
+</div>
 </div>
 
 <% include par/2side %>
 </div>
+
+
+<br><br>
+
+<div class="col-md-12" style="color:black" align="center" >
+
+<style="color:black">
+<form method="get" action="/shop">
+<button type="submit">ショップに戻る</button>
+</form>
+
+</div>
+
+
+<br><br><br>
 
 <div class="footer"><% include par/foot %></div>
 

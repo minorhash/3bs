@@ -41,11 +41,7 @@ next()}
 // === pal
 var allPal= function(req, res, next) {
 allpal=adb.allPal(email)
-atok=[]
-for (var i = 0; i < allpal.length; i++) {
-atok[i]=allpal[i].tok;
-console.log(atok[i])
-}
+
 next()}
 
 var itePal= function(req, res, next) {
@@ -65,17 +61,16 @@ var chk = function(req, res, next) {
   console.log('=== chk =====================');
   console.log(email);
   console.log(usr);
-  console.log(atok);
+  console.log(allpal);
   next();
 }; //chkEma
 
 var gcb = function(req, res) {
 res.render('shop/history', {
-title: 'history', usr: usr, selpid: selpid, allpid: allpid, allpal: allpal, oite: oite, aite:aite, atok:atok
-
+title: 'history', usr: usr, selpid: selpid, allpid: allpid, allpal: allpal, oite: oite
 });
 };
 
-router.get('/shop/history', [getEma, getUsr, allPid, allPal,itePal,chk, gcb]);
+router.get('/shop/history', [getEma, getUsr, allPid, allPal,chk, gcb]);
 
 module.exports = router;

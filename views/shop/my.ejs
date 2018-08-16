@@ -39,28 +39,30 @@
 
 <div class="panel panel-default">
 <div class="box120">
-  <h4> 住所:&nbsp;&nbsp; <%=mailadr.city%> </h4>
+   <h4> 郵便番号:&nbsp;&nbsp; <%=mailadr.zip%> </h4> 
 </div></div>
 
 <div class="panel panel-default">
 <div class="box120">
-<h4> sta:&nbsp;&nbsp; <%=mailadr.sta%> </h4>
+<h4> 都道府県:&nbsp;&nbsp; <%=mailadr.sta%> </h4>
+</div></div>
+
+
+
+<div class="panel panel-default">
+<div class="box120">
+  <h4> 市区町村:&nbsp;&nbsp; <%=mailadr.city%> </h4>
+</div></div>
+
+<div class="panel panel-default">
+<div class="box120">
+   <h4>住所1 :&nbsp;&nbsp; <%=mailadr.ln2%> </h4> 
 </div></div>
 
 
 <div class="panel panel-default">
 <div class="box120">
-   <h4> ln1:&nbsp;&nbsp; <%=mailadr.ln1%> </h4> 
-</div></div>
-
-<div class="panel panel-default">
-<div class="box120">
-   <h4> ln2:&nbsp;&nbsp; <%=mailadr.ln2%> </h4> 
-</div></div>
-
-<div class="panel panel-default">
-<div class="box120">
-   <h4> zip:&nbsp;&nbsp; <%=mailadr.zip%> </h4> 
+   <h4> 建物名:&nbsp;&nbsp; <%=mailadr.ln1%> </h4> 
 </div></div>
 
 <%}else{%>
@@ -73,10 +75,20 @@
 <%}%>
 <br>
 </div>
+</div>
 
 
+
+
+<div class="col-md-12" style="color:black" align="center" >
+
+<style="color:black">
+<form method="get" action="/shop">
+<button type="submit">ショップに戻る</button>
+</form>
 
 </div>
+
 
 
 

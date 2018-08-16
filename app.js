@@ -1,12 +1,3 @@
-var createError = require('http-errors');
-var express = require('express');
-var path = require('path');
-//var cookieParser = require('cookie-parser');
-var logger = require('morgan');
-var sess = require('cookie-session');
-
-// === route
-var indexRouter = require('./routes/index');
 var express = require('express');
 var router = express.Router();
 var path = require('path');
@@ -17,57 +8,6 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var i18n = require('i18n-express');
 var sess = require('cookie-session');
-// route =================================
-var index = require('./routes/index');
-var mail = require('./routes/mail');
-// shop =================================
-var shop = require('./routes/shop/index');
-var cart = require('./routes/shop/cart');
-var item = require('./routes/shop/item');
-var his = require('./routes/shop/his');
-var my = require('./routes/shop/my');
-
-// === usr
-var shop_out = require('./routes/shop/usr/out');
-var sig = require('./routes/shop/usr/sig');
-var sigp = require('./routes/shop/usr/sigp');
-var adr = require('./routes/shop/usr/adr');
-var adrp = require('./routes/shop/usr/adrp');
-var forget = require('./routes/shop/usr/for');
-
-// === not
-var agmt = require('./routes/shop/not/agmt');
-var gui = require('./routes/shop/not/gui');
-var not = require('./routes/shop/not/not');
-// === pal
-var pay = require('./routes/shop/pal/pay');
-var suc = require('./routes/shop/pal/suc');
-var can = require('./routes/shop/pal/can');
-var pal_his = require('./routes/shop/pal/his');
-// === paidy
-
-var aid = require('./routes/shop/aid/aid');
-var paidy = require('./routes/shop/aid/paidy');
-var pid = require('./routes/shop/aid/pid');
-var cli = require('./routes/shop/aid/cli');
-
-// mer =================================
-var mer = require('./routes/mer/index');
-var mer_out = require('./routes/mer/out');
-var mer_item = require('./routes/mer/item');
-var ins = require('./routes/mer/ins');
-var ins_fin = require('./routes/mer/ins_fin');
-var del = require('./routes/mer/del');
-var del_fin = require('./routes/mer/del_fin');
-// === song
-var song = require('./routes/mer/song');
-var song2 = require('./routes/mer/song2');
-var song3 = require('./routes/mer/song3');
-// === up
-var up = require('./routes/mer/up');
-var up2 = require('./routes/mer/up2');
-var up3 = require('./routes/mer/up3');
-
 //
 var app = express();
 
@@ -97,8 +37,7 @@ app.use(
   })
 );
 
-app.use('/', indexRouter);
-app.use('/', shop);
+//app.use('/', shop);
 // i18n ======================================
 var nat=["","news","prof","disc","sch","vid","mail","shop"]
 
@@ -107,77 +46,68 @@ app.use(  i18n({    translationsPath: path.join(__dirname, 'i18n/'+nat[i]),
     siteLangs: ['en', 'ja'],    textsVarName: nat[i]  })
 );
 }
-// use route =================================
-app.use('/', index);
+
+// route =================================
+var roo= require('./routes/index');
+var mail = require('./routes/mail');
+
+app.use('/', roo);
 app.use('/', mail);
 
-// === shop ===
-app.use('/', shop);
-app.use('/', shop_out);
-app.use('/', cart);
-app.use('/', gui);
-app.use('/', not);
+// shop =================================
+
+// var shop = require('./routes/shop/index');
+// app.use('/', shop);
+
+var top=["index","cart","item","his","my"]
+
+top.forEach(function(ite){
+ite=require('./routes/shop/'+ite)
+app.use('/', ite)
+})
+
+
+// === not ===
+var anot=["agmt","gui","not"]
+
+for(var i=0;i<anot.length;i++){
+console.log(anot[i])
+anot[i]=require('./routes/shop/not/'+anot[i]);
+app.use('/', anot[i]);
+}
 
 // === paidy ===
-app.use('/', paidy);
-app.use('/', aid);
-app.use('/', pid);
-app.use('/', his);
-app.use('/', cli);
 
-app.use('/', item);
-app.use('/', agmt);
+var aaid=["paidy","aid","pid","cli"]
+for(var i=0;i<aaid.length;i++){
+console.log(aaid[i])
+aaid[i]=require('./routes/shop/aid/'+aaid[i]);
+app.use('/', aaid[i]);
+}
 
 // === pal ===
-app.use('/', pay);
-app.use('/', suc);
-app.use('/', can);
-app.use('/', pal_his);
-
+var apal=["pay","suc","can"]
+apal.forEach(function(ite){
+ite=require('./routes/shop/pal/'+ite)
+app.use('/', ite)
+})
 // === mer ===
-app.use('/', mer);
-app.use('/', mer_out);
-app.use('/', mer_item);
-app.use('/', ins);
-app.use('/', ins_fin);
-app.use('/', song);
-app.use('/', song2);
-app.use('/', song3);
-app.use('/', del);
-app.use('/', del_fin);
-app.use('/', up);
-app.use('/', up2);
-app.use('/', up3);
+var shop = require('./routes/shop/index');
+app.use('/', shop);
 
+var amer=["out","item","ins","ins_fin","song","song2","song3","del","del_fin",
+    "up","up2","up3"]
+amer.forEach(function(ite){
+ite=require('./routes/mer/'+ite)
+app.use('/', ite)
+})
 //app.use('/', con);
 // === login ===
-app.use('/', sig);
-app.use('/', sigp);
-//app.use('/', dre);
-app.use('/', adr);
-app.use('/', adrp);
-app.use('/', forget);
-app.use('/', my);
-
-
-// catch 404 and forward to error handler
-app.use(function(req, res, next) {
-  next(createError(404));
-});
-
-// error handler
-// use route =================================
-
-//app.use(function(req, res, next) {
-//var err = new Error('Not Found');
-//err.status = 404;
-//next(err);
-//});
-
-app.use(function(req, res, next) {
-  res.status(404).render('404', { title: 'Sorry, page not found' });
-});
-
+ausr=["sig","sigp","out","adr","adrp","forg"]
+ausr.forEach(function(ite){
+ite=require('./routes/shop/usr/'+ite)
+app.use('/', ite)
+})
 //error handler
 app.use(function(err, req, res, next) {
   // set locals, only providing error in development

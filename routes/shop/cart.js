@@ -40,8 +40,7 @@ var getTmp = function(req, res, next) {
   } else {
     console.log('no mail');
   }
-  next();
-};
+next()};
 
 var putMer = function(req, res, next) {
     mer=[]
@@ -49,12 +48,11 @@ var putMer = function(req, res, next) {
     for (var i = 0; i < mailtmp.length; i++) {
 //      console.log(mailtmp[i].sku);
       mer[i] = db.skuMer(mailtmp[i].sku);
-    }
-  } else {
-    console.log('no mailtmp');
-  }
-  next();
-};
+}
+} else {
+console.log('no mailtmp');
+}
+next()};
 
 var putSum = function(req, res, next) {
   suma = [];
@@ -70,20 +68,20 @@ var putSum = function(req, res, next) {
 
 // === chk dl ===
 // check for dl mer. if sku is 4 digit, then its dl.
-var chkDl= function(req, res, next) {
+var chkShi= function(req, res, next) {
 
 boo=[]
 for(var i=0;i<skua.length;i++){
 
-console.log("=== chk dl ===")
+console.log("=== chk ship===")
 console.log(skua[i])
-var pat=/^\d{4}$/;
+var pat=/^\d{3}$/;
 var test=pat.test(skua[i])
 console.log(test)
 boo.push(test)
 }
 console.log(boo)
-ind=boo.indexOf(false)
+ind=boo.indexOf(true)
 console.log("ind:"+ind)
 
 next()};
@@ -202,7 +200,7 @@ var gcb = function(req, res) {
 };
 
 router.get('/shop/cart', [
-  getEma,  getUsr,  getTmp,  putMer,  putSum,  redSum,  chk,  gcb]);
+  getEma,  getUsr,  getTmp,  putMer,  putSum,  redSum,chkShi,  chk,  gcb]);
 router.post('/shop/cart', [
   getEma,  getUsr,  getTmp,  getIte,  putSku,  insUpd,  clrEma,  chk,  pcb,]);
 

@@ -71,7 +71,6 @@ app.use('/', ite)
 var anot=["agmt","gui","not"]
 
 for(var i=0;i<anot.length;i++){
-console.log(anot[i])
 anot[i]=require('./routes/shop/not/'+anot[i]);
 app.use('/', anot[i]);
 }
@@ -80,7 +79,6 @@ app.use('/', anot[i]);
 
 var aaid=["paidy","aid","pid","cli"]
 for(var i=0;i<aaid.length;i++){
-console.log(aaid[i])
 aaid[i]=require('./routes/shop/aid/'+aaid[i]);
 app.use('/', aaid[i]);
 }

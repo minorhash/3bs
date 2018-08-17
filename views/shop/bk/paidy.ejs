@@ -4,74 +4,180 @@
 <div class="container-fluid">
 <div class="row">
 
-<!--- side left ------->
-<div class="well col-md-2 col-sm-12" style="color:black">
+<!--- side left ----- -->
+<div class="well col-md-3 col-sm-12" style="color:black">
 <% if(usr) {%> 
-<div class="label label-info">welcome:<%= usr%></div>
+<div class="label label-info">&nbsp; <%= usr%>&nbsp;さん </div>
 <br><br>
 
 <% include par/out %>
+
+<script>
+var xhr = new XMLHttpRequest();
+xhr.open("PUT", "http://localhost:3023/shop/aid/cli", true);
+xhr.setRequestHeader('Content-Type', 'application/json');
+xhr.send();
+</script>
+
 <%}else{ %>
 <% include par/login %>
 <%} %>
 </div>
+
 <!--- main ------->
 
-<div class="col-sm-8" style="color:black">
-<%if(sum){%>
-sum:<%=sum.toLocaleString()%>
-<%}%>
+<div class="col-sm-6 col-sm-12" style="color:black">
+
+<p class="box90">&nbsp;注文内容ご確認ページ（Paidy決済ご希望の方用）</p>
 <br>
-<div class="well col-md-8" style="color:black"  >
-<%=seltmp.length%>
+
+<div class="col-md-12" style="color:black"  >
 <%for(var i=0;i<seltmp.length;i++){%>
 <%if(seltmp[i].uni!==0){%>
-<div class="well col-md-4">
+
+
+<div class="col-md-4">
+<div align="center">
 <img src="../<%=mer[i].img%>" width="150" height="150" >
-</div>
-<div class="well col-md-8">
+</div></div>
+
+<div class="col-md-8">
+<div class="pa2">
 商品名：&nbsp;  <%=mer[i].name%><br>
-商品番号: &nbsp;  <%=seltmp[i].sku%><br>
+商品番号: &nbsp; TMS-<%=seltmp[i].sku%><br>
 単価（税込）: &nbsp;<%=mer[i].pri.toLocaleString()%>円 <br>
-数量:
-<%=seltmp[i].uni%>
+注文数:&nbsp; <%=seltmp[i].uni%><br>
 
+<hr>
 </div>
+</div>
+
+<div class="row"></div>
+
 <br>
+
 <%}%>
 <%}%>
-</div>
-<br>
 
-<button id="paidy-checkout-button" onclick="paidyPay()">Paidy</button>
-<script type="text/javascript" src="https://apps.paidy.com/"></script>
-<script src="../son/<%=email%>.js"></script>
+<div class="col-md-12 col-md-12 hidden-xs">
+
+<div class="col-md-3 hidden-xs"></div>
+
+<div class="col-md-3 hidden-xs"></div>
+<div class="col-md-3 hidden-xs">
+<div class="pabox">商品合計(税込）：</div>
+</div>
+
+<div class="col-md-3 hidden-xs">
+
+<div class="pabox">
+<%if(sum){%>
+<%=sum.toLocaleString()%> 円
+<% var tsum=sum+650 %>
+
+<%}%></div>
+
+
+合計(税込）：
+<%if(tsum){%>
+<%=tsum.toLocaleString()%> 円
+<%}%>
+
+</div>
+</div>
+
+</div>
+</div>
+
+<div class=" well col-md-3 col-sm-12" style="color:black">
+
+<div class="row"></div>
+
+
+<p class="pa1">
+Paidy決済をご希望の方は下記ボタンを押してください。<br>
+Paidyのページが表示されますので、
+「お支払い手続きへ」をクリック後、
+Paidyのアカウントにてログインし、お手続きください。</p>
 
 <br><br>
-<div align="right">
-<form method="get" action="/shop/cart">
-<button type="submit">back to cart</button>
-</form>
-</div>
 
 <div align="right">
-<form method="get" action="/shop">
-<button type="submit">back to shop</button>
-</form>
+<button id="paidy-checkout-button" onclick="paidyPay()">2Paidyで決済する</button>
 </div>
+
+<script type="text/javascript" src="https://apps.paidy.com/"></script>
+<script>
+
+function paidyPay(){
+var config={"api_key":"pk_test_pvve8rdmjtcqbjejq4idolh8l9",
+"closed":function(cb){var xhr = new XMLHttpRequest();
+xhr.open("PUT",
+ "http://localhost:3023/shop/aid/pid",
+ true);xhr.setRequestHeader("Content-Type",
+ "application/json");
+ xhr.send(JSON.stringify(cb));}};
+var hand=Paidy.configure(config);
+var load={"amount":1111,
+"currency":"JPY",
+"store_name":"tmStore",
+"buyer":{"email":"successful.payment@paidy.com",
+"name1":"さくせすタロウ",
+"phone":""},
+"buyer_data":{"age":17,
+"order":"0",
+"ltv":1111,
+"last_order_amount":1111,
+"last_order_at":17},
+"orders":{"items":[{"id":"358",
+"quantity":1,
+"title":"シアワセメロディー（TypeB）",
+"unit_price":1111}],
+"shipping":0},
+"shipping_address":{"line1":"AXISΝ 10",
+"line2":"ろっぽんぎ4-22-1",
+"city":"みなとく",
+"state":"とうきょうと",
+"zip":"1062004"}
+};
+hand.launch(load);
+};
+
+</script>
+</div>
+
+
+<div class="row"></div>
+<br><br>
+
+
+<div class="col-sm-5 hidden-xs"></div>
+
+<div class="btn-toolbar" style="color:black">
+<div class="btn-group">
+
+<form method="get" action="/shop/cart">
+<button type="submit">カートに戻る</button>
+</form></div>
+
+<form method="get" action="/shop">
+<button type="submit">ショップに戻る</button>
+</form>
 <br>
 
 </div>
 
-
-<div class="col-sm-1"></div>
-
+</div>
+</div>
 </div>
 
 
 
-<div class="col-md-2 col-sm-12" style="color:black">
-</div></div>
+
+<br><br><br><br><br><br>
+
+
+</div>
 </div>
 
 <div class="footer"><% include par/foot %></div>

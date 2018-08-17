@@ -38,8 +38,10 @@
 
 <div class="box222">
 
-<u>&nbsp;&nbsp;&nbsp;&nbsp;購入日時：</u><br>
-<u>&nbsp;&nbsp;&nbsp;&nbsp;注文番号：</u><br>
+<u>&nbsp;&nbsp;&nbsp;&nbsp;購入日時：</u>
+<br>
+<u>&nbsp;&nbsp;&nbsp;&nbsp;注文番号：</u>
+<%=allpid[i].pid%><br>
 </div>
 
 
@@ -52,12 +54,13 @@
 <div class="note">
 
 
-商品タイトル：<%=oite[i].name%><br>
+商品タイトル：<%=oite[i].title%><br>
 品番：TMS-&nbsp;<%=oite[i].id%>&nbsp; <br>
 商品単価：&nbsp;<%=oite[i].unit_price%>円&nbsp; (税抜）<br>
-数量：<br>
+数量：<%=oite[i].quantity%><br>
 送料：650円<br>
-合計金額：<br>
+合計金額：<%=(oite[i].unit_price*oite[i].quantity+650).toLocaleString()%>
+<br>
 
 <div class="border-bottom"></div>
 
@@ -87,7 +90,8 @@ no paidy purchase.
 
 <div class="box222">
 
-<u>&nbsp;&nbsp;&nbsp;&nbsp;購入日時：</u><br>
+<u>&nbsp;&nbsp;&nbsp;&nbsp;購入日時：</u>
+<br>
 <u>&nbsp;&nbsp;&nbsp;&nbsp;注文番号：</u><br>
 </div>
 

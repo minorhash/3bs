@@ -25,14 +25,14 @@ var getUsr = function(req, res, next) {
 var getTmp = function(req, res, next) {
   if (email) {
 mailtmp = db.mailTmp(email);
-  } else {    console.log('no mail');  }
+  } else {    console.log('no mail for tmp');  }
   db.delUni();
   next()};
 
 var getAdr = function(req, res, next) {
   if (email) {
       mailadr = adb.mailAdr(email);
-  } else {    console.log('no mail');  }
+  } else {    console.log('no mail for adr');  }
   if (mailadr == undefined) {
     res.redirect('usr/adr');
   }
@@ -70,13 +70,13 @@ for(var i=0;i<skua.length;i++){
 
 console.log("=== chk dl ===")
 console.log(skua[i])
-var pat=/^\d{4}$/;
+var pat=/^\d{3}$/;
 var test=pat.test(skua[i])
 console.log(test)
 boo.push(test)
 }
 console.log(boo)
-ind=boo.indexOf(false)
+ind=boo.indexOf(true)
 console.log("ind:"+ind)
 
 next()};
@@ -122,7 +122,7 @@ var pcb = function(req, res, next) {
   }); //rend
 };
 
-router.post('/shop/paidy', 
+router.post('/shop/paidy',
 [  getEma,  getUsr,  getTmp,  getAdr,  putSum,  redSum,  putSku,  getSon,  chk,  pcb,]);
 //router.post('/shop/paidy', [getEma,getUsr,getTmp,getAdr,putSum,redSum,putSku,chk,pcb])
 

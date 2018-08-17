@@ -30,9 +30,9 @@ if(!email){    allpid=[]; oite=[]
 console.log('=== no all pid ==================');
 }else{
 
-allpid = adb.allPid(email);
-for (var i = 0; i < allpid.length; i++) {
-ite = allpid[i].ite;
+allnow = adb.allNow(email);
+for (var i = 0; i < allnow.length; i++) {
+ite = allnow[i].ite;
 oite = JSON.parse(ite);
 }
 }
@@ -61,6 +61,7 @@ var chk = function(req, res, next) {
   console.log('=== chk =====================');
   console.log(email);
   console.log(usr);
+  console.log(allpid);
   console.log(allpal);
   next();
 }; //chkEma

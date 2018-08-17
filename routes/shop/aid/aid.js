@@ -28,8 +28,8 @@ var getUsr = function(req, res, next) {
   next()};
 
 var getAdr = function(req, res, next) {
-if(email){    mailadr = adb.mailAdr(email);}
-else{console.log(err)}
+if(email){mailadr = adb.mailAdr(email);}
+else{console.log("no email for adr")}
 
   if (mailadr == null) {
     console.log('=== adr null ===');
@@ -60,7 +60,7 @@ var putSum = function(req, res, next) {
   }
   next()};
 // === chk dl ===
-var chkDl= function(req, res, next) {
+var chkShi= function(req, res, next) {
 
 boo=[]
 for(var i=0;i<skua.length;i++){
@@ -85,7 +85,7 @@ var redSum = function(req, res, next) {
     if (suma.length !== 0) {
       sum = suma.reduce(getSum);
 
-if(ind==1){tsum=sum+650}
+if(ind==0){tsum=sum+650}
 else{tsum=sum}
 
     } else {
@@ -101,7 +101,7 @@ var getTai = function(req, res, next) {
   taid.buyer.email = email;
   taid.buyer.name1 = mailusr.name;
 
-  if (!mailadr == null) {
+  if (mailadr) {
     taid.buyer.phone = mailadr.phn;
   } else {
     console.log('=== mailadr null ===');
@@ -118,31 +118,32 @@ var getTai = function(req, res, next) {
 //=============================================== putTai
 var putTai = function(req, res, next) {
 
-if(ind==1){  taid.orders.shipping = 650;}
-else{  taid.orders.shipping = 0;}
+console.log(taid)
+if(ind==0){  taid.order.shipping = 650;}
+else{  taid.order.shipping = 0;}
 
-  //
-  for (var i = 0; i < mer.length; i++) {
+for (var i = 0; i < mer.length; i++) {
     //
-    taid.orders.items[i] = {
-      id: mer[i].sku.toString(),
-      quantity: mailtmp[i].uni,
-      title: mer[i].name,
-      unit_price: mer[i].pri,
+taid.order.items[i] = {
+id: mer[i].sku.toString(),
+quantity: mailtmp[i].uni,
+title: mer[i].name,
+unit_price: mer[i].pri,
       //
-    };
-  } //for
+};
+} //for
 
-  if (mailadr) {
-    taid.shipping_address.line1 = mailadr.ln1;
-    taid.shipping_address.line2 = mailadr.ln2;
-    taid.shipping_address.city = mailadr.city;
-    taid.shipping_address.state = mailadr.sta;
-    taid.shipping_address.zip = mailadr.zip;
-  } else {
-    console.log('=== mailadr null ===');
-  }
-  next()};
+ if (mailadr) {
+     taid.shipping_address.line1 = mailadr.ln1;
+     taid.shipping_address.line2 = mailadr.ln2;
+     taid.shipping_address.city = mailadr.city;
+     taid.shipping_address.state = mailadr.sta;
+     taid.shipping_address.zip = mailadr.zip;
+ } else {
+     console.log('=== mailadr null ===');
+ }
+
+next()};
 
 var fsSon = function(req, res, next) {
 var str = JSON.stringify(taid);
@@ -161,13 +162,13 @@ sson=    'var config={"api_key":"' +
     ';' +
     'hand.launch(load);};';
 
-  db.insSon(email, sson);
+db.insSon(email, sson);
 
 var fs = require('fs');
 var son=__dirname+"/../../../public/son/"+email+".js"
 fs.stat(son, function(err, stats) {
-    if(err){throw err}
-    console.log(son);
+if(err){throw err}
+console.log(son);
 })
 fs.unlink(son,function(err) {
 if (err) {return console.log(err);    }
@@ -187,10 +188,10 @@ var chk = function(req, res, next) {
 console.log('=== aid ====================================');
 console.log(skua);
 console.log(tsum);
-//console.log(mailson);
+console.log(ind);
 };
 
 router.put('/shop/aid/aid',
-[  getEma,  getUsr,  getAdr,getTmp,putMer,putSum,redSum,getTai,chkDl,putTai,chk]); //put
+[  getEma,  getUsr,  getAdr,getTmp,putMer,putSum,chkShi,redSum,getTai,putTai,fsSon,chk]); //put
 
 module.exports = router;

@@ -37,26 +37,22 @@ var putPid = function(req, res, next) {
     console.log(pid);
     //pid="pay_Wz8uOSsAAC8Aiq_w"
 }
-  next();
-};
+  next()};
 
 var selPid = function(req, res, next) {
   console.log('=== selPid items ===');
   selpid = adb.selPid(email);
-//  var obj = JSON.parse(selpid.ite);
-  //oite = obj.order.items;
-  //console.log("=== oite");
-  console.log(selpid);
-  next();
-};
+  oite = JSON.parse(selpid.ite);
+//  oite = obj.order.items;
+  console.log("=== oite");
+  console.log(oite);
+  next()};
 
 var reqPid = function(req, res, next) {
   console.log('=== reqPid ===');
   //    console.log(cget.getPid(email,pid,sec))
   if (!selpid) {
-    try {
       adb.insPid(pid, aid.sec);
-    } catch (err) {      console.log(err);    }
   } else {    console.log('selpid exists');  }
 
   next();
@@ -105,5 +101,5 @@ var chk = function(req, res, next) {
   //console.log(itea)
 };
 
-router.put('/shop/aid/cli', [  getEma,  getUsr,  putPid,  selPid,  reqPid,  getIte,  chk]);
+router.put('/shop/aid/cli', [getEma,getUsr,putPid,selPid,reqPid,getIte,chk]);
 module.exports = router;

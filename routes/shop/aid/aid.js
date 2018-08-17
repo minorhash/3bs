@@ -67,19 +67,18 @@ for(var i=0;i<skua.length;i++){
 
 console.log("=== chk dl ===")
 console.log(skua[i])
-var pat=/^\d{4}$/;
+var pat=/^\d{3}$/;
 var test=pat.test(skua[i])
 console.log(test)
 boo.push(test)
 }
 console.log(boo)
-ind=boo.indexOf(false)
+ind=boo.indexOf(true)
 console.log("ind:"+ind)
 
 next()};
 
 var redSum = function(req, res, next) {
-//  for (var i = 0; i < mailtmp.length; i++) {
     function getSum(total, num) {
       return total + num;
     }
@@ -119,13 +118,13 @@ var getTai = function(req, res, next) {
 //=============================================== putTai
 var putTai = function(req, res, next) {
 
-if(ind==1){  taid.order.shipping = 650;}
-else{  taid.order.shipping = 0;}
+if(ind==1){  taid.orders.shipping = 650;}
+else{  taid.orders.shipping = 0;}
 
   //
   for (var i = 0; i < mer.length; i++) {
     //
-    taid.order.items[i] = {
+    taid.orders.items[i] = {
       id: mer[i].sku.toString(),
       quantity: mailtmp[i].uni,
       title: mer[i].name,

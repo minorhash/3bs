@@ -1,5 +1,5 @@
 dir=$(pwd)
-str=${dir:16}
+str=${dir:17}
 echo $str
 
 git fetch git@github.com:minorhash/$str.git

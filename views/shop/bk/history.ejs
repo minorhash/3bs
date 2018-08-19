@@ -5,7 +5,7 @@
 <div class="container-fluid">
 <div class="row">
 
-<!--- side left ------->
+<!--- side left ----- -->
 <div class="well col-md-2 col-sm-12" style="color:black">
 <% if(usr) {%> 
 <div class="label label-info"><%= usr%>&nbsp;さん </div>
@@ -17,41 +17,131 @@
 <%} %>
 </div>
 
-<!--- main ------->
+<!--- main ----- -->
 
-<div class="well col-lg-8 col-sm-12" style="color:black">
-<%if(allpid){%>
+<div class="col-lg-8 col-sm-12" style="color:black">
+<%if(!allpid.length==0){%>
 
-<div class="box90">購入履歴</div>
-<br>
-<%for(var i in allpid){%>
-
-<%}%>
-<%}%>
-
-<%if(allpid){%>
-<h3><div class="label label-warning">購入済商品</div></h3>
-<%for(var i=0;i<allpid.length;i++){%>
-
-<%for(var j=0;j<oite[i].length;j++){%>
-
-<div class="well col-lg-8 col-sm-12" style="background-color:cornsilk;color:black">
-注文id:&nbsp;<div class="label label-default"><%=allpid[i].pid%></div><br>
-<img src="../img/cd/<%=oite[i][j].id%>.png"><br>
-品番:&nbsp;<%=oite[i][j].id%><br>
-pri:&nbsp;<%=oite[i][j].unit_price.toLocaleString()%>&nbsp;JPY<br>
-</div>
-<br>
-<%}%>
-<%}%>
-
+<div class="box90">購入履歴詳細</div><br>
 <%}else{%>
-no allpid
+ログインしてください。
+
+
 <%}%>
+
+<!--- paidy----- -->
+
+<%if(!oite.length==0){%>
+
+&nbsp;&nbsp;&nbsp;&nbsp;<h4><span class="label label-danger">paidy</span></h4>
+<%for(var i=0;i<oite.length;i++){%>
+
+<div class="box222">
+
+<u>&nbsp;&nbsp;&nbsp;&nbsp;購入日時：</u>
+<br>
+<u>&nbsp;&nbsp;&nbsp;&nbsp;注文番号：</u>
+<%=allpid[i].pid%><br>
+</div>
+
+
+<br>
+<div class="col-md-3">
+<div valign="top" align="center"><img src="../img/cd/<%=oite[i].id%>.png" width="150cm" hight="150mm"></div>
+</div>
+
+<div class="col-md-9">
+<div class="note">
+
+
+商品タイトル：<%=oite[i].title%><br>
+品番：TMS-&nbsp;<%=oite[i].id%>&nbsp; <br>
+商品単価：&nbsp;<%=oite[i].unit_price%>円&nbsp; (税抜）<br>
+数量：<%=oite[i].quantity%><br>
+送料：650円<br>
+合計金額：<%=(oite[i].unit_price*oite[i].quantity+650).toLocaleString()%>
+<br>
+
+<div class="border-bottom"></div>
+
+
+</div></div>
+  
+
+
+<%}%>
+<%}else{%>
+no paidy purchase.
+<%}%>
+
+<%if(!allnow.length==0){%>
+
+<% var obj=JSON.parse(allnow[0].ite) %>
+<%=obj.name%>
+
+&nbsp;&nbsp;&nbsp;&nbsp;<h4><span class="label label-info">paypal</span></h4>
+<%for(var i=0;i<allnow.length;i++){%>
+<%var pal=[]%>
+<%pal.push(allnow[i].ite)%>
+<%=pal[i]%>
+<%var obj=[]%>
+<%obj.push(allnow[i].ite)%>
+<%=obj[i]%>
+
+<div class="box222">
+
+<u>&nbsp;&nbsp;&nbsp;&nbsp;購入日時：</u>
+<br>
+<u>&nbsp;&nbsp;&nbsp;&nbsp;注文番号：</u><br>
+</div>
+
+<br>
+<div class="col-md-3">
+<div valign="top" align="center"><img src="../img/cd/<%=oite[i].id%>.png" width="150cm" hight="150mm"></div>
+</div>
+
+<div class="col-md-9">
+<div class="note">
+
+
+商品タイトル：<%=allnow[i].name%><br>
+品番：TMS-&nbsp;<%=allnow[i].id%>&nbsp; <br>
+商品単価：&nbsp;<%=allnow[i].price%>円&nbsp; (税抜）<br>
+数量：<br>
+送料：650円<br>
+合計金額：<br>
+
+<div class="border-bottom"></div>
+
+
+</div></div>
+  
+
+
+<%}%>
+<%}else{%>
+no paidy purchase.
+<%}%>
+</div>
 </div>
 
 <% include par/2side %>
 </div>
+
+
+<br><br>
+
+<div class="col-md-12" style="color:black" align="center" >
+
+<style="color:black">
+<form method="get" action="/shop">
+<button type="submit">ショップに戻る</button>
+</form>
+
+</div>
+
+
+<br><br><br>
 
 <div class="footer"><% include par/foot %></div>
 

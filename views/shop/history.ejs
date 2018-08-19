@@ -20,7 +20,7 @@
 <!--- main ----- -->
 
 <div class="col-lg-8 col-sm-12" style="color:black">
-<%if(!allpid.length==0){%>
+<%if(usr){%>
 
 <div class="box90">購入履歴詳細</div><br>
 <%}else{%>
@@ -31,15 +31,62 @@
 
 <!--- paidy----- -->
 
-<%if(!oite.length==0){%>
+<%if(!allpal.length==0){%>
+&nbsp;&nbsp;&nbsp;&nbsp;
+<h4><span class="label label-danger">paypal</span></h4>
+<%for(var i=0;i<allpal.length;i++){%>
 
-&nbsp;&nbsp;&nbsp;&nbsp;<h4><span class="label label-danger">paidy</span></h4>
+<div class="box222">
+
+<u>&nbsp;&nbsp;&nbsp;&nbsp;購入日時：</u>
+
+<%=allpal[i].date%><br>
+<u>&nbsp;&nbsp;&nbsp;&nbsp;注文番号：</u>
+<%=allpal[i].pid%><br>
+</div>
+
+<%=allpal[i].ite%><br>
+
+<br>
+<div class="col-md-3">
+<div valign="top" align="center"><img src="../img/cd/<%=allpal[i].id%>.png" width="150cm" hight="150mm"></div>
+</div>
+
+<div class="col-md-9">
+<div class="note">
+
+
+商品タイトル：<%=allpal[i].title%><br>
+品番：TMS-&nbsp;<%=allpal[i].id%>&nbsp; <br>
+商品単価：&nbsp;<%=allpal[i].unit_price%>円&nbsp; (税抜）<br>
+数量：<%=allpal[i].quantity%><br>
+送料：650円<br>
+合計金額：<%=(allpal[i].unit_price*allpal[i].quantity+650).toLocaleString()%>
+<br>
+
+<div class="border-bottom"></div>
+
+
+</div></div>
+  
+
+
+<%}%>
+<%}else{%>
+no paidy purchase.
+<%}%>
+
+
+<%if(!oite.length==0){%>
+&nbsp;&nbsp;&nbsp;&nbsp;
+<h4><span class="label label-danger">paidy</span></h4>
 <%for(var i=0;i<oite.length;i++){%>
 
 <div class="box222">
 
 <u>&nbsp;&nbsp;&nbsp;&nbsp;購入日時：</u>
-<br>
+
+<%=allpid[i].date%><br>
 <u>&nbsp;&nbsp;&nbsp;&nbsp;注文番号：</u>
 <%=allpid[i].pid%><br>
 </div>
@@ -74,53 +121,22 @@
 no paidy purchase.
 <%}%>
 
+<!--- pal ----- -->
+
 <%if(!allpal.length==0){%>
 
-<% var obj=JSON.parse(allpal[0].ite) %>
-<%=obj.name%>
-
-&nbsp;&nbsp;&nbsp;&nbsp;<h4><span class="label label-info">paypal</span></h4>
-<%for(var i=0;i<allpal.length;i++){%>
-<%var pal=[]%>
-<%pal.push(allpal[i].ite)%>
-<%=pal[i]%>
-<%var obj=[]%>
-<%obj.push(allpal[i].ite)%>
-<%=obj[i]%>
-
+<h4><span class="label label-info">paypal</span></h4>
 <div class="box222">
-
+<%for(var i=0;i<allpal.length;i++){%>
 <u>&nbsp;&nbsp;&nbsp;&nbsp;購入日時：</u>
-<br>
-<u>&nbsp;&nbsp;&nbsp;&nbsp;注文番号：</u><br>
+
+<%=allpal[i].date%><br>
+<u>&nbsp;&nbsp;&nbsp;&nbsp;注文番号：</u>
+<%=allpal[i].tok%><br>
 </div>
-
-<br>
-<div class="col-md-3">
-<div valign="top" align="center"><img src="../img/cd/<%=oite[i].id%>.png" width="150cm" hight="150mm"></div>
-</div>
-
-<div class="col-md-9">
-<div class="note">
-
-
-商品タイトル：<%=allpal[i].name%><br>
-品番：TMS-&nbsp;<%=allpal[i].id%>&nbsp; <br>
-商品単価：&nbsp;<%=allpal[i].price%>円&nbsp; (税抜）<br>
-数量：<br>
-送料：650円<br>
-合計金額：<br>
-
-<div class="border-bottom"></div>
-
-
-</div></div>
-  
-
-
 <%}%>
 <%}else{%>
-no paidy purchase.
+no pal
 <%}%>
 </div>
 </div>

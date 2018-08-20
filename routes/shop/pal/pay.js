@@ -75,15 +75,15 @@ var getSum = function(req, res, next) {
             return tot + cur
         })
         var str=add.toString()
-        //var sship="650".toString()
-        //var sum=add+650
-        var sub=add.toString()
+        var sship="650".toString()
+        var sum=add+650
+        var sub=sum.toString()
         console.log(typeof str)
         console.log("=== amount===")
         console.log(mypal.transactions[0].amount.details)
-        //mypal.transactions[0].amount.details.subtotal =str
-        //mypal.transactions[0].amount.details.shipping=sship
-        //console.log(mypal.transactions[0].amount.details)
+        mypal.transactions[0].amount.details.subtotal =str
+        mypal.transactions[0].amount.details.shipping=sship
+        console.log(mypal.transactions[0].amount.details)
         mypal.transactions[0].amount.total = sub
         console.log(mypal.transactions[0].amount.total)
         console.log(mypal)

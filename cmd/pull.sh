@@ -1,6 +1,6 @@
 dir=$(pwd)
-str=${dir:17}
+str=${dir: -3}
 echo $str
 
-git pull git@github.com:minorhash/$str.git
+#git pull git@github.com:minorhash/$str.git
 

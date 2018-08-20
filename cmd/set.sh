@@ -1,6 +1,6 @@
 dir=$(pwd)
-str=${dir:17}
+str=${dir: -3}
 echo $str
 
-git remote set-url origin git@github.com:minorhash/$str.git
+# git remote set-url origin git@github.com:minorhash/$str.git
 

@@ -33,7 +33,7 @@
 
 <%if(!allpal.length==0){%>
 &nbsp;&nbsp;&nbsp;&nbsp;
-<h4><span class="label label-danger">paypal</span></h4>
+<h4><span class="label label-info">paypal</span></h4>
 <%for(var i=0;i<allpal.length;i++){%>
 
 <div class="box222">
@@ -42,7 +42,7 @@
 
 <%=allpal[i].date%><br>
 <u>&nbsp;&nbsp;&nbsp;&nbsp;注文番号：</u>
-<%=allpal[i].pid%><br>
+<%=allpal[i].tok%><br>
 </div>
 
 <%=allpal[i].ite%><br>

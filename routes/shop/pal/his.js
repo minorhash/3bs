@@ -13,7 +13,7 @@ var tmp_a = [],
   sum_a = [],
   uni_s = [],
   pri_s = [];
-var email, usr, mer, sum, add 
+var email, usr, mer, sum, add
 var mailtmp, mailusr,getpal,trans;
 var tok
 
@@ -42,9 +42,9 @@ var getUsr = function(req, res, next) {
 var allPal= function(req, res, next) {
 allpal=adb.allPal(email)
 atok=[]
-  for (var i = 0; i < allpal.length; i++) {
+for (var i = 0; i < allpal.length; i++) {
 console.log(allpal[i].tok)
-    atok[i]=allpal[i].tok;
+atok[i]=allpal[i].tok;
 //   atok.push(allpal[i].tok);
 //    otok= JSON.parse(atok);
   }
@@ -53,14 +53,12 @@ console.log(allpal[i].tok)
 var tokPal= function(req, res, next) {
 
 paypal.payment.get(tok, function (error, pay) {
-    if (error) {        console.log(error);        throw error;    } 
-    else {console.log("Get Payment Response");
+if (error) {        console.log(error);        throw error;    }
+else {console.log("Get Payment Response");
 tran=[]
 trans=pay.transactions
-
-        console.log(trans)
-
-    }
+console.log(trans)
+}
 })
 next()};
 
@@ -83,7 +81,6 @@ router.get('/shop/paypal/his', [
   getEma,
   getUsr,
   allPal,
-  tokPal,
   chk,
   rcb
 ]);

@@ -164,25 +164,27 @@ sson=    'var config={"api_key":"' +
 
 db.insSon(email, sson);
 
-// var fs = require('fs');
-// var son=__dirname+"/../../../public/son/"+email+".js"
+var fs = require('fs');
+var son=__dirname+"/../../../public/son/"+email+".js"
+
 // fs.stat(son, function(err, stats) {
 // if(err){throw err}
 // console.log(son);
 // })
-// fs.unlink(son,function(err) {
-// if (err) {return console.log(err);    }
-// else {console.log('no err');    }
-// console.log('unlink!');
-// });
 
-// fs.writeFile(son, sson, function(err) {
-// if (err) {return console.log(err);    }
-// else {console.log('no err');    }
-//     console.log('The file was saved!');
-// });
+fs.unlink(son,function(err) {
+if (err) {return console.log(err);    }
+else {console.log('no err');    }
+console.log('unlink!');
+});
 
-  next()};
+fs.writeFile(son, sson, function(err) {
+if (err) {return console.log(err);    }
+else {console.log('no err');    }
+    console.log('The file was saved!');
+});
+
+next()};
 
 var chk = function(req, res, next) {
 console.log('=== aid ====================================');

@@ -5,7 +5,7 @@ var db = require('usrdb');
 // == mail
 //var nodemailer = require('nodemailer');
 var snem = require('snd-ema');
-var cnf= require('../son/aid.json');
+var cnf= require('../son/cnf.json');
 var ema= require('../son/ema.json');
 
 var usr,name, pss, email, chk, reg;
@@ -62,11 +62,11 @@ mailusr = db.mailUsr(email);
 }; //chkUsr
 
 var senEma = function(req, res, next) {
-    var mes=usr+"サマ\n"+reg
+    var mes=name+"サマ<br>"+reg
 console.log('=== senEma =======================================');
 snem.trEma(
-ema.HOST,ema.USR,ema.PSS,
-ema.USR,email,ema.CC1,
+cnf.HOST,cnf.USR,cnf.PSS,
+ema.from,email,ema.cc,
 reg,mes
 );
 next()};

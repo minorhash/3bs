@@ -101,7 +101,7 @@ app.use('/', ite)
 })
 //app.use('/', con);
 // === login ===
-ausr=["sig","sigp","out","adr","adrp","forg"]
+ausr=["sig","sup","out","adr","adrp","forg"]
 ausr.forEach(function(ite){
 ite=require('./routes/shop/usr/'+ite)
 app.use('/', ite)

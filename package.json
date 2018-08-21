@@ -44,5 +44,10 @@
     "supertest": "^3.1.0",
     "supertest-session": "^3.3.0",
     "usrdb": "^1.0.1"
+  },
+  "devDependencies": {
+    "eslint": "^5.4.0",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-plugin-import": "^2.14.0"
   }
 }

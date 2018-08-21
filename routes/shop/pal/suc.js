@@ -3,9 +3,10 @@ var router = express.Router()
 var paypal = require("paypal-rest-sdk")
 // === db
 var adb = require("usrdb")
+var paljs=require("../js/pal")
 
 var usr,email,mailtmp,mer
-var pid,payerId,exeJson
+var pid,payerId,exeJson,getpal
 var sum,suma,item
 
 var conf=require("../son/pal.json")
@@ -49,7 +50,7 @@ var putMer = function(req, res, next) {
     mer=[]
     if (mailtmp) {
         for (var i = 0; i < mailtmp.length; i++) {
-            console.log(mailtmp[i].sku)
+           //console.log(mailtmp[i].sku)
             mer[i] = db.skuMer(mailtmp[i].sku)
         }
     } else {
@@ -83,13 +84,19 @@ var redSum = function(req, res, next) {
 
 var getPid= function(req, res, next) {
     pid = req.query.paymentId
+console.log(pid)
     payerId = req.query.PayerID
-
     exeJson = {
         payer_id: payerId,
         transactions: [{amount: {currency: "JPY",total: sum}}],
     }
     next()}
+
+var chk= function(req, res, next) {
+    console.log("=== suc ===")
+
+    next()}
+
 
 var exePal= function(req, res) {
     var utc = new Date().toJSON().slice(0,10).replace(/-/g,"/")
@@ -97,12 +104,10 @@ var exePal= function(req, res) {
         if (error) {console.log("exe fail")
             throw error    }
         else {
-
-            item=pay.transactions[0].item_list.items[0]
-            var sitem= JSON.stringify(item)
-
-            console.log(sitem)
-            adb.insPal(email,pid,sitem,utc)
+var ite=    JSON.stringify(pay.transactions[0].item_list)
+adb.insPal(email,pay.id,ite,utc)
+console.log(ite)
+console.log(utc)
             res.render("shop/paypal/success", {
                 title: "ご購入ありがとうございました。",
                 pid: payerId,
@@ -112,11 +117,7 @@ var exePal= function(req, res) {
         }
     })
 }
-var chk= function(req, res, next) {
-    console.log(payerId)
 
-    next()}
-
-router.get("/shop/paypal/success", [getEma,getUsr,getTmp,putMer,putSum,redSum,getPid,exePal,chk])
+router.get("/shop/paypal/success", [getEma,getUsr,getTmp,putMer,putSum,redSum,getPid,chk,exePal])
 
 module.exports = router

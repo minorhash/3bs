@@ -45,6 +45,7 @@ var allNow= function(req, res, next) {
 // === pal
 var allPal= function(req, res, next) {
     allpal=adb.allPal(email)
+    if(!allpal.length==0){
     var son=allpal[0].ite
     son.replace(/^/,"\"")
     var str="{\"name\":\"ass\"}"
@@ -55,7 +56,7 @@ var allPal= function(req, res, next) {
     allpal.forEach(function(res){
         console.log(res.ite)
     })
-
+    }else{console.log("no allpal")}
     next()}
 
 var chk = function(req, res, next) {
@@ -63,7 +64,6 @@ var chk = function(req, res, next) {
     console.log("=== chk =====================")
     console.log(email)
     console.log(usr)
-    console.log(opal)
     next()
 } //chkEma
 
@@ -74,6 +74,6 @@ var gcb = function(req, res) {
     })
 }
 
-router.get("/shop/history", [getEma, getUsr, allPid, allNow,allPal,chk, gcb])
+router.get("/shop/history", [getEma, getUsr, allPid, allPal,chk, gcb])
 
 module.exports = router

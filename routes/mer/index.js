@@ -40,12 +40,12 @@ var chk = function(req, res, next) {
   next();
 };
 
-var cb = function(req, res, next) {
-  var robj = {
+var robj = {
     title: 'merch admin',
     usr: usr,
     mer: allmer,
   };
+var cb = function(req, res, next) {
   res.render('mer', robj);
 };
 

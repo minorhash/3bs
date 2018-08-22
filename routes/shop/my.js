@@ -5,8 +5,6 @@ var router = express.Router();
 var db = require('cardb');
 var adb = require('usrdb');
 
-// === get ===
-
 // === glob ===
 var email, usr, sku, sum;
 var mailtmp, mailusr, mailadr;

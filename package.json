@@ -40,7 +40,7 @@
     "req-aid": "^1.0.1",
     "request": "^2.87.0",
     "serve-favicon": "^2.5.0",
-    "snd-ema": "^1.0.1",
+    "snd-ema": "^1.0.5",
     "supertest": "^3.1.0",
     "supertest-session": "^3.3.0",
     "usrdb": "^1.0.1"

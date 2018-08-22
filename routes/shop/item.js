@@ -53,7 +53,7 @@ var chk = function(req, res, next) {
 };
 // === rend
 var rcb = function(req, res) {
-  rob = { title: 'items', usr: usr, mer: skumer, song: obj, err: myerr };
+  rob = { title: 'item', usr: usr, mer: skumer, song: obj, err: myerr };
   res.render('shop/item', rob);
 }; //rcb
 

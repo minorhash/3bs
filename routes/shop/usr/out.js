@@ -9,36 +9,35 @@ var clrEma = function(req, res, next) {
   res.clearCookie('session');
   res.clearCookie('sess');
   res.clearCookie('coo');
-  next();
-};
+
+  next()};
 
 var getEma = function(req, res, next) {
   if (req.session) {
     email = req.session.email;
+
   } else {
     console.log('no sess');
   }
   next();
 }; //getEma
 
-var getUsr = function(req, res, next) {
-  if (email) {
-    try {
-      mailusr = adb.mailUsr(email);
-    } catch (err) {
-      console.log(err);
-    }
-  } else {
-    myerr = 'no';
-  }
-  if (mailusr) {
-    usr = mailusr.name;
-  } else {
-    usr = null;
-    myerr = 'no mailusr';
-  }
-  next();
-};
+
+var unSon= function(req, res, next) {
+var fs = require('fs');
+var son=__dirname+"/../../../public/son/"+email+".js"
+
+// fs.stat(son, function(err, stats) {
+// if(err){throw err}
+// console.log(son);
+// })
+
+fs.unlink(son,function(err) {
+if (err) {return console.log(err);    }
+else {console.log('no err');    }
+console.log('unlink!');
+});
+  next()};
 
 var chk = function(req, res, next) {
   console.log('=== log out === ');
@@ -56,5 +55,5 @@ var rcb = function(req, res) {
   });
 };
 
-router.post('/shop/usr/out', [clrEma, chk, rcb]);
+router.post('/shop/usr/out', [getEma,unSon,clrEma, chk, rcb]);
 module.exports = router;

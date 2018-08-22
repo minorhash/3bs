@@ -56,10 +56,10 @@ app.use('/', mail);
 
 // shop =================================
 
-// var shop = require('./routes/shop/index');
-// app.use('/', shop);
+var shop = require('./routes/shop/index');
+app.use('/', shop);
 
-var top=["index","cart","item","his","my"]
+var top=["cart","item","his","my"]
 
 top.forEach(function(ite){
 ite=require('./routes/shop/'+ite)
@@ -90,8 +90,8 @@ ite=require('./routes/shop/pal/'+ite)
 app.use('/', ite)
 })
 // === mer ===
-var shop = require('./routes/shop/index');
-app.use('/', shop);
+var mer= require('./routes/mer/index');
+app.use('/', mer);
 
 var amer=["out","item","ins","ins_fin","song","song2","song3","del","del_fin",
     "up","up2","up3"]

@@ -3,10 +3,7 @@ var router = express.Router();
 // === db
 var db = require('usrdb');
 // == mail
-//var nodemailer = require('nodemailer');
 var snem = require('snd-ema');
-var cnf= require('../son/cnf.json');
-var ema= require('../son/ema.json');
 
 var usr,name, pss, email, chk, reg;
 // === post ===
@@ -65,9 +62,7 @@ var senEma = function(req, res, next) {
     var mes=name+"サマ<br>"+reg
 console.log('=== senEma =======================================');
 snem.trEma(
-cnf.HOST,cnf.USR,cnf.PSS,
-ema.from,email,ema.cc,
-reg,mes
+email,reg,mes
 );
 next()};
 

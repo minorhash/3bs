@@ -14,7 +14,7 @@ var str = crypto
 
 // === glob ============================
 var email, usr, sku, uni, sum, tsum, num, myerr;
-var mailtmp, mailusr;
+var mailtmp, mailusr,mailadr
 var mer = [],
   suma = [],
   skua = [];
@@ -22,8 +22,12 @@ var mer = [],
 var getEma = function(req, res, next) {
   var cred = require("./js/cred");
   email = cred.ema(req);
-  next();
-}; //getEma
+  next()};
+
+var getAdr= function(req, res, next) {
+mailadr=adb.mailAdr(email)
+
+  next()};
 
 var getUsr = function(req, res, next) {
   var cred = require("./js/cred");
@@ -200,35 +204,18 @@ var putAid = function(req, res, next) {
 // === rend
 var gcb = function(req, res) {
   res.render("shop/cart", {
-    seltmp: mailtmp,
-    mer: mer,
-    sum: sum,
-    usr: usr,
-    email: email
+      seltmp: mailtmp,mailadr:mailadr,
+    mer: mer,    sum: sum,    usr: usr,    email: email
   });
 };
 
 router.get("/shop/cart", [
-  getEma,
-  getUsr,
-  getTmp,
-  putMer,
-  putSum,
-  redSum,
-  chkShi,
-  chk,
-  gcb
+  getEma,  getUsr, getAdr, getTmp,  putMer,  putSum,  redSum,  chkShi,
+  chk,  gcb
 ]);
 router.post("/shop/cart", [
-  getEma,
-  getUsr,
-  getTmp,
-  getIte,
-  putSku,
-  insUpd,
-  clrEma,
-  chk,
-  pcb
+  getEma,  getUsr,  getTmp,  getIte,  putSku,  insUpd,  clrEma,
+  chk,  pcb
 ]);
 
 module.exports = router;

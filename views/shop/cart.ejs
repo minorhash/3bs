@@ -83,12 +83,32 @@
 <div class="col-md-4" style="color:black"  >
 
 <div class="box93">
-<%if(typeof sum!=="undefined"){%>
+<%if(sum){%>
 <h4>&nbsp;商品小計&nbsp; (税抜)&nbsp;:  <%=sum.toLocaleString()%> &nbsp;円 </h4>
+
+<%if(boo){%>
 <h4>&nbsp;送料&nbsp;:  650 &nbsp;円 </h4>
+<%}else{%>
+<h4>&nbsp;送料&nbsp;:  0 &nbsp;円 </h4>
+
+<%}%>
+<%}else{%>
+no sum
 <%}%>
 <hr>
 
+
+<div class="box102">
+<%if(tsum){%> 
+<h4>&nbsp;合計金額 &nbsp; (税抜）&nbsp; :
+
+<%=tsum.toLocaleString()%> &nbsp;円</div>
+<%}else{%>
+no sum
+<%}%>
+
+
+</h4><br>
 <script>
 if(mailadr.length!==0){
 var xhr = new XMLHttpRequest();
@@ -98,13 +118,6 @@ xhr.send();
 }
 </script>
 
-
-<div class="box102">
-<% var tsum=sum+650 %>
-<h4>&nbsp;合計金額 &nbsp; (税抜）&nbsp; :
-
-<%=tsum.toLocaleString()%> &nbsp;円</div>
-</h4><br>
 
 </div>
 

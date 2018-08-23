@@ -146,6 +146,7 @@ unit_price: mer[i].pri,
 next()};
 
 var fsSon = function(req, res, next) {
+    if(mailadr){
 var str = JSON.stringify(taid);
 
 sson=    'var config={"api_key":"' +
@@ -183,6 +184,7 @@ if (err) {return console.log(err);    }
 else {console.log('no err');    }
     console.log('The file was saved!');
 });
+}else{console.log("no mailadr")}
 
 next()};
 

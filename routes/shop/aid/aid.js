@@ -60,7 +60,7 @@ var putSum = function(req, res, next) {
   }
   next()};
 // === chk dl ===
-var chkShi= function(req, res, next) {
+var chkSh= function(req, res, next) {
 
 boo=[]
 for(var i=0;i<skua.length;i++){
@@ -117,7 +117,7 @@ var getTai = function(req, res, next) {
 
 //=============================================== putTai
 var putTai = function(req, res, next) {
-
+ind=-1
 console.log(taid)
 if(ind==0){  taid.order.shipping = 650;}
 else{  taid.order.shipping = 0;}
@@ -188,12 +188,10 @@ next()};
 
 var chk = function(req, res, next) {
 console.log('=== aid ====================================');
-console.log(skua);
-console.log(tsum);
-console.log(ind);
 };
 
 router.put('/shop/aid/aid',
-[  getEma,  getUsr,  getAdr,getTmp,putMer,putSum,chkShi,redSum,getTai,putTai,fsSon,chk]); //put
+[  getEma,  getUsr,  getAdr,getTmp,putMer,putSum,redSum,getTai,putTai,fsSon,
+    chk]); //put
 
 module.exports = router;

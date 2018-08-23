@@ -19,8 +19,7 @@ var getEma = function(req, res, next) {
     email = null;
     console.log('no sess');
   }
-  next();
-}; //getEma
+  next()}; //getEma
 
 var getUsr = function(req, res, next) {
   if (email) {
@@ -33,8 +32,7 @@ var getUsr = function(req, res, next) {
   } else {
     (usr = null), console.log('no mail');
   }
-  next();
-};
+  next()};
 
 var putBod = function(req, res, next) {
   bod = req.body;
@@ -47,8 +45,7 @@ var putBod = function(req, res, next) {
   song = bod.song;
   // up
 
-  next();
-}; //getMer
+  next()}; //getMer
 
 var putMer = function(req, res, next) {
   try {
@@ -59,20 +56,14 @@ var putMer = function(req, res, next) {
     db.desMer(des, sku);
     db.sonMer(song, sku);
   } catch (err) {
-    console.log(err);
-  }
+    console.log(err)}
 
-  next();
-}; //putBod
+  next()};
 
 var getMer = function(req, res, next) {
-  try {
-    skumer = db.skuMer(sku);
-  } catch (err) {
-    console.log(err);
-  }
-  next();
-}; //getMer
+try {    skumer = db.skuMer(sku);  }
+catch (err) {    console.log(err);  }
+next()}; //getMer
 
 var chk = function(req, res, next) {
   console.log(email);
@@ -80,18 +71,16 @@ var chk = function(req, res, next) {
   console.log(name);
   console.log(pri);
   console.log(song);
-  next();
-};
+  next()};
 
 var rcb = function(req, res, next) {
   res.render('mer/up3', {
     title: 'up fin',
-    sku: sku,
-    usr: usr,
-    bod: bod,
-    skumer: skumer,
+    sku: sku,    usr: usr,    bod: bod,
+      skumer: skumer
   });
 };
 
-router.post('/mer/up3', [getEma, getUsr, putBod, putMer, getMer, chk, rcb]);
+router.post('/mer/up3', [getEma, getUsr, putBod, putMer, getMer,
+    chk, rcb]);
 module.exports = router;

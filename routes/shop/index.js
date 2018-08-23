@@ -84,7 +84,6 @@ var chk = function(req, res, next) {
 };
 
 
-
 var rcb = function(req, res) {
   var rob = { usr: usr, mer: allmer, err: myerr };
   res.render('shop', rob);

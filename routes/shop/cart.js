@@ -15,48 +15,41 @@ var str = crypto
 // === glob ============================
 var email, usr, sku, uni, sum, tsum, num, myerr;
 var mailtmp, mailusr;
-var mer = [],
-  suma = [],
-  skua = [];
+var mer = [],  suma = [],  skua = [];
 
+// === rend ============================
+var gcb = function(req, res) {
+res.render("shop/cart", {
+    seltmp: mailtmp,    mer: mer,    sum: sum,    usr: usr,    email: email  });
+};
+
+// === fun ============================
 var getEma = function(req, res, next) {
   var cred = require("./js/cred");
   email = cred.ema(req);
-  next();
-}; //getEma
+  next()}; //getEma
 
 var getUsr = function(req, res, next) {
   var cred = require("./js/cred");
   usr = cred.usr(email);
-  next();
-};
+  next()};
 
 var getTmp = function(req, res, next) {
   mailtmp = [];
   if (email) {
-    try {
       mailtmp = db.mailTmp(email);
-    } catch (err) {
-      console.log(err);
-    }
-  } else {
-    console.log("no mail");
-  }
-  next();
-};
+      console.log("== mailtmp ===")
+  } else {    console.log("no mail");  }
+  next()};
 
 var putMer = function(req, res, next) {
   mer = [];
   if (mailtmp) {
     for (var i = 0; i < mailtmp.length; i++) {
-      //      console.log(mailtmp[i].sku);
       mer[i] = db.skuMer(mailtmp[i].sku);
     }
-  } else {
-    console.log("no mailtmp");
-  }
-  next();
-};
+  } else {    console.log("no mailtmp");  }
+  next()};
 
 var putSum = function(req, res, next) {
   suma = [];
@@ -67,12 +60,11 @@ var putSum = function(req, res, next) {
   } else {
     console.log("no mailtmp");
   }
-  next();
-};
+  next()};
 
 // === chk dl ===
 // check for dl mer. if sku is 4 digit, then its dl.
-var chkShi = function(req, res, next) {
+var chkSh = function(req, res, next) {
   boo = [];
   for (var i = 0; i < skua.length; i++) {
     console.log("=== chk ship===");
@@ -86,8 +78,7 @@ var chkShi = function(req, res, next) {
   ind = boo.indexOf(true);
   console.log("ind:" + ind);
 
-  next();
-};
+  next()};
 
 var redSum = function(req, res, next) {
   (sum = ""), (tsum = "");
@@ -101,8 +92,19 @@ var redSum = function(req, res, next) {
   } else {
     console.log("no sum");
   }
-  next();
-};
+  next()};
+// === chk ===============================
+var chk = function(req, res, next) {
+  console.log("=== cart ===================");
+  console.log(email);
+  console.log("=== mailtmp ===");
+  console.log(mailtmp);
+  ////console.log(skua)
+  next()};
+
+router.get("/shop/cart", [  getEma,  getUsr,  getTmp,putMer,putSum,redSum,
+chk,  gcb]);
+
 
 // ====== post ===============================
 
@@ -183,13 +185,11 @@ var clrEma = function(req, res, next) {
 var chk = function(req, res, next) {
   console.log("=== cart ===================");
   console.log(email);
+  console.log("=== mailtmp ===");
   console.log(mailtmp);
-  if (req.session) {
-    console.log(req.session);
-  }
   ////console.log(skua)
-  next();
-};
+  next()};
+
 // === aid ===============================
 
 var putAid = function(req, res, next) {
@@ -197,38 +197,9 @@ var putAid = function(req, res, next) {
   next();
 };
 
-// === rend
-var gcb = function(req, res) {
-  res.render("shop/cart", {
-    seltmp: mailtmp,
-    mer: mer,
-    sum: sum,
-    usr: usr,
-    email: email
-  });
-};
 
-router.get("/shop/cart", [
-  getEma,
-  getUsr,
-  getTmp,
-  putMer,
-  putSum,
-  redSum,
-  chkShi,
-  chk,
-  gcb
-]);
-router.post("/shop/cart", [
-  getEma,
-  getUsr,
-  getTmp,
-  getIte,
-  putSku,
-  insUpd,
-  clrEma,
-  chk,
-  pcb
+router.post("/shop/cart", [  getEma,  getUsr,  getTmp,  getIte,  putSku,  insUpd,  clrEma,
+  chk,  pcb
 ]);
 
 module.exports = router;

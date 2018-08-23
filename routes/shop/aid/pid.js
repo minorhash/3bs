@@ -49,9 +49,17 @@ console.log(selpid[i].ite);
   next()};
 
 var senEma = function(req, res, next) {
-  var snem = require('snd-ema');
-  var sub = 'sub:' + usr;
-  var mes = 'mes:' + pid;
+var mes=name+"サマ<br>"+reg
+console.log('=== senEma =======================================');
+snem.trEma(
+email,reg,mes
+);
+next()};
+
+// var senEma = function(req, res, next) {
+//   var snem = require('snd-ema');
+//   var sub = 'sub:' + usr;
+//   var mes = 'mes:' + pid;
 
   //var oite = JSON.parse(ite);
   //for (var i = 0; i < oite.length; i++) {
@@ -64,11 +72,9 @@ var senEma = function(req, res, next) {
   //console.log(sku);
   //var mes =
     //'loc pid:' + pid + '<br>sku:' + sku + '<br>title:' + tit + '<br>' + img;
-
-snem.trEma(   ema.HOST,    ema.USR,   ema.PSS,    email,   ema.EMA1,    sub,    mes  );
-
-  next();
-};
+// snem.trEma(   ema.HOST,    ema.USR,   ema.PSS,    email,   ema.EMA1,    sub,    mes  );
+//   next();
+// };
 
 var chk = function(req, res, next) {
   console.log('=== pid =======================================');
@@ -77,5 +83,6 @@ var chk = function(req, res, next) {
   //console.log(itea)
 };
 
-router.put('/shop/aid/pid', [getEma, getUsr, putPid, selPid,getIte,chk]);
+router.put('/shop/aid/pid', [getEma, getUsr, putPid, selPid,getIte,
+    chk]);
 module.exports = router;

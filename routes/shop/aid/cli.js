@@ -32,7 +32,7 @@ var putPid = function(req, res, next) {
     console.log('=== putPid ===');
     console.log(req.body);
 } else {
-    console.log('=== no body ===');
+    console.log('=== no req.body ===');
     pid = 'pay_Wz8zdysAAF0AirLI';
     console.log(pid);
     //pid="pay_Wz8uOSsAAC8Aiq_w"
@@ -40,16 +40,12 @@ var putPid = function(req, res, next) {
   next()};
 
 var selPid = function(req, res, next) {
-  console.log('=== selPid items ===');
   selpid = adb.selPid(email);
   oite = JSON.parse(selpid.ite);
 //  oite = obj.order.items;
-  console.log("=== oite");
-  console.log(oite);
   next()};
 
 var reqPid = function(req, res, next) {
-  console.log('=== reqPid ===');
   //    console.log(cget.getPid(email,pid,sec))
   if (!selpid) {
       adb.insPid(pid, aid.sec);
@@ -59,19 +55,25 @@ var reqPid = function(req, res, next) {
 };
 
 var getIte = function(req, res, next) {
-  console.log('=== get ite ===');
   if (oite) {
     for (var i = 0; i < oite.length; i++) {
       console.log(oite[i].id);
     }
   } else {    console.log('no oite');  }
-  next();
-};
+  next()};
 
 var senEma = function(req, res, next) {
-  console.log('=== senEma =======================================');
-  var snem = require('snd-ema');
-  var sub = 'sub:' + usr;
+var mes=name+"サマ<br>"+reg
+console.log('=== senEma =======================================');
+snem.trEma(
+email,reg,mes
+);
+next()};
+
+// var senEma = function(req, res, next) {
+//   console.log('=== senEma =======================================');
+//   var snem = require('snd-ema');
+//   var sub = 'sub:' + usr;
   //mes = [];
   //arr = [];
   //for (var i = 0; i < oite.length; i++) {
@@ -89,17 +91,16 @@ var senEma = function(req, res, next) {
   //mes = JSON.stringify(arr)
 //.replace(/\[/g, '').replace(/\]/g, '').replace(/\"/g, '').replace(/\,/g, '');
   //console.log(arr);
-var mes="mes"
+// var mes="mes"
 
-snem.trEma(   ema.HOST,    ema.USR,   ema.PSS,    email,   ema.EMA1,    sub,    mes  );
-  next()};
+// snem.trEma(   ema.HOST,    ema.USR,   ema.PSS,    email,   ema.EMA1,    sub,    mes  );
+//   next()};
 
 var chk = function(req, res, next) {
   console.log('=== cli =======================================');
   console.log(pid);
-  //console.log(ite[0].id)
-  //console.log(itea)
 };
 
-router.put('/shop/aid/cli', [getEma,getUsr,putPid,selPid,reqPid,getIte,chk]);
+router.put('/shop/aid/cli', [getEma,getUsr,putPid,selPid,reqPid,
+    chk]);
 module.exports = router;

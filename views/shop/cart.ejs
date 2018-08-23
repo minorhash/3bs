@@ -109,14 +109,6 @@ no sum
 
 
 </h4><br>
-<script>
-if(mailadr.length!==0){
-var xhr = new XMLHttpRequest();
-xhr.open("PUT", "http://localhost:3023/shop/aid/aid", true);
-xhr.setRequestHeader('Content-Type', 'application/json');
-xhr.send();
-}
-</script>
 
 
 </div>
@@ -169,6 +161,13 @@ xhr.send();
 </div><!--container-fluid-->
 </div><!-- row -->
 
-
 <div class="footer"><% include par/foot %></div>
+
+<script>
+var xhr = new XMLHttpRequest();
+xhr.open("PUT", "http://localhost:3023/shop/aid/aid", true);
+xhr.setRequestHeader('Content-Type', 'application/json');
+xhr.send();
+
+</script>
 

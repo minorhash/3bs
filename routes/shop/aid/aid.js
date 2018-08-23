@@ -95,7 +95,6 @@ else{tsum=sum}
   next()};
 
 var getTai = function(req, res, next) {
-//  console.log('=== getTai ====================================');
   taid.amount = tsum;
   // buyer
   taid.buyer.email = email;
@@ -118,7 +117,6 @@ var getTai = function(req, res, next) {
 //=============================================== putTai
 var putTai = function(req, res, next) {
 ind=-1
-console.log(taid)
 if(ind==0){  taid.order.shipping = 650;}
 else{  taid.order.shipping = 0;}
 
@@ -146,14 +144,15 @@ unit_price: mer[i].pri,
 next()};
 
 var fsSon = function(req, res, next) {
-    if(mailadr){
+if(mailadr){
 var str = JSON.stringify(taid);
 
 sson=    'var config={"api_key":"' +
     cnf.pub +
     '",' +
     '"closed":function(cb){var xhr = new XMLHttpRequest();' +
-    'xhr.open("PUT", "http://localhost:3023/shop/aid/pid", true);' +
+    'xhr.open("PUT","'+cnf.loc +
+     '", true);' +
     'xhr.setRequestHeader("Content-Type", "application/json");' +
     'xhr.send(JSON.stringify(cb));}};' +
     'var hand=Paidy.configure(config);' +
@@ -166,7 +165,9 @@ sson=    'var config={"api_key":"' +
 db.insSon(email, sson);
 
 var fs = require('fs');
+
 var son=__dirname+"/../../../public/son/"+email+".js"
+//var son=__dirname+"/"+email+".js"
 
 // fs.stat(son, function(err, stats) {
 // if(err){throw err}
@@ -190,6 +191,7 @@ next()};
 
 var chk = function(req, res, next) {
 console.log('=== aid ====================================');
+
 };
 
 router.put('/shop/aid/aid',

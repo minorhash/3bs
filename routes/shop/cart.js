@@ -17,17 +17,8 @@ var email, usr, sku, uni, sum, tsum, num, myerr;
 var mailtmp, mailusr;
 var mer = [],  suma = [],  skua = [];
 var mailtmp, mailusr,mailadr
-var mer = [],
-  suma = [],
-  skua = [];
 
-// === rend ============================
-var gcb = function(req, res) {
-res.render("shop/cart", {
-    seltmp: mailtmp,    mer: mer,    sum: sum,    usr: usr,    email: email  });
-};
-
-// === fun ============================
+// === get ============================
 var getEma = function(req, res, next) {
   var cred = require("./js/cred");
   email = cred.ema(req);
@@ -74,20 +65,14 @@ var putSum = function(req, res, next) {
 // === chk dl ===
 // check for dl mer. if sku is 4 digit, then its dl.
 var chkSh = function(req, res, next) {
-  boo = [];
   for (var i = 0; i < skua.length; i++) {
     console.log("=== chk ship===");
     console.log(skua[i]);
     var pat = /^\d{3}$/;
     var test = pat.test(skua[i]);
     console.log(test);
-    boo.push(test);
-  }
-  console.log(boo);
-  ind = boo.indexOf(true);
-  console.log("ind:" + ind);
-
-  next()};
+}
+next()};
 
 var redSum = function(req, res, next) {
   (sum = ""), (tsum = "");
@@ -111,10 +96,18 @@ var chk = function(req, res, next) {
   ////console.log(skua)
   next()};
 
-router.get("/shop/cart", [  getEma,  getUsr,  getTmp,putMer,putSum,redSum,
-chk,  gcb]);
+// === rend
+var gcb = function(req, res) {
+res.render("shop/cart", {
+seltmp: mailtmp,mailadr:mailadr,
+mer: mer,    sum: sum,    usr: usr,    email: email
+});
+};
 
-
+router.get("/shop/cart", [
+  getEma,  getUsr, getAdr, getTmp,  putMer,  putSum,  redSum,  chkSh,
+  chk,  gcb
+]);
 // ====== post ===============================
 
 // === add item ===
@@ -140,16 +133,6 @@ var putSku = function(req, res, next) {
     console.log("no mailtmp");
   }
   next();
-};
-
-var pcb = function(req, res, next) {
-  res.render("shop/cart", {
-    seltmp: mailtmp,
-    sum: sum,
-    mer: mer,
-    usr: usr,
-    email: email
-  }); //rend
 };
 
 var insUpd = function(req, res, next) {
@@ -207,19 +190,14 @@ var putAid = function(req, res, next) {
 };
 
 
-router.post("/shop/cart", [  getEma,  getUsr,  getTmp,  getIte,  putSku,  insUpd,  clrEma,
-// === rend
-var gcb = function(req, res) {
+var pcb = function(req, res, next) {
   res.render("shop/cart", {
-      seltmp: mailtmp,mailadr:mailadr,
-    mer: mer,    sum: sum,    usr: usr,    email: email
-  });
+    seltmp: mailtmp,    sum: sum,    mer: mer,    usr: usr,
+    email: email
+  }); //rend
 };
 
-router.get("/shop/cart", [
-  getEma,  getUsr, getAdr, getTmp,  putMer,  putSum,  redSum,  chkShi,
-  chk,  gcb
-]);
+
 router.post("/shop/cart", [
   getEma,  getUsr,  getTmp,  getIte,  putSku,  insUpd,  clrEma,
   chk,  pcb

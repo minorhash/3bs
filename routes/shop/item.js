@@ -27,15 +27,17 @@ var getUsr = function(req, res, next) {
 
 var getSku = function(req, res, next) {
 sku = req.body.sku;
-//sku=3411
+    console.log(sku)
   if (sku) {
-    try {      skumer = db.skuMer(sku);
-    } catch (err) {      console.log(err);    }
+try {skumer = db.skuMer(sku);
+} catch (err) {      console.log(err);    }
   } else {    console.log('no sku');  }
   next()}; //getSku
 
 var getSon = function(req, res, next) {
   try {    skuson = db.skuSon(sku);
+console.log(skuson)
+
   } catch (err) {    console.log(err);  }
   if (skuson.song) {
     obj = JSON.parse(skuson.song);

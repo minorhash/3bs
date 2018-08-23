@@ -10,9 +10,9 @@
 <div class="container-fluid">
 <div class="row">
 
-<!--- side left ------->
+<!-- side left ----- -->
 <div class="well col-md-2 col-sm-12" style="color:black">
-<% if(usr!==null) {%> 
+<% if(usr) {%> 
 <div class="label label-info">welcome:<%= usr%></div>
 <br><br>
 <% include par/out %>
@@ -20,7 +20,7 @@
 <% include par/login %>
 <%} %>
 </div>
-<!--- side left ------->
+<!-- side left ----- -->
 
 <div class="col-sm-8" style="background-color:white;color:black">
 

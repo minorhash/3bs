@@ -8,29 +8,15 @@ var allmer = db.allMer();
 
 var email, allmer, usr, bool, myerr, mailusr;
 // === get
-
 var getEma = function(req, res, next) {
-  if (req.session) {
-    email = req.session.email;
-  } else {
-    email = null;
-    console.log('no sess');
-  }
+  var cred = require('./js/cred');
+  email = cred.ema(req);
   next();
 }; //getEma
 
 var getUsr = function(req, res, next) {
-  if (email) {
-    try {
-      mailusr = adb.mailUsr(email);
-    } catch (err) {
-      console.log(err);
-    }
-    usr = mailusr.name;
-  } else {
-    usr = null;
-    console.log('no email');
-  }
+  var cred = require('./js/cred');
+  usr = cred.usr(email);
   next();
 };
 

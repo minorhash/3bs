@@ -72,51 +72,50 @@ no allpal
 <br>
 <br>
 
-<%if(allpid && !oite.length==0){%>
+<%if(allpid){%>
 &nbsp;&nbsp;&nbsp;&nbsp;
 <h4><span class="label label-danger">paidy</span></h4>
-<%for(var i=0;i<oite.length;i++){%>
+<%for(var i=0;i<allpid.length;i++){%>
 
 <div class="box222">
 
 <u>&nbsp;&nbsp;&nbsp;&nbsp;購入日時：</u>
-
 <%=allpid[i].date%><br>
 <u>&nbsp;&nbsp;&nbsp;&nbsp;注文番号：</u>
 <%=allpid[i].pid%><br>
 </div>
 
-
-<br>
 <div class="col-md-3">
-<div valign="top" align="center"><img src="../img/cd/<%=oite[i].id%>.png" width="150cm" hight="150mm"></div>
+<div valign="top" align="center"><img src="../img/cd/<%=oite[i][0].id%>.png" width="150cm" hight="150mm"></div>
 </div>
 
 <div class="col-md-9">
 <div class="note">
 
 
-商品タイトル：<%=oite[i].title%><br>
-品番：TMS-&nbsp;<%=oite[i].id%>&nbsp; <br>
-商品単価：&nbsp;<%=oite[i].unit_price%>円&nbsp; (税抜）<br>
-数量：<%=oite[i].quantity%><br>
+商品タイトル：<%=oite[i][0].title%><br>
+品番：TMS-&nbsp;<%=oite[i][0].id%>&nbsp; <br>
+商品単価：&nbsp;<%=oite[i][0].unit_price%>円&nbsp; (税抜）<br>
+数量：<%=oite[i][0].quantity%><br>
 送料：650円<br>
-合計金額：<%=(oite[i].unit_price*oite[i].quantity+650).toLocaleString()%>
+合計金額：<%=(oite[i][0].unit_price*oite[i][0].quantity+650).toLocaleString()%>
 <br>
 
 <div class="border-bottom"></div>
 
 
 </div></div>
-  
-
 
 <%}%>
 <%}else{%>
 no paidy purchase.
 <%}%>
 
-<!--- pal ----- -->
+
+<br>
+
+</div></div>
+
 
 </div>
 </div>

@@ -22,24 +22,15 @@ var getUsr = function(req, res, next) {
 
 //  aid
 var allPid = function(req, res, next) {
-    if(!email){    allpid=[]
-        oite=[]
+    if(!email){    allpid=[],        oite=[]
         console.log("=== no all pid ==================")
     }else{
         allpid= adb.allPid(email)
+        oite=[]
         for (var i = 0; i < allpid.length; i++) {
-            ite = allpid[i].ite
-            oite = JSON.parse(ite)
+            oite.push(JSON.parse(allpid[i].ite))
         }
     }
-    next()}
-
-// === now
-var allNow= function(req, res, next) {
-    allnow=adb.allNow(email)
-    console.log("===allnow")
-    console.log(allnow)
-
     next()}
 
 // === pal
@@ -50,12 +41,12 @@ var allPal= function(req, res, next) {
     son.replace(/^/,"\"")
     var str="{\"name\":\"ass\"}"
     var obj=JSON.parse(str)
-    console.log(obj)
 
-    console.log("===res")
-    allpal.forEach(function(res){
-        console.log(res.ite)
-    })
+    // console.log(obj)
+    // console.log("===res")
+    // allpal.forEach(function(res){
+    //     console.log(res.ite)
+    // })
     }else{console.log("no allpal")}
     next()}
 
@@ -64,9 +55,9 @@ var chk = function(req, res, next) {
     console.log("=== chk =====================")
     console.log(email)
     console.log(usr)
-    console.log(allpid)
-    next()
-} //chkEma
+   // console.log(allpid)
+console.log(oite)
+    next()} //chkEma
 
 var gcb = function(req, res) {
     res.render("shop/history", {
@@ -75,6 +66,7 @@ var gcb = function(req, res) {
     })
 }
 
-router.get("/shop/history", [getEma, getUsr, allPid, allPal,chk, gcb])
+router.get("/shop/history", [getEma, getUsr, allPid, allPal,
+    chk, gcb])
 
 module.exports = router

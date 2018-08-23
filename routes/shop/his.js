@@ -64,6 +64,7 @@ var chk = function(req, res, next) {
     console.log("=== chk =====================")
     console.log(email)
     console.log(usr)
+    console.log(allpid)
     next()
 } //chkEma
 

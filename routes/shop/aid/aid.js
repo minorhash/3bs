@@ -9,7 +9,7 @@ var cnf= require('../son/aid.json');
 // === put ===
 
 var email, usr, sku, sum,tsum,adr,sson
-var boo,ind
+var boa,ind
 var mailtmp, mailusr, mailadr,mailson;
 var mer = [],  suma = [],  skua = []
 
@@ -53,6 +53,20 @@ skua.push(mer[i].sku)
   }
   next()};
 
+var chkSh= function(req, res, next) {
+
+boa=[]
+for(var i=0;i<skua.length;i++){
+
+console.log("=== chk dl ===")
+var pat=/^\d{3}$/;
+var test=pat.test(skua[i])
+boa.push(test)
+}
+ind=boa.indexOf(true)
+
+next()};
+
 var putSum = function(req, res, next) {
     suma=[]
   for (var i = 0; i < mailtmp.length; i++) {
@@ -60,23 +74,6 @@ var putSum = function(req, res, next) {
   }
   next()};
 // === chk dl ===
-var chkSh= function(req, res, next) {
-
-boo=[]
-for(var i=0;i<skua.length;i++){
-
-console.log("=== chk dl ===")
-console.log(skua[i])
-var pat=/^\d{3}$/;
-var test=pat.test(skua[i])
-console.log(test)
-boo.push(test)
-}
-console.log(boo)
-ind=boo.indexOf(true)
-console.log("ind:"+ind)
-
-next()};
 
 var redSum = function(req, res, next) {
     function getSum(total, num) {
@@ -84,14 +81,11 @@ var redSum = function(req, res, next) {
     }
     if (suma.length !== 0) {
       sum = suma.reduce(getSum);
-
-if(ind==0){tsum=sum+650}
+if(ind==true){tsum=sum+650}
 else{tsum=sum}
-
     } else {
       console.log('no sum');
     }
-//  }
   next()};
 
 var getTai = function(req, res, next) {
@@ -116,7 +110,7 @@ var getTai = function(req, res, next) {
 
 //=============================================== putTai
 var putTai = function(req, res, next) {
-ind=-1
+//ind=-1
 if(ind==0){  taid.order.shipping = 650;}
 else{  taid.order.shipping = 0;}
 
@@ -191,11 +185,14 @@ next()};
 
 var chk = function(req, res, next) {
 console.log('=== aid ====================================');
+console.log(ind)
+console.log(boa)
+console.log(taid.order.items)
 
 };
 
 router.put('/shop/aid/aid',
-[  getEma,  getUsr,  getAdr,getTmp,putMer,putSum,redSum,getTai,putTai,fsSon,
+[  getEma,  getUsr,  getAdr,getTmp,putMer,chkSh,putSum,redSum,getTai,putTai,fsSon,
     chk]); //put
 
 module.exports = router;

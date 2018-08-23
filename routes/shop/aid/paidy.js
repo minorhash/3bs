@@ -29,6 +29,7 @@ mailtmp = db.mailTmp(email);
   db.delUni();
   next()};
 
+
 var getAdr = function(req, res, next) {
   if (email) {
       mailadr = adb.mailAdr(email);
@@ -46,34 +47,47 @@ var putSum = function(req, res, next) {
       suma[i] = mailtmp[i].uni * mer[i].pri;
     }
   } else {    console.log('no mailtmp');  }
-  console.log('=== putSum ===');
   next()};
 
-var redSum = function(req, res, next) {
-  function getSum(total, num) {
-    return total + num;
+var putMer = function(req, res, next) {
+    mer=[]
+    skua=[]
+  for (var i = 0; i < mailtmp.length; i++) {
+    mer[i] = db.skuMer(mailtmp[i].sku);
+skua.push(mer[i].sku)
   }
-  if (suma.length !== 0) {
-    sum = suma.reduce(getSum);
-    console.log('sum:' + sum);
-  } else {    console.log('no sum');  }
   next()};
 
-var chkDl= function(req, res, next) {
+var chkSh= function(req, res, next) {
 
-boo=[]
+console.log("=== chk ship  ===")
+boa=[]
 for(var i=0;i<skua.length;i++){
 
-console.log("=== chk dl ===")
 var pat=/^\d{3}$/;
 var test=pat.test(skua[i])
+console.log(test)
 boa.push(test)
 }
 console.log(boa)
-boo=boo.indexOf(true)
+boo=boa.indexOf(true)
+console.log("boo")
 console.log(boo)
 
 next()};
+
+var redSum = function(req, res, next) {
+    function getSum(total, num) {
+      return total + num;
+    }
+    if (suma.length !== 0) {
+      sum = suma.reduce(getSum);
+if(boo==true){tsum=sum+650}
+else{tsum=sum}
+    } else {
+      console.log('no sum');
+    }
+  next()};
 
 // === add item ===
 var putSku = function(req, res, next) {
@@ -82,10 +96,11 @@ var putSku = function(req, res, next) {
       skua[i] = mailtmp[i].sku;
       unia[i] = mailtmp[i].uni;
     } //for
-    console.log(unia);
+    //console.log(unia);
   } else {    console.log('no mailtmp');  }
 
   next()};
+
 
 var getSon= function(req, res, next) {
 mailson=db.mailSon(email).son
@@ -94,8 +109,7 @@ next()};
 var chk = function(req, res, next) {
 console.log('=== chk paidy ===');
 console.log(mailtmp);
-console.log(skua)
-//console.log(mailusr)
+console.log(tsum)
 next()};
 
 // === rend
@@ -107,7 +121,7 @@ seltmp: mailtmp,    sum: sum,    tsum: tsum,    mer: mer,email: email,mailson:ma
 };
 
 router.get('/shop/paidy',
-[  getEma,  getUsr,  getTmp,  getAdr,  putSum,  redSum,  putSku,  getSon,
+[  getEma,  getUsr,  getTmp,  getAdr,  putSum,  putMer,chkSh,redSum,  putSku,  getSon,
     chk,  pcb,]);
 //router.post('/shop/paidy', [getEma,getUsr,getTmp,getAdr,putSum,redSum,putSku,chk,pcb])
 

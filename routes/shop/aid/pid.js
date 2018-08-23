@@ -25,6 +25,8 @@ var getUsr = function(req, res, next) {
   next()};
 
 var putPid = function(req, res, next) {
+res.redirect("pid")
+
     console.log('=== putPid ===');
 var utc = new Date().toJSON().slice(0,10).replace(/-/g,"/")
   if (req.body) {

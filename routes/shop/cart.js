@@ -81,8 +81,6 @@ var chkSh = function(req, res, next) {
        boo=false
    }
 
-
-
 next()};
 
 var redSum = function(req, res, next) {

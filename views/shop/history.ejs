@@ -72,7 +72,7 @@ no allpal
 <br>
 <br>
 
-<%if(allpid){%>
+<%if(allpid.length!==0){%>
 &nbsp;&nbsp;&nbsp;&nbsp;
 <h4><span class="label label-danger">paidy</span></h4>
 <%for(var i=0;i<allpid.length;i++){%>
@@ -98,7 +98,7 @@ no allpal
 商品単価：&nbsp;<%=oite[i][0].unit_price%>円&nbsp; (税抜）<br>
 数量：<%=oite[i][0].quantity%><br>
 送料：650円<br>
-合計金額：<%=(oite[i][0].unit_price*oite[i][0].quantity+650).toLocaleString()%>
+合計金額：<%=allpid[i].mnt.toLocaleString()%>円
 <br>
 
 <div class="border-bottom"></div>

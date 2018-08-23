@@ -4,6 +4,8 @@ var router = express.Router();
 var db = require('cardb');
 var adb = require('usrdb');
 
+var age=require("superagent")
+
 var cnf=require("../son/aid.json")
 // === glob =============================
 var email, dat, pid, str, mai, mnt, usr, sku;
@@ -23,13 +25,26 @@ var getUsr = function(req, res, next) {
   next()};
 
 var putPid = function(req, res, next) {
+    console.log('=== putPid ===');
+var utc = new Date().toJSON().slice(0,10).replace(/-/g,"/")
   if (req.body) {
     pid = req.body.id;
 
-  inspid = adb.insPid(email,pid);
-    console.log('=== putPid ===');
-    console.log(pid);
-  } else {    console.log("no pid");  }
+age
+.get('https://api.paidy.com/payments/'+pid)
+.set("Content-Type", "application/json")
+.set("Paidy-Version", "2018-04-10")
+.set("Authorization", "Bearer"+cnf.sec)
+.then(res => {
+adb.insPid(email,pid,res.body.amount,JSON.stringify(res.body.order.items),utc);
+       //console.log(JSON.stringify(res.body.order.items))
+       //console.log(typeof res.body.order.items)
+   });
+//  adb.insPid(email,pid,age.get(pid));
+  } else {
+
+//var    pid = 'pay_Wz8zdysAAF0AirLI'
+      console.log("no pid");  }
   next()};
 
 var selPid = function(req, res, next) {
@@ -42,10 +57,8 @@ var getIte = function(req, res, next) {
     for (var i = 0; i < selpid.length; i++) {
 console.log(selpid[i].ite);
       //        itea.push(selpid[i].ite)
-    }
-  } else {
-    console.log('no selpid');
-  }
+}
+} else {    console.log('no selpid');  }
   next()};
 
 var senEma = function(req, res, next) {
@@ -79,10 +92,8 @@ next()};
 var chk = function(req, res, next) {
   console.log('=== pid =======================================');
   console.log(pid);
-  //console.log(ite[0].id)
-  //console.log(itea)
 };
 
-router.put('/shop/aid/pid', [getEma, getUsr, putPid, selPid,getIte,
+router.put('/shop/aid/pid', [getEma, getUsr, putPid,
     chk]);
 module.exports = router;

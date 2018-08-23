@@ -35,6 +35,9 @@ var putPid = function(req, res, next) {
     console.log('=== no req.body ===');
     pid = 'pay_Wz8zdysAAF0AirLI';
     console.log(pid);
+var age=require("./age")
+age.get(pid)
+
     //pid="pay_Wz8uOSsAAC8Aiq_w"
 }
   next()};

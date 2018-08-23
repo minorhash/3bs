@@ -152,7 +152,7 @@ sson=    'var config={"api_key":"' +
     '",' +
     '"closed":function(cb){var xhr = new XMLHttpRequest();' +
     'xhr.open("PUT","'+cnf.loc +
-     '", true);' +
+     '/shop/aid/pid", true);' +
     'xhr.setRequestHeader("Content-Type", "application/json");' +
     'xhr.send(JSON.stringify(cb));}};' +
     'var hand=Paidy.configure(config);' +

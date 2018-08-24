@@ -1,5 +1,5 @@
 if [ -z $1 ];then
     echo "usage"
 else
-git push -u origin $1
+git checkout -b $1
 fi

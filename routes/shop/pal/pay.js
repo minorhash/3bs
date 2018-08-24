@@ -4,13 +4,15 @@ var router = express.Router()
 var paypal = require("paypal-rest-sdk")
 require(__dirname + "/config")
 
+var adb = require('usrdb')
+
 var pal = require("mypal")
 var mypal = pal.myPal()
 var tran=mypal.transactions[0]
 
 var tmp_a = [],  mer_a = [],  sum_a = [],  uni_s = [],  pri_s = [],skua=[]
 var email, usr, mer, sum, add,ite
-var mailtmp
+var mailtmp,mailusr
 
 // === db
 var db = require("cardb")
@@ -19,6 +21,7 @@ var db = require("cardb")
 var getEma = function(req, res, next) {
     var cred = require("../js/cred")
     email = cred.ema(req)
+mailusr=  adb.mailUsr(email)
     next()
 } //getEma
 

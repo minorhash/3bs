@@ -7,24 +7,27 @@ var adb = require('usrdb');
 var age=require("superagent")
 var snde = require('snd-ema');
 
-var cnf=require("../son/aid.json")
 // === glob =============================
 var email, dat, pid, str, mai, mnt, usr, sku;
 var mailusr;
 var inspid, getpid, selpid, strbuy, strite;
 var buy, ite, itea, oite;
 
+var cnf=require("../son/aid.json")
+
+var cred = require('../js/cred');
 // === fun =============================
 var getEma = function(req, res, next) {
-var cred = require('../js/cred');
-  email = cred.ema(req);
+email = cred.ema(req);
+mailusr=  adb.mailUsr(email)
   next()}; //getEma
 
 var getUsr = function(req, res, next) {
-    mailusr=adb.mailUsr(email)
-        usr=mailuser.name
-//  usr = cred.usr(email);
-  next()};
+if(req.session.pss){
+if(req.session.pss==mailusr.pss){usr=mailusr.name}
+else{usr=null;console.log("no usr")}
+}else{console.log("no pss")}
+next()};
 
 var putPid = function(req, res, next) {
 //res.redirect("pid")
@@ -52,10 +55,10 @@ next()};
 
 var senEma = function(req, res, next) {
 console.log('=== senEma =======================================');
-//email="jinjasaisen@gmail.com"
+var eto="jinjasaisen@gmail.com"
 var reg="thanks"
 var mes=usr+"サマ<br>"+reg
-snde.trEma(email,reg,mes);
+snde.trEma(eto,reg,mes);
 next()};
 
 var chk = function(req, res, next) {

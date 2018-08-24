@@ -9,11 +9,13 @@ var cnf=require("./son/aid.json")
 var email, usr
 var selpid, allpid,allnow,allpal
 var ite, oite,opal,ship
+
+var cred = require("./js/cred")
 // === get ============================
-var getEma = function(req, res, next) { var cred = require("./js/cred")
-    email = cred.ema(req)
+var getEma = function(req, res, next) { 
+email = cred.ema(req)
 mailusr=  adb.mailUsr(email)
-    next()}
+next()}
 
 var getUsr = function(req, res, next) {
 if(req.session.pss){

@@ -17,10 +17,6 @@ var cred = require('./js/cred');
 var getEma = function(req, res, next) {
 email = cred.ema(req);
 mailusr=  adb.mailUsr(email)
-    console.log("=== pss ===")
-    if(mailusr){
-    console.log(mailusr.pss)
-    }else{usr=null;console.log("no mailusr")}
   next()}
 
 var getUsr = function(req, res, next) {

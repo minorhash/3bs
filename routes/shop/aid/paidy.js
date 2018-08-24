@@ -13,14 +13,19 @@ var mer = [],  suma = [],  skua = [],  unia = [],  numa = [], boa=[];
 var emp, ind, boo;
 
 var getEma = function(req, res, next) {
-  var cred = require('../js/cred');
-  email = cred.ema(req);
-  next()}; //getEma
+    var cred = require("../js/cred")
+    email = cred.ema(req)
+mailusr=  adb.mailUsr(email)
+    next()
+} //getEma
 
 var getUsr = function(req, res, next) {
-  var cred = require('../js/cred');
-  usr = cred.usr(email);
-  next()};
+if(req.session.pss){
+if(req.session.pss==mailusr.pss){usr=mailusr.name}
+else{usr=null;console.log("no usr")}
+}else{console.log("no pss")}
+next()};
+
 
 var getTmp = function(req, res, next) {
   if (email) {

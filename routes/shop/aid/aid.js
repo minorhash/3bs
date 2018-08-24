@@ -6,6 +6,8 @@ var adb = require('usrdb');
 var aid = require('aidy');
 var taid = aid.tmpAid();
 var cnf= require('../son/aid.json');
+
+var cred = require('../js/cred');
 // === put ===
 
 var email, usr, sku, sum,tsum,adr,sson
@@ -14,18 +16,16 @@ var mailtmp, mailusr, mailadr,mailson;
 var mer = [],  suma = [],  skua = []
 
 var getEma = function(req, res, next) {
-  var cred = require('../js/cred');
-  email = cred.ema(req);
-  next()}; //getEma
+email = cred.ema(req);
+mailusr=  adb.mailUsr(email)
+next()}
 
 var getUsr = function(req, res, next) {
-  var cred = require('../js/cred');
-  usr = cred.usr(email);
-    if(email){
-  mailusr = adb.mailUsr(email);
-  usr = mailusr.name;
-    }else{console.log("no mail")}
-  next()};
+if(req.session.pss){
+if(req.session.pss==mailusr.pss){usr=mailusr.name}
+else{usr=null;console.log("no usr")}
+}else{console.log("no pss")}
+next()};
 
 var getAdr = function(req, res, next) {
 if(email){mailadr = adb.mailAdr(email);}
@@ -144,7 +144,7 @@ if(mailadr){
 var str = JSON.stringify(taid);
 
 sson=    'var config={"api_key":"' +
-    cnf.pkl +
+    cnf.pub +
     '",' +
     '"closed":function(cb){var xhr = new XMLHttpRequest();' +
     'xhr.open("PUT","'+cnf.loc+

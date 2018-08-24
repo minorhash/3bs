@@ -8,51 +8,35 @@ var adb = require('usrdb');
 // === glob ===
 var email, usr, sku, sum;
 var mailtmp, mailusr, mailadr;
-var mer = [],
-  suma = [],
-  sku_a = [];
+var mer = [],  suma = [],  sku_a = [];
 
 // === cred ===
 var getEma = function(req, res, next) {
   var cred = require('./js/cred');
   email = cred.ema(req);
-  next();
-}; //getEma
+  next()};
 
 var getUsr = function(req, res, next) {
   var cred = require('./js/cred');
   usr = cred.usr(email);
   mailusr = adb.mailUsr(email);
-  next();
-};
+  next()};
 
 var getAdr = function(req, res, next) {
-  try {
     mailadr = adb.mailAdr(email);
-  } catch (err) {
-    console.log(err);
-  }
-  if (!mailadr) {
-    //res.redirect("dre")
-    console.log('no adr');
-  }
-  next();
-};
+  next()};
 
 var chk = function(req, res, next) {
   console.log(email);
-  console.log(mailadr);
+if (mailadr) {    console.log(mailadr)
+  }else{    console.log("no adr")}
   console.log(mailusr);
-  next();
-};
+  next()};
 
 var rcb = function(req, res, next) {
-  res.render('shop/my', {
-    email: email,
-    usr: usr,
-    mailusr: mailusr,
-    mailadr: mailadr,
-  }); //rend
+res.render('shop/my', {    email: email,    usr: usr,    mailusr: mailusr,
+mailadr: mailadr
+}); //rend
 };
 router.get('/shop/my', [getEma, getUsr, getAdr, chk, rcb]); //
 

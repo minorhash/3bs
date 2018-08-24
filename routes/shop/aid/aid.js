@@ -37,16 +37,11 @@ else{console.log("no email for adr")}
   next()};
 
 var getTmp = function(req, res, next) {
-  try {
     mailtmp = db.mailTmp(email);
-  } catch (err) {
-    console.log(err);
-  }
   next()};
 
 var putMer = function(req, res, next) {
-    mer=[]
-    skua=[]
+    mer=[],    skua=[]
   for (var i = 0; i < mailtmp.length; i++) {
     mer[i] = db.skuMer(mailtmp[i].sku);
 skua.push(mer[i].sku)

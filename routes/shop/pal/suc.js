@@ -9,6 +9,7 @@ var usr,email,mailtmp,mer
 var pid,payerId,exeJson,getpal
 var sum,suma,item
 
+var snde = require('snd-ema');
 var conf=require("../son/pal.json")
 
 paypal.configure({
@@ -35,29 +36,18 @@ var getUsr = function(req, res, next) {
 var getTmp = function(req, res, next) {
     mailtmp = []
     if (email) {
-        try {
-            mailtmp = db.mailTmp(email)
-        } catch (err) {
-            console.log(err)
-        }
-    } else {
-        console.log("no mail")
-    }
-    next()
-}
+    mailtmp = db.mailTmp(email)
+    } else {        console.log("no mail")    }
+    next()}
 
 var putMer = function(req, res, next) {
     mer=[]
     if (mailtmp) {
         for (var i = 0; i < mailtmp.length; i++) {
-           //console.log(mailtmp[i].sku)
             mer[i] = db.skuMer(mailtmp[i].sku)
         }
-    } else {
-        console.log("no mailtmp")
-    }
-    next()
-}
+    } else {        console.log("no mailtmp")    }
+    next()}
 
 var putSum = function(req, res, next) {
     suma = []
@@ -65,21 +55,15 @@ var putSum = function(req, res, next) {
         for (var i = 0; i < mailtmp.length; i++) {
             suma[i] = mailtmp[i].uni * mer[i].pri
         }
-    } else {
-        console.log("no mailtmp")
-    }
+    } else {        console.log("no mailtmp")    }
     next()}
 
 var redSum = function(req, res, next) {
     sum = ""
-    function getSum(total, num) {
-        return total + num
-    }
+    function getSum(total, num) {        return total + num    }
     if (suma.length !== 0) {
         sum = suma.reduce(getSum)
-    } else {
-        console.log("no sum")
-    }
+    } else {        console.log("no sum")    }
     next()}
 
 var getPid= function(req, res, next) {
@@ -97,25 +81,32 @@ var chk= function(req, res, next) {
 
     next()}
 
+var senEma = function(req, res, next) {
+var mes=name+"サマ<br>"+reg
+console.log('=== senEma =======================================');
+snde.trEma(email,reg,mes);
+next()};
 
 var exePal= function(req, res) {
-    var utc = new Date().toJSON().slice(0,10).replace(/-/g,"/")
-    paypal.payment.execute(pid, exeJson, function(error, pay) {
-        if (error) {console.log("exe fail")
-            throw error    }
-        else {
+var utc = new Date().toJSON().slice(0,10).replace(/-/g,"/")
+paypal.payment.execute(pid, exeJson, function(error, pay) {
+if (error) {console.log("exe fail");throw error    }
+else {
 var ite=    JSON.stringify(pay.transactions[0].item_list)
 adb.insPal(email,pay.id,ite,utc)
 console.log(ite)
 console.log(utc)
-            res.render("shop/paypal/success", {
-                title: "ご購入ありがとうございました。",
-                pid: payerId,
-                payid: pid,
-                pay:pay
-            })
-        }
-    })
+res.render("shop/paypal/success", {
+title: "ご購入ありがとうございました。",
+pid: payerId,
+payid: pid,
+pay:pay
+})
+var mes=name+"サマ<br>"+reg
+console.log('=== senEma =======================================');
+snde.trEma(email,reg,mes);
+}
+})
 }
 
 router.get("/shop/paypal/success", [getEma,getUsr,getTmp,putMer,putSum,redSum,getPid,chk,exePal])

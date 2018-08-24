@@ -43,7 +43,6 @@ age
 .set("Authorization", "Bearer"+cnf.sec)
 .then(function(res){
 console.log(res.body.order.shipping)
-ship=res.body.order.shipping
 
 })
 

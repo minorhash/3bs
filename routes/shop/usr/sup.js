@@ -3,7 +3,7 @@ var router = express.Router();
 // === db
 var db = require('usrdb');
 // == mail
-var snem = require('snd-ema');
+var snde = require('snd-ema');
 
 var usr,name, pss, email, chk, reg;
 // === post ===
@@ -59,11 +59,9 @@ mailusr = db.mailUsr(email);
 }; //chkUsr
 
 var senEma = function(req, res, next) {
-    var mes=name+"サマ<br>"+reg
+var mes=name+"サマ<br>"+reg
 console.log('=== senEma =======================================');
-snem.trEma(
-email,reg,mes
-);
+snde.trEma(email,reg,mes);
 next()};
 
 var chk= function(req, res, next) {

@@ -1,5 +1,9 @@
 dir=$(pwd)
 str=${dir: -3}
 echo $str
-git remote add origin git@github.com:minorhash/$str.git
+if [ -z $1 ];then
+    echo "usage"
+else
+git remote add $1
+fi
 

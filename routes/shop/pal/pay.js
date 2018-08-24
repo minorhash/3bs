@@ -8,7 +8,7 @@ var pal = require("mypal")
 var mypal = pal.myPal()
 var tran=mypal.transactions[0]
 
-var tmp_a = [],  mer_a = [],  sum_a = [],  uni_s = [],  pri_s = []
+var tmp_a = [],  mer_a = [],  sum_a = [],  uni_s = [],  pri_s = [],skua=[]
 var email, usr, mer, sum, add,ite
 var mailtmp
 
@@ -27,6 +27,7 @@ var getUsr = function(req, res, next) {
     usr = cred.usr(email)
     next()
 }
+
 
 var putTmp = function(req, res, next) {
     tmp_a = []
@@ -50,6 +51,7 @@ var putMer = function(req, res, next) {
             mer_a.push(db.skuMer(tmp_a[i].sku))
             uni_s[i] = tmp_a[i].uni.toString()
             pri_s[i] = mer_a[i].pri.toString()
+            skua[i] = mer_a[i].sku.toString()
             ite = {
                 name: mer_a[i].name,
                 quantity: uni_s[i],
@@ -59,10 +61,26 @@ var putMer = function(req, res, next) {
             }
             tran.item_list.items.push(ite)
         }
-    } else {
-        console.log("no tmp_a")
-    }
+    } else {        console.log("no tmp_a")    }
     next()}
+
+
+var chkSh= function(req, res, next) {
+
+boa=[]
+for(var i=0;i<skua.length;i++){
+
+console.log("=== chk dl ===")
+var pat=/^\d{3}$/;
+var test=pat.test(skua[i])
+boa.push(test)
+}
+
+console.log(skua)
+console.log(boa)
+ind=boa.indexOf(true)
+
+next()};
 
 // === sum ===
 var getSum = function(req, res, next) {
@@ -75,13 +93,17 @@ var getSum = function(req, res, next) {
             return tot + cur
         })
         var str=add.toString()
-        var sship="650".toString()
-        var sum=add+650
-        var sub=sum.toString()
+var ship=null
+if(ind==0){ship=650}
+        else{ship=0}
+
+        var sship=ship.toString()
+        var sum=add+ship
+        var ssum=sum.toString()
         console.log("=== amount===")
         tran.amount.details.subtotal =str
         tran.amount.details.shipping=sship
-        tran.amount.total = sub
+        tran.amount.total =ssum
     }
     next()}
 
@@ -105,7 +127,8 @@ var goPal = function(req, res) {
 
 var chk = function(req, res, next) {
     console.log("=== mypal")
-    console.log(mypal)
+    //console.log(mypal)
+    console.log(ind)
     console.log("=== items")
     console.log(tran.item_list)
     console.log("=== amount")
@@ -126,7 +149,7 @@ var rcb = function(req, res) {
 }
 
 router.get("/shop/paypal/pay", [
-    getEma,getUsr,putMer,putTmp,putMer,getSum,chk,goPal
+    getEma,getUsr,putMer,putTmp,putMer,chkSh,getSum,chk,goPal
 ])
 
 module.exports = router

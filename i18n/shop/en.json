@@ -1,61 +1,8 @@
 {
-"WEL": "hi! welcome!",
-"CONT": "More bla",
-"prof":"================================news title",
-"TIT1":"AXELL",
-"PRO1":"axell is a girls boy band. ",
-"PRO_CAP_ALL":"left to right:aoi, cecil, sho,shion",
-"CD341":"special adventure / With You - normal TypeA",
-"newstitle":"================================news title",
-"APO":"APOLOGIES",
-"EVE":"EVENT",
-"GUE":"GUEST",
-"NEW":"NEWS",
-"REL":"RELEASE",
-"sho":"LIVE",
-"news":"================================news",
-
-
-
-
-
-
-
-
-"N00815":"ONEMAN LIVE'HAPPY HOLIDAY'PHOTO GALLERY",
-"N00814":"2018.8.20  'TSUTAYA O-EAST SUMMER BOUNS LIVE!!'",
-"N00813":"2nd ONEMAN LIVE hold",
-"N00809":"ONEMAN LIVE 'Happy holiday'notes2",
-"N00808":"ONEMAN LIVE 'Happy holiday'notes",
-"N00807":"2018.09.08〜09 'NOTA FES’",
-"N00803":"ONEMAN LIVE 'Happy holiday'official goods",
-"N00802":"'shiawase melody'making digest",
-"N08292":"2018.8.29 'shiawase melody'detail",
-"N0830":"2018.8.29〜31 'TOKYO tokonatsu FES'",
-"N08112":"2018.8.11 'shiawase melody'pre release",
-"N0829":"2018.8.29 'shiawase melody'release & JOL event",
-"N0726":"2018.7.26 TOWER RECORDS yokohama in store live",
-"N0625":"TV saitama shoot out 'SHIBUYA X-TREME VOL.3 GIRL'S LIVE STORM'on air date",
-"N0613":"SHOWROOM regular program",
-"N0811":"2018.8.11 AXELL 1st ONEMAN LIVE",
-"N0515":"2018.6.17  axell groom june bride",
-"N05071":"2018.6.17 JOL",
-"N0507":"2018.5.6 golden week",
-"N0413":"2018.5.3 idol generation ticket",
-"N0412":"2018.5.6 golden week",
-"N0406":"2018.5.3 idol generation",
-"N04011":"2018.5.6 JOL",
-"N0401":"2018.8 first one man show!",
-"N03221":"2018.8 new single release",
-"N0322":"2018.04.01 ohanami special",
-"N0305":"2018.03.22 jol fes",
-"N0207":"2.7 hoopers show room guest",
-"N0201":"2.17 never mind the flu, AXELL is with you",
-"N0110":"1.14 harajuku called off",
-"N1226":"new year!",
-"N1121":"santa is in town",
-"N1112":"the hoopers tour fantasia",
-"N1024":"autumn",
-"N10240":"site is up",
-"news":"================================news"
+    "buy":"thank you",
+    "pid":"pid",
+    "sku":"sku",
+    "title":"title",
+    "price":"price",
+   "unit":"unit"
 }

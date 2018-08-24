@@ -59,6 +59,8 @@ var test=pat.test(skua[i])
 boa.push(test)
 }
 ind=boa.indexOf(true)
+    console.log("ind")
+    console.log(ind)
 
 next()};
 
@@ -76,7 +78,12 @@ var redSum = function(req, res, next) {
     }
     if (suma.length !== 0) {
       sum = suma.reduce(getSum);
-if(ind==true){tsum=sum+650}
+if(ind==0){tsum=sum+650;
+
+// taid.buyer.email = email;
+// taid.buyer.name1 = mailusr.name;
+// taid.amount = tsum;
+}
 else{tsum=sum}
     } else {
       console.log('no sum');
@@ -85,7 +92,7 @@ else{tsum=sum}
 
 var getTai = function(req, res, next) {
   taid.amount = tsum;
-  // buyer
+  // // buyer
   taid.buyer.email = email;
   taid.buyer.name1 = mailusr.name;
 
@@ -137,10 +144,10 @@ if(mailadr){
 var str = JSON.stringify(taid);
 
 sson=    'var config={"api_key":"' +
-    cnf.pub +
+    cnf.pkl +
     '",' +
     '"closed":function(cb){var xhr = new XMLHttpRequest();' +
-    'xhr.open("PUT","'+cnf.loc +
+    'xhr.open("PUT","'+cnf.loc+
      '/shop/aid/pid", true);' +
     'xhr.setRequestHeader("Content-Type", "application/json");' +
     'xhr.send(JSON.stringify(cb));}};' +
@@ -180,8 +187,9 @@ next()};
 
 var chk = function(req, res, next) {
 console.log('=== aid ====================================');
-console.log(ind)
-console.log(boa)
+console.log(email)
+console.log(tsum)
+console.log(taid.amount)
 console.log(taid.order.items)
 
 };

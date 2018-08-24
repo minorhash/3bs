@@ -97,10 +97,10 @@ no allpal
 品番：TMS-&nbsp;<%=oite[i][0].id%>&nbsp; <br>
 商品単価：&nbsp;<%=oite[i][0].unit_price%>円&nbsp; (税抜）<br>
 数量：<%=oite[i][0].quantity%><br>
-<%if(allpid[i].ship==0){%>円
-送料：<%=allpid[i].ship%>円
+<%if(allpid[i].ship==0){%>
+送料：<%=allpid[i].ship%>円<br>
 <%}else{%>
-送料：650円
+送料：650円<br>
 <%}%>
 合計金額：<%=allpid[i].mnt.toLocaleString()%>円
 <br>

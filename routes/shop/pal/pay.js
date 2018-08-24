@@ -23,25 +23,23 @@ var getEma = function(req, res, next) {
 } //getEma
 
 var getUsr = function(req, res, next) {
-    var cred = require("../js/cred")
-    usr = cred.usr(email)
-    next()
-}
-
+if(req.session.pss){
+if(req.session.pss==mailusr.pss){usr=mailusr.name}
+else{usr=null;console.log("no usr")}
+}else{console.log("no pss")}
+next()};
 
 var putTmp = function(req, res, next) {
-    tmp_a = []
-    if (email) {
-        mailtmp = db.mailTmp(email)
-        for (var i = 0; i < mailtmp.length; i++) {
-            if (mailtmp[i].uni !== 0) {
-                tmp_a.push(mailtmp[i])
-            } //if
-        } //for
-    } else {
-        console.log("no mail")
-    }
-    next()}
+tmp_a = []
+if (email) {
+mailtmp = db.mailTmp(email)
+for (var i = 0; i < mailtmp.length; i++) {
+if (mailtmp[i].uni !== 0) {
+tmp_a.push(mailtmp[i])
+} //if
+} //for
+} else {        console.log("no mail")    }
+next()}
 
 var putMer = function(req, res, next) {
     mer_a = []

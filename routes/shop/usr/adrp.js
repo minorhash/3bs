@@ -63,17 +63,10 @@ var insAdr = function(req, res, next) {
 var senEma = function(req, res, next) {
   console.log('=== senEma =======================================');
   var snem = require('snd-ema');
-  snem.trEma(
-cnf.HOST,
-cnf.USR,
-cnf.PSS,
-    email,
-    ema.to,
-    ema,sub,
-    ema,mes
-  );
-  next();
-};
+    var sub=reg
+    var mes=usr+""
+  snem.trEma(email,    sub,    mes  );
+  next()};
 
 var rcb = function(req, res) {
   res.render('shop/usr/adr_reg', {

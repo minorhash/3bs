@@ -89,22 +89,27 @@ var snde = require('snd-ema');
 paypal.payment.execute(pid, exeJson, function(error, pay) {
 if (error) {console.log("exe fail");throw error    }
 else {
+var item=    pay.transactions[0].item_list.items[0]
 var ite=    JSON.stringify(pay.transactions[0].item_list)
 
 console.log(pay.id)
 adb.insPal(email,pay.id,ite,utc)
-console.log(ite)
+console.log(item.name)
 console.log(utc)
 
 res.render("shop/paypal/success", {
 title:reg,
 pid: pid,
 payid:payerId,
-pay:pay
+pay:pay,
+    item:item
 })
 var mes=usr+"サマ<br>"+reg
-+"<br>"+pid
-+"<br>"+ite
++"<br>注文id:"+pid
++"<br>タイトル:"+item.name
++"<br>品番:"+item.sku
++"<br>価格:"+item.price
++"<br>数量:"+item.quantity
 
 console.log('=== senEma =======================================');
 snde.trEma(email,reg,mes);

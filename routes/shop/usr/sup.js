@@ -19,6 +19,7 @@ var getUsr = function(req, res, next) {
   usr = cred.usr(email);
   next();
 };
+
 var defIn = function(req, res, next) {
   console.log('=== defin ===');
   name = req.body.name;

@@ -10,29 +10,30 @@ var str = crypto
   .digest('hex');
 //console.log(str)
 
-var email, usr, sku, skumer, myerr, mailusr, mailtmp, skuson, obj, len;
+var email, usr, sku
+    var skumer, mailusr, mailtmp, skuson
+    var obj, len;
 // === post =============================
 var getEma = function(req, res, next) {
   var cred = require('./js/cred');
   email = cred.ema(req);
+mailusr=  adb.mailUsr(email)
   next();
 }; //getEma
 
 var getUsr = function(req, res, next) {
-  var cred = require('./js/cred');
-  usr = cred.usr(email);
-  next();
-};
-
+if(mailusr){usr=mailusr.name}
+else{usr=null;console.log("no usr")}
+next()};
 
 var getSku = function(req, res, next) {
 sku = req.body.sku;
-    console.log(sku)
-  if (sku) {
+console.log(sku)
+if (sku) {
 try {skumer = db.skuMer(sku);
 } catch (err) {      console.log(err);    }
-  } else {    console.log('no sku');  }
-  next()}; //getSku
+} else {    console.log('no sku');  }
+next()}; //getSku
 
 var getSon = function(req, res, next) {
   try {    skuson = db.skuSon(sku);
@@ -55,8 +56,8 @@ var chk = function(req, res, next) {
 };
 // === rend
 var rcb = function(req, res) {
-  rob = { title: 'item', usr: usr, mer: skumer, song: obj, err: myerr };
-  res.render('shop/item', rob);
+rob = { title: 'item', usr: usr, mer: skumer, song: obj};
+res.render('shop/item', rob);
 }; //rcb
 
 router.post('/shop/item:id', [getEma, getUsr, getSku, getSon, chk, rcb]);

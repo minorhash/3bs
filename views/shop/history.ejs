@@ -33,13 +33,17 @@
 
 <%if(!allpal.length==0){%>
 &nbsp;&nbsp;&nbsp;&nbsp;
+
 <h4><span class="label label-info">paypal</span></h4>
 <%for(var i=0;i<allpal.length;i++){%>
 
+<br>
 
 
-<u>&nbsp;&nbsp;&nbsp;&nbsp;購入日時：
-<%=allpal[i].date%></u><br>
+<font color="#0000ff">
+<u><b>&nbsp;&nbsp;&nbsp;&nbsp;購入日時：
+<%=allpal[i].date%></b></u><br>
+</font>
 
 <u>&nbsp;&nbsp;&nbsp;&nbsp;注文番号：
 <%=allpal[i].tok%></u><br>
@@ -88,8 +92,11 @@ no allpal
 <%for(var i=0;i<allpid.length;i++){%>
 
 
-<u>&nbsp;&nbsp;&nbsp;&nbsp;購入日時：
-<%=allpid[i].date%></u><br>
+<font color="red">
+<b><u>&nbsp;&nbsp;&nbsp;&nbsp;購入日時：
+<%=allpid[i].date%></u></b><br>
+</font>
+
 <u>&nbsp;&nbsp;&nbsp;&nbsp;注文番号：
 <%=allpid[i].pid%></u><br>
 <br>

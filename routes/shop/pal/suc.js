@@ -9,7 +9,6 @@ var usr,email,mailtmp,mer
 var pid,payerId,exeJson,getpal
 var sum,suma,item
 
-var snde = require('snd-ema');
 var conf=require("../son/pal.json")
 
 paypal.configure({
@@ -21,17 +20,17 @@ paypal.configure({
 // === db
 var db = require("cardb")
 
+var cred = require('../js/cred');
 // === get
-
 var getEma = function(req, res, next) {
-    var cred = require("../js/cred")
-    email = cred.ema(req)
-    next()} //getEma
+email = cred.ema(req);
+mailusr=  adb.mailUsr(email)
+next()}
 
 var getUsr = function(req, res, next) {
-    var cred = require("../js/cred")
-    usr = cred.usr(email)
-    next()}
+if(mailusr){usr=mailusr.name}
+else{usr=null;console.log("no usr")}
+next()};
 
 var getTmp = function(req, res, next) {
     mailtmp = []
@@ -63,7 +62,7 @@ var redSum = function(req, res, next) {
     function getSum(total, num) {        return total + num    }
     if (suma.length !== 0) {
         sum = suma.reduce(getSum)
-    } else {        console.log("no sum")    }
+    } else {console.log("no sum")    }
     next()}
 
 var getPid= function(req, res, next) {
@@ -78,37 +77,47 @@ console.log(pid)
 
 var chk= function(req, res, next) {
     console.log("=== suc ===")
-
+    console.log(email)
+    console.log(usr)
     next()}
-
-var senEma = function(req, res, next) {
-var mes=name+"サマ<br>"+reg
-console.log('=== senEma =======================================');
-snde.trEma(email,reg,mes);
-next()};
 
 var exePal= function(req, res) {
 var utc = new Date().toJSON().slice(0,10).replace(/-/g,"/")
+var reg="ご購入ありがとうございました。"
+var snde = require('snd-ema');
+
 paypal.payment.execute(pid, exeJson, function(error, pay) {
 if (error) {console.log("exe fail");throw error    }
 else {
+var item=    pay.transactions[0].item_list.items[0]
 var ite=    JSON.stringify(pay.transactions[0].item_list)
+
+console.log(pay.id)
 adb.insPal(email,pay.id,ite,utc)
-console.log(ite)
+console.log(item.name)
 console.log(utc)
+
 res.render("shop/paypal/success", {
-title: "ご購入ありがとうございました。",
-pid: payerId,
-payid: pid,
-pay:pay
+title:reg,
+pid: pid,
+payid:payerId,
+pay:pay,
+    item:item
 })
-var mes=name+"サマ<br>"+reg
+var mes=usr+"サマ<br>"+reg
++"<br>注文id:"+pid
++"<br>タイトル:"+item.name
++"<br>品番:"+item.sku
++"<br>価格:"+item.price
++"<br>数量:"+item.quantity
+
 console.log('=== senEma =======================================');
 snde.trEma(email,reg,mes);
 }
 })
 }
 
-router.get("/shop/paypal/success", [getEma,getUsr,getTmp,putMer,putSum,redSum,getPid,chk,exePal])
+router.get("/shop/paypal/success", [getEma,getUsr,getTmp,putMer,putSum,redSum,getPid,
+exePal,chk])
 
 module.exports = router

@@ -24,8 +24,7 @@
 
 <div class="box90">購入履歴詳細</div><br>
 <%}else{%>
-ログインしてください。
-
+ログインしてください。<br>
 
 <%}%>
 
@@ -33,21 +32,27 @@
 
 <%if(!allpal.length==0){%>
 &nbsp;&nbsp;&nbsp;&nbsp;
+
 <h4><span class="label label-info">paypal</span></h4>
 <%for(var i=0;i<allpal.length;i++){%>
 
-<div class="box222">
+<br>
 
-<u>&nbsp;&nbsp;&nbsp;&nbsp;購入日時：</u>
 
-<%=allpal[i].date%><br>
-<u>&nbsp;&nbsp;&nbsp;&nbsp;注文番号：</u>
-<%=allpal[i].tok%><br>
-</div>
+<font color="#0000ff">
+<u><b>&nbsp;&nbsp;&nbsp;&nbsp;購入日時：
+<%=allpal[i].date%></b></u><br>
+</font>
+
+<u>&nbsp;&nbsp;&nbsp;&nbsp;注文番号：
+<%=allpal[i].tok%></u><br>
+<br>
 
 <% var obj=JSON.parse(allpal[i].ite) %>
 
 <div class="col-md-3">
+<br>
+
 <div valign="top" align="center"><img src="../img/cd/<%=obj.items[0].sku%>.png" width="150cm" hight="150mm"></div>
 </div>
 <div class="col-md-9">
@@ -61,31 +66,42 @@
 合計金額：<%=(obj.items[0].price*obj.items[0].quantity+650).toLocaleString()%>
 
 <div class="border-bottom"></div>
-</div></div>
+<br>
+
+</div>
+
+<hr>
+
+</div>
+
 
 <%}%>
-
 <%}else{%>
 no allpal
 <%}%>
+
 <br><br><br><br>
 <br>
 <br>
+
 
 <%if(allpid.length!==0){%>
 &nbsp;&nbsp;&nbsp;&nbsp;
 <h4><span class="label label-danger">paidy</span></h4>
 <%for(var i=0;i<allpid.length;i++){%>
 
-<div class="box222">
 
-<u>&nbsp;&nbsp;&nbsp;&nbsp;購入日時：</u>
-<%=allpid[i].date%><br>
-<u>&nbsp;&nbsp;&nbsp;&nbsp;注文番号：</u>
-<%=allpid[i].pid%><br>
-</div>
+<font color="red">
+<b><u>&nbsp;&nbsp;&nbsp;&nbsp;購入日時：
+<%=allpid[i].date%></u></b><br>
+</font>
+
+<u>&nbsp;&nbsp;&nbsp;&nbsp;注文番号：
+<%=allpid[i].pid%></u><br>
+<br>
 
 <div class="col-md-3">
+<br>
 <div valign="top" align="center"><img src="../img/cd/<%=oite[i][0].id%>.png" width="150cm" hight="150mm"></div>
 </div>
 
@@ -103,12 +119,13 @@ no allpal
 送料：650円<br>
 <%}%>
 合計金額：<%=allpid[i].mnt.toLocaleString()%>円
-<br>
 
 <div class="border-bottom"></div>
 
-
-</div></div>
+<br>
+</div>
+<hr>
+</div>
 
 <%}%>
 <%}else{%>

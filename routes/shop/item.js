@@ -19,26 +19,15 @@ var cred = require('./js/cred');
 // === get ============================
 
 var getEma = function(req, res, next) {
-<<<<<<< HEAD
 email = cred.ema(req);
 mailusr=  adb.mailUsr(email)
   next()}
-=======
-  var cred = require('./js/cred');
-  email = cred.ema(req);
-mailusr=  adb.mailUsr(email)
-  next();
-}; //getEma
->>>>>>> 2b67b6350f61e4d42dc8500b1c6782350c6f5c5c
 
 var getUsr = function(req, res, next) {
 if(mailusr){usr=mailusr.name}
 else{usr=null;console.log("no usr")}
 next()};
-<<<<<<< HEAD
 
-=======
->>>>>>> 2b67b6350f61e4d42dc8500b1c6782350c6f5c5c
 
 var getSku = function(req, res, next) {
 sku = req.body.sku;

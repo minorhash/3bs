@@ -20,6 +20,7 @@ var cred = require('./js/cred');
 var getEma = function(req, res, next) {
 email = cred.ema(req);
 mailusr=  adb.mailUsr(email)
+    console.log(email)
 next()}
 
 var getUsr = function(req, res, next) {
@@ -77,7 +78,7 @@ var chkSh = function(req, res, next) {
 
    console.log(boa.indexOf(true))
    if(boa.indexOf(true)==0){
-       boo=true
+boo=true
    }else{       boo=false   }
 
 next()};
@@ -118,7 +119,7 @@ mer: mer,    sum: sum,tsum:tsum,boo:boo,   usr: usr,    email: email
 };
 
 router.get("/shop/cart", [  getEma,  getUsr, getAdr, getTmp, getSku, putMer,  putSum,chkSh,  redSum,
-//router.get("/shop/cart", [  getEma,  getUsr, getAdr, getTmp, getSku, putMer,  putSum,chkSh,  redSum,
+//router.get("/shop/cart", [  getEma,  getUsr,getAdr,getTmp,
 chk,  gcb
 ]);
 // ====== post ===============================

@@ -8,7 +8,9 @@ var adb = require('usrdb')
 
 var pal = require("mypal")
 var mypal = pal.myPal()
+if(mypal){
 var tran=mypal.transactions[0]
+}else{console.log("no mypal")}
 
 var tmp_a = [],  mer_a = [],  sum_a = [],  uni_s = [],  pri_s = [],skua=[]
 var email, usr, mer, sum, add,ite
@@ -109,14 +111,8 @@ if(ind==0){ship=650}
 // === pal ===
 
 var chk = function(req, res, next) {
-    console.log("=== mypal")
+    console.log("=== pay ===")
     console.log(email)
-    console.log(ind)
-    console.log("=== items")
-    console.log(tran.item_list)
-    console.log("=== amount")
-    console.log(tran.amount.total)
-    console.log(tran.amount)
     next()}
 
 var goPal = function(req, res) {
@@ -145,8 +141,11 @@ var rcb = function(req, res) {
     }) //rend
 }
 
-router.get("/shop/paypal/pay", [
-    getEma,getUsr,putMer,putTmp,putMer,chkSh,getSum,chk,goPal
+router.get("/shop/paypal/pay",
+[getEma,getUsr,putMer,putTmp,putMer,chkSh,getSum,
+//[    getEma,getUsr,putTmp,
+    chk,goPal
+//chk,rcb
 ])
 
 module.exports = router

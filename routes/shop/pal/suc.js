@@ -3,7 +3,7 @@ var router = express.Router()
 var paypal = require("paypal-rest-sdk")
 // === db
 var adb = require("usrdb")
-var paljs=require("../js/pal")
+var db = require("cardb")
 
 var usr,email,mailtmp,mer
 var pid,payerId,exeJson,getpal
@@ -18,7 +18,6 @@ paypal.configure({
 })
 
 // === db
-var db = require("cardb")
 
 var cred = require('../js/cred');
 // === get
@@ -98,6 +97,7 @@ console.log(item.name)
 console.log(utc)
 
 res.render("shop/paypal/success", {
+    usr:usr,
 title:reg,
 pid: pid,
 payid:payerId,

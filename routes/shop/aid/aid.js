@@ -10,7 +10,8 @@ var cnf= require('../son/aid.json');
 var cred = require('../js/cred');
 // === put ===
 
-var email, usr, sku, sum,tsum,adr,sson
+var email, usr, sku, sum,tsum,adr
+var son,    sson
 var boa,ind
 var mailtmp, mailusr, mailadr,mailson;
 var mer = [],  suma = [],  skua = []
@@ -21,10 +22,8 @@ mailusr=  adb.mailUsr(email)
 next()}
 
 var getUsr = function(req, res, next) {
-if(req.session.pss){
-if(req.session.pss==mailusr.pss){usr=mailusr.name}
-else{usr=null;console.log("no usr")}
-}else{console.log("no pss")}
+if(mailusr){usr=mailusr.name}
+else{console.log("no mailusr")}
 next()};
 
 var getAdr = function(req, res, next) {
@@ -140,6 +139,7 @@ unit_price: mer[i].pri,
 next()};
 
 var fsSon = function(req, res, next) {
+
 if(mailadr){
 var str = JSON.stringify(taid);
 
@@ -161,9 +161,9 @@ sson=    'var config={"api_key":"' +
 db.insSon(email, sson);
 
 var fs = require('fs');
+son=__dirname+"/../../../public/son/"+email+".js"
 
-var son=__dirname+"/../../../public/son/"+email+".js"
-//var son=__dirname+"/"+email+".js"
+//son=__dirname+"/"+email+".js"
 
 // fs.stat(son, function(err, stats) {
 // if(err){throw err}
@@ -179,14 +179,17 @@ console.log('unlink!');
 fs.writeFile(son, sson, function(err) {
 if (err) {return console.log(err);    }
 else {console.log('no err');    }
-    console.log('The file was saved!');
+console.log('The file was saved!');
 });
+
 }else{console.log("no mailadr")}
 
 next()};
 
 var chk = function(req, res, next) {
 console.log('=== aid ====================================');
+//console.log(son)
+console.log(cnf.pub)
 console.log(email)
 console.log(tsum)
 console.log(taid.amount)

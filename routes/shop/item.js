@@ -12,17 +12,19 @@ var str = crypto
 
 var email, usr, sku, skumer, myerr, mailusr, mailtmp, skuson, obj, len;
 // === post =============================
+var cred = require('./js/cred');
+
+// === get ============================
+
 var getEma = function(req, res, next) {
-  var cred = require('./js/cred');
-  email = cred.ema(req);
-  next();
-}; //getEma
+email = cred.ema(req);
+mailusr=  adb.mailUsr(email)
+  next()}
 
 var getUsr = function(req, res, next) {
-  var cred = require('./js/cred');
-  usr = cred.usr(email);
-  next();
-};
+if(mailusr){usr=mailusr.name}
+else{usr=null;console.log("no usr")}
+next()};
 
 
 var getSku = function(req, res, next) {

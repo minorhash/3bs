@@ -87,7 +87,7 @@ var redSum = function(req, res, next) {
     }
     if (suma.length !== 0) {
       sum = suma.reduce(getSum);
-if(boo==true){tsum=sum+650}
+if(boo==0){tsum=sum+650}
 else{tsum=sum}
     } else {
       console.log('no sum');

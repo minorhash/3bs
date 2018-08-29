@@ -2,7 +2,7 @@ var express = require("express")
 var router = express.Router()
 // === pal
 var paypal = require("paypal-rest-sdk")
-require(__dirname + "/config")
+//require(__dirname + "/config")
 
 var adb = require('usrdb')
 

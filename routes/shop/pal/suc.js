@@ -9,12 +9,12 @@ var usr,email,mailtmp,mer
 var pid,payerId,exeJson,getpal
 var sum,suma,item
 
-var conf=require("../son/pal.json")
+var cnf=require("../son/pal.json")
 
 paypal.configure({
-    mode: conf.MODE,
-    client_id:conf.ID,
-    client_secret:conf.SEC
+    mode: cnf.sand,
+    client_id:cnf.tid,
+    client_secret:cnf.tsc
 })
 
 // === db

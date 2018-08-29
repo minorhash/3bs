@@ -5,12 +5,13 @@ chai = require('chai'),
 request = require('supertest'),
 age = require('superagent'),
 expect = chai.expect;
+var cnf=require("./cnf.json")
 
 var ses = require('supertest-session');
 var testSes = null;
 
-var email="successful.payment@paidy.com"
-var pss="2112"
+var email=cnf.email
+var pss=cnf.pss
 
 describe('POST', function() {
 beforeEach(function () {

@@ -10,8 +10,18 @@ var cnf=require("./cnf.json")
 var ses = require('supertest-session');
 var testSes = null;
 
+<<<<<<< HEAD
 var email=cnf.email
 var pss=cnf.pss
+=======
+var email="successful.payment@paidy.com"
+var pss="2112"
+
+var arr=[
+"shop","shop/cart"
+]
+
+>>>>>>> adr
 
 describe('POST', function() {
 beforeEach(function () {

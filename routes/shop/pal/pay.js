@@ -8,7 +8,11 @@ var adb = require('usrdb')
 
 var pal = require("mypal")
 var mypal = pal.myPal()
+<<<<<<< HEAD
 if(mypal){
+=======
+console.log(mypal)
+>>>>>>> adr
 var tran=mypal.transactions[0]
 }else{console.log("no mypal")}
 

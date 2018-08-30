@@ -1,6 +1,8 @@
 dir=$(pwd)
 str=${dir: -3}
 echo $str
-
-git pull git@github.com:minorhash/$str.git
-
+if [ -z $1 ];then
+    echo "usage"
+else
+git pull origin $1
+fi

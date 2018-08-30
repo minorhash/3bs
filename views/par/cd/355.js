@@ -1,5 +1,4 @@
-document.getElementById('355').innerHTML =
-  '\
+document.getElementById("355").innerHTML='\
 <div class="box1">\
 <div class="sam5">\
 <img src="img/TMS-355.png" alt=""/>\

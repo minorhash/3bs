@@ -66,7 +66,7 @@ console.log('=== senEma =======================================');
 var eto="jinjasaisen@gmail.com"
 var reg="thanks"
 var e_sku=oite[0].id
-var mes=usr+"サマ<br>"+reg+"<br>チュウモン:"+pid+
+var mes=usr+"様<br>"+reg+"<br>paidy 注文id:"+pid+
 "<br>sku:"+e_sku+
 "<br>title:"+oite[0].title+
 "<br>price:"+oite[0].unit_price+

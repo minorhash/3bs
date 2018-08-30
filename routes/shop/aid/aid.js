@@ -147,7 +147,7 @@ sson=    'var config={"api_key":"' +
     cnf.pub +
     '",' +
     '"closed":function(cb){var xhr = new XMLHttpRequest();' +
-    'xhr.open("PUT","'+cnf.loc+
+    'xhr.open("PUT","'+cnf.axe+
      '/shop/aid/pid", true);' +
     'xhr.setRequestHeader("Content-Type", "application/json");' +
     'xhr.send(JSON.stringify(cb));}};' +

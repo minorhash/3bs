@@ -3,22 +3,27 @@ var router = express.Router()
 var paypal = require("paypal-rest-sdk")
 // === db
 var adb = require("usrdb")
-var paljs=require("../js/pal")
+var db = require("cardb")
 
 var usr,email,mailtmp,mer
 var pid,payerId,exeJson,getpal
 var sum,suma,item,oite
 
-var conf=require("../son/pal.json")
+var cnf=require("../son/pal.json")
 
 paypal.configure({
+<<<<<<< HEAD
+    mode: cnf.sand,
+    client_id:cnf.tid,
+    client_secret:cnf.tsc
+=======
 mode: conf.sand,
 client_id:conf.tid,
 client_secret:conf.tsc
+>>>>>>> adr
 })
 
 // === db
-var db = require("cardb")
 
 var cred = require('../js/cred');
 // === get
@@ -89,6 +94,7 @@ var snde = require('snd-ema');
 paypal.payment.execute(pid, exeJson, function(error, pay) {
 if (error) {console.log("exe fail");throw error    }
 else {
+<<<<<<< HEAD
 var ite=    JSON.stringify(pay.transactions[0].item_list.items)
 item=    pay.transactions[0].item_list.items
 
@@ -96,22 +102,38 @@ var tit
 for(var i=0;i<item.length;i++){
 tit.push("name+:"+item[i].name)
 }
+=======
+var item=    pay.transactions[0].item_list.items[0]
+var ite=    JSON.stringify(pay.transactions[0].item_list)
+>>>>>>> 93c1feefa26e7982646382d4f49fc5ab3a56e02a
 
 console.log(pay.id)
 adb.insPal(email,pay.id,ite,utc)
-console.log(ite)
+console.log(item.name)
 console.log(utc)
 
 res.render("shop/paypal/success", {
+    usr:usr,
 title:reg,
 pid: pid,
 payid:payerId,
-pay:pay
+pay:pay,
+    item:item
 })
+<<<<<<< HEAD
 var mes=usr+"様<br>"+reg
 +"<br>"+pid
 +"<br>"+ite
 var toe="jinjasaisen@gmail.com"
+=======
+var mes=usr+"サマ<br>"+reg
++"<br>注文id:"+pid
++"<br>タイトル:"+item.name
++"<br>品番:"+item.sku
++"<br>価格:"+item.price
++"<br>数量:"+item.quantity
+
+>>>>>>> 93c1feefa26e7982646382d4f49fc5ab3a56e02a
 console.log('=== senEma =======================================');
 snde.trEma(toe,reg,mes);
 }

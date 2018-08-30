@@ -40,7 +40,7 @@ age
 .get('https://api.paidy.com/payments/'+allpid[i].pid)
 .set("Content-Type", "application/json")
 .set("Paidy-Version", "2018-04-10")
-.set("Authorization", "Bearer"+cnf.skl)
+.set("Authorization", "Bearer"+cnf.sec)
 .then(function(res){
 console.log(res.body.order.shipping)
 

@@ -14,23 +14,23 @@ var mer = [],  suma = [],  skua = [],boa=[];
 var mailtmp, mailusr,mailadr
 
 // === get ============================
+
+var cred = require('./js/cred');
+
 var getEma = function(req, res, next) {
-  var cred = require("./js/cred");
-  email = cred.ema(req);
+email = cred.ema(req);
 mailusr=  adb.mailUsr(email)
-  next()};
+    console.log(email)
+next()}
+
+var getUsr = function(req, res, next) {
+if(mailusr){usr=mailusr.name}
+else{usr=null;console.log("no usr")}
+next()};
 
 var getAdr= function(req, res, next) {
 mailadr=adb.mailAdr(email)
-  next()};
-
-var getUsr = function(req, res, next) {
-if(req.session.pss){
-if(req.session.pss==mailusr.pss){usr=mailusr.name}
-else{usr=null;console.log("no usr")}
-}else{console.log("no pss")}
-    next()}
-
+next()};
 
 var getTmp = function(req, res, next) {
   mailtmp = [];
@@ -64,9 +64,7 @@ var putSum = function(req, res, next) {
     for (var i = 0; i < mailtmp.length; i++) {
       suma[i] = mailtmp[i].uni * mer[i].pri;
     }
-  } else {
-    console.log("no mailtmp");
-  }
+  } else {    console.log("no mailtmp");  }
   next()};
 
 // === chk dl ===
@@ -80,10 +78,8 @@ var chkSh = function(req, res, next) {
 
    console.log(boa.indexOf(true))
    if(boa.indexOf(true)==0){
-       boo=true
-   }else{
-       boo=false
-   }
+boo=true
+   }else{       boo=false   }
 
 next()};
 
@@ -100,7 +96,7 @@ if(boo){
 }else{tsum=sum;
     console.log(boo)}
 
-  } else {    console.log("no sum");  }
+} else {    console.log("no sum");  }
   next()};
 // === chk ===============================
 var chk = function(req, res, next) {
@@ -123,6 +119,7 @@ mer: mer,    sum: sum,tsum:tsum,boo:boo,   usr: usr,    email: email
 };
 
 router.get("/shop/cart", [  getEma,  getUsr, getAdr, getTmp, getSku, putMer,  putSum,chkSh,  redSum,
+//router.get("/shop/cart", [  getEma,  getUsr,getAdr,getTmp,
 chk,  gcb
 ]);
 // ====== post ===============================

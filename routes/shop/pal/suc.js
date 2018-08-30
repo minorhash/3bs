@@ -12,9 +12,9 @@ var sum,suma,item
 var conf=require("../son/pal.json")
 
 paypal.configure({
-    mode: conf.MODE,
-    client_id:conf.ID,
-    client_secret:conf.SEC
+mode: conf.sand,
+client_id:conf.tid,
+client_secret:conf.tsc
 })
 
 // === db

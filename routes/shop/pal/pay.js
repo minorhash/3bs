@@ -2,12 +2,13 @@ var express = require("express")
 var router = express.Router()
 // === pal
 var paypal = require("paypal-rest-sdk")
-require(__dirname + "/config")
+//require(__dirname + "/config")
 
 var adb = require('usrdb')
 
 var pal = require("mypal")
 var mypal = pal.myPal()
+console.log(mypal)
 var tran=mypal.transactions[0]
 
 var tmp_a = [],  mer_a = [],  sum_a = [],  uni_s = [],  pri_s = [],skua=[]

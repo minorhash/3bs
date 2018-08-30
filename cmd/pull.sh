@@ -1,6 +1,5 @@
-dir=$(pwd)
-str=${dir: -3}
-echo $str
+br=$(git rev-parse --abbrev-ref HEAD)
+echo $br
 
-git pull git@github.com:minorhash/$str.git
+git pull origin $br
 

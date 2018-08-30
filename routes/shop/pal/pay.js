@@ -2,12 +2,13 @@ var express = require("express")
 var router = express.Router()
 // === pal
 var paypal = require("paypal-rest-sdk")
-require(__dirname + "/config")
+//require(__dirname + "/config")
 
 var adb = require('usrdb')
 
 var pal = require("mypal")
 var mypal = pal.myPal()
+console.log(mypal)
 var tran=mypal.transactions[0]
 
 var tmp_a = [],  mer_a = [],  sum_a = [],  uni_s = [],  pri_s = [],skua=[]
@@ -26,10 +27,8 @@ mailusr=  adb.mailUsr(email)
 } //getEma
 
 var getUsr = function(req, res, next) {
-if(req.session.pss){
-if(req.session.pss==mailusr.pss){usr=mailusr.name}
+if(mailusr){usr=mailusr.name}
 else{usr=null;console.log("no usr")}
-}else{console.log("no pss")}
 next()};
 
 var putTmp = function(req, res, next) {
@@ -110,6 +109,17 @@ if(ind==0){ship=650}
 
 // === pal ===
 
+var chk = function(req, res, next) {
+    console.log("=== mypal")
+    console.log(email)
+    console.log(ind)
+    console.log("=== items")
+    console.log(tran.item_list)
+    console.log("=== amount")
+    console.log(tran.amount.total)
+    console.log(tran.amount)
+    next()}
+
 var goPal = function(req, res) {
     paypal.payment.create(mypal, function(err, pay) {
         if (err) {
@@ -124,19 +134,6 @@ var goPal = function(req, res) {
     })
 }
 
-//var json=JSON.stringify(mypal)
-
-var chk = function(req, res, next) {
-    console.log("=== mypal")
-    //console.log(mypal)
-    console.log(ind)
-    console.log("=== items")
-    console.log(tran.item_list)
-    console.log("=== amount")
-    console.log(tran.amount.total)
-    console.log(tran.amount)
-
-    next()}
 
 var rcb = function(req, res) {
     res.render("shop/paypal/pay", {

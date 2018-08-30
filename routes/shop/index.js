@@ -17,7 +17,7 @@ var cred = require('./js/cred');
 var getEma = function(req, res, next) {
 email = cred.ema(req);
 mailusr=  adb.mailUsr(email)
-  next()}
+next()}
 
 var getUsr = function(req, res, next) {
 if(req.session.pss){
@@ -51,23 +51,32 @@ var getCok = function(req, res, next) {
 if (req.body) {
 
 email = req.body.email;
+console.log(email)
 pss = req.body.pss;
 console.log(pss)
+    if(email){
 mailusr=adb.mailUsr(email)
+    }else{console.log("no email")}
 
+    if(mailusr){
 if(mailusr.email==req.body.email && mailusr.pss==req.body.pss){
 req.session.email = req.body.email;
 req.session.pss = req.body.pss;
 } else {console.log('wrong');  }
+} else {console.log('no mailusr');  }
+
 } else {console.log('no req.body');  }
+
 next()}; //getCok
 
 var getUsr = function(req, res, next) {
 if (req.session) {
-    
+
+    if(mailusr){
 if(mailusr.email==req.body.email && mailusr.pss==req.body.pss){
     usr = mailusr.name;
 } else {console.log('wrong cred');  }
+} else {console.log('no mailusr');  }
 
 }else {usr=null;console.log('no usr');    }
 next()}; //getUsr

@@ -3,16 +3,18 @@ var router = express.Router();
 var adb = require('usrdb');
 
 var getEma = function(req, res, next) {
-  var cred = require('../js/cred');
-  email = cred.ema(req);
-  next();
-}; //getEma
+var cred = require('../js/cred');
+email = cred.ema(req);
+mailusr=  adb.mailUsr(email)
+next()};
 
 var getUsr = function(req, res, next) {
-  var cred = require('../js/cred');
-  usr = cred.usr(email);
-  next();
-};
+if(req.session.pss){
+if(req.session.pss==mailusr.pss){usr=mailusr.name}
+else{usr=null;console.log("no usr")}
+}else{console.log("no pss")}
+next()};
+
 
 var red = function(req, res, next) {
   if (usr) {

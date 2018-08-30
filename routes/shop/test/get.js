@@ -6,22 +6,17 @@ var app = require('../../../app'),
   age = require('superagent'),
   expect = chai.expect;
 
-let arr = [
-  'history',"cart","my"
-];
 
 describe('GET', function() {
   //
-  for (let i = 0; i < arr.length; i++) {
-    console.log(arr[i]);
     it('get', function(done) {
       request(app)
-        .get('/shop/' + arr[i])
+        .get('/shop')
         .end(function(err, res) {
           expect(res.statusCode).to.equal(200);
           done();
           //console.log(res.req)
         });
     });
-  }
+
 }); //describe

@@ -12,15 +12,9 @@ var sum,suma,item,oite
 var cnf=require("../son/pal.json")
 
 paypal.configure({
-<<<<<<< HEAD
-    mode: cnf.sand,
-    client_id:cnf.tid,
-    client_secret:cnf.tsc
-=======
 mode: conf.sand,
 client_id:conf.tid,
 client_secret:conf.tsc
->>>>>>> adr
 })
 
 // === db
@@ -102,10 +96,8 @@ var tit
 for(var i=0;i<item.length;i++){
 tit.push("name+:"+item[i].name)
 }
-=======
 var item=    pay.transactions[0].item_list.items[0]
 var ite=    JSON.stringify(pay.transactions[0].item_list)
->>>>>>> 93c1feefa26e7982646382d4f49fc5ab3a56e02a
 
 console.log(pay.id)
 adb.insPal(email,pay.id,ite,utc)
@@ -120,7 +112,7 @@ payid:payerId,
 pay:pay,
     item:item
 })
-<<<<<<< HEAD
+
 var mes=usr+"様<br>"+reg
 +"<br>"+pid
 +"<br>"+ite
@@ -133,7 +125,6 @@ var mes=usr+"サマ<br>"+reg
 +"<br>価格:"+item.price
 +"<br>数量:"+item.quantity
 
->>>>>>> 93c1feefa26e7982646382d4f49fc5ab3a56e02a
 console.log('=== senEma =======================================');
 snde.trEma(toe,reg,mes);
 }

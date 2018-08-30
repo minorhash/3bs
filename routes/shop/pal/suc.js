@@ -7,7 +7,7 @@ var paljs=require("../js/pal")
 
 var usr,email,mailtmp,mer
 var pid,payerId,exeJson,getpal
-var sum,suma,item
+var sum,suma,item,oite
 
 var conf=require("../son/pal.json")
 
@@ -89,7 +89,13 @@ var snde = require('snd-ema');
 paypal.payment.execute(pid, exeJson, function(error, pay) {
 if (error) {console.log("exe fail");throw error    }
 else {
-var ite=    JSON.stringify(pay.transactions[0].item_list)
+var ite=    JSON.stringify(pay.transactions[0].item_list.items)
+item=    pay.transactions[0].item_list.items
+
+var tit
+for(var i=0;i<item.length;i++){
+tit.push("name+:"+item[i].name)
+}
 
 console.log(pay.id)
 adb.insPal(email,pay.id,ite,utc)
@@ -102,12 +108,12 @@ pid: pid,
 payid:payerId,
 pay:pay
 })
-var mes=usr+"サマ<br>"+reg
+var mes=usr+"様<br>"+reg
 +"<br>"+pid
 +"<br>"+ite
-
+var toe="jinjasaisen@gmail.com"
 console.log('=== senEma =======================================');
-snde.trEma(email,reg,mes);
+snde.trEma(toe,reg,mes);
 }
 })
 }

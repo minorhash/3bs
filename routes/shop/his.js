@@ -20,8 +20,7 @@ next()}
 var getUsr = function(req, res, next) {
 if(mailusr){usr=mailusr.name}
 else{usr=null;console.log("no usr")}
-next()}
-
+next()};
 //  aid
 var allPid = function(req, res, next) {
 
@@ -73,6 +72,7 @@ var chk = function(req, res, next) {
     console.log(email)
     console.log(usr)
     console.log(allpid)
+    console.log(allpal)
     console.log(ship)
 //console.log(oite)
     next()}

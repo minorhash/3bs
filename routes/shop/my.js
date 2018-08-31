@@ -12,8 +12,8 @@ var mer = [],  suma = [],  sku_a = [];
 
 // === cred ===
 var getEma = function(req, res, next) {
-  var cred = require('./js/cred');
-  email = cred.ema(req);
+var cred = require('./js/cred');
+email = cred.ema(req);
 mailusr=  adb.mailUsr(email)
   next()};
 
@@ -22,7 +22,7 @@ if(req.session.pss){
 if(req.session.pss==mailusr.pss){usr=mailusr.name}
 else{usr=null;console.log("no usr")}
 }else{console.log("no pss")}
-    next()}
+next()}
 
 var getAdr = function(req, res, next) {
     mailadr = adb.mailAdr(email);

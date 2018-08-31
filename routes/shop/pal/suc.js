@@ -9,12 +9,12 @@ var usr,email,mailtmp,mer
 var pid,payerId,exeJson,getpal
 var sum,suma,item,oite
 
-var conf=require("../son/pal.json")
+var cnf=require("../son/pal.json")
 
 paypal.configure({
-mode: conf.sand,
-client_id:conf.tid,
-client_secret:conf.tsc
+mode: cnf.live,
+client_id:cnf.lid,
+client_secret:cnf.lsc
 })
 
 // === db
@@ -92,11 +92,6 @@ else {
 var ite=    JSON.stringify(pay.transactions[0].item_list.items)
 item=    pay.transactions[0].item_list.items
 
-var tit
-for(var i=0;i<item.length;i++){
-tit.push("name+:"+item[i].name)
-}
-
 console.log(pay.id)
 adb.insPal(email,pay.id,ite,utc)
 console.log(ite)
@@ -109,8 +104,11 @@ payid:payerId,
 pay:pay
 })
 var mes=usr+"様<br>"+reg
-+"<br>"+pid
-+"<br>"+ite
++"<br>注文id:"+pid
+for(var i=0;i<ite.length;i++){
++"<br>タイトル:"+ite[i].name
+}
+
 var toe="jinjasaisen@gmail.com"
 console.log('=== senEma =======================================');
 snde.trEma(toe,reg,mes);

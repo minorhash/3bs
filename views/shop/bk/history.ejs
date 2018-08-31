@@ -20,108 +20,106 @@
 <!--- main ----- -->
 
 <div class="col-lg-8 col-sm-12" style="color:black">
-<%if(!allpid.length==0){%>
+<%if(usr){%>
 
 <div class="box90">購入履歴詳細</div><br>
 <%}else{%>
-ログインしてください。
-
+ログインしてください。<br>
 
 <%}%>
 
-<!--- paidy----- -->
+<!--- paypal----- -->
 
-<%if(!oite.length==0){%>
-
-&nbsp;&nbsp;&nbsp;&nbsp;<h4><span class="label label-danger">paidy</span></h4>
-<%for(var i=0;i<oite.length;i++){%>
+<%if(!allpal.length==0){%>
+&nbsp;&nbsp;&nbsp;&nbsp;
+<h4><span class="label label-info">paypal</span></h4>
+<%for(var i=0;i<allpal.length;i++){%>
 
 <div class="box222">
 
 <u>&nbsp;&nbsp;&nbsp;&nbsp;購入日時：</u>
+
+<%=allpal[i].date%><br>
+<u>&nbsp;&nbsp;&nbsp;&nbsp;注文番号：</u>
+<%=allpal[i].tok%><br>
+</div>
+
+<% var obj=JSON.parse(allpal[i].ite) %>
+
+<div class="col-md-3">
+<div valign="top" align="center"><img src="../img/cd/<%=obj.items[0].sku%>.png" width="150cm" hight="150mm"></div>
+</div>
+<div class="col-md-9">
+<div class="note">
+
+商品タイトル：<%=obj.items[0].name%><br>
+品番：TMS-&nbsp;<%=obj.items[0].sku%>&nbsp; <br>
+商品単価：&nbsp;<%=obj.items[0].price%>円&nbsp; (税抜）<br>
+数量：<%=obj.items[0].quantity%><br>
+送料：650円<br>
+合計金額：<%=(obj.items[0].price*obj.items[0].quantity+650).toLocaleString()%>
+
+<div class="border-bottom"></div>
+</div></div>
+
+<%}%>
+
+<%}else{%>
+no allpal
+<%}%>
+<br><br><br><br>
 <br>
+<br>
+
+<%if(allpid.length!==0){%>
+&nbsp;&nbsp;&nbsp;&nbsp;
+<h4><span class="label label-danger">paidy</span></h4>
+<%for(var i=0;i<allpid.length;i++){%>
+
+<div class="box222">
+
+<u>&nbsp;&nbsp;&nbsp;&nbsp;購入日時：</u>
+<%=allpid[i].date%><br>
 <u>&nbsp;&nbsp;&nbsp;&nbsp;注文番号：</u>
 <%=allpid[i].pid%><br>
 </div>
 
-
-<br>
 <div class="col-md-3">
-<div valign="top" align="center"><img src="../img/cd/<%=oite[i].id%>.png" width="150cm" hight="150mm"></div>
+<div valign="top" align="center"><img src="../img/cd/<%=oite[i][0].id%>.png" width="150cm" hight="150mm"></div>
 </div>
 
 <div class="col-md-9">
 <div class="note">
 
 
-商品タイトル：<%=oite[i].title%><br>
-品番：TMS-&nbsp;<%=oite[i].id%>&nbsp; <br>
-商品単価：&nbsp;<%=oite[i].unit_price%>円&nbsp; (税抜）<br>
-数量：<%=oite[i].quantity%><br>
+商品タイトル：<%=oite[i][0].title%><br>
+品番：TMS-&nbsp;<%=oite[i][0].id%>&nbsp; <br>
+商品単価：&nbsp;<%=oite[i][0].unit_price%>円&nbsp; (税抜）<br>
+数量：<%=oite[i][0].quantity%><br>
+<%if(allpid[i].ship==0){%>
+送料：<%=allpid[i].ship%>円<br>
+<%}else{%>
 送料：650円<br>
-合計金額：<%=(oite[i].unit_price*oite[i].quantity+650).toLocaleString()%>
+<%}%>
+合計金額：<%=allpid[i].mnt.toLocaleString()%>円
 <br>
 
 <div class="border-bottom"></div>
 
 
 </div></div>
-  
-
 
 <%}%>
 <%}else{%>
 no paidy purchase.
 <%}%>
 
-<%if(!allnow.length==0){%>
-
-<% var obj=JSON.parse(allnow[0].ite) %>
-<%=obj.name%>
-
-&nbsp;&nbsp;&nbsp;&nbsp;<h4><span class="label label-info">paypal</span></h4>
-<%for(var i=0;i<allnow.length;i++){%>
-<%var pal=[]%>
-<%pal.push(allnow[i].ite)%>
-<%=pal[i]%>
-<%var obj=[]%>
-<%obj.push(allnow[i].ite)%>
-<%=obj[i]%>
-
-<div class="box222">
-
-<u>&nbsp;&nbsp;&nbsp;&nbsp;購入日時：</u>
-<br>
-<u>&nbsp;&nbsp;&nbsp;&nbsp;注文番号：</u><br>
-</div>
 
 <br>
-<div class="col-md-3">
-<div valign="top" align="center"><img src="../img/cd/<%=oite[i].id%>.png" width="150cm" hight="150mm"></div>
-</div>
-
-<div class="col-md-9">
-<div class="note">
-
-
-商品タイトル：<%=allnow[i].name%><br>
-品番：TMS-&nbsp;<%=allnow[i].id%>&nbsp; <br>
-商品単価：&nbsp;<%=allnow[i].price%>円&nbsp; (税抜）<br>
-数量：<br>
-送料：650円<br>
-合計金額：<br>
-
-<div class="border-bottom"></div>
-
 
 </div></div>
-  
 
 
-<%}%>
-<%}else{%>
-no paidy purchase.
-<%}%>
 </div>
 </div>
 

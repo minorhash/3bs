@@ -131,8 +131,6 @@ var goPal = function(req, res, next) {
   next();
 };
 
-//var json=JSON.stringify(mypal);
-
 var chk = function(req, res, next) {
   console.log(tmp_a);
   console.log(mer_a);
@@ -145,22 +143,12 @@ var chk = function(req, res, next) {
 
 var rcb = function(req, res, next) {
   res.render('shop/paypal/pay', {
-    seltmp: mailtmp,
-    sum: sum,
-    mer: mer,
-    usr: usr,
-    email: email,
+    seltmp: mailtmp,    sum: sum,    mer: mer,    usr: usr,    email: email
   }); //rend
 };
 
 router.post('/shop/paypal/pay', [
-  getEma,
-  getUsr,
-  putMer,
-  putTmp,
-  putMer,
-  getSum,
-  goPal,
+  getEma,  getUsr,  putMer,  putTmp,  putMer,  getSum,  goPal,
   chk,
 ]);
 

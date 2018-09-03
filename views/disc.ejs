@@ -7,7 +7,8 @@
 <% include par/nav %>
 <!--menu-->
 
-<div class="container-fluid">
+
+
 
 
 <div class="row">
@@ -16,23 +17,30 @@
 
 <div class="col-md-10 col-xs-12" style="color:black">
 
-<div class="row">
+<div class="row" align="center">
 <%if(mer){%>
 <%for(var i=0;i<mer.length;i++){%>
 
-<div class="style27">
+
+
 <div class="col-md-4 col-xs-12" style="color:black">
 
-<a href="shop" target="_blank">
+<a href="detail#<%=mer[i].sku%>" target="_blank">
 
 <div align="center"><img src=<%=mer[i].img%> height="240"></div></a><br>
+
+<div class="style27">
+
 <%=mer[i].name%><br>
 TMS-<%=mer[i].sku%>
 </div></div><!-- col -->
 
+
+
 <%}%>
 <%}%>
 </div><!-- row -->
+
 
 </div>
 

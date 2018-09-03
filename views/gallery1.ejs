@@ -1,0 +1,100 @@
+<% include par/head %>
+<link href="css/demo.css" rel="stylesheet">
+<link href="css/style.css" rel="stylesheet">
+
+<% include par/nav%>
+<body>
+<div class="box3000">
+<p>1st ONEMAN LIVE PHOTO GALLERY NO.1</p>
+</div>
+
+<div class="row"></div>
+
+
+<div class="box3000">
+<div align="right" style="color:black">
+<a href="gallery2">next</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</div></div>
+
+<div class="am-container" id="am-container">
+
+<a href="#"><img src="img/gal/live1.png.png"></img></a>
+<a href="#"><img src="img/gal/live2.png.png"></img></a>
+<a href="#"><img src="img/gal/live13.png.png"></img></a>
+<a href="#"><img src="img/gal/live4.png.png"></img></a>
+<a href="#"><img src="img/gal/live5.png.png"></img></a>
+<a href="#"><img src="img/gal/live17.png.png"></img></a>
+<a href="#"><img src="img/gal/live6.png.png"></img></a>
+<a href="#"><img src="img/gal/live8.png.png"></img></a>
+<a href="#"><img src="img/gal/live18.png.png"></img></a>
+<a href="#"><img src="img/gal/live10.png.png"></img></a>
+
+<a href="#"><img src="img/gal/live11.png.png"></img></a>
+<a href="#"><img src="img/gal/live12.png.png"></img></a>
+<a href="#"><img src="img/gal/live3.png.png"></img></a>
+<a href="#"><img src="img/gal/live35.png.png"></img></a>
+<a href="#"><img src="img/gal/live15.png.png"></img></a>
+<a href="#"><img src="img/gal/live16.png.png"></img></a>
+<a href="#"><img src="img/gal/live7.png.png"></img></a>
+<a href="#"><img src="img/gal/live14.png.png"></img></a>
+<a href="#"><img src="img/gal/live19.png.png"></img></a>
+<a href="#"><img src="img/gal/live20.png.png"></img></a>
+
+<a href="#"><img src="img/gal/live21.png.png"></img></a>
+<a href="#"><img src="img/gal/live22.png.png"></img></a>
+<a href="#"><img src="img/gal/live23.png.png"></img></a>
+<a href="#"><img src="img/gal/live24.png.png"></img></a>
+<a href="#"><img src="img/gal/live25.png.png"></img></a>
+<a href="#"><img src="img/gal/live26.png.png"></img></a>
+<a href="#"><img src="img/gal/live27.png.png"></img></a>
+<a href="#"><img src="img/gal/live28.png.png"></img></a>
+<a href="#"><img src="img/gal/live29.png.png"></img></a>
+<a href="#"><img src="img/gal/live30.png.png"></img></a>
+
+<a href="#"><img src="img/gal/live31.png.png"></img></a>
+<a href="#"><img src="img/gal/live32.png.png"></img></a>
+<a href="#"><img src="img/gal/live33.png.png"></img></a>
+<a href="#"><img src="img/gal/live34.png.png"></img></a>
+<a href="#"><img src="img/gal/live9.png.png"></img></a>
+</div>
+
+<script type="text/javascript" src="js/jquery.montage.min.js"></script>
+<script type="text/javascript">
+	$(function() {
+var $container 	= $('#am-container'),
+	$imgs		= $container.find('img').hide(),
+	totalImgs	= $imgs.length,
+	cnt			= 0;
+				
+	$imgs.each(function(i) {
+	var $img	= $(this);
+	$('<img/>').load(function() {
+	++cnt;
+	if( cnt === totalImgs ) {
+	$imgs.show();
+	$container.montage({
+	fillLastRow				: true,
+	alternateHeight			: true,
+	alternateHeightRange	: {
+	min	: 90,
+	max	: 240
+	}
+	});
+							
+	$('#overlay').fadeIn(500);
+}
+}).attr('src',$img.attr('src'));
+});	
+});
+		</script>
+
+
+<div class="row"></div>
+<div class="box3000">
+<div align="center" style="color:black">
+<a href="gallery2">next</a>
+</div></div>
+
+
+    </body>
+

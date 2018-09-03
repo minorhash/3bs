@@ -3,7 +3,7 @@ var router = express.Router()
 var paypal = require("paypal-rest-sdk")
 // === db
 var adb = require("usrdb")
-var paljs=require("../js/pal")
+var db = require("cardb")
 
 var usr,email,mailtmp,mer
 var pid,payerId,exeJson,getpal
@@ -18,7 +18,6 @@ client_secret:cnf.tsc
 })
 
 // === db
-var db = require("cardb")
 
 var cred = require('../js/cred');
 // === get
@@ -89,25 +88,27 @@ var snde = require('snd-ema');
 paypal.payment.execute(pid, exeJson, function(error, pay) {
 if (error) {console.log("exe fail");throw error    }
 else {
-var ite=    JSON.stringify(pay.transactions[0].item_list.items)
 item=    pay.transactions[0].item_list.items
 
 console.log(pay.id)
 adb.insPal(email,pay.id,ite,utc)
-console.log(ite)
+console.log(item.name)
 console.log(utc)
 
 res.render("shop/paypal/success", {
+    usr:usr,
 title:reg,
 pid: pid,
 payid:payerId,
-pay:pay
+pay:pay,
+    item:item
 })
 var mes=usr+"様<br>"+reg
 +"<br>注文id:"+pid
-for(var i=0;i<ite.length;i++){
-+"<br>タイトル:"+ite[i].name
-}
++"<br>タイトル:"+item.name
++"<br>品番:"+item.sku
++"<br>価格:"+item.price
++"<br>数量:"+item.quantity
 
 var toe="jinjasaisen@gmail.com"
 console.log('=== senEma =======================================');

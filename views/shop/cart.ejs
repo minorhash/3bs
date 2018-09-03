@@ -69,11 +69,6 @@
 </form>
 
 
-<style="color:black">
-<form method="get" action="/shop">
-<button type="submit">ショップに戻る</button>
-</form>
-
 </div>
 
 
@@ -143,7 +138,9 @@ no sum
 <%}%>
 
 </div>
+
 <br><br><br><br><br>
+
 
 <div align="center">
 <style="color:black">
@@ -172,6 +169,7 @@ no sum
 <div class="footer"><% include par/foot %></div>
 
 <script>
+
 var xhr = new XMLHttpRequest();
 xhr.open("PUT", "https://3axe.tmsmusic.tokyo/shop/aid/aid", true);
 xhr.setRequestHeader('Content-Type', 'application/json');

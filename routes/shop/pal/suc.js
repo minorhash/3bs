@@ -12,9 +12,9 @@ var sum,suma,item,oite
 var cnf=require("../son/pal.json")
 
 paypal.configure({
-mode: cnf.live,
-client_id:cnf.lid,
-client_secret:cnf.lsc
+mode: cnf.sand,
+client_id:cnf.tid,
+client_secret:cnf.tsc
 })
 
 // === db

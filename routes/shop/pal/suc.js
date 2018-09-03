@@ -7,20 +7,14 @@ var db = require("cardb")
 
 var usr,email,mailtmp,mer
 var pid,payerId,exeJson,getpal
-var sum,suma,item
+var sum,suma,item=[]
 
 var cnf=require("../son/pal.json")
 
 paypal.configure({
-<<<<<<< HEAD
     mode: cnf.sand,
     client_id:cnf.tid,
     client_secret:cnf.tsc
-=======
-mode: conf.sand,
-client_id:conf.tid,
-client_secret:conf.tsc
->>>>>>> adr
 })
 
 // === db
@@ -92,25 +86,28 @@ var reg="ご購入ありがとうございました。"
 var snde = require('snd-ema');
 
 paypal.payment.execute(pid, exeJson, function(error, pay) {
-if (error) {console.log("exe fail");throw error    }
+if (error) {console.log("exe fail");
+res.redirect("/shop/cart")
+}
 else {
-var item=    pay.transactions[0].item_list.items[0]
+
+    //for(var i=0;i<pay.transactions[0].item_list.items;i++){
+item=    pay.transactions[0].item_list.items[0]
 var ite=    JSON.stringify(pay.transactions[0].item_list)
 
 console.log(pay.id)
 adb.insPal(email,pay.id,ite,utc)
 console.log(item.name)
-console.log(utc)
 
 res.render("shop/paypal/success", {
-    usr:usr,
+usr:usr,
 title:reg,
 pid: pid,
 payid:payerId,
 pay:pay,
-    item:item
+item:ite
 })
-var mes=usr+"サマ<br>"+reg
+var mes=usr+"様<br>"+reg
 +"<br>注文id:"+pid
 +"<br>タイトル:"+item.name
 +"<br>品番:"+item.sku
@@ -119,7 +116,8 @@ var mes=usr+"サマ<br>"+reg
 
 console.log('=== senEma =======================================');
 snde.trEma(email,reg,mes);
-}
+//}
+}//else
 })
 }
 

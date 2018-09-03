@@ -8,11 +8,8 @@ var adb = require('usrdb')
 
 var pal = require("mypal")
 var mypal = pal.myPal()
-<<<<<<< HEAD
 if(mypal){
-=======
 console.log(mypal)
->>>>>>> adr
 var tran=mypal.transactions[0]
 }else{console.log("no mypal")}
 
@@ -61,7 +58,8 @@ var putMer = function(req, res, next) {
                 name: mer_a[i].name,
                 quantity: uni_s[i],
                 price: pri_s[i],
-                sku: tmp_a[i].sku,
+                tax:Math.round(pri_s[i]*0.08).toString(),
+                sku: tmp_a[i].sku.toString(),
                 currency: "JPY",
             }
             tran.item_list.items.push(ite)
@@ -94,21 +92,33 @@ var getSum = function(req, res, next) {
         sum_a.push(mer_a[i].pri * tmp_a[i].uni)
     }
     if (sum_a.length !== 0) {
-        add = sum_a.reduce(function(tot, cur) {
+
+        sub= sum_a.reduce(function(tot, cur) {
             return tot + cur
         })
-        var str=add.toString()
+        ssub=sub.toString()
+var itax=Math.round(sub*0.08)
+var add=sub+itax
+var sadd=add.toString()
+        // ship
 var ship=null
-if(ind==0){ship=650}
-        else{ship=0}
+if(ind!==-1){ship=650}
+else{ship=0}
 
         var sship=ship.toString()
         var sum=add+ship
         var ssum=sum.toString()
         console.log("=== amount===")
-        tran.amount.details.subtotal =str
-        tran.amount.details.shipping=sship
-        tran.amount.total =ssum
+        console.log(tran.item_list.items)
+        console.log(sub)
+        console.log(itax)
+        console.log(add)
+        console.log(ship)
+        console.log(sum)
+        tran.amount.details.subtotal =sub
+        tran.amount.details.tax=itax
+        tran.amount.details.shipping=ship
+        tran.amount.total =sum
     }
     next()}
 

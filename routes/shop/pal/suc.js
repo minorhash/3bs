@@ -12,9 +12,9 @@ var sum,suma,item=[]
 var cnf=require("../son/pal.json")
 
 paypal.configure({
-    mode: cnf.sand,
-    client_id:cnf.tid,
-    client_secret:cnf.tsc
+mode: conf.sand,
+client_id:conf.tid,
+client_secret:conf.tsc
 })
 
 // === db
@@ -93,7 +93,12 @@ else {
 
     //for(var i=0;i<pay.transactions[0].item_list.items;i++){
 item=    pay.transactions[0].item_list.items[0]
-var ite=    JSON.stringify(pay.transactions[0].item_list)
+var ite=    JSON.stringify(pay.transactions[0].item_list.items)
+
+var tit
+for(var i=0;i<item.length;i++){
+tit.push("name+:"+item[i].name)
+}
 
 console.log(pay.id)
 adb.insPal(email,pay.id,ite,utc)
@@ -107,7 +112,17 @@ payid:payerId,
 pay:pay,
 item:ite
 })
+<<<<<<< HEAD
 var mes=usr+"様<br>"+reg
+=======
+
+var mes=usr+"様<br>"+reg
++"<br>"+pid
++"<br>"+ite
+var toe="jinjasaisen@gmail.com"
+=======
+var mes=usr+"サマ<br>"+reg
+>>>>>>> a2d9188d22ca39496433135cd74c170b6d281a9a
 +"<br>注文id:"+pid
 +"<br>タイトル:"+item.name
 +"<br>品番:"+item.sku
@@ -115,9 +130,14 @@ var mes=usr+"様<br>"+reg
 +"<br>数量:"+item.quantity
 
 console.log('=== senEma =======================================');
+<<<<<<< HEAD
 snde.trEma(email,reg,mes);
 //}
 }//else
+=======
+snde.trEma(toe,reg,mes);
+}
+>>>>>>> a2d9188d22ca39496433135cd74c170b6d281a9a
 })
 }
 

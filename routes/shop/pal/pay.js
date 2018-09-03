@@ -8,10 +8,12 @@ var adb = require('usrdb')
 
 var pal = require("mypal")
 var mypal = pal.myPal()
+<<<<<<< HEAD
 if(mypal){
 console.log(mypal)
+=======
+>>>>>>> a2d9188d22ca39496433135cd74c170b6d281a9a
 var tran=mypal.transactions[0]
-}else{console.log("no mypal")}
 
 var tmp_a = [],  mer_a = [],  sum_a = [],  uni_s = [],  pri_s = [],skua=[]
 var email, usr, mer, sum, add,ite

@@ -63,8 +63,13 @@ next()};
 
 var senEma = function(req, res, next) {
 console.log('=== senEma =======================================');
+<<<<<<< HEAD
 //var eto="jinjasaisen@gmail.com"
 var reg="thanks"
+=======
+var eto="jinjasaisen@gmail.com"
+var reg="お買い上げありがとうございます。"
+>>>>>>> a2d9188d22ca39496433135cd74c170b6d281a9a
 var e_sku=oite[0].id
 var mes=usr+"様<br>"+reg+"<br>注文id:"+pid+
 "<br>品番:"+e_sku+

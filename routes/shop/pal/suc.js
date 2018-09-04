@@ -12,9 +12,9 @@ var sum,suma,item,oite
 var cnf=require("../son/pal.json")
 
 paypal.configure({
-mode: conf.sand,
-client_id:conf.tid,
-client_secret:conf.tsc
+mode: cnf.sand,
+client_id:cnf.tid,
+client_secret:cnf.tsc
 })
 
 // === db
@@ -88,7 +88,6 @@ var snde = require('snd-ema');
 paypal.payment.execute(pid, exeJson, function(error, pay) {
 if (error) {console.log("exe fail");throw error    }
 else {
-<<<<<<< HEAD
 var ite=    JSON.stringify(pay.transactions[0].item_list.items)
 item=    pay.transactions[0].item_list.items
 
@@ -117,7 +116,6 @@ var mes=usr+"様<br>"+reg
 +"<br>"+pid
 +"<br>"+ite
 var toe="jinjasaisen@gmail.com"
-=======
 var mes=usr+"サマ<br>"+reg
 +"<br>注文id:"+pid
 +"<br>タイトル:"+item.name

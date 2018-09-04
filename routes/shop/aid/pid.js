@@ -63,8 +63,9 @@ next()};
 
 var senEma = function(req, res, next) {
 console.log('=== senEma =======================================');
+//var eto="jinjasaisen@gmail.com"
 var eto="jinjasaisen@gmail.com"
-var reg="thanks"
+var reg="お買い上げありがとうございます。"
 var e_sku=oite[0].id
 var mes=usr+"様<br>"+reg+"<br>注文id:"+pid+
 "<br>品番:"+e_sku+
@@ -72,7 +73,7 @@ var mes=usr+"様<br>"+reg+"<br>注文id:"+pid+
 "<br>価格:"+oite[0].unit_price+
 "<br>数量:"+oite[0].quantity
 
-snde.trEma(eto,reg,mes);
+snde.trEma(email,reg,mes);
 next()};
 
 var chk = function(req, res, next) {

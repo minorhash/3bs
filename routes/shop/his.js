@@ -31,7 +31,7 @@ var allPid = function(req, res, next) {
 
         allpid= adb.allPid(email)
 
-            console.log(cnf.sec)
+            console.log(cnf.skl)
         oite=[]
         for (var i = 0; i < allpid.length; i++) {
             oite.push(JSON.parse(allpid[i].ite))

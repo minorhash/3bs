@@ -3,15 +3,33 @@
 <% include par/nav %>
 <div class="container-fluid">
 <div class="row">
-<% include par/2side %>
+
+<!--- side left ----- -->
+<div class="col-md-2 col-sm-12" style="color:black">
+<% if(usr) {%> 
+<div class="label label-info">  &nbsp;<%=usr%>&nbsp;さん</div>
+<br><br>
+
+<% include par/out %>
+<%}else{ %>
+<% include par/login %>
+<%} %>
+</div>
+<!--- main ----- -->
 
 <div class="well col-lg-8 col-sm-12" style="color:black">
 
 <h1 class="text-center"><%= title %></h1>
 <br>
 <div class="well col-lg-6 col-sm-12">
-<%if(typeof payid!=="undefined"){%>
-<%= payid %>
+<%if(pid){%>
+<img src="../../img/cd/<%=item.sku%>.png">
+<br>注文id:<%= pid %>
+<br>タイトル:<%=item.name%>
+<br>品番:<%=item.sku%>
+<br>価格:<%=item.price%>
+<br>数量:<%=item.quantity%>
+
 <%} %>   
 <br>
 <a href="/shop">back to shop </a>

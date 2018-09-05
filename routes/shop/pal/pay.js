@@ -8,11 +8,7 @@ var adb = require('usrdb')
 
 var pal = require("mypal")
 var mypal = pal.myPal()
-<<<<<<< HEAD
-console.log(mypal)
-=======
 if(mypal){
->>>>>>> nish
 var tran=mypal.transactions[0]
 }else{console.log("no mypal")}
 
@@ -97,10 +93,10 @@ var getSum = function(req, res, next) {
         add = sum_a.reduce(function(tot, cur) {
             return tot + cur
         })
-        var str=add.toString()
+var str=add.toString()
 var ship=null
 if(ind==0){ship=650}
-        else{ship=0}
+else{ship=0}
 
         var sship=ship.toString()
         var sum=add+ship

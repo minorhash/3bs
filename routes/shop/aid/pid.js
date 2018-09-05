@@ -66,19 +66,16 @@ console.log('=== senEma =======================================');
 var eto="jinjasaisen@gmail.com"
 var reg="お買い上げありがとうございます。"
 var e_sku=oite[0].id
-<<<<<<< HEAD
 var mes=usr+"様<br>"+reg+"<br>注文id:"+pid+
 "<br>品番:"+e_sku+
 "<br>タイトル:"+oite[0].title+
 "<br>価格:"+oite[0].unit_price+
 "<br>数量:"+oite[0].quantity
-=======
 var mes=usr+"様<br>"+reg+"<br>paidy 注文id:"+pid+
 "<br>sku:"+e_sku+
 "<br>title:"+oite[0].title+
 "<br>price:"+oite[0].unit_price+
 "<br>unit:"+oite[0].quantity
->>>>>>> nish
 
 snde.trEma(eto,reg,mes);
 next()};

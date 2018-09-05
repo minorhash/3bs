@@ -19,11 +19,7 @@ var cred = require("./js/cred");
 var cred = require('./js/cred');
 
 var getEma = function(req, res, next) {
-<<<<<<< HEAD
-  email = cred.ema(req);
-=======
 email = cred.ema(req);
->>>>>>> nish
 mailusr=  adb.mailUsr(email)
     console.log(email)
 next()}
@@ -32,13 +28,10 @@ var getUsr = function(req, res, next) {
 if(mailusr){usr=mailusr.name}
 else{usr=null;console.log("no usr")}
 next()};
-<<<<<<< HEAD
-=======
 
 var getAdr= function(req, res, next) {
 mailadr=adb.mailAdr(email)
 next()};
->>>>>>> nish
 
 var getTmp = function(req, res, next) {
   mailtmp = [];

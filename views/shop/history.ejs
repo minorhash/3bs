@@ -53,34 +53,27 @@
 <%=allpal[i].tok%></u><br>
 <br>
 <%for (var j=0;j<opal[i].length;j++){%>
-<div valign="top" align="center">
-<img src="../img/cd/<%= opal[i][j].sku%>.png">
+<div class="col-md-3">
+<img src="../img/cd/<%= opal[i][j].sku%>.png" width="150">
 </div>
 
 <div class="col-md-9">
 <div class="note">
-商品タイトル：<%=opal[i][j].title%><br>
-品番：TMS-&nbsp;<%=opal[i][j].id%>&nbsp; <br>
-商品単価：&nbsp;<%=opal[i][j].unit_price%>円&nbsp; (税抜）<br>
+商品タイトル：<%=opal[i][j].name%><br>
+品番：TMS-&nbsp;<%=opal[i][j].sku%>&nbsp; <br>
+商品単価：&nbsp;<%=opal[i][j].price%>円&nbsp; (税抜）<br>
 数量：<%=opal[i][j].quantity%><br>
-<%if(allpid[i].ship==0){%>
-送料：<%=allpid[i].ship%>円<br>
-<%}else{%>
 送料：650円<br>
-<%}%>
-合計金額：<%=allpid[i].mnt.toLocaleString()%>円
+合計金額：
 <div class="border-bottom"></div>
 </div>
 </div>
-<%= opal[i][j].name%><br>
+<br><br>
 <%}%>
 
 <%}%>
-<%}else{%>
-no allpal
-<%}%>
+<%}else{%>no allpal<%}%>
 
-<br><br><br><br>
 <br>
 <br>
 

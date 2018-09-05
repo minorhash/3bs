@@ -75,7 +75,7 @@ var chk = function(req, res, next) {
 
 var gcb = function(req, res) {
     res.render("shop/history", {
-        title: "history", usr: usr, selpid: selpid, allpid: allpid, allnow: allnow, oite: oite,jpal:jpal,opal:opal,
+        title: "history", usr: usr, selpid: selpid, allpid: allpid, allnow: allnow, oite: oite,opal:opal,
         allpal:allpal
     })
 }

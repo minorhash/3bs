@@ -8,7 +8,8 @@ var idy = require("aidy");
 var taid = idy.tmpAid();
 
 // === glob ============================
-var email, usr, sku, uni, sum, tsum, num,boo
+var email, usr, sku, uni, sum, tsum,stax
+var    num,boo
 var mailtmp, mailusr;
 var mer = [],  suma = [],  skua = [],boa=[];
 var mailtmp, mailusr,mailadr
@@ -27,7 +28,7 @@ next()}
 var getUsr = function(req, res, next) {
 if(mailusr){usr=mailusr.name}
 else{usr=null;console.log("no usr")}
-next()};
+next()}
 
 var getAdr= function(req, res, next) {
 mailadr=adb.mailAdr(email)
@@ -77,25 +78,23 @@ var chkSh = function(req, res, next) {
     boa.push(pat.test(skua[i]));
     }
 
-   console.log(boa.indexOf(true))
-   if(boa.indexOf(true)==0){
-boo=true
-   }else{       boo=false   }
+console.log(boa.indexOf(true))
+if(boa.indexOf(true)==-1){
+boo=false
+}else{       boo=true}
 
 next()};
 
 var redSum = function(req, res, next) {
-    console.log("red sum")
-    console.log(boo)
   sum = null, tsum = null
   function getSum(total, num) {    return total + num;  }
   if (suma.length !== 0) {
     sum = suma.reduce(getSum);
-if(boo){
+
+if(boo!==-1){
     console.log(boo)
     tsum = sum + 650;
-}else{tsum=sum;
-    console.log(boo)}
+}else{tsum=sum;}
 
 } else {    console.log("no sum");  }
   next()};
@@ -134,8 +133,7 @@ var getIte = function(req, res, next) {
   } else {
     console.log("no bod");
   }
-  next();
-};
+  next()};
 
 var insUpd = function(req, res, next) {
   if (req.body.sku) {
@@ -160,8 +158,7 @@ mailtmp=[]
   } else {
     console.log("no body.sku");
   }
-  next();
-}; //insUpd
+  next()}; //insUpd
 
 // === clr ===============================
 var clrEma = function(req, res, next) {
@@ -173,15 +170,13 @@ var clrEma = function(req, res, next) {
     console.log("=== CLR! ==================");
     //res.redirect("cart")
   } else {    console.log("no clr");  }
-  next();
-};
+  next()};
 
 // === aid ===============================
 
 var putAid = function(req, res, next) {
   router.put("/shop/aid/aid");
-  next();
-};
+  next()};
 
 
 var pcb = function(req, res, next) {

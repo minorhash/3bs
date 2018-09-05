@@ -44,7 +44,7 @@ age
 .get('https://api.paidy.com/payments/'+pid)
 .set("Content-Type", "application/json")
 .set("Paidy-Version", "2018-04-10")
-.set("Authorization", "Bearer"+cnf.sec)
+.set("Authorization", "Bearer"+cnf.skl)
 .then(res => {
 adb.insPid(email,pid,res.body.amount,JSON.stringify(res.body.order.items),utc,res.body.order.shipping);
 
@@ -63,6 +63,7 @@ next()};
 
 var senEma = function(req, res, next) {
 console.log('=== senEma =======================================');
+//var eto="jinjasaisen@gmail.com"
 var eto="jinjasaisen@gmail.com"
 var reg="お買い上げありがとうございます。"
 var e_sku=oite[0].id
@@ -77,7 +78,7 @@ var mes=usr+"様<br>"+reg+"<br>paidy 注文id:"+pid+
 "<br>price:"+oite[0].unit_price+
 "<br>unit:"+oite[0].quantity
 
-snde.trEma(eto,reg,mes);
+snde.trEma(email,reg,mes);
 next()};
 
 var chk = function(req, res, next) {

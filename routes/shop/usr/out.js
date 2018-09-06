@@ -5,6 +5,7 @@ var router = express.Router();
 var email, usr, mailusr, myerr;
 
 var clrEma = function(req, res, next) {
+    usr=null;
   req.session = null;
   res.clearCookie('session');
   res.clearCookie('sess');
@@ -13,14 +14,10 @@ var clrEma = function(req, res, next) {
   next()};
 
 var getEma = function(req, res, next) {
-  if (req.session) {
-    email = req.session.email;
-
-  } else {
-    console.log('no sess');
-  }
-  next();
-}; //getEma
+if (req.session) {
+email = req.session.email;
+} else {    console.log('no sess');  }
+  next()}; //getEma
 
 
 var unSon= function(req, res, next) {
@@ -43,6 +40,7 @@ var chk = function(req, res, next) {
   console.log('=== log out === ');
   console.log(req.session);
   console.log(req.cookies);
+  console.log(email)
   next();
 };
 

@@ -14,17 +14,18 @@ var email, usr, sku
     var skumer, mailusr, mailtmp, skuson
     var obj, len;
 // === post =============================
+var cred = require('./js/cred');
+
 var getEma = function(req, res, next) {
-  var cred = require('./js/cred');
-  email = cred.ema(req);
+email = cred.ema(req);
 mailusr=  adb.mailUsr(email)
-  next();
-}; //getEma
+  next()}
 
 var getUsr = function(req, res, next) {
 if(mailusr){usr=mailusr.name}
 else{usr=null;console.log("no usr")}
 next()};
+
 
 var getSku = function(req, res, next) {
 sku = req.body.sku;

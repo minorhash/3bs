@@ -1,11 +1,11 @@
-var url = 'http://localhost:3000';
+var url = 'http://localhost:3023';
 
 var app = require('../app'),
-ema = require('../routes/shop/son/ema'),
 chai = require('chai'),
 request = require('supertest'),
 age = require('superagent'),
 expect = chai.expect;
+var cnf=require("./cnf.json")
 
 var ses = require('supertest-session');
 var testSes = null;
@@ -31,6 +31,5 @@ if(err) return done(err)
 return done()
 })
 });
-
 })
 

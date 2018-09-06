@@ -1,8 +1,12 @@
 {
-    "buy":"thank you",
+    "cart":"cart",
+    "clr":"clear cart",
+    "login":"please log in",
+    "buy":"thank you for buying",
     "pid":"pid",
     "sku":"sku",
     "title":"title",
     "price":"price",
    "unit":"unit"
+   
 }

@@ -20,11 +20,9 @@ mailusr=  adb.mailUsr(email)
 next()}
 
 var getUsr = function(req, res, next) {
-if(req.session.pss){
-if(req.session.pss==mailusr.pss){usr=mailusr.name}
+if(mailusr){usr=mailusr.name}
 else{usr=null;console.log("no usr")}
-}else{console.log("no pss")}
-next()};
+next()}
 
 var chk = function(req, res, next) {
   console.log('=== get shop ===');

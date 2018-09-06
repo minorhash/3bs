@@ -44,7 +44,7 @@ var putMer = function(req, res, next) {
         for (var i = 0; i < mailtmp.length; i++) {
             mer[i] = db.skuMer(mailtmp[i].sku)
         }
-    } else {        console.log("no mailtmp")    }
+    } else {console.log("no mailtmp")    }
     next()}
 
 var putSum = function(req, res, next) {
@@ -96,7 +96,7 @@ item=    pay.transactions[0].item_list.items
     //for(var i=0;i<pay.transactions[0].item_list.items;i++){
 var ite=    JSON.stringify(pay.transactions[0].item_list.items)
 
-var tit
+var tit=[]
 for(var i=0;i<item.length;i++){
 tit.push("name+:"+item[i].name)
 }
@@ -115,15 +115,19 @@ item:ite
 })
 var mes=usr+"様<br>"+reg
 
+var shop=require("../son/ema.json")
 var toe="jinjasaisen@gmail.com"
 var mes=usr+"様<br>"+reg
-+"<br>"+pid
-+"<br>"+ite
++shop.cau1
++shop.cau2
++shop.cau3
 +"<br>注文id:"+pid
-+"<br>タイトル:"+item.name
-+"<br>品番:"+item.sku
-+"<br>価格:"+item.price
-+"<br>数量:"+item.quantity
+for(var i=0;i<item;i++){
++"<br>タイトル:"+item[i].name
++"<br>品番:"+item[i].sku
++"<br>価格:"+item[i].price
++"<br>数量:"+item[i].quantity
+}
 
 var toe="jinjasaisen@gmail.com"
 console.log('=== senEma =======================================');

@@ -10,8 +10,17 @@
 <div class="container-fluid">
 <div class="row">
 
+<div align="right">
+<a class="<%=(lang=="ja"?"active":"")%>" href="/shop?clang=ja">
+<span class="flag-icon flag-icon-jp my-big"></span>
+</a>
 
-<!--- side left ------->
+<a class="<%=(lang=="en"?"active":"")%>" href="/shop?clang=en">
+<span class="flag-icon flag-icon-gb my-big"></span>
+</a>
+</div>
+
+<!--- side left ----- -->
 <div class="col-md-2 col-sm-12" style="color:black">
 <% if(usr) {%> 
 <div class="label label-info">  &nbsp;<%=usr%>&nbsp;さん</div>
@@ -22,7 +31,7 @@
 <% include par/login %>
 <%} %>
 </div>
-<!--- main ------->
+<!--- main ----- -->
 
 <div class="col-md-10 col-xs-12" style="color:black">
 <div class="row">

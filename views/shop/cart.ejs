@@ -5,7 +5,17 @@
 <div class="container-fluid">
 <div class="row">
 
-<!--- ------------------------------------- side left ------->
+<div align="right">
+<a class="<%=(lang=="ja"?"active":"")%>" href="cart?clang=ja">
+<span class="flag-icon flag-icon-jp my-big"></span>
+</a>
+
+<a class="<%=(lang=="en"?"active":"")%>" href="cart?clang=en">
+<span class="flag-icon flag-icon-gb my-big"></span>
+</a>
+</div>
+
+<!--- ------------------------------------- side left ----- -->
 <div class="col-md-2 col-sm-12" style="color:black">
 <% if(usr) {%> 
 <h5><div class="label label-info"> &nbsp;<%= usr%>&nbsp; さん </div></h5>
@@ -15,10 +25,10 @@
 <% include par/login %>
 <%} %>
 </div>
-<!--- ------------------------------------- main ------->
+<!--- ------------------------------------- main ----- -->
 
-<div class="col-md-9" style="color:black"  >
-<p class="box90">カート</p>
+<div class="col-md-9" style="color:black">
+<p class="box90"><%=shop.cart%></p>
 
 
 <div class="col-md-8" style="color:black"  >
@@ -46,8 +56,8 @@
 
 
 数量:<form method="post" action="/shop/cart">
-<input id="number" type="number" name="uni" value=<%=seltmp[i].uni%>>
-<input type="hidden" name="sku" value=<%=seltmp[i].sku%>>
+<input id="number" type="number" name="uni" value="<%=seltmp[i].uni%>">
+<input type="hidden" name="sku" value="<%=seltmp[i].sku%>">
 <button type="submit" >再計算</button>
 </form>
 
@@ -60,14 +70,11 @@
 <%}%>
 <%}%>
 
-
-
 <div class="col-md-12" style="color:black" align="center" >
 <form method="post" action="/shop/cart">
 <input type="hidden" name="clr" value="yes">
-<button type="submit" >カートをクリア</button>
+<button type="submit" ><%=shop.clr%></button>
 </form>
-
 
 </div>
 
@@ -79,12 +86,14 @@
 
 <div class="box93">
 <%if(sum){%>
-<h4>&nbsp;商品小計&nbsp; (税抜)&nbsp;:  <%=sum.toLocaleString()%> &nbsp;円 </h4>
+<h4>&nbsp;商品小計&nbsp; (税抜)&nbsp;:  <%=sum.toLocaleString()%> &nbsp;円 </h3>
+<h4>&nbsp;消費税計&nbsp;&nbsp;:  <% var stax=Math.round(sum*0.08)%> 
+    <%=stax%>
+    &nbsp;円 </h4>
 
 <%if(boo){%>
 <h4>&nbsp;送料&nbsp;:  650 &nbsp;円 </h4>
-<%}else{%>
-<h4>&nbsp;送料&nbsp;:  0 &nbsp;円 </h4>
+<%}else{%><h4>&nbsp;送料&nbsp;:  0 &nbsp;円 </h4>
 
 <%}%>
 <%}else{%>
@@ -92,12 +101,11 @@ no sum
 <%}%>
 <hr>
 
-
 <div class="box102">
 <%if(tsum){%> 
-<h4>&nbsp;合計金額 &nbsp; (税抜）&nbsp; :
-
-<%=tsum.toLocaleString()%> &nbsp;円</div>
+<h4>&nbsp;合計金額 &nbsp; (税込）&nbsp; :
+<br>
+<%=(tsum+stax).toLocaleString()%> &nbsp;円</div>
 <%}else{%>
 no sum
 <%}%>

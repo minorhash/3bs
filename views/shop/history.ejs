@@ -38,7 +38,6 @@
 
 <br>
 
-
 <font color="#0000ff">
 <u><b>&nbsp;&nbsp;&nbsp;&nbsp;購入日時：
 <%=allpal[i].date%></b></u><br>
@@ -47,44 +46,31 @@
 <u>&nbsp;&nbsp;&nbsp;&nbsp;注文番号：
 <%=allpal[i].tok%></u><br>
 <br>
-
-<% var obj=JSON.parse(allpal[i].ite) %>
-
+<%for (var j=0;j<opal[i].length;j++){%>
 <div class="col-md-3">
-<<<<<<< HEAD
-<div valign="top" align="center"><img src="../img/cd/<%=obj[0].sku%>.png" width="150cm" hight="150mm"></div>
-=======
 <br>
 
-<div valign="top" align="center"><img src="../img/cd/<%=obj.items[0].sku%>.png" width="150cm" hight="150mm"></div>
->>>>>>> nish
+<img src="../img/cd/<%= opal[i][j].sku%>.png" width="150">
 </div>
+
 <div class="col-md-9">
 <div class="note">
 
-商品タイトル：<%=obj[0].name%><br>
-品番：TMS-&nbsp;<%=obj[0].sku%>&nbsp; <br>
-商品単価：&nbsp;<%=obj[0].price%>円&nbsp; (税抜）<br>
-数量：<%=obj[0].quantity%><br>
+商品タイトル：<%=opal[i][j].name%><br>
+品番：TMS-&nbsp;<%=opal[i][j].sku%>&nbsp; <br>
+商品単価：&nbsp;<%=opal[i][j].price%>円&nbsp; (税抜）<br>
+数量：<%=opal[i][j].quantity%><br>
 送料：650円<br>
-合計金額：<%=(obj[0].price*obj[0].quantity+650).toLocaleString()%>
-
+合計金額：
 <div class="border-bottom"></div>
-<br>
-
 </div>
-
-<hr>
-
 </div>
-
-
-<%}%>
-<%}else{%>
-no allpal
+<br><br>
 <%}%>
 
-<br><br><br><br>
+<%}%>
+<%}else{%>no allpal<%}%>
+
 <br>
 <br>
 
@@ -105,14 +91,13 @@ no allpal
 <br>
 
 <div class="col-md-3">
-<br>
-<div valign="top" align="center"><img src="../img/cd/<%=oite[i][0].id%>.png" width="150cm" hight="150mm"></div>
+<div valign="top" align="center">
+<img src="../img/cd/<%=oite[i][0].id%>.png" width="150cm" height="150mm">
+</div>
 </div>
 
 <div class="col-md-9">
 <div class="note">
-
-
 商品タイトル：<%=oite[i][0].title%><br>
 品番：TMS-&nbsp;<%=oite[i][0].id%>&nbsp; <br>
 商品単価：&nbsp;<%=oite[i][0].unit_price%>円&nbsp; (税抜）<br>
@@ -123,12 +108,8 @@ no allpal
 送料：650円<br>
 <%}%>
 合計金額：<%=allpid[i].mnt.toLocaleString()%>円
-
 <div class="border-bottom"></div>
-
-<br>
 </div>
-<hr>
 </div>
 
 <%}%>

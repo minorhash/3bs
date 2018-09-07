@@ -5,9 +5,10 @@
 <div class="row">
 
 <!--- side left ----- -->
-<div class="well col-md-3 col-sm-12" style="color:black">
+<div class="col-md-2 col-sm-12" style="color:black">
 <% if(usr) {%> 
-<div class="label label-info">&nbsp; <%= usr%>&nbsp;さん </div>
+
+<h4> <div class="label label-info">&nbsp; <%= usr%>&nbsp;さん </div></h4>
 <br><br>
 
 <% include par/out %>
@@ -24,9 +25,12 @@
 <%} %>
 </div>
 
+
+
+
 <!--- main ----- -->
 
-<div class="col-sm-6 col-sm-12" style="color:black">
+<div class="col-sm-7 col-sm-12" style="color:black">
 
 <p class="box90">&nbsp;注文内容ご確認ページ（Paidy決済ご希望の方用）</p>
 <br>
@@ -40,61 +44,48 @@
 <div class="col-md-4">
 <div align="center">
 <img src="../img/cd/<%=mer[i].sku%>.png" width="150" height="150" >
+
 </div></div>
+
 
 <div class="col-md-8">
 <div class="pa2">
 商品名：&nbsp;  <%=mer[i].name%><br>
 商品番号: &nbsp; TMS-<%=seltmp[i].sku%><br>
-単価（税込）: &nbsp;<%=mer[i].pri.toLocaleString()%>円 <br>
+商品小計（税抜）: &nbsp;<%=mer[i].pri.toLocaleString()%>円 <br>
+消費税計:&nbsp;<% var stax=Math.round(sum*0.08)%><%=stax%> &nbsp;円<br>
+送料:&nbsp;650&nbsp;円<br>
 注文数:&nbsp; <%=seltmp[i].uni%><br>
 
 <hr>
 </div>
 </div>
 
+
+<%}%>
+<%}%>
+
 <div class="row"></div>
 
-<br>
-
-<%}%>
-<%}%>
-
-<div class="col-md-12 col-md-12 hidden-xs">
-
 <div class="col-md-3 hidden-xs"></div>
-
-<div class="col-md-3 hidden-xs"></div>
-<div class="col-md-3 hidden-xs">
-<div class="pabox">商品合計(税込）：</div>
-
-</div>
-
-<div class="col-md-3 hidden-xs">
+<div class="col-md-6 hidden-xs">
 
 <div class="pabox">
-<%if(sum){%>
-<%=sum.toLocaleString()%> 円
-
-<%}%></div>
-
-
-合計(税込）：
+お支払合計（消費税+送料込）=&nbsp;
 <%if(tsum){%>
-<%=tsum.toLocaleString()%> 円
+<%=(tsum+stax).toLocaleString()%> 円
 <%}%>
+</div></div>   
 
-</div>
-</div>
+<div class="col-md-3 hidden-xs"></div>
 
-</div>
-</div>
 
+
+</div></div>
+
+   
 <div class=" well col-md-3 col-sm-12" style="color:black">
-
 <div class="row"></div>
-
-
 
 <p class="pa1">
 Paidy決済をご希望の方は下記ボタンを押してください。<br>
@@ -103,40 +94,54 @@ Paidyのページが表示されますので、
 Paidyのアカウントにてログインし、お手続きください。</p>
 
 <br><br>
+
 <div align="right">
 <button id="paidy-checkout-button" onclick="paidyPay()">Paidyで決済する</button>
 <script type="text/javascript" src="https://apps.paidy.com/"></script>
 <script type="text/javascript" src="../../son/<%=email%>.js"></script>
 
-</div>
 
 </div>
+</div>
+</div>
+
 
 <div class="row"></div>
 <br><br>
 
 
-<div class="col-sm-5 hidden-xs"></div>
+<div class="col-sm-2 hidden-xs"></div>
+<div class="col-sm-2 hidden-xs"></div>
+
+<div class="col-sm-3">
 
 <div class="btn-toolbar" style="color:black">
-<div class="btn-group">
+<div class="btn-group" >
 
-<form method="get" action="/shop/cart">
-<button type="submit">カートに戻る</button>
-</form></div>
 
 <form method="get" action="/shop">
 <button type="submit">ショップに戻る</button>
 </form>
-<br>
-
-</div>
-
-</div>
-</div>
 </div>
 
 
+
+<form method="get" action="/shop/cart" align="center">
+<button type="submit">カートに戻る</button>
+</form>
+</div>
+
+</div>
+
+
+<div class="col-sm-2 hidden-xs"></div>
+<div class="col-sm-3 hidden-xs"></div>
+
+
+</div>
+</div>
+</div>
+</div>
 
 
 <br><br><br><br><br><br>

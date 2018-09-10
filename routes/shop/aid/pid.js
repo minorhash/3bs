@@ -64,19 +64,13 @@ next()};
 var senEma = function(req, res, next) {
 console.log('=== senEma =======================================');
 var i18=require("../../../i18n/shop/ja.json")
-//var eto="jinjasaisen@gmail.com"
 var eto="jinjasaisen@gmail.com"
-var cau1=i18.cau1
-var e_sku=oite[0].id
 
 var sub=i18.buy
 var mes=usr+"様<br>"
 +i18.cau1+i18.cau2+i18.cau3
-+i18.cont+i18.pid+":"+pid
-+i18.sku+":"+oite[0].id+"<br>"
-+i18.title+":"+oite[0].title+"<br>"
-+i18.price+":"+oite[0].unit_price+"<br>"
-+i18.unit+":"+oite[0].quantity+"<br>"
++i18.cont+i18.pid+":"+pid+"<br>"
+
 
 +i18.ship1+i18.ship2+i18.ship3
 +i18.ship4+i18.ship5
@@ -94,6 +88,6 @@ var chk = function(req, res, next) {
   console.log(ite);
 };
 
-router.put('/shop/aid/pid', [getEma, getUsr, putPid,getPid,senEma,
+router.put('/shop/aid/pid', [getEma, getUsr, getPid,putPid,senEma,
     chk]);
 module.exports = router;

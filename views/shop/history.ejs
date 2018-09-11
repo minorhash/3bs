@@ -63,7 +63,7 @@
 商品単価：&nbsp;<%=obj.items[0].price%>円&nbsp; (税抜）<br>
 数量：<%=obj.items[0].quantity%><br>
 送料：650円<br>
-合計金額：<%=(obj.items[0].price*obj.items[0].quantity+650).toLocaleString()%>
+合計金額：<%=(obj.items[0].price*obj.items[0].quantity+650).toLocaleString()%>円<br>
 
 <div class="border-bottom"></div>
 <br>
@@ -77,7 +77,7 @@
 
 <%}%>
 <%}else{%>
-no allpal
+※ paypalでの購入履歴はございません
 <%}%>
 
 <br><br><br><br>
@@ -114,11 +114,11 @@ no allpal
 商品単価：&nbsp;<%=oite[i][0].unit_price%>円&nbsp; (税抜）<br>
 数量：<%=oite[i][0].quantity%><br>
 <%if(allpid[i].ship==0){%>
-送料：<%=allpid[i].ship%>円<br>
+送料：<%=allpid[i].ship%> 円<br>
 <%}else{%>
-送料：650円<br>
 <%}%>
-合計金額：<%=allpid[i].mnt.toLocaleString()%>円
+消費税：<br>
+合計金額：<%=allpid[i].mnt.toLocaleString()%>円<br>
 
 <div class="border-bottom"></div>
 
@@ -129,7 +129,7 @@ no allpal
 
 <%}%>
 <%}else{%>
-no paidy purchase.
+※ paidyでの購入履歴はございません
 <%}%>
 
 

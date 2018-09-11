@@ -18,7 +18,7 @@
 <!--- ------------------------------------- side left ----- -->
 <div class="col-md-2 col-sm-12" style="color:black">
 <% if(usr) {%> 
-<h5><div class="label label-info"> &nbsp;<%= usr%>&nbsp; さん </div></h5>
+<h4><div class="label label-info"> &nbsp;<%= usr%>&nbsp; さま </div></h4>
 <br><br>
 <% include par/out %>
 <%}else{ %>
@@ -79,6 +79,16 @@
 </div>
 
 
+<div align="center">
+<style="color:black">
+<form method="get" action="/shop"  >
+<button type="submit">ショップに戻る</button>
+</form></div>
+
+
+
+
+
 </div>
 
 <br>
@@ -91,9 +101,12 @@
     <%=stax%>
     &nbsp;円 </h4>
 
+
 <%if(boo){%>
 <h4>&nbsp;送料&nbsp;:  650 &nbsp;円 </h4>
 <%}else{%><h4>&nbsp;送料&nbsp;:  0 &nbsp;円 </h4>
+
+
 
 <%}%>
 <%}else{%>
@@ -101,10 +114,9 @@ no sum
 <%}%>
 <hr>
 
-<div class="box102">
+<div class="box102" align="center">
 <%if(tsum){%> 
 <h4>&nbsp;合計金額 &nbsp; (税込）&nbsp; :
-<br>
 <%=(tsum+stax).toLocaleString()%> &nbsp;円</div>
 <%}else{%>
 no sum
@@ -149,12 +161,6 @@ no sum
 
 <br><br><br><br><br>
 
-
-<div align="center">
-<style="color:black">
-<form method="get" action="/shop">
-<button type="submit">ショップに戻る</button>
-</form></div>
 
 
 </div>

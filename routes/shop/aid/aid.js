@@ -10,9 +10,10 @@ var cnf= require('../son/aid.json');
 var cred = require('../js/cred');
 // === put ===
 
-var email, usr, sku, sum,tsum,adr
+var email, usr, sku, adr
 var son,    sson
-var boa,ind
+var boa,ind, sum,tsum,tax
+
 var mailtmp, mailusr, mailadr,mailson;
 var mer = [],  suma = [],  skua = []
 
@@ -58,8 +59,8 @@ var test=pat.test(skua[i])
 boa.push(test)
 }
 ind=boa.indexOf(true)
-    console.log("ind")
-    console.log(ind)
+console.log("ind")
+console.log(ind)
 
 next()};
 
@@ -77,14 +78,15 @@ var redSum = function(req, res, next) {
       return total + num;
     }
     if (suma.length !== 0) {
-      sum = suma.reduce(getSum);
-if(ind==0){tsum=sum+650;
+sum = suma.reduce(getSum);
+tax=Math.round(sum*0.08)
+if(ind!==-1){tsum=sum+tax+650;
 
 // taid.buyer.email = email;
 // taid.buyer.name1 = mailusr.name;
 // taid.amount = tsum;
 }
-else{tsum=sum}
+else{tsum=sum+tax}
     } else {
       console.log('no sum');
     }
@@ -192,6 +194,7 @@ console.log('=== aid ====================================');
 //console.log(son)
 console.log(cnf.pkl)
 console.log(email)
+console.log("===tsum===")
 console.log(tsum)
 console.log(taid.amount)
 console.log(taid.order.items)

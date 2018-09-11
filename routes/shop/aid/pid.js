@@ -54,7 +54,6 @@ adb.insPid(email,pid,res.body.amount,JSON.stringify(res.body.order.items),utc,re
 console.log("no pid");  }
 next()};
 
-
 var getPid= function(req, res, next) {
 gpid=adb.getPid(email)
 ite=gpid.ite

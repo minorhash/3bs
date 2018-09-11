@@ -17,6 +17,8 @@ var arr=[
 "shop","shop/cart"
 ]
 
+var email=cnf.email
+var pss=cnf.pss
 
 describe('POST', function() {
 beforeEach(function () {

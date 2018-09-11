@@ -1,5 +1,4 @@
-document.getElementById('328').innerHTML =
-  '\
+document.getElementById("328").innerHTML='\
 <img src="img/TMS-328.png" alt=""/>\
 <div class="mask">\
 <div class="caption1">3rd Single <a href="discdeteil.htm" target="_blank"></div>\

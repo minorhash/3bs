@@ -45,7 +45,7 @@ next()}
 
 var putMer = function(req, res, next) {
     mer_a = []
-    //tran.item_list.items = []
+    tran.item_list.items = []
     if (tmp_a) {
         for (var i = 0; i < tmp_a.length; i++) {
             mer_a.push(db.skuMer(tmp_a[i].sku))
@@ -94,6 +94,8 @@ var getSum = function(req, res, next) {
         sub= sum_a.reduce(function(tot, cur) {
             return tot + cur
         })
+var ship=null
+if(ind==0){ship=650}
         ssub=sub.toString()
 var itax=Math.round(sub*0.08)
 var add=sub+itax

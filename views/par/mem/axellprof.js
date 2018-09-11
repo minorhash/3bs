@@ -1,5 +1,4 @@
-﻿document.getElementById('axellprof').innerHTML =
-  '\
+﻿document.getElementById("axellprof").innerHTML='\
 <div id="container-fluid">\
 <div class="col-sm-12">\
 <div align="center">\

@@ -21,8 +21,7 @@ next()}
 var getUsr = function(req, res, next) {
 if(mailusr){usr=mailusr.name}
 else{usr=null;console.log("no usr")}
-next()}
-
+next()};
 //  aid
 var allPid = function(req, res, next) {
 
@@ -67,6 +66,9 @@ var chk = function(req, res, next) {
     console.log("=== chk =====================")
     console.log(email)
     console.log(usr)
+    console.log(allpid)
+    console.log(allpal)
+    console.log(ship)
     console.log(opal[0][0])
     console.log(" === opal ==")
     console.log(opal[0][1])
@@ -75,7 +77,7 @@ var chk = function(req, res, next) {
 
 var gcb = function(req, res) {
     res.render("shop/history", {
-        title: "history", usr: usr, selpid: selpid, allpid: allpid, allnow: allnow, oite: oite,jpal:jpal,opal:opal,
+        title: "history", usr: usr, selpid: selpid, allpid: allpid, allnow: allnow, oite: oite,opal:opal,
         allpal:allpal
     })
 }

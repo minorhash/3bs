@@ -59,3 +59,18 @@ TypeError [ERR_INVALID_ARG_TYPE]: The "path" argument must be one of type string
     at new exports.Monitor (/home/koji/.nvm/versions/node/v10.2.1/lib/node_modules/forever/node_modules/forever-monitor/lib/forever-monitor/monitor.js:141:16)
     at start (/home/koji/.nvm/versions/node/v10.2.1/lib/node_modules/forever/bin/monitor:23:17)
     at process.<anonymous> (/home/koji/.nvm/versions/node/v10.2.1/lib/node_modules/forever/bin/monitor:85:5)
+internal/fs/utils.js:337
+    throw err;
+    ^
+
+TypeError [ERR_INVALID_ARG_TYPE]: The "path" argument must be one of type string, Buffer, or URL. Received type boolean
+    at Object.open (fs.js:404:3)
+    at WriteStream.open (internal/fs/streams.js:268:12)
+    at new WriteStream (internal/fs/streams.js:255:10)
+    at Object.createWriteStream (fs.js:1696:10)
+    at exports.Monitor.exports.attach (/usr/local/lib/node_modules/forever/node_modules/forever-monitor/lib/forever-monitor/plugins/logger.js:35:43)
+    at Object.bootstrap (/usr/local/lib/node_modules/forever/node_modules/forever-monitor/lib/forever-monitor/monitor.js:34:27)
+    at exports.Monitor.exports.App (/usr/local/lib/node_modules/forever/node_modules/broadway/lib/broadway/app.js:47:21)
+    at new exports.Monitor (/usr/local/lib/node_modules/forever/node_modules/forever-monitor/lib/forever-monitor/monitor.js:141:16)
+    at start (/usr/local/lib/node_modules/forever/bin/monitor:23:17)
+    at process.<anonymous> (/usr/local/lib/node_modules/forever/bin/monitor:85:5)

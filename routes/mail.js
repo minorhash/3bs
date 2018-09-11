@@ -1,47 +1,56 @@
 var express = require('express');
 var router = express.Router();
 
-// glob =================================
-var sub, name, email, mes, opt;
-var ema=require("./shop/son/ema.json")
+var nodemailer = require("nodemailer");
+var smtpTransport = require('nodemailer-smtp-transport');
+// SMTPサーバーの設定
+var transporter = nodemailer.createTransport({
+    host: "smtp.muumuu-mail.com",
+    port: 465,
+//    tls: true,
+// webメールのログインアカウント
+    auth: {
+        user: "info@tmsmusic.tokyo",
+        pass: "hash2010"
+    }
+});
 
-var getReq = function(req, res, next) {
-  sub = req.body.sub;
-  name = req.body.name;
-  email = req.body.mail;
-  mes = req.body.message;
-  //mes2=mik(mes)
-//  mes2 = mes.replace(/。/g, '。<br>');
-
-  next();
-};
-
-var senEma = function(req, res, next) {
-  console.log('=== senEma =======================================');
-  var snem = require('snd-ema');
-  var sub = 'sub:' + usr;
-
-snem.trEma(   ema.HOST,    ema.USR,   ema.PSS,    email,   ema.EMA1,    sub,    mes  );
-      res.redirect('/done');
-  next()};
-
-var sndEma = function(req, res, next) {
-  try {
-    transporter.sendMail(opt, function(err) {
-      if (err) return next(err);
-      res.redirect('/done');
+router.get('/mail', function(req, res, next) {
+res.render('mail', {
+title: 'お問い合わせ',
     });
-  } catch (err) {    console.dir(err);  }
-};
+});
 
-router.post('/mail', [getReq, senEma]); //post
+// post =================================
+router.post('/mail', function(req, res, next) {
+// メール内容の取得
+//var types = req.body.type;
+var sub = req.body.sub;
+var name = req.body.name;
+var email = req.body.mail;
+var message = req.body.message;
+
+try{
+transporter.sendMail({
+    from: email,
+    // お問い合わせ受け取り先のメールアドレス
+    to: "info@tmsmusic.tokyo",
+    cc: "matsuo@tms-e.co.jp",
+    subject: "タイトル:"+sub,
+    html:  "名前:"+name + "<br>" + "email:"+email + "<br>" + "メッセージ:"+ "<br>"+message
+    }, function(err){
+if(err) return next(err);
+    //　完了ページへリダイレクト
+    res.redirect('/done');
+    });
+}catch(err){console.dir(err);}
+});//post
 
 // get done =================================
 router.get('/done', function(req, res, next) {
-  res.render('/done', {
-    title:
-      'お問い合わせを受け付けました。後ほど担当の者よりご連絡させて頂きます。',
-  });
+res.render('done', {
+title: 'お問い合わせを受け付けました。後ほど担当の者よりご連絡させて頂きます。'
+});
 });
 
 /* GET home page. */

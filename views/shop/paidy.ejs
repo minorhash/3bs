@@ -53,6 +53,11 @@
 商品名：&nbsp;  <%=mer[i].name%><br>
 商品番号: &nbsp; TMS-<%=seltmp[i].sku%><br>
 商品小計（税抜）: &nbsp;<%=mer[i].pri.toLocaleString()%>円 <br>
+<<<<<<< HEAD
+=======
+消費税計:&nbsp;<% var stax=Math.round(sum*0.08)%><%=stax%> &nbsp;円<br>
+送料:&nbsp;650&nbsp;円<br>
+>>>>>>> 59c889d2fce168a1174db66dd5f3063720e89d07
 注文数:&nbsp; <%=seltmp[i].uni%><br>
 
 <hr>
@@ -68,6 +73,7 @@
 
 <div class="col-md-3 hidden-xs"></div>
 <div class="col-md-6 hidden-xs">
+<<<<<<< HEAD
 <div align="center">
 <h4>消費税計:&nbsp;<% var stax=Math.round(sum*0.08)%><%=stax%> &nbsp;円 &nbsp;
 送料:&nbsp;650&nbsp;円</h4>
@@ -76,6 +82,10 @@
 
 <div class="pabox">
 
+=======
+
+<div class="pabox">
+>>>>>>> 59c889d2fce168a1174db66dd5f3063720e89d07
 お支払合計（消費税+送料込）=&nbsp;
 <%if(tsum){%>
 <%=(tsum+stax).toLocaleString()%> 円
@@ -83,8 +93,13 @@
 </div></div>   
 
 <div class="col-md-3 hidden-xs"></div>
+<<<<<<< HEAD
 
 
+=======
+
+
+>>>>>>> 59c889d2fce168a1174db66dd5f3063720e89d07
 
 </div></div>
 

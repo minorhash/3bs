@@ -6,5 +6,7 @@ cmd
 ### bk
 routes/bk
 routes/shop/bk
+routes/shop/aid/bk
+routes/shop/pal/bk
 
 

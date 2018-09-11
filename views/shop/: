@@ -76,7 +76,6 @@
 <form method="get" action="/shop">
 <button type="submit">ショップに戻る</button>
 </form>
-</div>
 
 <form method="get" action="/shop/cart" align="center">
 <button type="submit">カートに戻る</button>
@@ -98,13 +97,9 @@
 
 
 消費税計:&nbsp;<% var stax=Math.round(sum*0.08)%><%=stax%> &nbsp;円 &nbsp;<br>
-<%if(boo!==-1){%>
-送料:&nbsp;650&nbsp;円
-<%}else{%>
-送料:&nbsp;0&nbsp;円
+送料:&nbsp;650&nbsp;円<br><br>
 
-<%}%>
-<br><br>
+
 <h4>お支払合計（消費税+送料込）＝</h4>
 <B><h1><%if(tsum){%><%=(tsum+stax).toLocaleString()%> 円
 <%}%></b></h1>

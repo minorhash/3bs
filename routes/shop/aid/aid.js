@@ -72,6 +72,7 @@ var putSum = function(req, res, next) {
 // === chk dl ===
 
 var redSum = function(req, res, next) {
+    sum=""
     function getSum(total, num) {
       return total + num;
     }

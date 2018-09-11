@@ -79,7 +79,7 @@ var chkSh = function(req, res, next) {
 
 console.log(boa.indexOf(true))
 if(boa.indexOf(true)==-1){
-boo=false
+boo=-1
 }else{       boo=true}
 
 next()};
@@ -90,7 +90,10 @@ var redSum = function(req, res, next) {
   if (suma.length !== 0) {
     sum = suma.reduce(getSum);
 
+    console.log("boo")
+    console.log(boo)
 if(boo!==-1){
+    console.log("boo")
     console.log(boo)
     tsum = sum + 650;
 }else{tsum=sum;}

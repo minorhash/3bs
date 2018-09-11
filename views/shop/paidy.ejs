@@ -1,3 +1,4 @@
+
 <% include par/head %>
 <body>
 <% include par/nav %>
@@ -42,12 +43,15 @@
 商品名：&nbsp;  <%=mer[i].name%><br>
 商品番号: &nbsp; TMS-<%=seltmp[i].sku%><br>
 商品小計（税抜）: &nbsp;<%=mer[i].pri.toLocaleString()%>円 <br>
+<<<<<<< HEAD
 消費税計:&nbsp;<% var stax=Math.round(mer[i].pri*0.08)%><%=stax%> &nbsp;円<br>
 
 <% if(!boo==-1){%>
 送料:&nbsp;650&nbsp;円<br>
 <%} %>
 
+=======
+>>>>>>> 958b6f1d8f91dbe40c06c91ee94a20aa957b4a8c
 注文数:&nbsp; <%=seltmp[i].uni%><br>
 
 <hr>
@@ -61,6 +65,7 @@
 
 <div class="row"></div>
 
+<<<<<<< HEAD
 <div class="col-md-3 hidden-xs"></div>
 <div class="col-md-6 hidden-xs">
 <div align="center">
@@ -70,9 +75,21 @@
 送料:&nbsp;650&nbsp;円</h4>
 <%}%>
 
-</div>
-<hr>
+=======
+<div class="col-md-4 hidden-xs"></div>
+<div class="col-md-5 hidden-xs">   
 
+<div class="btn-toolbar" style="color:black">
+<div class="btn-group" >
+
+
+<form method="get" action="/shop">
+<button type="submit">ショップに戻る</button>
+</form>
+>>>>>>> 958b6f1d8f91dbe40c06c91ee94a20aa957b4a8c
+</div>
+
+<<<<<<< HEAD
 
 <div class="pabox">
 お支払合計（消費税+送料込）=&nbsp;
@@ -81,13 +98,42 @@
 <%}%>
 </div></div>   
 
+=======
+
+
+<form method="get" action="/shop/cart" align="center">
+<button type="submit">カートに戻る</button>
+</form>
+</div>
+
+</div>
+
+
+
+
+>>>>>>> 958b6f1d8f91dbe40c06c91ee94a20aa957b4a8c
 <div class="col-md-3 hidden-xs"></div>
 
 </div></div>
 
+<br><br>
    
-<div class=" well col-md-3 col-sm-12" style="color:black">
+<div class="col-md-3 col-sm-12" style="color:black">
 <div class="row"></div>
+
+商品小計&nbsp; (税抜)&nbsp;:&nbsp;<%=sum.toLocaleString()%> &nbsp;円<br>
+
+
+消費税計:&nbsp;<% var stax=Math.round(sum*0.08)%><%=stax%> &nbsp;円 &nbsp;<br>
+送料:&nbsp;650&nbsp;円<br><br>
+
+
+<h4>お支払合計（消費税+送料込）＝</h4>
+<B><h1><%if(tsum){%><%=(tsum+stax).toLocaleString()%> 円
+<%}%></b></h1>
+
+<hr>
+   
 
 <p class="pa1">
 Paidy決済をご希望の方は下記ボタンを押してください。<br>
@@ -103,44 +149,6 @@ Paidyのアカウントにてログインし、お手続きください。</p>
 <script type="text/javascript" src="../../son/<%=email%>.js"></script>
 
 
-</div>
-</div>
-</div>
-
-
-<div class="row"></div>
-<br><br>
-
-
-<div class="col-sm-2 hidden-xs"></div>
-<div class="col-sm-2 hidden-xs"></div>
-
-<div class="col-sm-3">
-
-<div class="btn-toolbar" style="color:black">
-<div class="btn-group" >
-
-
-<form method="get" action="/shop">
-<button type="submit">ショップに戻る</button>
-</form>
-</div>
-
-
-
-<form method="get" action="/shop/cart" align="center">
-<button type="submit">カートに戻る</button>
-</form>
-</div>
-
-</div>
-
-
-<div class="col-sm-2 hidden-xs"></div>
-<div class="col-sm-3 hidden-xs"></div>
-
-
-</div>
 </div>
 </div>
 </div>

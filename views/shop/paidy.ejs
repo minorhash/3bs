@@ -1,3 +1,4 @@
+
 <% include par/head %>
 <body>
 <% include par/nav %>
@@ -53,11 +54,6 @@
 商品名：&nbsp;  <%=mer[i].name%><br>
 商品番号: &nbsp; TMS-<%=seltmp[i].sku%><br>
 商品小計（税抜）: &nbsp;<%=mer[i].pri.toLocaleString()%>円 <br>
-<<<<<<< HEAD
-=======
-消費税計:&nbsp;<% var stax=Math.round(sum*0.08)%><%=stax%> &nbsp;円<br>
-送料:&nbsp;650&nbsp;円<br>
->>>>>>> 59c889d2fce168a1174db66dd5f3063720e89d07
 注文数:&nbsp; <%=seltmp[i].uni%><br>
 
 <hr>
@@ -71,69 +67,8 @@
 
 <div class="row"></div>
 
-<div class="col-md-3 hidden-xs"></div>
-<div class="col-md-6 hidden-xs">
-<<<<<<< HEAD
-<div align="center">
-<h4>消費税計:&nbsp;<% var stax=Math.round(sum*0.08)%><%=stax%> &nbsp;円 &nbsp;
-送料:&nbsp;650&nbsp;円</h4>
-</div>
-<hr>
-
-<div class="pabox">
-
-=======
-
-<div class="pabox">
->>>>>>> 59c889d2fce168a1174db66dd5f3063720e89d07
-お支払合計（消費税+送料込）=&nbsp;
-<%if(tsum){%>
-<%=(tsum+stax).toLocaleString()%> 円
-<%}%>
-</div></div>   
-
-<div class="col-md-3 hidden-xs"></div>
-<<<<<<< HEAD
-
-
-=======
-
-
->>>>>>> 59c889d2fce168a1174db66dd5f3063720e89d07
-
-</div></div>
-
-   
-<div class=" well col-md-3 col-sm-12" style="color:black">
-<div class="row"></div>
-
-<p class="pa1">
-Paidy決済をご希望の方は下記ボタンを押してください。<br>
-Paidyのページが表示されますので、
-「お支払い手続きへ」をクリック後、
-Paidyのアカウントにてログインし、お手続きください。</p>
-
-<br><br>
-
-<div align="right">
-<button id="paidy-checkout-button" onclick="paidyPay()">Paidyで決済する</button>
-<script type="text/javascript" src="https://apps.paidy.com/"></script>
-<script type="text/javascript" src="../../son/<%=email%>.js"></script>
-
-
-</div>
-</div>
-</div>
-
-
-<div class="row"></div>
-<br><br>
-
-
-<div class="col-sm-2 hidden-xs"></div>
-<div class="col-sm-2 hidden-xs"></div>
-
-<div class="col-sm-3">
+<div class="col-md-4 hidden-xs"></div>
+<div class="col-md-5 hidden-xs">   
 
 <div class="btn-toolbar" style="color:black">
 <div class="btn-group" >
@@ -154,11 +89,45 @@ Paidyのアカウントにてログインし、お手続きください。</p>
 </div>
 
 
-<div class="col-sm-2 hidden-xs"></div>
-<div class="col-sm-3 hidden-xs"></div>
 
 
-</div>
+<div class="col-md-3 hidden-xs"></div>
+
+</div></div>
+
+<br><br>
+   
+<div class="col-md-3 col-sm-12" style="color:black">
+<div class="row"></div>
+
+商品小計&nbsp; (税抜)&nbsp;:&nbsp;<%=sum.toLocaleString()%> &nbsp;円<br>
+
+
+消費税計:&nbsp;<% var stax=Math.round(sum*0.08)%><%=stax%> &nbsp;円 &nbsp;<br>
+送料:&nbsp;650&nbsp;円<br><br>
+
+
+<h4>お支払合計（消費税+送料込）＝</h4>
+<B><h1><%if(tsum){%><%=(tsum+stax).toLocaleString()%> 円
+<%}%></b></h1>
+
+<hr>
+   
+
+<p class="pa1">
+Paidy決済をご希望の方は下記ボタンを押してください。<br>
+Paidyのページが表示されますので、
+「お支払い手続きへ」をクリック後、
+Paidyのアカウントにてログインし、お手続きください。</p>
+
+<br><br>
+
+<div align="right">
+<button id="paidy-checkout-button" onclick="paidyPay()">Paidyで決済する</button>
+<script type="text/javascript" src="https://apps.paidy.com/"></script>
+<script type="text/javascript" src="../../son/<%=email%>.js"></script>
+
+
 </div>
 </div>
 </div>

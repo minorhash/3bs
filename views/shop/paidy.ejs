@@ -106,8 +106,15 @@
 <%}%>
 <br><br>
 <h4>お支払合計（消費税+送料込）＝</h4>
-<B><h1><%if(tsum){%><%=(tsum+stax).toLocaleString()%> 円
-<%}%></b></h1>
+<B><h1>
+<%if(boo!==0){%>
+<%=(tsum+stax+650).toLocaleString()%> 円
+<%}else{%>
+
+<%=(tsum+stax).toLocaleString()%> 円
+
+<%}%>
+</b></h1>
 
 <hr>
    

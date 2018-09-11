@@ -1,4 +1,3 @@
-
 <% include par/head %>
 <body>
 <% include par/nav %>
@@ -67,57 +66,31 @@
 
 <div class="row"></div>
 
-<div class="col-md-4 hidden-xs"></div>
-<div class="col-md-5 hidden-xs">   
-
-<div class="btn-toolbar" style="color:black">
-
-<div class="btn-group" >
-<form method="get" action="/shop">
-<button type="submit">ショップに戻る</button>
-</form>
+<div class="col-md-3 hidden-xs"></div>
+<div class="col-md-6 hidden-xs">
+<div align="center">
+<h4>消費税計:&nbsp;<% var stax=Math.round(sum*0.08)%><%=stax%> &nbsp;円 &nbsp;
+送料:&nbsp;650&nbsp;円</h4>
 </div>
+<hr>
 
-<form method="get" action="/shop/cart" align="center">
-<button type="submit">カートに戻る</button>
-</form>
-</div>
+<div class="pabox">
 
-</div>
+お支払合計（消費税+送料込）=&nbsp;
+<%if(tsum){%>
+<%=(tsum+stax).toLocaleString()%> 円
+<%}%>
+</div></div>   
 
 <div class="col-md-3 hidden-xs"></div>
 
+
+
 </div></div>
 
-<br><br>
    
-<div class="col-md-3 col-sm-12" style="color:black">
+<div class=" well col-md-3 col-sm-12" style="color:black">
 <div class="row"></div>
-<%=sum%> 
-商品小計&nbsp; (税抜)&nbsp;:&nbsp;<%=sum.toLocaleString()%> &nbsp;円<br>
-
-
-消費税計:&nbsp;<% var stax=Math.round(sum*0.08)%><%=stax%> &nbsp;円 &nbsp;<br>
-<%if(boo!==-1){%>
-送料:&nbsp;650&nbsp;円
-<%}else{%>
-送料:&nbsp;0&nbsp;円
-
-<%}%>
-<br><br>
-<h4>お支払合計（消費税+送料込）＝</h4>
-<B><h1>
-<%if(boo!==0){%>
-<%=(tsum+stax+650).toLocaleString()%> 円
-<%}else{%>
-
-<%=(tsum+stax).toLocaleString()%> 円
-
-<%}%>
-</b></h1>
-
-<hr>
-   
 
 <p class="pa1">
 Paidy決済をご希望の方は下記ボタンを押してください。<br>
@@ -133,6 +106,44 @@ Paidyのアカウントにてログインし、お手続きください。</p>
 <script type="text/javascript" src="../../son/<%=email%>.js"></script>
 
 
+</div>
+</div>
+</div>
+
+
+<div class="row"></div>
+<br><br>
+
+
+<div class="col-sm-2 hidden-xs"></div>
+<div class="col-sm-2 hidden-xs"></div>
+
+<div class="col-sm-3">
+
+<div class="btn-toolbar" style="color:black">
+<div class="btn-group" >
+
+
+<form method="get" action="/shop">
+<button type="submit">ショップに戻る</button>
+</form>
+</div>
+
+
+
+<form method="get" action="/shop/cart" align="center">
+<button type="submit">カートに戻る</button>
+</form>
+</div>
+
+</div>
+
+
+<div class="col-sm-2 hidden-xs"></div>
+<div class="col-sm-3 hidden-xs"></div>
+
+
+</div>
 </div>
 </div>
 </div>

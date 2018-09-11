@@ -144,7 +144,7 @@ if(mailadr){
 var str = JSON.stringify(taid);
 
 sson=    'var config={"api_key":"' +
-    cnf.pub +
+    cnf.pkl +
     '",' +
     '"closed":function(cb){var xhr = new XMLHttpRequest();' +
     'xhr.open("PUT","'+cnf.axe+
@@ -189,7 +189,7 @@ next()};
 var chk = function(req, res, next) {
 console.log('=== aid ====================================');
 //console.log(son)
-console.log(cnf.pub)
+console.log(cnf.pkl)
 console.log(email)
 console.log(tsum)
 console.log(taid.amount)

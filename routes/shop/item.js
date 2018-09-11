@@ -16,8 +16,6 @@ var email, usr, sku
 // === post =============================
 var cred = require('./js/cred');
 
-// === get ============================
-
 var getEma = function(req, res, next) {
 email = cred.ema(req);
 mailusr=  adb.mailUsr(email)

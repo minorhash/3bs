@@ -82,21 +82,22 @@ console.log(boo)
 next()};
 
 var redSum = function(req, res, next) {
-    function getSum(total, num) {
-      return total + num;
-    }
-    if (suma.length !== 0) {
-      sum = suma.reduce(getSum);
+sum=""
+function getSum(total, num) {
+return total + num;
+}
+if (suma.length !== 0) {
+sum = suma.reduce(getSum);
 if(boo==0){tsum=sum+650}
 else{tsum=sum}
-    } else {
-      console.log('no sum');
-    }
-  next()};
+} else {
+console.log('no sum');
+}
+next()};
 
 // === add item ===
 var putSku = function(req, res, next) {
-  if (mailtmp) {
+if (mailtmp) {
     for (var i = 0; i < mailtmp.length; i++) {
       skua[i] = mailtmp[i].sku;
       unia[i] = mailtmp[i].uni;
@@ -121,13 +122,15 @@ next()};
 
 var pcb = function(req, res, next) {
 res.render('shop/paidy', {
-seltmp: mailtmp,    sum: sum,    tsum: tsum,    mer: mer,email: email,mailson:mailson,usr: usr
+email: email,usr: usr,
+mailson:mailson, seltmp: mailtmp,    
+sum: sum,    tsum: tsum,    mer: mer,boo:boo
 }); //rend
 };
 
 router.get('/shop/paidy',
 [  getEma,  getUsr,  getTmp,  getAdr,  putSum,  putMer,chkSh,redSum,  putSku,  getSon,
-    chk,  pcb,]);
+    chk,  pcb]);
 //router.post('/shop/paidy', [getEma,getUsr,getTmp,getAdr,putSum,redSum,putSku,chk,pcb])
 
 module.exports = router;

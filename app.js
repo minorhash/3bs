@@ -47,12 +47,14 @@ app.use(  i18n({    translationsPath: path.join(__dirname, 'i18n/'+nat[i]),
 );
 }
 
-// route =================================
-var roo= require('./routes/index');
-var mail = require('./routes/mail');
 
-app.use('/', roo);
-app.use('/', mail);
+// use route =================================
+var top=["index","detail","disc","news","info","prof","sch","vid","med","mail","gal"]
+
+top.forEach(function(ite){
+ite= require('./routes/'+ite);
+app.use('/', ite);
+})
 
 // shop =================================
 

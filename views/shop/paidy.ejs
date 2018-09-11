@@ -13,20 +13,10 @@
 
 <% include par/out %>
 
-<!-- <script> -->
-<!-- var xhr = new XMLHttpRequest(); -->
-<!-- xhr.open("PUT", "http://localhost:3023/shop/aid/cli", true); -->
-<!-- xhr.setRequestHeader('Content-Type', 'application/json'); -->
-<!-- xhr.send(); -->
-<!-- </script> -->
-
 <%}else{ %>
 <% include par/login %>
 <%} %>
 </div>
-
-
-
 
 <!--- main ----- -->
 
@@ -34,7 +24,6 @@
 
 <p class="box90">&nbsp;注文内容ご確認ページ（Paidy決済ご希望の方用）</p>
 <br>
-
 
 <div class="col-md-12" style="color:black"  >
 <%for(var i=0;i<seltmp.length;i++){%>
@@ -53,11 +42,12 @@
 商品名：&nbsp;  <%=mer[i].name%><br>
 商品番号: &nbsp; TMS-<%=seltmp[i].sku%><br>
 商品小計（税抜）: &nbsp;<%=mer[i].pri.toLocaleString()%>円 <br>
-<<<<<<< HEAD
-=======
-消費税計:&nbsp;<% var stax=Math.round(sum*0.08)%><%=stax%> &nbsp;円<br>
+消費税計:&nbsp;<% var stax=Math.round(mer[i].pri*0.08)%><%=stax%> &nbsp;円<br>
+
+<% if(!boo==-1){%>
 送料:&nbsp;650&nbsp;円<br>
->>>>>>> 59c889d2fce168a1174db66dd5f3063720e89d07
+<%} %>
+
 注文数:&nbsp; <%=seltmp[i].uni%><br>
 
 <hr>
@@ -73,19 +63,18 @@
 
 <div class="col-md-3 hidden-xs"></div>
 <div class="col-md-6 hidden-xs">
-<<<<<<< HEAD
 <div align="center">
 <h4>消費税計:&nbsp;<% var stax=Math.round(sum*0.08)%><%=stax%> &nbsp;円 &nbsp;
+
+<% if(!boo==-1){%>
 送料:&nbsp;650&nbsp;円</h4>
+<%}%>
+
 </div>
 <hr>
 
-<div class="pabox">
-
-=======
 
 <div class="pabox">
->>>>>>> 59c889d2fce168a1174db66dd5f3063720e89d07
 お支払合計（消費税+送料込）=&nbsp;
 <%if(tsum){%>
 <%=(tsum+stax).toLocaleString()%> 円
@@ -93,13 +82,6 @@
 </div></div>   
 
 <div class="col-md-3 hidden-xs"></div>
-<<<<<<< HEAD
-
-
-=======
-
-
->>>>>>> 59c889d2fce168a1174db66dd5f3063720e89d07
 
 </div></div>
 

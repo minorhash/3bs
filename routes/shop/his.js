@@ -53,7 +53,9 @@ next()}
 // === pal
 var allPal= function(req, res, next) {
     opal=[]
+
     allpal=adb.allPal(email)
+
     if(!allpal.length==0){
 for(var i=0;i<allpal.length;i++){
 opal.push(JSON.parse(allpal[i].ite))
@@ -69,17 +71,14 @@ var chk = function(req, res, next) {
     console.log(allpid)
     console.log(allpal)
     console.log(ship)
-    console.log(opal[0][0])
-    console.log(" === opal ==")
-    console.log(opal[0][1])
 //console.log(oite)
     next()}
 
 var gcb = function(req, res) {
-    res.render("shop/history", {
-        title: "history", usr: usr, selpid: selpid, allpid: allpid, allnow: allnow, oite: oite,opal:opal,
-        allpal:allpal
-    })
+res.render("shop/history", {
+title: "history", usr: usr, selpid: selpid, allpid: allpid, allnow: allnow, oite: oite,opal:opal,
+allpal:allpal
+})
 }
 
 router.get("/shop/history", [getEma, getUsr, allPid, allPal,

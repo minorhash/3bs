@@ -72,6 +72,19 @@ var mes=usr+"様<br>"+reg+"<br>注文id:"+pid+
 "<br>数量:"+oite[0].quantity
 
 snde.trEma(email,reg,mes);
+var i18=require("../../../i18n/shop/ja.json")
+var eto="jinjasaisen@gmail.com"
+
+var sub=i18.buy
+var mes=usr+"様<br>"
++i18.cau1+i18.cau2+i18.cau3
++i18.cont+i18.pid+":"+pid+"<br>"
++i18.ship1+i18.ship2+i18.ship3
++i18.ship4+i18.ship5
++i18.misc+i18.lin1+i18.auto1+i18.auto2+i18.lin1
++i18.adr1+i18.adr2+i18.adr3
+
+snde.trEma(email,sub,mes);
 next()};
 
 var chk = function(req, res, next) {
@@ -82,6 +95,6 @@ var chk = function(req, res, next) {
   console.log(ite);
 };
 
-router.put('/shop/aid/pid', [getEma, getUsr, putPid,getPid,senEma,
+router.put('/shop/aid/pid', [getEma, getUsr, getPid,putPid,senEma,
     chk]);
 module.exports = router;

@@ -12,15 +12,15 @@ var mer = [],  suma = [],  sku_a = [];
 
 // === cred ===
 var getEma = function(req, res, next) {
-  var cred = require('./js/cred');
-  email = cred.ema(req);
+var cred = require('./js/cred');
+email = cred.ema(req);
 mailusr=  adb.mailUsr(email)
   next()};
 
 var getUsr = function(req, res, next) {
 if(mailusr){usr=mailusr.name}
 else{usr=null;console.log("no usr")}
-next()};
+next()}
 
 var getAdr = function(req, res, next) {
     mailadr = adb.mailAdr(email);

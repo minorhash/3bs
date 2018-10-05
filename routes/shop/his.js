@@ -9,6 +9,7 @@ var cnf=require("./son/aid.json")
 var email, usr
 var selpid, allpid,allnow,allpal
 var ite, oite,opal,ship
+var jpal=[],opal=[]
 
 var cred = require("./js/cred")
 // === get ============================
@@ -20,8 +21,7 @@ next()}
 var getUsr = function(req, res, next) {
 if(mailusr){usr=mailusr.name}
 else{usr=null;console.log("no usr")}
-next()}
-
+next()};
 //  aid
 var allPid = function(req, res, next) {
 
@@ -52,20 +52,14 @@ next()}
 
 // === pal
 var allPal= function(req, res, next) {
+    opal=[]
     allpal=adb.allPal(email)
     if(!allpal.length==0){
-    var son=allpal[0].ite
-    son.replace(/^/,"\"")
-    var str="{\"name\":\"ass\"}"
-    var obj=JSON.parse(str)
-
-    // console.log(obj)
-    // console.log("===res")
-    // allpal.forEach(function(res){
-    //     console.log(res.ite)
-    // })
-    }else{console.log("no allpal")}
-    next()}
+for(var i=0;i<allpal.length;i++){
+opal.push(JSON.parse(allpal[i].ite))
+}
+}else{console.log("no allpal")}
+next()}
 
 var chk = function(req, res, next) {
 
@@ -73,13 +67,17 @@ var chk = function(req, res, next) {
     console.log(email)
     console.log(usr)
     console.log(allpid)
+    console.log(allpal)
     console.log(ship)
+    console.log(opal[0][0])
+    console.log(" === opal ==")
+    console.log(opal[0][1])
 //console.log(oite)
     next()}
 
 var gcb = function(req, res) {
     res.render("shop/history", {
-        title: "history", usr: usr, selpid: selpid, allpid: allpid, allnow: allnow, oite: oite,
+        title: "history", usr: usr, selpid: selpid, allpid: allpid, allnow: allnow, oite: oite,opal:opal,
         allpal:allpal
     })
 }

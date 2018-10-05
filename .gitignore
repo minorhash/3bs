@@ -2,6 +2,7 @@ public/img
 public/son
 routes/shop/son
 cmd
+routes/shop/aid/cmd
 
 ### bk
 routes/bk

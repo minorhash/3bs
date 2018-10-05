@@ -45,7 +45,7 @@ next()}
 
 var putMer = function(req, res, next) {
     mer_a = []
-    //tran.item_list.items = []
+    tran.item_list.items = []
     if (tmp_a) {
         for (var i = 0; i < tmp_a.length; i++) {
             mer_a.push(db.skuMer(tmp_a[i].sku))
@@ -96,6 +96,19 @@ sub= sum_a.reduce(function(tot, cur) {
 return tot + cur
 })
 ssub=sub.toString()
+    sum_a = []
+    for (var i = 0; i < tmp_a.length; i++) {
+        sum_a.push(mer_a[i].pri * tmp_a[i].uni)
+    }
+    if (sum_a.length !== 0) {
+        sub= sum_a.reduce(function(tot, cur) {
+            return tot + cur
+        })
+    }
+}
+var ship=null
+if(ind==0){ship=650}
+        ssub=sub.toString()
 var itax=Math.round(sub*0.08)
 var add=sub+itax
 var sadd=add.toString()
@@ -118,7 +131,6 @@ else{ship=0}
         tran.amount.details.tax=itax
         tran.amount.details.shipping=ship
         tran.amount.total =sum
-}
 next()}
 
 // === pal ===
@@ -134,9 +146,9 @@ var goPal = function(req, res,next) {
             console.log("err.response.name")
             console.log(err.response.name)
             console.log(err.response.details)
-            throw err.message     
+            throw err.message
             res.redirect("../cart")
-        }else {
+}else {
             res.redirect(pay.links[1].href)
             console.log(pay.links[1].href)
 } //else
@@ -151,7 +163,7 @@ var rcb = function(req, res) {
         usr: usr,
         email: email,
         mypal:mypal
-    }) //rend
+}) //rend
 }
 
 router.get("/shop/paypal/pay",

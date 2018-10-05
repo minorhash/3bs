@@ -14,6 +14,7 @@ var mailtmp, mailusr;
 var mer = [],  suma = [],  skua = [],boa=[];
 var mailtmp, mailusr,mailadr
 
+var cred = require("./js/cred");
 // === get ============================
 
 var cred = require('./js/cred');
@@ -27,7 +28,7 @@ next()}
 var getUsr = function(req, res, next) {
 if(mailusr){usr=mailusr.name}
 else{usr=null;console.log("no usr")}
-next()};
+next()}
 
 var getAdr= function(req, res, next) {
 mailadr=adb.mailAdr(email)

@@ -1,1 +1,1 @@
-delete from usr where name="jinja";
+delete from usr where name="gui";

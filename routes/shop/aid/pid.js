@@ -31,7 +31,6 @@ next()};
 
 var putPid = function(req, res, next) {
 //res.redirect("pid")
-
 console.log('=== putPid ===');
 
 var utc = new Date().toJSON().slice(0,10).replace(/-/g,"/")
@@ -40,18 +39,18 @@ var utc = new Date().toJSON().slice(0,10).replace(/-/g,"/")
     console.log(email)
     console.log(pid)
 
-age
-.get('https://api.paidy.com/payments/'+pid)
-.set("Content-Type", "application/json")
-.set("Paidy-Version", "2018-04-10")
-.set("Authorization", "Bearer"+cnf.skl)
-.then(res => {
+// age
+// .get('https://api.paidy.com/payments/'+pid)
+// .set("Content-Type", "application/json")
+// .set("Paidy-Version", "2018-04-10")
+// .set("Authorization", "Bearer"+cnf.skl)
+// .then(res => {
 adb.insPid(email,pid,res.body.amount,JSON.stringify(res.body.order.items),utc,res.body.order.shipping);
-
-})
+//})
 } else {
 //var    pid = 'pay_Wz8zdysAAF0AirLI'
 console.log("no pid");  }
+
 next()};
 
 var getPid= function(req, res, next) {
@@ -63,7 +62,7 @@ next()};
 var senEma = function(req, res, next) {
 console.log('=== senEma =======================================');
 //var eto="jinjasaisen@gmail.com"
-var eto="jinjasaisen@gmail.com"
+var eto=email
 var reg="お買い上げありがとうございます。"
 var e_sku=oite[0].id
 var mes=usr+"様<br>"+reg+"<br>注文id:"+pid+

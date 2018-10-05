@@ -56,7 +56,7 @@ var allPal= function(req, res, next) {
 
     allpal=adb.allPal(email)
 
-    if(!allpal.length==0){
+if(!allpal.length==0){
 for(var i=0;i<allpal.length;i++){
 opal.push(JSON.parse(allpal[i].ite))
 }
@@ -65,18 +65,17 @@ next()}
 
 var chk = function(req, res, next) {
 
-    console.log("=== chk =====================")
-    console.log(email)
-    console.log(usr)
-    console.log(allpid)
-    console.log(allpal)
-    console.log(ship)
+console.log("=== chk =====================")
+console.log(opal)
+// console.log(allpal)
+// console.log(ship)
 //console.log(oite)
-    next()}
+next()}
 
 var gcb = function(req, res) {
 res.render("shop/history", {
-title: "history", usr: usr, selpid: selpid, allpid: allpid, allnow: allnow, oite: oite,opal:opal,
+title: "history", usr: usr, selpid: selpid,
+allpid: allpid, allnow: allnow, oite: oite,opal:opal,
 allpal:allpal
 })
 }

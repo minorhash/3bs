@@ -189,7 +189,7 @@ var pcb = function(req, res, next) {
   res.render("shop/cart", {
     seltmp: mailtmp,    sum: sum,    mer: mer,    usr: usr,
     email: email
-  }); //rend
+}); //rend
 };
 
 

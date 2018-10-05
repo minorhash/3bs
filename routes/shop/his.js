@@ -69,9 +69,7 @@ var chk = function(req, res, next) {
     console.log(allpid)
     console.log(allpal)
     console.log(ship)
-    console.log(opal[0][0])
     console.log(" === opal ==")
-    console.log(opal[0][1])
 //console.log(oite)
     next()}
 

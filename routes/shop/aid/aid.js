@@ -192,20 +192,17 @@ next()};
 var chk = function(req, res, next) {
 console.log('=== aid ====================================');
 //console.log(son)
-<<<<<<< HEAD
 console.log(cnf.pkl)
 console.log(email)
 console.log("===tsum===")
 console.log(tsum)
 console.log(taid.amount)
 console.log(taid.order.items)
-=======
 // console.log(cnf.pkl)
 // console.log(email)
 // console.log(tsum)
 // console.log(taid.amount)
 // console.log(taid.order.items)
->>>>>>> master
 
 };
 

@@ -80,8 +80,13 @@ var chkSh = function(req, res, next) {
 
 console.log(boa.indexOf(true))
 if(boa.indexOf(true)==-1){
+<<<<<<< HEAD
 boo=-1
 }else{       boo=true}
+=======
+boo=1
+}else{boo=0}
+>>>>>>> master
 
 next()};
 
@@ -91,23 +96,30 @@ var redSum = function(req, res, next) {
   if (suma.length !== 0) {
     sum = suma.reduce(getSum);
 
+<<<<<<< HEAD
     console.log("boo")
     console.log(boo)
 if(boo!==-1){
+=======
+if(boo==0){
+>>>>>>> master
     console.log("boo")
     console.log(boo)
     tsum = sum + 650;
-}else{tsum=sum;}
+}else{
+    console.log("boo")
+    console.log(boo)
+    tsum=sum;}
 
 } else {    console.log("no sum");  }
   next()};
 // === chk ===============================
 var chk = function(req, res, next) {
   console.log("=== cart ===================");
-  console.log(email);
-  console.log("=== mailtmp ===");
-  console.log(mailtmp);
-  console.log(skua)
+  // console.log(email);
+  // console.log("=== mailtmp ===");
+  // console.log(mailtmp);
+  // console.log(skua)
   console.log(boa)
   console.log(boo)
   console.log(tsum)

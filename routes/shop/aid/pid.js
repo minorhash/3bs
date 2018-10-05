@@ -39,14 +39,14 @@ var utc = new Date().toJSON().slice(0,10).replace(/-/g,"/")
     console.log(email)
     console.log(pid)
 
-// age
-// .get('https://api.paidy.com/payments/'+pid)
-// .set("Content-Type", "application/json")
-// .set("Paidy-Version", "2018-04-10")
-// .set("Authorization", "Bearer"+cnf.skl)
-// .then(res => {
+age
+.get('https://api.paidy.com/payments/'+pid)
+.set("Content-Type", "application/json")
+.set("Paidy-Version", "2018-04-10")
+.set("Authorization", "Bearer"+cnf.skl)
+.then(res => {
 adb.insPid(email,pid,res.body.amount,JSON.stringify(res.body.order.items),utc,res.body.order.shipping);
-//})
+})
 } else {
 //var    pid = 'pay_Wz8zdysAAF0AirLI'
 console.log("no pid");  }

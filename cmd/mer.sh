@@ -1,10 +1,11 @@
 dir=$(pwd)
 str=${dir: -3}
 echo $str
-git checkout master
-if [ -z $1 ];then
-    echo "usage"
+
+if [ -z $2 ];then
+git checkout $1
+    echo "usage chk arg1 merge arg2"
 else
-git merge $1
+git merge $2
 fi
 

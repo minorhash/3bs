@@ -25,9 +25,10 @@
 <% include par/login %>
 <%} %>
 </div>
+
 <!--- ------------------------------------- main ----- -->
 
-<div class="col-md-9" style="color:black">
+<div class="col-md-10" style="color:black">
 <p class="box90"><%=shop.cart%></p>
 
 
@@ -48,7 +49,7 @@
 </div>
 
 
-<div class="col-md-8">
+<div class=" col-md-8">
 
 商品名：&nbsp;  <%=mer[i].name%><br>
 商品番号: &nbsp; TMS- <%=seltmp[i].sku%><br>
@@ -85,50 +86,47 @@
 <button type="submit">ショップに戻る</button>
 </form></div>
 
-
-
-
-
 </div>
 
 <br>
-<div class="col-md-4" style="color:black"  >
+<div class="well col-md-4" style="color:black"  >
 
-<div class="box93">
+
 <%if(sum){%>
-<h4>&nbsp;商品小計&nbsp; (税抜)&nbsp;:  <%=sum.toLocaleString()%> &nbsp;円 </h3>
-<h4>&nbsp;消費税計&nbsp;&nbsp;:  <% var stax=Math.round(sum*0.08)%> 
-    <%=stax%>
-    &nbsp;円 </h4>
+商品小計&nbsp; (税抜)&nbsp;: <%=sum.toLocaleString()%> &nbsp;円<br> 
+消費税計&nbsp;&nbsp;:  <% var stax=Math.round(sum*0.08)%> 
+<%=stax%> &nbsp;円<br> 
 
 
-<%if(boo){%>
-<h4>&nbsp;送料&nbsp;:  650 &nbsp;円 </h4>
-<%}else{%><h4>&nbsp;送料&nbsp;:  0 &nbsp;円 </h4>
-
-
+<%if(boo==0){%>
+送料&nbsp;:  650 &nbsp;円<br>
+<%}else{%>&nbsp;送料&nbsp;: 0 &nbsp;円<br> 
 
 <%}%>
 <%}else{%>
 no sum
 <%}%>
+
+
+お支払合計(消費税＋送料込)＝<p><b><h1><%if(tsum){%> <%=(tsum+stax).toLocaleString()%> &nbsp;円
+<%}else{%>
+no sum
+<%}%></p>
+</h1></b>
+    
+    
 <hr>
 
-<div class="box102" align="center">
-<%if(tsum){%> 
-<h4>&nbsp;合計金額 &nbsp; (税込）&nbsp; :
-<%=(tsum+stax).toLocaleString()%> &nbsp;円</div>
-<%}else{%>
-no sum
-<%}%>
 
+<h5>
+【カートに関するご注意】<br><br>
+・カートに商品を入れただけでは、
+在庫は確保されておりません。
+注文完了時点」で在庫確保となります。<br>
+ご注文の途中で売り切れとなる場合がございますのでお気をつけください。<br>
+</h5>
 
-</h4><br>
-
-
-</div>
-
-<br>
+<hr>
 
 <h4>【決済手段】</h4>
 
@@ -140,17 +138,7 @@ no sum
 <button type="submit" >PayPal</button>
 <h4>&nbsp;（クレジットカード決済）</form></h4>
 
-
-<br>
-
-<h5>
-【カートに関するご注意】<br><br>
-・カートに商品を入れただけでは、
-在庫は確保されておりません。
-注文完了時点」で在庫確保となります。<br>
-ご注文の途中で売り切れとなる場合がございますのでお気をつけください。<br>
-</h5>
-
+</div>
 
 <%}else{%>
 カートは空です。
@@ -164,10 +152,6 @@ no sum
 
 
 </div>
-
-<!-- col1 -->
-<div class="col-md-1 hidden-xs"></div><!-- /col1-->
-</div> <!-- /row -->
 
 <hr>
 
@@ -190,4 +174,5 @@ xhr.setRequestHeader('Content-Type', 'application/json');
 xhr.send();
 
 </script>
+
 

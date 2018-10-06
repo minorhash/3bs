@@ -14,6 +14,7 @@ var mailtmp, mailusr;
 var mer = [],  suma = [],  skua = [],boa=[];
 var mailtmp, mailusr,mailadr
 
+var cred = require("./js/cred");
 // === get ============================
 
 var cred = require('./js/cred');
@@ -27,7 +28,7 @@ next()}
 var getUsr = function(req, res, next) {
 if(mailusr){usr=mailusr.name}
 else{usr=null;console.log("no usr")}
-next()};
+next()}
 
 var getAdr= function(req, res, next) {
 mailadr=adb.mailAdr(email)
@@ -79,8 +80,8 @@ var chkSh = function(req, res, next) {
 
 console.log(boa.indexOf(true))
 if(boa.indexOf(true)==-1){
-boo=-1
-}else{       boo=true}
+boo=1
+}else{boo=0}
 
 next()};
 
@@ -92,21 +93,24 @@ var redSum = function(req, res, next) {
 
     console.log("boo")
     console.log(boo)
-if(boo!==-1){
+if(boo==0){
     console.log("boo")
     console.log(boo)
     tsum = sum + 650;
-}else{tsum=sum;}
+}else{
+    console.log("boo")
+    console.log(boo)
+    tsum=sum;}
 
 } else {    console.log("no sum");  }
   next()};
 // === chk ===============================
 var chk = function(req, res, next) {
   console.log("=== cart ===================");
-  console.log(email);
-  console.log("=== mailtmp ===");
-  console.log(mailtmp);
-  console.log(skua)
+  // console.log(email);
+  // console.log("=== mailtmp ===");
+  // console.log(mailtmp);
+  // console.log(skua)
   console.log(boa)
   console.log(boo)
   console.log(tsum)
@@ -185,7 +189,7 @@ var pcb = function(req, res, next) {
   res.render("shop/cart", {
     seltmp: mailtmp,    sum: sum,    mer: mer,    usr: usr,
     email: email
-  }); //rend
+}); //rend
 };
 
 

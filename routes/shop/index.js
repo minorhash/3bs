@@ -22,7 +22,8 @@ next()}
 var getUsr = function(req, res, next) {
 if(mailusr){usr=mailusr.name}
 else{usr=null;console.log("no usr")}
-next()};
+next()}
+
 
 var chk = function(req, res, next) {
   console.log('=== get shop ===');

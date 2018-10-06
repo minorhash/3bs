@@ -60,7 +60,7 @@ mailusr = db.mailUsr(email);
 }; //chkUsr
 
 var senEma = function(req, res, next) {
-var mes=name+"サマ<br>"+reg
+var mes=name+"さま<br>"+reg
 console.log('=== senEma =======================================');
 snde.trEma(email,reg,mes);
 next()};

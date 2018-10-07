@@ -50,7 +50,7 @@ var rcb = function(req, res) {
     email: email,
     usr: usr,
     err: myerr,
-  });
+});
 };
 
 router.post('/shop/usr/out', [getEma,unSon,clrEma, chk, rcb]);

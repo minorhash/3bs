@@ -17,19 +17,29 @@ var arr=[
 "shop","shop/cart"
 ]
 
-
 describe('POST', function() {
 beforeEach(function () {
 testSes = ses(app);
 });
+
 it('should sign in', function (done) {
-    testSes.post("/shop")
-    .send({ email:email , pss:pss})
-    .expect(200)
+testSes.post("/shop/cart")
+.send({ email:email , pss:pss})
+.expect(200)
 .end(function(err){
 if(err) return done(err)
 return done()
 })
 });
+
+it('.post should work with data', function (done) {
+testSes.post('/shop/cart', function(req, res){
+res.send(req.session.email);
+res.send(req.session.pss);
+});
+request(app)
+.post('/shop/cart', { email:email })
+.expect(email, done);
+})
 })
 

@@ -1,3 +1,13 @@
-dir1=$(pwd)
+pw=$(pwd)
 
-forever restart $dir1/bin/www
+echo $pw
+str=${pw: -3}
+
+echo $str
+
+log=$(forever list|grep $str|grep -vi stopped|awk '{print $3}')
+
+echo $home/.forever/$log.log
+#$home/.forever/$log.log
+
+forever restart $pw/bin/www 

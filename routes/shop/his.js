@@ -25,29 +25,27 @@ next()};
 //  aid
 var allPid = function(req, res, next) {
 
-    if(!email){    allpid=[],        oite=[]
-        console.log("=== no all pid ==================")
-    }else{
+if(!email){    allpid=[],        oite=[]
+console.log("=== no all pid ==================")
+}else{
 
         allpid= adb.allPid(email)
-
-            console.log(cnf.skl)
+            console.log(cnf.sec)
         oite=[]
-        for (var i = 0; i < allpid.length; i++) {
-            oite.push(JSON.parse(allpid[i].ite))
-            console.log(allpid[i].pid)
-age
-.get('https://api.paidy.com/payments/'+allpid[i].pid)
-.set("Content-Type", "application/json")
-.set("Paidy-Version", "2018-04-10")
-.set("Authorization", "Bearer"+cnf.skl)
-.then(function(res){
-console.log(res.body.order.shipping)
+// for (var i = 0; i < allpid.length; i++) {
+// oite.push(JSON.parse(allpid[i].ite))
+//             console.log(allpid[i].pid)
+// age
+// .get('https://api.paidy.com/payments/'+allpid[i].pid)
+// .set("Content-Type", "application/json")
+// .set("Paidy-Version", "2018-04-10")
+// .set("Authorization", "Bearer"+cnf.sec)
+// .then(function(res){
+// console.log(res.body.order.shipping)
+// })
 
-})
-
-}
-}
+// }//for
+}//else
 next()}
 
 // === pal
@@ -70,7 +68,7 @@ console.log("=== chk =====================")
 console.log(opal)
 // console.log(allpal)
 // console.log(ship)
-//console.log(oite)
+console.log(oite)
 next()}
 
 var gcb = function(req, res) {
@@ -82,6 +80,6 @@ allpal:allpal
 }
 
 router.get("/shop/history", [getEma, getUsr, allPid, allPal,
-    chk, gcb])
+chk, gcb])
 
 module.exports = router

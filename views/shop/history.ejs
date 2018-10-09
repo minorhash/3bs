@@ -63,7 +63,14 @@
 商品単価：&nbsp;<%= (parseInt(opal[i][0].price)).toLocaleString()%>円<br>
 税：&nbsp;<%= opal[i][0].tax%><br>
 数量：<%= opal[i][0].quantity%><br>
+
+<% if((opal[i][0].price).length!==3){ %>
+
 送料：650円<br>
+<%}else{%>
+送料：0円<br>
+
+<%}%>
 合計金額：<%= ((parseInt(opal[i][0].price)+parseInt(opal[i][0].tax))*parseInt(opal[i][0].quantity)).toLocaleString()%>
 円
 
@@ -96,19 +103,17 @@ no allpal
 <%=allpid[i].pid%></u><br>
 <br>
 
-<%for (var j=0;j<oite[i].length;j++){%>
 <div class="col-md-3">
 <div valign="top" align="center">
-<img src="../img/cd/<%=oite[i][j].id%>.png" width="150cm" height="150mm">
 </div>
 </div>
 
 <div class="col-md-9">
 <div class="note">
-商品タイトル：<%=oite[i][j].title%><br>
-品番：TMS-&nbsp;<%=oite[i][j].id%>&nbsp; <br>
-商品単価：&nbsp;<%=oite[i][j].unit_price%>円&nbsp; (税抜）<br>
-数量：<%=oite[i][0].quantity%><br>
+商品タイトル：<br>
+品番：TMS-<%=allpid[i].ite%>&nbsp; <br>
+商品単価：&nbsp;円&nbsp; (税抜）<br>
+数量：<br>
 <%if(allpid[i].ship==0){%>
 送料：<%=allpid[i].ship%>円<br>
 <%}else{%>
@@ -118,7 +123,6 @@ no allpal
 <div class="border-bottom"></div>
 </div>
 </div>
-<%}%>
 
 <%}%>
 <%}else{%>

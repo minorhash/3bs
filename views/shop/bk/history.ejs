@@ -51,20 +51,27 @@
 <div class="col-md-3">
 <div valign="top" align="center">
 
-<img src="../img/cd/<%=opal[0][i].sku%>.png"><br>
+<img src="../img/cd/<%=opal[i][0].sku%>.png"><br>
 </div>
 </div>
 
 <div class="col-md-9">
 <div class="note">
 
-商品タイトル：<%= opal[0][i].name%><br>
-品番：TMS-&nbsp;<%= opal[0][i].sku%><br>
-商品単価：&nbsp;<%= (parseInt(opal[0][i].price)).toLocaleString()%>円<br>
-税：&nbsp;<%= opal[0][i].tax%><br>
-数量：<%= opal[0][i].quantity%><br>
+商品タイトル：<%= opal[i][0].name%><br>
+品番：TMS-&nbsp;<%= opal[i][0].sku%><br>
+商品単価：&nbsp;<%= (parseInt(opal[i][0].price)).toLocaleString()%>円<br>
+税：&nbsp;<%= opal[i][0].tax%><br>
+数量：<%= opal[i][0].quantity%><br>
+
+<% if((opal[i][0].price).length!==3){ %>
+
 送料：650円<br>
-合計金額：<%= ((parseInt(opal[0][i].price)+parseInt(opal[0][i].tax))*parseInt(opal[0][i].quantity)).toLocaleString()%>
+<%}else{%>
+送料：0円<br>
+
+<%}%>
+合計金額：<%= ((parseInt(opal[i][0].price)+parseInt(opal[i][0].tax))*parseInt(opal[i][0].quantity)).toLocaleString()%>
 円
 
 <div class="border-bottom"></div>

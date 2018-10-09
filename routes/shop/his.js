@@ -57,7 +57,7 @@ age
 .set("Paidy-Version", "2018-04-10")
 .set("Authorization", "Bearer"+cnf.sec)
 .then(function(res){
-console.log(res.body.order.shipping)
+//console.log(res.body.order.shipping)
 })
 }//for
 

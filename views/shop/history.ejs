@@ -84,14 +84,14 @@
 no allpal
 <%}%>
 
-<br>
-<br>
+<br><br><br><br>
 
 
 <%if(allpid.length!==0){%>
 &nbsp;&nbsp;&nbsp;&nbsp;
 <h4><span class="label label-danger">paidy</span></h4>
 
+<br>
 <%for(var i=0;i<allpid.length;i++){%>
 <font color="red">
 <b><u>&nbsp;&nbsp;&nbsp;&nbsp;購入日時：
@@ -110,18 +110,21 @@ no allpal
 
 <div class="col-md-9">
 <div class="note">
-商品タイトル：<%= oite[i][j].title%><br>
+商品タイトル：&nbsp;<%= oite[i][j].title%><br>
 品番：TMS-<%=oite[i][j].id%>&nbsp; <br>
-商品単価：&nbsp;円&nbsp; (税抜）<br>
-税：&nbsp;<%= oite[i][j].tax%><br>
-数量：<br>
-<% if((oite[i][j].unit_price).length!==3){ %>
+商品単価：&nbsp;<%=oite[i][j].unit_price %>円&nbsp; (税抜）<br>
+税：&nbsp;<%= parseInt(oite[i][j].unit_price)*0.08%><br>
+数量：&nbsp;<%= oite[i][j].quantity%><br>
+<% if((oite[i][j].unit_price).toString().length!==3){ %>
 送料：650円<br>
 <%}else{%>
 送料：0円<br>
 <%}%>
 
-合計金額：円<br>
+合計金額：
+<%= parseInt(oite[i][j].unit_price)*1.08*parseInt(oite[i][j].quantity) %>
+
+円<br>
 <div class="border-bottom"></div>
 </div>
 </div>

@@ -66,11 +66,9 @@
 数量：<%= opal[i][0].quantity%><br>
 
 <% if((opal[i][0].price).length!==3){ %>
-
 送料：650円<br>
 <%}else{%>
 送料：0円<br>
-
 <%}%>
 合計金額：<%= ((parseInt(opal[i][0].price)+parseInt(opal[i][0].tax))*parseInt(opal[i][0].quantity)).toLocaleString()%>
 円
@@ -115,7 +113,14 @@ no allpal
 商品タイトル：<%= oite[i][j].title%><br>
 品番：TMS-<%=oite[i][j].id%>&nbsp; <br>
 商品単価：&nbsp;円&nbsp; (税抜）<br>
+税：&nbsp;<%= oite[i][j].tax%><br>
 数量：<br>
+<% if((oite[i][j].unit_price).length!==3){ %>
+送料：650円<br>
+<%}else{%>
+送料：0円<br>
+<%}%>
+
 合計金額：円<br>
 <div class="border-bottom"></div>
 </div>

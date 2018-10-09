@@ -6,18 +6,17 @@ var db = require("cardb");
 var adb = require("usrdb");
 var idy = require("aidy");
 var taid = idy.tmpAid();
-
 // === glob ============================
 var email, usr, sku, uni, sum, tsum,stax
 var    num,boo
 var mailtmp, mailusr;
 var mer = [],  suma = [],  skua = [],boa=[];
 var mailtmp, mailusr,mailadr
+var cnf= require('./son/cnf.json');
 
 var cred = require("./js/cred");
 // === get ============================
 
-var cred = require('./js/cred');
 
 var getEma = function(req, res, next) {
 email = cred.ema(req);
@@ -181,7 +180,7 @@ var putAid = function(req, res, next) {
 
 var pcb = function(req, res, next) {
   res.render("shop/cart", {
-    seltmp: mailtmp,    sum: sum,    mer: mer,    usr: usr,
+      seltmp: mailtmp,    sum: sum,    mer: mer,    usr: usr,cnf:cnf,
     email: email
   }); //rend
 };

@@ -5,7 +5,7 @@ var db = require('cardb');
 var adb = require('usrdb');
 var aid = require('aidy');
 var taid = aid.tmpAid();
-var cnf= require('../son/aid.json');
+var cnf= require('../son/cnf.json');
 
 var cred = require('../js/cred');
 // === put ===
@@ -30,10 +30,10 @@ var getAdr = function(req, res, next) {
 if(email){mailadr = adb.mailAdr(email);}
 else{console.log("no email for adr")}
 
-  if (mailadr == null) {
-    console.log('=== adr null ===');
-  }
-  next()};
+if (mailadr == null) {
+console.log('=== adr null ===');
+}
+next()};
 
 var getTmp = function(req, res, next) {
     mailtmp = db.mailTmp(email);
@@ -189,7 +189,7 @@ next()};
 var chk = function(req, res, next) {
 console.log('=== aid ====================================');
 //console.log(son)
-console.log(cnf.pkl)
+console.log(cnf.pub)
 console.log(email)
 console.log(tsum)
 console.log(taid.amount)

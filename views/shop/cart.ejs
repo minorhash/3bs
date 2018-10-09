@@ -53,8 +53,6 @@
 商品名：&nbsp;  <%=mer[i].name%><br>
 商品番号: &nbsp; TMS- <%=seltmp[i].sku%><br>
 単価 &nbsp;（税抜）&nbsp; : &nbsp;<%=mer[i].pri.toLocaleString()%>円 <br>
-
-
 数量:<form method="post" action="/shop/cart">
 <input id="number" type="number" name="uni" value="<%=seltmp[i].uni%>">
 <input type="hidden" name="sku" value="<%=seltmp[i].sku%>">
@@ -179,7 +177,7 @@ no sum
 <script>
 
 var xhr = new XMLHttpRequest();
-xhr.open("PUT", "http://localhost:3023/shop/aid/aid", true);
+xhr.open("PUT", "https://3axe.tmsmusic.tokyo/shop/aid/aid", true);
 xhr.setRequestHeader('Content-Type', 'application/json');
 xhr.send();
 

@@ -30,6 +30,7 @@
 
 <!--- paypal----- -->
 
+
 <%if(allpal.length!==0){%>
 &nbsp;&nbsp;&nbsp;&nbsp;
 
@@ -46,27 +47,30 @@
 <u>&nbsp;&nbsp;&nbsp;&nbsp;注文番号：
 <%=allpal[i].tok%></u><br>
 <br>
-<%for (var j=0;j<opal[i].length;j++){%>
+
 <div class="col-md-3">
 <div valign="top" align="center">
-<img src="../img/cd/<%= opal[i][j].sku%>.png" width="150">
+
+<img src="../img/cd/<%=opal[0][i].sku%>.png"><br>
 </div>
 </div>
 
 <div class="col-md-9">
 <div class="note">
 
-商品タイトル：<%=opal[i][j].name%><br>
-品番：TMS-&nbsp;<%=opal[i][j].sku%>&nbsp; <br>
-商品単価：&nbsp;<%=opal[i][j].price%>円&nbsp; (税抜）<br>
-数量：<%=opal[i][j].quantity%><br>
+商品タイトル：<%= opal[0][i].name%><br>
+品番：TMS-&nbsp;<%= opal[0][i].sku%><br>
+商品単価：&nbsp;<%= (parseInt(opal[0][i].price)).toLocaleString()%>円<br>
+税：&nbsp;<%= opal[0][i].tax%><br>
+数量：<%= opal[0][i].quantity%><br>
 送料：650円<br>
-合計金額：
+合計金額：<%= ((parseInt(opal[0][i].price)+parseInt(opal[0][i].tax))*parseInt(opal[0][i].quantity)).toLocaleString()%>
+円
+
 <div class="border-bottom"></div>
 </div>
 </div>
 <br><br>
-<%}%>
 
 <%}%>
 <%}else{%>
@@ -118,7 +122,6 @@ no allpal
 
 <%}%>
 <%}else{%>
-no paidy purchase.
 <%}%>
 
 

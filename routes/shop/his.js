@@ -56,11 +56,11 @@ var allPal= function(req, res, next) {
 
     allpal=adb.allPal(email)
 
-// if(!allpal.length==0){
-// for(var i=0;i<allpal.length;i++){
-// opal.push(JSON.parse(allpal[i].ite))
-// }
-// }else{console.log("no allpal")}
+if(!allpal.length==0){
+for(var i=0;i<allpal.length;i++){
+opal.push(JSON.parse(allpal[i].ite))
+}
+}else{console.log("no allpal")}
 
 next()}
 

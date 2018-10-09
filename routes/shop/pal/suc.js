@@ -95,6 +95,7 @@ item=    pay.transactions[0].item_list.items
 
     //for(var i=0;i<pay.transactions[0].item_list.items;i++){
 var ite=    JSON.stringify(pay.transactions[0].item_list.items)
+    console.log(ite)
 
 var tit=[]
 for(var i=0;i<item.length;i++){

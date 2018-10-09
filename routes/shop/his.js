@@ -22,31 +22,6 @@ var getUsr = function(req, res, next) {
 if(mailusr){usr=mailusr.name}
 else{usr=null;console.log("no usr")}
 next()};
-//  aid
-var allPid = function(req, res, next) {
-
-if(!email){    allpid=[],        oite=[]
-console.log("=== no all pid ==================")
-}else{
-
-        allpid= adb.allPid(email)
-            console.log(cnf.sec)
-        oite=[]
-// for (var i = 0; i < allpid.length; i++) {
-// oite.push(JSON.parse(allpid[i].ite))
-//             console.log(allpid[i].pid)
-// age
-// .get('https://api.paidy.com/payments/'+allpid[i].pid)
-// .set("Content-Type", "application/json")
-// .set("Paidy-Version", "2018-04-10")
-// .set("Authorization", "Bearer"+cnf.sec)
-// .then(function(res){
-// console.log(res.body.order.shipping)
-// })
-
-// }//for
-}//else
-next()}
 
 // === pal
 var allPal= function(req, res, next) {
@@ -62,12 +37,38 @@ opal.push(JSON.parse(allpal[i].ite))
 
 next()}
 
+
+//  aid
+var allPid = function(req, res, next) {
+
+if(!email){    allpid=[],        oite=[]
+console.log("=== no all pid ==================")
+}else{
+
+        allpid= adb.allPid(email)
+            console.log(cnf.sec)
+        oite=[]
+for (var i = 0; i < allpid.length; i++) {
+oite.push(JSON.parse(allpid[i].ite))
+            console.log(allpid[i].pid)
+age
+.get('https://api.paidy.com/payments/'+allpid[i].pid)
+.set("Content-Type", "application/json")
+.set("Paidy-Version", "2018-04-10")
+.set("Authorization", "Bearer"+cnf.sec)
+.then(function(res){
+console.log(res.body.order.shipping)
+})
+}//for
+
+}//else
+next()}
+
 var chk = function(req, res, next) {
 
 console.log("=== chk =====================")
 console.log(opal)
-// console.log(allpal)
-// console.log(ship)
+console.log("=== oite =====")
 console.log(oite)
 next()}
 

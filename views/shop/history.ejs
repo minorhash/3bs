@@ -21,7 +21,6 @@
 
 <div class="col-lg-8 col-sm-12" style="color:black">
 <%if(usr){%>
-
 <div class="box90">購入履歴詳細</div><br>
 <%}else{%>
 ログインしてください。<br>
@@ -47,6 +46,8 @@
 <u>&nbsp;&nbsp;&nbsp;&nbsp;注文番号：
 <%=allpal[i].tok%></u><br>
 <br>
+
+<%for(var j=0;j<opal[i].length;j++){%>
 
 <div class="col-md-3">
 <div valign="top" align="center">
@@ -79,7 +80,8 @@
 </div>
 <br><br>
 
-<%}%>
+<%}%><!-- for -->
+<%}%> <!-- for -->
 <%}else{%>
 no allpal
 <%}%>
@@ -91,9 +93,8 @@ no allpal
 <%if(allpid.length!==0){%>
 &nbsp;&nbsp;&nbsp;&nbsp;
 <h4><span class="label label-danger">paidy</span></h4>
+
 <%for(var i=0;i<allpid.length;i++){%>
-
-
 <font color="red">
 <b><u>&nbsp;&nbsp;&nbsp;&nbsp;購入日時：
 <%=allpid[i].date%></u></b><br>
@@ -101,40 +102,32 @@ no allpal
 
 <u>&nbsp;&nbsp;&nbsp;&nbsp;注文番号：
 <%=allpid[i].pid%></u><br>
-<br>
 
+<%for(var j=0;j<oite[i].length;j++){%>
 <div class="col-md-3">
 <div valign="top" align="center">
+<img src="../img/cd/<%=oite[i][j].id%>.png"><br>
 </div>
 </div>
 
 <div class="col-md-9">
 <div class="note">
-商品タイトル：<br>
-品番：TMS-<%=allpid[i].ite%>&nbsp; <br>
+商品タイトル：<%= oite[i][j].title%><br>
+品番：TMS-<%=oite[i][j].id%>&nbsp; <br>
 商品単価：&nbsp;円&nbsp; (税抜）<br>
 数量：<br>
-<%if(allpid[i].ship==0){%>
-送料：<%=allpid[i].ship%>円<br>
-<%}else{%>
-送料：650円<br>
-<%}%>
-合計金額：<%=allpid[i].mnt.toLocaleString()%>円
+合計金額：円<br>
 <div class="border-bottom"></div>
 </div>
 </div>
-
-<%}%>
+<br><br>
+<%}%><!-- for -->
+<%}%><!-- for -->
 <%}else{%>
 <%}%>
+<br><br>
 
 
-<br>
-
-</div></div>
-
-
-</div>
 </div>
 
 <% include par/2side %>

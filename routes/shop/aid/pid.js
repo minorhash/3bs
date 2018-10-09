@@ -12,6 +12,8 @@ var email, dat, pid, str, mai, mnt, usr, sku;
 var mailusr;
 var inspid, getpid, selpid, strbuy, strite;
 var buy, ite, oite,gpid
+var mes,i18
+i18=require("../../../i18n/shop/ja.json")
 
 var cnf=require("../son/cnf.json")
 
@@ -27,12 +29,6 @@ if(req.session.pss){
 if(req.session.pss==mailusr.pss){usr=mailusr.name}
 else{usr=null;console.log("no usr")}
 }else{console.log("no pss")}
-next()};
-
-var getPid= function(req, res, next) {
-gpid=adb.getPid(email)
-ite=gpid.ite
-oite=JSON.parse(ite)
 next()};
 
 var putPid = function(req, res, next) {
@@ -55,7 +51,29 @@ age
 .set("Authorization", "Bearer"+cnf.sec)
 .then(res => {
 adb.insPid(email,pid,res.body.amount,JSON.stringify(res.body.buyer),JSON.stringify(res.body.order.items),tim);
+
+oite=res.body.order.items
+console.log(oite)
+
+for(var i=0;i<oite.length;i++){
+mes=usr+"様<br>"
++i18.cau1+i18.cau2+i18.cau3
++i18.cont+i18.pid+":"+pid+"<br>"
++i18.title+":"+JSON.stringify(oite[i].title)+"<br>"
++i18.sku+":"+JSON.stringify(oite[i].id)+"<br>"
++i18.price+":"+JSON.stringify(oite[i].unit_price)+"<br>"
++i18.unit+":"+JSON.stringify(oite[i].quantity)+"<br>"
++i18.ship1+i18.ship2+i18.ship3
++i18.ship4+i18.ship5
++i18.misc+i18.lin1+i18.auto1+i18.auto2+i18.lin1
++i18.adr1+i18.adr2+i18.adr3
+}
+
+console.log(mes)
+
 })
+
+
 //adb.insPid(email,pid,res.body.amount,JSON.stringify(res.body.order.items),utc,res.body.order.shipping,utc);
 } else {
 //var    pid = 'pay_Wz8zdysAAF0AirLI'
@@ -64,18 +82,9 @@ next()};
 
 var senEma = function(req, res, next) {
 console.log('=== senEma =======================================');
-var i18=require("../../../i18n/shop/ja.json")
 var email="jinjasaisen@gmail.com"
-
 var sub=i18.buy
 //var sub="sub"
-var mes=usr+"様<br>"
-+i18.cau1+i18.cau2+i18.cau3
-+i18.cont+i18.pid+":"+pid+"<br>"
-+i18.ship1+i18.ship2+i18.ship3
-+i18.ship4+i18.ship5
-+i18.misc+i18.lin1+i18.auto1+i18.auto2+i18.lin1
-+i18.adr1+i18.adr2+i18.adr3
 
 snde.trEma(email,sub,mes);
 next()};

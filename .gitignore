@@ -3,6 +3,7 @@ public/son
 routes/shop/son
 cmd
 routes/shop/aid/cmd
+node_modules
 
 ### bk
 routes/bk

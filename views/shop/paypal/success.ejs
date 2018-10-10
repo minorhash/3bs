@@ -23,14 +23,17 @@
 <br>
 <div class="well col-lg-6 col-sm-12">
 <%if(pid){%>
-<img src="../../img/cd/<%=item.sku%>.png">
+<%for(var i=0;i<item.length;i++){%>
+<img src="../../img/cd/<%=item[i].sku%>.png">
 <br>注文id:<%= pid %>
-<br>タイトル:<%=item.name%>
-<br>品番:<%=item.sku%>
-<br>価格:<%=item.price%>
-<br>数量:<%=item.quantity%>
-
-<%} %>   
+<br>タイトル:<%=item[i].name%>
+<br>品番:<%=item[i].sku%>
+<br>価格:<%=item[i].price%>
+<br>数量:<%=item[i].quantity%><br>
+<%}%>   
+<%}else{ %>   
+on pid
+<%}%>   
 <br>
 <a href="/shop">back to shop </a>
 

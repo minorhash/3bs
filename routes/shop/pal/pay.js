@@ -5,7 +5,6 @@ var paypal = require("paypal-rest-sdk")
 //require(__dirname + "/config")
 
 var adb = require('usrdb')
-
 var pal = require("mypal")
 var mypal = pal.myPal()
 

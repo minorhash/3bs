@@ -21,14 +21,13 @@
 
 <h1 class="text-center"><%= title %></h1>
 <br>
-<div class="well col-lg-6 col-sm-12">
 <%if(pid){%>
 <%for(var i=0;i<item.length;i++){%>
 <img src="../../img/cd/<%=item[i].sku%>.png">
 <br>注文id:<%= pid %>
 <br>タイトル:<%=item[i].name%>
-<br>品番:<%=item[i].sku%>
-<br>価格:<%=item[i].price%>
+<br>品番:TMS-<%=item[i].sku%>
+<br>価格:<%=item[i].price.toLocaleString()%>
 <br>数量:<%=item[i].quantity%><br>
 <%}%>   
 <%}else{ %>   
@@ -37,11 +36,6 @@ on pid
 <br>
 <a href="/shop">back to shop </a>
 
-</div>
-
-<div class="col-lg-6 col-sm-12">
-
-</div>
 
 </div>
 <% include par/2side %>

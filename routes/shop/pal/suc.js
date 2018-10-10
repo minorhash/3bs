@@ -95,6 +95,26 @@ var ite=JSON.stringify(pay.transactions[0].item_list.items)
 console.log(item)
 
 adb.insPal(email,pay.id,ite,utc)
+//var mes=usr+"様<br>"+reg
+var shop=require("../son/ema.json")
+//var toe="jinjasaisen@gmail.com"
+
+var i18=require("../../../i18n/shop/ja.json")
+
+for(var i=0;i<item.length;i++){
+var mes=usr+"様<br>"
++"paypal ご購入<br>"
++i18.cont+i18.pid+":"+pid+"<br>"
++i18.cau1+i18.cau2+i18.cau3
++i18.title+":"+item[i].name+"<br>"
++i18.sku+": TMS-"+item[i].sku+"<br>"
++i18.price+":"+parseInt(item[i].price).toLocaleString()+"円<br>"
++i18.unit+":"+item[i].quantity+"<br>"
+}
+
+console.log('=== senEma =======================================');
+}//else
+snde.trEma(email,reg,mes);
 
 res.render("shop/paypal/success", {
 usr:usr,
@@ -104,26 +124,6 @@ payid:payerId,
 pay:pay,
 item:item
 })
-var mes=usr+"様<br>"+reg
-
-var shop=require("../son/ema.json")
-var toe="jinjasaisen@gmail.com"
-
-var mes=usr+"様<br>"+reg
-+shop.cau1
-+shop.cau2
-+shop.cau3
-+"<br>注文id:"+pid
-for(var i=0;i<item.length;i++){
-+"<br>タイトル:"+item[i].name
-+"<br>品番:"+item[i].sku
-+"<br>価格:"+item[i].price
-+"<br>数量:"+item[i].quantity
-}
-console.log('=== senEma =======================================');
-}//else
-snde.trEma(toe,reg,mes);
-
 })
 }
 

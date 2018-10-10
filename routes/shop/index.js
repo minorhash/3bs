@@ -1,5 +1,5 @@
 var express = require('express');
-var cookie = require('cookie');
+//var cookie = require('cookie');
 var router = express.Router();
 // == sess =============================
 var db = require('cardb'),
@@ -33,7 +33,7 @@ var chk = function(req, res, next) {
   next();
 }; //chkEma
 
-var rcb = function(req, res) {
+var gcb = function(req, res) {
   res.render('shop', {
     title: 'shop',
     mer: allmer,
@@ -41,7 +41,7 @@ var rcb = function(req, res) {
     err: myerr,
   });
 };
-router.get('/shop', [getEma, getUsr, chk, rcb]);
+router.get('/shop', [getEma, getUsr, chk, gcb]);
 
 // == post ==================================
 

@@ -48,7 +48,7 @@ age
 .get('https://api.paidy.com/payments/'+pid)
 .set("Content-Type", "application/json")
 .set("Paidy-Version", "2018-04-10")
-.set("Authorization", "Bearer"+cnf.sec)
+.set("Authorization", "Bearer"+cnf.skl)
 .then(res => {
 adb.insPid(email,pid,res.body.amount,JSON.stringify(res.body.buyer),JSON.stringify(res.body.order.items),tim);
 
@@ -69,7 +69,11 @@ mes=usr+"様<br>"
 +i18.adr1+i18.adr2+i18.adr3
 }
 
-console.log(mes)
+//console.log(mes)
+console.log('=== senEma =======================================');
+//email="jinjasaisen@gmail.com"
+var sub=i18.buy
+snde.trEma(email,sub,mes);
 
 })
 
@@ -82,20 +86,16 @@ next()};
 
 var senEma = function(req, res, next) {
 console.log('=== senEma =======================================');
-var email="jinjasaisen@gmail.com"
+//email="jinjasaisen@gmail.com"
 var sub=i18.buy
-//var sub="sub"
-
 snde.trEma(email,sub,mes);
 next()};
 
 var chk = function(req, res, next) {
   console.log('=== pid =======================================');
-  console.log(usr);
-  console.log(email);
-  console.log(pid);
+  console.log(mes);
 };
 
-router.put('/shop/aid/pid', [getEma, getUsr,putPid,senEma,
+router.put('/shop/aid/pid', [getEma, getUsr,putPid,
 chk]);
 module.exports = router;

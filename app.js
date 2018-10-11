@@ -15,11 +15,6 @@ var app = express();
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
-app.use(logger('dev'));
-app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
-//app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
 // === sess ===
 // use =================================
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
@@ -39,13 +34,12 @@ app.use(
 
 //app.use('/', shop);
 // i18n ======================================
-var nat=["","news","prof","disc","sch","vid","mail","shop"]
+var nat=["","news","prof","disc","sch","vid","mail","shop","usr"]
 
 for(let i=0;i<nat.length;i++){
 app.use(  i18n({    translationsPath: path.join(__dirname, 'i18n/'+nat[i]),
     siteLangs: ['en', 'ja'],    textsVarName: nat[i]  })
-);
-}
+)}
 
 // route =================================
 var roo= require('./routes/index');

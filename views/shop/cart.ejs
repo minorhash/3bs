@@ -30,11 +30,10 @@
 <div class="col-md-9" style="color:black">
 <p class="box90"><%=shop.cart%></p>
 
-
 <div class="col-md-8" style="color:black"  >
 <br>
 <%if(usr==null){%>
-ログインしてください。<br>
+<%= shop.login %><br>
 <%}else{%>
 
 <%if(seltmp && mer.length!==0){%>

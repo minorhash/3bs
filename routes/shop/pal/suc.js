@@ -95,9 +95,6 @@ var ite=JSON.stringify(pay.transactions[0].item_list.items)
 console.log(item)
 
 adb.insPal(email,pay.id,ite,utc)
-//var mes=usr+"様<br>"+reg
-var shop=require("../son/ema.json")
-//var toe="jinjasaisen@gmail.com"
 
 var i18=require("../../../i18n/shop/ja.json")
 

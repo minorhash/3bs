@@ -155,6 +155,27 @@ var fsSon = function(req, res, next) {
 if(mailadr){
 var str = JSON.stringify(taid);
 
+
+var config={api_key:pub,
+closed:function(cb){var xhr = new XMLHttpRequest();
+xhr.open("PUT",loc+"/shop/aid/pid", true);
+xhr.setRequestHeader("Content-Type", "application/json");
+xhr.send(JSON.stringify(cb));
+}
+}
+
+var hand=Paidy.configure(config);
+
+var func=function paidyPay(){
+    var load=str;
+    hand.launch(load);}
+
+
+console.log("=== config.api_key ===")
+console.log(config.api_key)
+console.log(config.closed)
+//var hand=
+
 sson=    'var config={"api_key":"' +
     pub+
     '",' +

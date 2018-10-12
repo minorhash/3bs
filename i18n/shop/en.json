@@ -6,6 +6,8 @@
 "===":"=== mail =================================",
 "reg":"thank you for registering",
 "===":"=== shop =================================",
+"loc":"http://localhost:3023",
+"axe":"https://3axe.tmsmusic.tokyo",
 "cart":"cart",
 "clr":"clear cart",
 "login":"please log in",

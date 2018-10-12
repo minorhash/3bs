@@ -6,7 +6,7 @@
     "start": "node ./bin/www"
   },
   "dependencies": {
-    "aidy": "^1.1.0",
+    "aidy": "^1.3.0",
     "ammo": "^3.0.1",
     "better-sqlite3": "^4.1.4",
     "boom": "^7.2.0",

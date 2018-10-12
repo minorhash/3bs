@@ -6,6 +6,11 @@ var adb = require('usrdb');
 var aid = require('aidy');
 var taid = aid.tmpAid();
 var cnf= require('../son/cnf.json');
+//var pub=cnf.pub
+var pub=cnf.pkl
+//var loc=cnf.loc
+//var loc=cnf.axe
+var loc=cnf.tbs
 
 var cred = require('../js/cred');
 // === put ===
@@ -68,6 +73,7 @@ var putSum = function(req, res, next) {
   for (var i = 0; i < mailtmp.length; i++) {
     suma[i] = mailtmp[i].uni * mer[i].pri;
   }
+console.log("=== putsum===")
   next()};
 // === chk dl ===
 
@@ -79,14 +85,16 @@ var redSum = function(req, res, next) {
       sum = suma.reduce(getSum);
 if(ind==0){tsum=sum+650;
 
-// taid.buyer.email = email;
-// taid.buyer.name1 = mailusr.name;
-// taid.amount = tsum;
+taid.buyer.email = email;
+taid.buyer.name1 = mailusr.name;
+taid.amount = tsum;
 }
 else{tsum=sum}
     } else {
       console.log('no sum');
     }
+
+console.log("=== red sum ===")
   next()};
 
 var getTai = function(req, res, next) {
@@ -107,13 +115,16 @@ var getTai = function(req, res, next) {
   taid.buyer_data.ltv = tsum;
   taid.buyer_data.last_order_amount = tsum;
   taid.buyer_data.last_order_at = d.getDate();
+
+console.log("=== get tai ===")
+console.log(taid)
   next()};
 
 //=============================================== putTai
 var putTai = function(req, res, next) {
 //ind=-1
-if(ind==0){  taid.order.shipping = 650;}
-else{  taid.order.shipping = 0;}
+ if(ind==0){  taid.order.shipping = 650;}
+ else{  taid.order.shipping = 0;}
 
 for (var i = 0; i < mer.length; i++) {
     //
@@ -136,6 +147,7 @@ unit_price: mer[i].pri,
      console.log('=== mailadr null ===');
  }
 
+console.log("=== put tai ===")
 next()};
 
 var fsSon = function(req, res, next) {
@@ -144,10 +156,10 @@ if(mailadr){
 var str = JSON.stringify(taid);
 
 sson=    'var config={"api_key":"' +
-    cnf.pkl+
+    pub+
     '",' +
     '"closed":function(cb){var xhr = new XMLHttpRequest();' +
-    'xhr.open("PUT","'+cnf.axe+
+    'xhr.open("PUT","'+loc+
      '/shop/aid/pid", true);' +
     'xhr.setRequestHeader("Content-Type", "application/json");' +
     'xhr.send(JSON.stringify(cb));}};' +
@@ -184,20 +196,22 @@ console.log('The file was saved!');
 
 }else{console.log("no mailadr")}
 
+console.log("=== fsson ===")
 next()};
 
 var chk = function(req, res, next) {
 console.log('=== aid ====================================');
-//console.log(son)
+console.log(cnf.loc)
 console.log(cnf.pkl)
 console.log(email)
 console.log(tsum)
 console.log(taid.amount)
-console.log(taid.order.items)
+// console.log(taid.order.items)
 
 };
 
 router.put('/shop/aid/aid',
+//[  getEma,  getUsr,  getAdr,getTmp,putMer,chkSh,putSum,redSum,getTai,putTai,
 [  getEma,  getUsr,  getAdr,getTmp,putMer,chkSh,putSum,redSum,getTai,putTai,fsSon,
     chk]); //put
 

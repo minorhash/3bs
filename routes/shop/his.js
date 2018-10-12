@@ -46,7 +46,7 @@ console.log("=== no all pid ==================")
 }else{
 
         allpid= adb.allPid(email)
-            console.log(cnf.sec)
+console.log(cnf.skl)
         oite=[]
 for (var i = 0; i < allpid.length; i++) {
 oite.push(JSON.parse(allpid[i].ite))
@@ -55,7 +55,7 @@ age
 .get('https://api.paidy.com/payments/'+allpid[i].pid)
 .set("Content-Type", "application/json")
 .set("Paidy-Version", "2018-04-10")
-.set("Authorization", "Bearer"+cnf.sec)
+.set("Authorization", "Bearer"+cnf.skl)
 .then(function(res){
 //console.log(res.body.order.shipping)
 })

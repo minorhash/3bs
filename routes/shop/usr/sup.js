@@ -5,7 +5,9 @@ var db = require('usrdb');
 // == mail
 var snde = require('snd-ema');
 
-var usr,name, pss, email, chk, reg;
+var usr,name, pss, email, chk;
+var  reg,suc;
+var shop=require("../../../i18n/shop/ja.json");
 // === post ===
 
 var getEma = function(req, res, next) {
@@ -36,7 +38,12 @@ var chkIn = function(req, res, next) {
     try {
       db.insUsr(name, pss, email);
       console.log('=== ins!!! ===');
-      reg = 'ご登録ありがとうございます。';
+
+reg="ご登録ありがとうございます。メールをご確認ください。";
+suc=shop.reg1+shop.reg2+
+shop.name+name+shop.pss+pss+shop.mail+email+
+shop.reg3+shop.reg4+shop.reg5+
+shop.shop+shop.adr1+shop.adr2+shop.adr3;
     } catch (err) {
       console.log(err);
     }
@@ -60,7 +67,7 @@ mailusr = db.mailUsr(email);
 }; //chkUsr
 
 var senEma = function(req, res, next) {
-var mes=name+"サマ<br>"+reg
+var mes=name+"さま<br>"+suc;
 console.log('=== senEma =======================================');
 snde.trEma(email,reg,mes);
 next()};

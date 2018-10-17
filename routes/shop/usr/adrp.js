@@ -6,8 +6,10 @@ var ema= require('../son/ema.json');
 var cnf= require('../son/aid.json');
 
 // === glob
-var name, pss, email, reg, mailadr;
+var usr,name, pss, email, reg, mailadr;
 var phn, zip, pref, sta, city, ln1, ln2, chk;
+var suc,reg;
+var shop=require("../../../i18n/shop/ja.json");
 // === post ===
 
 var getEma = function(req, res, next) {
@@ -58,7 +60,11 @@ var insAdr = function(req, res, next) {
         db.insAdr(email, phn, ln1, ln2,city,sta,zip);
 
         console.log('=== ins!!! ===');
-        reg = 'ご登録ありがとうございます。';
+suc=shop.adr1+shop.reg2+
+shop.zip+zip+shop.sta+sta+shop.city+city+shop.str1+ln1+shop.str2+ln2+
+shop.reg4+shop.reg5+
+shop.shop+shop.adr1+shop.adr2+shop.adr3;
+        reg = shop.rega;
       } catch (err) {
         console.log(err);
         reg = 'err';
@@ -72,12 +78,7 @@ var insAdr = function(req, res, next) {
 
 var senEma = function(req, res, next) {
 var snde = require('snd-ema');
-var mes=usr+"さま<br>"+reg
-    +"<br>郵便："+zip
-    +"<br>都道府県："+sta
-    +"<br>市町村："+city
-    +"<br>番地："+ln1
-    +"<br>"+ln2
+var mes=usr+"さま<br>"+suc;
 console.log('=== senEma =======================================');
 snde.trEma(email,reg,mes);
 next()};
@@ -92,7 +93,7 @@ next()};
 var rcb = function(req, res) {
   res.render('shop/usr/adr_reg', {
     title: 'address registered',
-    name: name,
+    name: usr,
     email: email,
     chk: req.body.chk,
     reg: reg,

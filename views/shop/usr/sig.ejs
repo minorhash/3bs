@@ -8,18 +8,19 @@
 <div class="well col-lg-6 col-sm-12" style="color:black">
 
 <div align="right">
-<a class="<%=(lang=="ja"?"active":"")%>" href="cart?clang=ja">
+<a class="<%=(lang=="ja"?"active":"")%>" href="sig?clang=ja">
 <span class="flag-icon flag-icon-jp my-big"></span>
 </a>
 
-<a class="<%=(lang=="en"?"active":"")%>" href="cart?clang=en">
+<a class="<%=(lang=="en"?"active":"")%>" href="sig?clang=en">
 <span class="flag-icon flag-icon-gb my-big"></span>
 </a>
 </div>
 
 
 <br><br>
-<div style="text-align:center">ユーザー登録（無料）はこちらからどうぞ。
+<div style="text-align:center">
+<%= usr.reg1 %>
 <br><br><br></div>
 <form action="/shop/usr/sup" method="post">
 Name<br>
@@ -31,10 +32,11 @@ Password:<br>
 E-mail:<br>
 <input type="email" class="form-control" name="email" size="80" ><br>
 
-<div style="text-align:center">登録する際は<a href="/shop/agmt" target="_blank">利用規約</a>をお読みください。
-<input type="checkbox" name="chk" value="yes"> 同意する<br>
+<div style="text-align:center">
+    <a href="/shop/note/agmt" target="_blank"><%= usr.agmt %></a><%= usr.reg2 %>
+    <input type="checkbox" name="chk" value="yes"> <%= usr.agr %><br>
 <br>
-<button type="submit" class="btn btn-default">登録</button>
+<button type="submit" class="btn btn-default"><%= usr.reg3 %></button>
 </form>
 <br>
 </div>

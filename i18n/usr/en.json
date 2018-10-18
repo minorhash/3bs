@@ -1,8 +1,14 @@
 {
-
 "===":"=== usr =================================",
 "noac":"no account",
 "nopss":"forgot password",
+"===":"=== reg =================================",
+"reg0":"thank you for registering",
+"reg1":"please register",
+"reg2":"",
+"agmt":"read the agreement ",
+"agr":"agree",
+"reg3":"sign in",
 "===":"=== mail =================================",
 "reg":"thank you for registering",
 "===":"=== shop =================================",

@@ -3,6 +3,17 @@
 <% include ../par/nav %>
 <div class="container-fluid">
 <div class="row">
+<!-- lang -->
+<div align="right">
+<a class="<%=(lang=="ja"?"active":"")%>" href="adr_reg?clang=ja">
+<span class="flag-icon flag-icon-jp my-big"></span>
+</a>
+
+<a class="<%=(lang=="en"?"active":"")%>" href="adr_reg?clang=en">
+<span class="flag-icon flag-icon-gb my-big"></span>
+</a>
+</div>
+    <!-- lang -->
 
 <div class="col-md-2 col-sm-12" style="color:black"></div>
 
@@ -15,11 +26,11 @@
 
 <div style="text-align:center">
 <%if(reg && reg!=="no"){%>
-<%=reg%>
+<%= gis.reg4 %><br>
 <%}else{%>
-にゅうりょくにあやまりがあります。
+<%= gis.err %><br>
 <br>
-<a href="/shop/usr/adr">もどる</a>
+<a href="/shop/usr/adr"><%= gis.bck %></a>
 <%}%>
 
 </div>

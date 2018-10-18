@@ -34,11 +34,12 @@ app.use(
 
 //app.use('/', shop);
 // i18n ======================================
-var nat=["","news","prof","disc","sch","vid","mail","shop","usr"]
+var nat=["","news","prof","disc","sch","vid","mail","shop","gis"]
 
 for(let i=0;i<nat.length;i++){
-app.use(  i18n({    translationsPath: path.join(__dirname, 'i18n/'+nat[i]),
-    siteLangs: ['en', 'ja'],    textsVarName: nat[i]  })
+app.use(  i18n({translationsPath: path.join(__dirname, 'i18n/'+nat[i]),
+browserEnable:true,
+siteLangs: ['en', 'ja'],    textsVarName: nat[i]  })
 )}
 
 // route =================================

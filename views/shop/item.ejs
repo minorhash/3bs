@@ -26,8 +26,8 @@
 
 <div class="col-md-3" style="color:black">
 <div align="center"><img src="../img/cd/<%=mer.sku%>.png">
-<h5>商品番号：TMS-<%=mer.sku%><br>
-発売日：<%=mer.rel%></div></h5>
+<h5><%= shop.sku %>：TMS-<%=mer.sku%><br>
+<%= shop.rel %>：<%=mer.rel%></div></h5>
 
 </div>
 
@@ -63,23 +63,23 @@
 <div class="col-md-3" style="color:black">
 
 <div class="box94">
-<div align="center"><h4>価格:&nbsp;
-<%=mer.pri.toLocaleString()%>円&nbsp;(+税)</h4> 
-<div style="line-height:10px">別途送料有</div>
+<div align="center"><h4><%= shop.price %>:&nbsp;
+<%=mer.pri.toLocaleString()%>円&nbsp;(+<%= shop.tax %>)</h4> 
+<div style="line-height:10px"><%= shop.ship %></div>
 
 
 <hr>
 <form action="/shop/cart" method="post">
 <input type="hidden" name="sku" value=<%=mer.sku%>>
-数量:
+<%= shop.unit %>:
 <input id="number" type="number" name="uni" value="1" min="0" step="1"><br><br>
 &nbsp;&nbsp;
-<button type="submit">カートに入れる</button>
+<button type="submit"><%= shop.put %></button>
 </form>
 
 <br>
 <a href="/mail" target="_blank">
-<i class="far fa-envelope"> &nbsp; 商品に関する問合せ</a></i>
+<i class="far fa-envelope"> &nbsp;<%= shop.que %></a></i>
 
 </div></div>
 
@@ -102,7 +102,7 @@
 <div class="col-sm-8" style="color:black">
 
 <div class="box90">
-<p>商品紹介</p></div>
+<p><%= shop.desc %></p></div>
 <br>
 <div class="left">
  &nbsp;&nbsp;

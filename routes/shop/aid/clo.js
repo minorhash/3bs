@@ -7,7 +7,6 @@ var email="minorhash@gmail.com"
 var allpid=adb.allPid(email)
 
 for(var i=0;i<allpid.length;i++){
-//console.log(allpid[i].pid)
 
 age
 .get('https://api.paidy.com/payments/'+allpid[i].pid)
@@ -33,18 +32,8 @@ console.log(res.body.order.items)
 }
 })
 
-// age
-// .post('https://api.paidy.com/payments/'+allpid[i].pid+"/close")
-// .set("Content-Type", "application/json")
-// .set("Paidy-Version", "2018-04-10")
-// .set("Authorization", "Bearer"+sec)
-// .then(res => {
-// console.log(res.body.order.items)
-// })
-    //
-}
-
-// var pay="pay_W8A3ulMAAFkAVWw0"
+}//for
+// var pay="pay_W8gpHkYAAEkAjn29"
 // age
 // .post('https://api.paidy.com/payments/'+pay+"/close")
 // .set("Content-Type", "application/json")

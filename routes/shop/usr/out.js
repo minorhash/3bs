@@ -54,4 +54,15 @@ var rcb = function(req, res) {
 };
 
 router.post('/shop/usr/out', [getEma,unSon,clrEma, chk, rcb]);
+
+var gcb = function(req, res) {
+  res.render('shop/usr/out', {
+    title: 'logged out',
+    email: email,
+    usr: usr,
+    err: myerr,
+});
+};
+router.get('/shop/usr/out', [getEma,unSon,clrEma, chk, gcb]);
+
 module.exports = router;

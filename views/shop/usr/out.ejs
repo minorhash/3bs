@@ -4,11 +4,23 @@
 
 <div class="container-fluid">
 <div class="row">
+    <!-- lang -->
+<div align="right">
+<a class="<%=(lang=="ja"?"active":"")%>" href="out?clang=ja">
+<span class="flag-icon flag-icon-jp my-big"></span>
+</a>
+
+<a class="<%=(lang=="en"?"active":"")%>" href="out?clang=en">
+<span class="flag-icon flag-icon-gb my-big"></span>
+</a>
+</div>
+    <!-- lang -->
+
 <% include ../par/2side %>
 
 <div class="col-lg-8 col-sm-12" style="color:black">
 
-<h4 class="text-center">ログアウトしました</h4>
+    <h4 class="text-center"><%= gis.out %></h4>
 <br>
 
 
@@ -16,7 +28,7 @@
 <div class="btn-group" role="group">
 
 <form method="get" action="/shop" align="center">
-<button type="submit">ショップに戻る</button>
+    <button type="submit"><%= gis.bck %></button>
 </form>
 </div>
 

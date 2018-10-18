@@ -36,7 +36,6 @@
 <div class="col-md-10 col-xs-12" style="color:black">
 <div class="row">
 
-
 <%if(typeof mer!=="undefined"){%>
 
 <%for(var i=0;i<mer.length;i++){%>
@@ -45,9 +44,9 @@
 <div class="box122">
 
 <form action="/shop/item<%=mer[i].sku%>" method="post">
-<input type="hidden" name="sku" value=<%=mer[i].sku%>>
+<input type="hidden" name="sku" value="<%=mer[i].sku%>">
 <div align="center">
-<input type="image" src=<%=mer[i].img%> height="240" alt="submit">
+<input type="image" src="../img/cd/<%= mer[i].sku %>.png" onerror="this.src='http://localhost:3023/img/cd/no.png'" height="240" alt="submit">
 </div>
 
 <div class="style27"><%=mer[i].name%><br>

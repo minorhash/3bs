@@ -1,4 +1,3 @@
-<h4><div class="label label-default">ログイン</div></h4>
 <form action="/shop" method="post">
 E-mail:<br><input id="ema" type="email" name="email"  size="15"><br>
 Password:<br><input id="pss" type="text" name="pss" value="" size="15"><br><br>
@@ -6,13 +5,12 @@ Password:<br><input id="pss" type="text" name="pss" value="" size="15"><br><br>
 </form>
 
 <br>
-アカウントをお持ちでない方<br>
-
+<%= shop.noac %>
 <form action="/shop/usr/sig" method="get">
 <button type="submit" class="btn btn-info">SIGN IN</button>
 </form><br>
-パスワードを忘れた方
 
+<%= shop.nopss %>
 <form action="/shop/usr/for" method="get">
 <button type="submit" class="btn btn-info">CLICK</button>
 </form>

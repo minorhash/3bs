@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 var adb = require('usrdb');
 
+var usr;
 var getEma = function(req, res, next) {
 var cred = require('../js/cred');
 email = cred.ema(req);

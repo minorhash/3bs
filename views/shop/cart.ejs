@@ -30,11 +30,10 @@
 <div class="col-md-9" style="color:black">
 <p class="box90"><%=shop.cart%></p>
 
-
 <div class="col-md-8" style="color:black"  >
 <br>
 <%if(usr==null){%>
-ログインしてください。<br>
+<%= shop.login %><br>
 <%}else{%>
 
 <%if(seltmp && mer.length!==0){%>
@@ -47,9 +46,7 @@
 </div>
 </div>
 
-
 <div class="col-md-8">
-
 商品名：&nbsp;  <%=mer[i].name%><br>
 商品番号: &nbsp; TMS- <%=seltmp[i].sku%><br>
 単価 &nbsp;（税抜）&nbsp; : &nbsp;<%=mer[i].pri.toLocaleString()%>円 <br>
@@ -175,9 +172,13 @@ no sum
 <div class="footer"><% include par/foot %></div>
 
 <script>
+    
+<!-- var loc= "http://localhost:3023" -->
+<!-- var loc= "https://3axe.tmsmusic.tokyo" -->
+var loc= "http://3bs.com"
 
 var xhr = new XMLHttpRequest();
-xhr.open("PUT", "https://3axe.tmsmusic.tokyo/shop/aid/aid", true);
+xhr.open("PUT", loc+"/shop/aid/aid", true);
 xhr.setRequestHeader('Content-Type', 'application/json');
 xhr.send();
 

@@ -1,29 +1,5 @@
 {
-<<<<<<< HEAD
-"WEL": "hi! welcome!",
-"CONT": "More bla",
-"prof":"================================news title",
-"TIT1":"AXELL",
-"PRO1":"axell is a girls boy band. ",
-"PRO_CAP_ALL":"left to right:aoi, cecil, sho,shion",
-"CD341":"special adventure / With You - normal TypeA",
-"newstitle":"================================news title",
-"APO":"APOLOGIES",
-"EVE":"EVENT",
-"GUE":"GUEST",
-"NEW":"NEWS",
-"REL":"RELEASE",
-"news":"================================news",
-"N0207":"2/7 hoopers show room guest",
-"N0201":"2/17 never mind the flu, AXELL is with you",
-"N0110":"1/14 harajuku called off",
-"N1226":"new year!",
-"N1121":"santa is in town",
-"N1112":"the hoopers tour fantasia",
-"N1024":"autumn",
-"N10240":"site is up",
-"news":"================================news"
-=======
+
 "===":"=== usr =================================",
 "noac":"no account",
 "nopss":"forgot password",
@@ -58,5 +34,4 @@
 "adr1":"tms music co.ltd.<br>",
 "adr2":"164-0001　3-1-31<br>",
 "adr3":"info@tmsmusic.tokyo"
->>>>>>> 5ae812ce37a5941ca9dddb13d056ba836e11b2e5
 }

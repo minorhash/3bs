@@ -5,6 +5,18 @@
 <div class="container-fluid">
 <div class="row">
 
+    <!-- lang -->
+<div align="right">
+<a class="<%=(lang=="ja"?"active":"")%>" href="history?clang=ja">
+<span class="flag-icon flag-icon-jp my-big"></span>
+</a>
+
+<a class="<%=(lang=="en"?"active":"")%>" href="history?clang=en">
+<span class="flag-icon flag-icon-gb my-big"></span>
+</a>
+</div>
+    <!-- lang -->
+
 <!--- side left ----- -->
 <div class="well col-md-2 col-sm-12" style="color:black">
 <% if(usr) {%> 
@@ -133,7 +145,7 @@ paidyでの購入はありません
 <br><br>
 
 <%}else{%>
-ログインしてください。<br>
+<%= gis.login %>
 <%}%>
 
 

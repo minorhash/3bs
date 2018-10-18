@@ -4,10 +4,20 @@
 <div class="container-fluid">
 <div class="row">
 
+<div align="right">
+<a class="<%=(lang=="ja"?"active":"")%>" href="my?clang=ja">
+<span class="flag-icon flag-icon-jp my-big"></span>
+</a>
+
+<a class="<%=(lang=="en"?"active":"")%>" href="my?clang=en">
+<span class="flag-icon flag-icon-gb my-big"></span>
+</a>
+</div>
+
 <!--- side left ----- -->
 <div class="col-md-2 col-sm-12" style="color:black">
 <% if(usr) {%> 
-<div class="label label-info"><%= usr%></div>
+<div class="label label-info"><%= usr%></div>さま
 <br><br>
 
 <% include par/out %>
@@ -20,13 +30,12 @@
 <div class="col-sm-8" style="color:black">
 
 <%if(mailusr){%>
-<div class="box90">マイページ</div>
+<div class="box90"><%= gis.my %></div>
 <br>
 
 <div class="panel panel-default">
-<div class="box120"> <h4>お名前:&nbsp;&nbsp; <%=mailusr.name%> 様</h4>
+    <div class="box120"> <h4><%= gis.name %>:&nbsp;&nbsp; <%=mailusr.name%> 様</h4>
 </div></div>
-
 
 <div class="panel panel-default">
 <div class="box120">
@@ -34,63 +43,53 @@
 </div></div>
 <div class="panel panel-default">
 <div class="box120">
-<h4><%if(mailadr){%>電話番号:<%=mailadr.phn%><br>
+    <h4><%if(mailadr){%><%= gis.tel %>:&nbsp;&nbsp;<%=mailadr.phn%><br>
 </h4></div></div>
 
 <div class="panel panel-default">
 <div class="box120">
-   <h4> 郵便番号:&nbsp;&nbsp; <%=mailadr.zip%> </h4> 
+    <h4> <%= gis.zip %>:&nbsp;&nbsp; <%=mailadr.zip%> </h4> 
 </div></div>
 
 <div class="panel panel-default">
 <div class="box120">
-<h4> 都道府県:&nbsp;&nbsp; <%=mailadr.sta%> </h4>
-</div></div>
-
-
-
-<div class="panel panel-default">
-<div class="box120">
-  <h4> 市区町村:&nbsp;&nbsp; <%=mailadr.city%> </h4>
+    <h4> <%= gis.sta %>:&nbsp;&nbsp; <%=mailadr.sta%> </h4>
 </div></div>
 
 <div class="panel panel-default">
 <div class="box120">
-   <h4>住所1 :&nbsp;&nbsp; <%=mailadr.ln1%> </h4> 
+    <h4> <%= gis.city %>:&nbsp;&nbsp; <%=mailadr.city%> </h4>
+</div></div>
+
+<div class="panel panel-default">
+<div class="box120">
+    <h4><%= gis.adr %> :&nbsp;&nbsp; <%=mailadr.ln1%> </h4> 
 </div></div>
 
 
 <div class="panel panel-default">
 <div class="box120">
-   <h4> 建物名:&nbsp;&nbsp; <%=mailadr.ln2%> </h4> 
+    <h4> <%= gis.bldg %>:&nbsp;&nbsp; <%=mailadr.ln2%> </h4> 
 </div></div>
 
 <%}else{%>
-住所が登録されていません。<br><br>
-<a href="usr/adr">登録する</a>
+<%= gis.nadr %><br><br>
+<a href="usr/adr"><%= gis.reg3 %></a>
 <%}%>
 <%}else{%>
-ログインしてください。
-
+<%= shop.login %>
 <%}%>
 <br>
 </div>
 </div>
-
-
-
-
 <div class="col-md-12" style="color:black" align="center" >
 
 <style="color:black">
 <form method="get" action="/shop">
-<button type="submit">ショップに戻る</button>
+<button type="submit"><%= shop.bck %></button>
 </form>
 
 </div>
-
-
-
 
 <div class="col-md-2 col-sm-12" style="color:black">
 </div></div>

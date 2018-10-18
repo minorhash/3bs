@@ -8,10 +8,11 @@ var idy = require("aidy");
 var taid = idy.tmpAid();
 // === glob ============================
 var email, usr, sku, uni, sum, tsum,stax
-var    num,boo
+var num,boo
 var mailtmp, mailusr;
 var mer = [],  suma = [],  skua = [],boa=[];
 var mailtmp, mailusr,mailadr
+var cla;
 var cnf= require('./son/cnf.json');
 
 var cred = require("./js/cred");
@@ -96,18 +97,22 @@ if(boo==0){
 }else{tsum=sum;}
 
 } else {    console.log("no sum");  }
-  next()};
+next()};
+
+var getHea= function(req, res, next) {
+cla=req.header("accept-language");
+    console.log(cla);
+
+next()};
+
 // === chk ===============================
 var chk = function(req, res, next) {
   console.log("=== cart ===================");
   console.log(email);
   console.log("=== mailtmp ===");
   console.log(mailtmp);
-  console.log(skua)
-  console.log(boa)
-  console.log(boo)
-  console.log(tsum)
-  next()};
+  console.log(cla);
+    next()};
 
 // === rend
 var gcb = function(req, res) {
@@ -117,7 +122,7 @@ mer: mer,    sum: sum,tsum:tsum,boo:boo,   usr: usr,    email: email
 });
 };
 
-router.get("/shop/cart", [  getEma,  getUsr, getAdr, getTmp, getSku, putMer,  putSum,chkSh,  redSum,
+router.get("/shop/cart", [  getEma,  getUsr, getAdr, getTmp, getSku, putMer,  putSum,chkSh,  redSum,getHea,
 //router.get("/shop/cart", [  getEma,  getUsr,getAdr,getTmp,
 chk,  gcb
 ]);

@@ -60,11 +60,13 @@ console.log(oite)
 for(var i=0;i<oite.length;i++){
 mes=usr+"様<br>"
 +i18.cau1+i18.cau2+i18.cau3
+    +i18.lin1
 +i18.cont+i18.pid+":"+pid+"<br>"
 +i18.title+":"+JSON.stringify(oite[i].title)+"<br>"
 +i18.sku+":"+JSON.stringify(oite[i].id)+"<br>"
 +i18.price+":"+JSON.stringify(oite[i].unit_price)+"<br>"
 +i18.unit+":"+JSON.stringify(oite[i].quantity)+"<br>"
+    +i18.lin1
 +i18.ship1+i18.ship2+i18.ship3
 +i18.ship4+i18.ship5
 +i18.misc+i18.lin1+i18.auto1+i18.auto2+i18.lin1

@@ -1,8 +1,17 @@
 <% include ../par/head %>
 <body>
 <% include ../par/nav %>
-<div class="container-fluid">
+<ln2div class="container-fluid">
 <div class="row">
+<div align="right">
+<a class="<%=(lang=="ja"?"active":"")%>" href="adr?clang=ja">
+<span class="flag-icon flag-icon-jp my-big"></span>
+</a>
+
+<a class="<%=(lang=="en"?"active":"")%>" href="adr?clang=en">
+<span class="flag-icon flag-icon-gb my-big"></span>
+</a>
+</div>
 
 <!--- ------------------------------------- side left ------->
 <div class="well col-md-2 col-sm-12" style="color:black">
@@ -21,21 +30,22 @@
 
 <br>
 <div style="text-align:center">
-paidyのご利用には住所登録が必要です。
+<%= gis.pai %>
 <br><br><br></div>
 <form id="sig" action="/shop/usr/adr_reg" method="post">
 <input type="hidden" class="form-control" name="email" value="<%=email%>">
-phone<input type="text" class="form-control" name="phn" size="10">
-zip<input type="text" class="form-control" name="zip" size="10">
-sta<input type="text" class="form-control" name="sta" size="80" >
-city<input type="text" class="form-control" name="city" size="80" >
-ln1<input type="text" class="form-control" name="ln1" size="80" >
-ln2<input type="text" class="form-control" name="ln2" size="80" >
+<%= gis.tel %><input type="text" class="form-control" name="phn" size="10">
+<%= gis.zip %><input type="text" class="form-control" name="zip" size="10">
+ <%= gis.sta %><input type="text" class="form-control" name="sta" size="80" >
+ <%= gis.city %><input type="text" class="form-control" name="city" size="80" >
+ <%= gis.adr %><input type="text" class="form-control" name="ln1" size="80" >
+ <%= gis.bldg %><input type="text" class="form-control" name="ln2" size="80" >
 
-<div style="text-align:center">登録する際は<a href="agmt" target="_blank">利用規約</a>をお読みください。
-<input type="checkbox" name="chk" value="yes"> 同意する<br>
+ <div style="text-align:center"><a href="agmt" target="_blank"><%= gis.agmt %></a>
+&nbsp;&nbsp;
+     <input type="checkbox" name="chk" value="yes">&nbsp;<%= gis.agr %><br>
 <br>
-<button type="submit" class="btn btn-default">登録</button>
+<button type="submit" class="btn btn-default"><%= gis.reg3 %></button>
 </form>
 <br>
 

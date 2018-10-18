@@ -5,6 +5,7 @@
 <div class="container-fluid">
 <div class="row">
 
+    <!-- lang -->
 <div align="right">
 <a class="<%=(lang=="ja"?"active":"")%>" href="cart?clang=ja">
 <span class="flag-icon flag-icon-jp my-big"></span>
@@ -14,6 +15,7 @@
 <span class="flag-icon flag-icon-gb my-big"></span>
 </a>
 </div>
+    <!-- lang -->
 
 <!--- ------------------------------------- side left ----- -->
 <div class="col-md-2 col-sm-12" style="color:black">
@@ -27,7 +29,7 @@
 </div>
 <!--- ------------------------------------- main ----- -->
 
-<div class="col-md-9" style="color:black">
+<div class="well col-md-9" style="color:black">
 <p class="box90"><%=shop.cart%></p>
 
 <div class="col-md-8" style="color:black"  >
@@ -47,13 +49,13 @@
 </div>
 
 <div class="col-md-8">
-商品名：&nbsp;  <%=mer[i].name%><br>
-商品番号: &nbsp; TMS- <%=seltmp[i].sku%><br>
-単価 &nbsp;（税抜）&nbsp; : &nbsp;<%=mer[i].pri.toLocaleString()%>円 <br>
-数量:<form method="post" action="/shop/cart">
+<%= shop.mnam %>：&nbsp;  <%=mer[i].name%><br>
+<%= shop.sku %>: &nbsp; TMS- <%=seltmp[i].sku%><br>
+<%= shop.price %> &nbsp;（<%= shop.ntax %>）&nbsp; : &nbsp;<%=mer[i].pri.toLocaleString()%>円 <br>
+<%= shop.unit %>:<form method="post" action="/shop/cart">
 <input id="number" type="number" name="uni" value="<%=seltmp[i].uni%>">
 <input type="hidden" name="sku" value="<%=seltmp[i].sku%>">
-<button type="submit" >再計算</button>
+<button type="submit" ><%= shop.res %></button>
 </form>
 
 <hr>
@@ -81,14 +83,14 @@
 
 <div class="box93">
 <%if(sum){%>
-<h4>&nbsp;商品小計&nbsp; (税抜)&nbsp;:  <%=sum.toLocaleString()%> &nbsp;円 </h3>
-<h4>&nbsp;消費税計&nbsp;&nbsp;:  <% var stax=Math.round(sum*0.08)%> 
+    <h4>&nbsp;<%= shop.sub %>&nbsp; (<%= shop.ntax %>)&nbsp;:  <%=sum.toLocaleString()%> &nbsp;<%= shop.yen %> </h3>
+    <h4>&nbsp;<%= shop.tax %>&nbsp;&nbsp;:  <% var stax=Math.round(sum*0.08)%> 
     <%=stax%>
-    &nbsp;円 </h4>
+    &nbsp;<%= shop.yen %> </h4>
 
 <%if(boo==0){%>
-<h4>&nbsp;送料&nbsp;:  650 &nbsp;円 </h4>
-<%}else{%><h4>&nbsp;送料&nbsp;:  0 &nbsp;円 </h4>
+<h4>&nbsp;<%= shop.ship %>&nbsp;:  650 &nbsp;<%= shop.yen %> </h4>
+<%}else{%><h4>&nbsp;<%= shop.ship %>&nbsp;:  0 &nbsp;<%= shop.yen %> </h4>
 
 <%}%>
 <%}else{%>
@@ -98,9 +100,9 @@ no sum
 
 <div class="box102">
 <%if(tsum){%> 
-<h4>&nbsp;合計金額 &nbsp; (税込）&nbsp; :
+<h4>&nbsp;<%= shop.tot %> &nbsp; (<%= shop.tax %>）&nbsp; :
 <br>
-<%=(tsum+stax).toLocaleString()%> &nbsp;円</div>
+<%=(tsum+stax).toLocaleString()%> &nbsp;<%= shop.yen %></div>
 <%}else{%>
 no sum
 <%}%>
@@ -113,15 +115,15 @@ no sum
 
 <br>
 
-<h4>【決済手段】</h4>
+<h4>【<%= shop.pay %>】</h4>
 
 <form action="/shop/paidy" method="get">
 <button type="submit" >paidy</button>
-<h4>&nbsp;（コンビニ、銀行振込決済）</form></h4>
+<h4>&nbsp;（<%= shop.conv %>）</form></h4>
 
 <form action="/shop/paypal/pay" method="get">
 <button type="submit" >PayPal</button>
-<h4>&nbsp;（クレジットカード決済）</form></h4>
+<h4>&nbsp;（<%= shop.cre %>）</form></h4>
 
 
 <br>
@@ -136,7 +138,7 @@ no sum
 
 
 <%}else{%>
-カートは空です。
+<%= shop.emp %>
 <%}%>
 <%}%>
 
@@ -148,7 +150,7 @@ no sum
 <div align="center">
 <style="color:black">
 <form method="get" action="/shop">
-<button type="submit">ショップに戻る</button>
+<button type="submit"><%= shop.bck %></button>
 </form></div>
 
 
@@ -173,9 +175,8 @@ no sum
 
 <script>
     
-<!-- var loc= "http://localhost:3023" -->
+var loc= "http://localhost:3023"
 <!-- var loc= "https://3axe.tmsmusic.tokyo" -->
-var loc= "http://3bs.com"
 
 var xhr = new XMLHttpRequest();
 xhr.open("PUT", loc+"/shop/aid/aid", true);

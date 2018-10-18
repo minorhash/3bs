@@ -15,7 +15,7 @@ var getEma = function(req, res, next) {
 var cred = require('./js/cred');
 email = cred.ema(req);
 mailusr=  adb.mailUsr(email)
-  next()};
+next()};
 
 var getUsr = function(req, res, next) {
 if(req.session.pss){

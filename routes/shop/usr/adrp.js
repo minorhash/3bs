@@ -101,5 +101,16 @@ var rcb = function(req, res) {
 };
 
 router.post('/shop/usr/adr_reg', [getEma,getUsr,defIn, emaAdr, insAdr, senEma, rcb]);
+// === get
+var gcb = function(req, res) {
+  res.render('shop/usr/adr_reg', {
+    title: 'address registered',
+    name: usr,
+    email: email,
+    chk: req.body.chk,
+    reg: reg,
+  }); //rend
+};
+router.get('/shop/usr/adr_reg', [getEma,getUsr,defIn, emaAdr, insAdr, senEma, gcb]);
 
 module.exports = router;

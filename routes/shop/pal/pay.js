@@ -108,17 +108,13 @@ else{ship=0}
         var sum=add+ship
         var ssum=sum.toString()
         console.log("=== amount===")
+        console.log(tran)
         console.log(tran.item_list.items)
-        console.log(sub)
-        console.log(itax)
-        console.log(add)
-        console.log(ship)
-        console.log(sum)
         tran.amount.details.subtotal =sub
         tran.amount.details.tax=itax
         tran.amount.details.shipping=ship
         tran.amount.total =sum
-    }
+}
     next()}
 
 // === pal ===

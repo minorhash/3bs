@@ -1,25 +1,81 @@
 {
-"WEL": "hi! welcome!",
-"CONT": "More bla",
-"prof":"================================news title",
-"TIT1":"AXELL",
-"PRO1":"axell is a girls boy band. ",
-"PRO_CAP_ALL":"left to right:aoi, cecil, sho,shion",
-"CD341":"special adventure / With You - normal TypeA",
-"newstitle":"================================news title",
-"APO":"APOLOGIES",
-"EVE":"EVENT",
-"GUE":"GUEST",
-"NEW":"NEWS",
-"REL":"RELEASE",
-"news":"================================news",
-"N0207":"2/7 hoopers show room guest",
-"N0201":"2/17 never mind the flu, AXELL is with you",
-"N0110":"1/14 harajuku called off",
-"N1226":"new year!",
-"N1121":"santa is in town",
-"N1112":"the hoopers tour fantasia",
-"N1024":"autumn",
-"N10240":"site is up",
-"news":"================================news"
+
+"GUE":"※ゲスト声優（梶裕貴／八代拓／本橋大輔／野上翔／福原綾香）",
+
+
+"TIT1": "アクセルどらま!",
+"TIT2": "「青春のSHOOTING STAR」",
+"TIT3": "「スペシャルアドベンチャー／",
+"TIT4": "With You」（通常盤TypeB）",
+"TIT5": "With You」（通常盤TypeA）",
+"TIT6": "「ラッキーホリデー」",
+"TIT7": "（通常盤）",
+"TIT8": "（ばなにゃ盤）",
+"TIT9": "（初回限定盤）",
+"TIT10": "「CALLING」（TypeB）",
+"TIT11": "「CALLING」（TypeA）",
+"TIT12": "「シアワセメロディー」（TypeB）",
+"TIT13": "「シアワセメロディー」（TypeA）",
+
+
+
+
+"RER1": "2015. 03. 18 RELEASE",
+"RER2": "2015. 12. 26 RELEASE",
+"RER3": "2016. 08. 31 RELEASE",
+"RER4": "2017. 09. 30 RELEASE",
+"RER5": "2018. 08. 29 RELEASE",
+
+
+"PRI1": "2,000円（＋税）",
+"PRI2": "1,000円（＋税）",
+"PRI3": "1,111円（＋税）",
+"PRI4": "1,666円（＋税）",
+
+
+
+"COR1": "TMS-328",
+"COR2": "TMS-334",
+"COR3": "TMS-333",
+"COR4": "TMS-341",
+"COR5": "TMS-340",
+"COR6": "TMS-339",
+"COR7": "TMS-356",
+"COR8": "TMS-355",
+"COR9": "TMS-357",
+"COR10": "TMS-358",
+
+
+"SON1":"ボイスドラマ",
+"SON2":"SHOOTING STAR",
+"SON3":"スペシャルアドベンチャー",
+"SON4":"With You",
+"SON5":"テーマトーク＆ときめきワード",
+"SON6":"スペシャルアドベンチャー（inst.）",
+"SON7":"With You（inst.）",
+"SON8":"レコーディングアフタートーク",
+"SON9":"ラッキーホリデー with ばなにゃ（CV.梶裕貴）",
+"SON10":"DO THE BEST!! ",
+"SON11":"テーマトーク＆ときめきワード",
+"SON12":"ラッキーホリデー（off vocal）",
+"SON13":"DO THE BEST!!（off vocal） ",
+"SON14":"テーマトーク＆ときめきワード",
+"SON15":"ラッキーホリデーMUSIC　VIDEO",
+"SON16":"CALLING",
+"SON17":"See you tomorrow",
+"SON18":"CALLING（Instrumental） ",
+"SON19":"See you tomorrow（Instrumental）",
+"SON20":"ラジオトーク",
+"SON21":"シアワセメロディー",
+"SON22":"夏のStarting Beart",
+"SON23":"シアワセメロディー(off vocal)",
+"SON24":"夏のStarting Beart(off vocal)",
+
+
+
+
+"ITE1":"ドラマCD",
+"ITE2":"Single"
+
+
 }

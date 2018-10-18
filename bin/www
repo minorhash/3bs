@@ -5,7 +5,6 @@
  */
 
 var app = require('../app');
-var debug = require('debug')('low-cart:server');
 var debug = require('debug')('3bs:server');
 var http = require('http');
 

@@ -1,4 +1,5 @@
 {
+"WEL": "hi! welcome!",
 "CONT": "More bla",
 "prof":"================================news title",
 "TIT1":"AXELL",
@@ -20,6 +21,9 @@
 "N1112":"the hoopers tour fantasia",
 "N1024":"autumn",
 "N10240":"site is up",
+<<<<<<< HEAD
+"news":"================================news"
+=======
 "TIT1":"AXELL",
 "PRO1":"axell is a girls boy band. ",
 "PRO_CAP_ALL":"left to right:aoi, cecil, sho,shion",
@@ -61,4 +65,5 @@
 "GUE":"GUEST",
 "NEW":"NEWS",
 "REL":"RELEASE"
+>>>>>>> 5ae812ce37a5941ca9dddb13d056ba836e11b2e5
 }

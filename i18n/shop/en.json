@@ -1,5 +1,4 @@
 {
-<<<<<<< HEAD
 "WEL": "hi! welcome!",
 "CONT": "More bla",
 "prof":"================================news title",
@@ -22,8 +21,7 @@
 "N1112":"the hoopers tour fantasia",
 "N1024":"autumn",
 "N10240":"site is up",
-"news":"================================news"
-=======
+"news":"news",
 "===":"=== usr =================================",
 "noac":"no account",
 "nopss":"forgot password",
@@ -58,5 +56,4 @@
 "adr1":"tms music co.ltd.<br>",
 "adr2":"164-0001　3-1-31<br>",
 "adr3":"info@tmsmusic.tokyo"
->>>>>>> 5ae812ce37a5941ca9dddb13d056ba836e11b2e5
 }

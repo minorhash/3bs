@@ -15,11 +15,14 @@
 
 <div style="text-align:center">
 <%if(reg){%>
-<%=reg%>
+<%= usr.reg0 %>
+<%= usr.cnf %>
 <%}else{%>
-あやまりがあります。
+<%= usr.err %>
 <br>
-<a href="/shop/usr/sig">もどる</a>
+<a href="/shop/usr/sig">
+<%= usr.bck %>
+</a>
 <%}%>
 
 </div>

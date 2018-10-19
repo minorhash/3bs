@@ -42,12 +42,13 @@ browserEnable:true,
 siteLangs: ['en', 'ja'],    textsVarName: nat[i]  })
 )}
 
-// route =================================
-var roo= require('./routes/index');
-var mail = require('./routes/mail');
+// use route =================================
+var top=["index","detail","disc","news","info","prof","sch","vid","med","mail","gal"]
 
-app.use('/', roo);
-app.use('/', mail);
+top.forEach(function(ite){
+ite= require('./routes/'+ite);
+app.use('/', ite);
+})
 
 // shop =================================
 

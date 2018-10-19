@@ -45,9 +45,9 @@ if(!email){    allpid=[],        oite=[]
 console.log("=== no all pid ==================")
 }else{
 
-        allpid= adb.allPid(email)
+allpid= adb.allPid(email)
 console.log(cnf.skl)
-        oite=[]
+oite=[]
 for (var i = 0; i < allpid.length; i++) {
 oite.push(JSON.parse(allpid[i].ite))
             console.log(allpid[i].pid)

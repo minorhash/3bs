@@ -43,6 +43,7 @@ reg="ご登録ありがとうございます。メールをご確認ください
 suc=shop.reg1+shop.reg2+
 shop.name+name+shop.pss+pss+shop.mail+email+
 shop.reg3+shop.reg4+shop.reg5+
+            ln1+
 shop.shop+shop.adr1+shop.adr2+shop.adr3;
     } catch (err) {
       console.log(err);
@@ -89,5 +90,18 @@ var rcb = function(req, res) {
 };
 
 router.post('/shop/usr/sup', [defIn, chkIn, chkUsr,senEma,chk,rcb]);
+
+// === get
+var gcb = function(req, res) {
+  res.render('shop/usr/sup', {
+    title: 'sign up',
+    name: name,
+    email: email,
+    chk: req.body.chk,
+    reg: reg,
+  }); //rend
+};
+
+router.post('/shop/usr/sup', [gcb]);
 
 module.exports = router;

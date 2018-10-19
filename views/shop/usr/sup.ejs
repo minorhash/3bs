@@ -6,22 +6,22 @@
 
 <div class="col-md-2 col-sm-12" style="color:black"></div>
 
-<div class="col-md-8  col-sm-12" style="color:black">
+<div class="well col-md-8  col-sm-12" style="color:black">
 
 <div class="col-sm-2"></div>
 <div class="col-sm-8">
 
-<br><br>
-
 <div style="text-align:center">
-<%if(reg){%>
-<%= usr.reg0 %>
-<%= usr.cnf %>
+    <%= ins %>
+<%if(ins==true){ %>
+<%= gis.reg0 %>
+<br>
+<%= gis.cnf %>
 <%}else{%>
-<%= usr.err %>
+<%= gis.err %>
 <br>
 <a href="/shop/usr/sig">
-<%= usr.bck %>
+<%= gis.bck %>
 </a>
 <%}%>
 

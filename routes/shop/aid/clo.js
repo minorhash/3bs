@@ -33,7 +33,8 @@ console.log(res.body.order.items)
 })
 
 }//for
-// var pay="pay_W8gpHkYAAEkAjn29"
+//var pay="pay_W8k-XUYAAKQAj38h"
+// var pay="pay_W8heHEYAAKQAjsHp"
 // age
 // .post('https://api.paidy.com/payments/'+pay+"/close")
 // .set("Content-Type", "application/json")

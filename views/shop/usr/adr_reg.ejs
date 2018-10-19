@@ -25,13 +25,21 @@
 <br><br>
 
 <div style="text-align:center">
-<%if(reg && reg!=="no"){%>
-<%= gis.reg4 %><br>
+<%if(ins==true){%>
+<h1><%= gis.reg4 %></h1><br>
 <%}else{%>
-<%= gis.err %><br>
+
+<h1><%= gis.err%></h1><br>
+
 <br>
 <a href="/shop/usr/adr"><%= gis.bck %></a>
 <%}%>
+
+<div align="center">
+<style="color:black">
+<form method="get" action="/shop">
+<button type="submit"><%= shop.bck %></button>
+</form></div>
 
 </div>
 

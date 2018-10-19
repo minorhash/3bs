@@ -7,20 +7,9 @@
 
 <div class="well col-lg-8 col-sm-12" style="color:black">
 
-<h1 class="text-center">キャンセルされました。</h1>
-<div class="well col-lg-6 col-sm-12" style="color:black">
-カートに<a href="/shop/cart">もどる</a>&nbsp;&nbsp;
-<br>
-<% if(typeof tok!=="undefined"){%>
-<%= tok %>
-<%} %>
+    <h1 class="text-center"><%= shop.can %></h1>
+    <a href="/shop"><%= shop.bck %></a>&nbsp;&nbsp;
 
-</div>
-
-<div class="well col-lg-6 col-sm-12" style="color:black">
-ショップに<a href="/shop">もどる</a>&nbsp;&nbsp;
-
-</div>
 </div>
 
 <% include par/2side %>

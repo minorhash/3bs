@@ -62,4 +62,5 @@ res.render('shop/item', rob);
 }; //rcb
 
 router.post('/shop/item:id', [getEma, getUsr, getSku, getSon, chk, rcb]);
+
 module.exports = router;

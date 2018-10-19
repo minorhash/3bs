@@ -6,8 +6,7 @@ var db = require('usrdb');
 var snde = require('snd-ema');
 
 var usr,name, pss, email, chk;
-var  reg,suc;
-var shop=require("../../../i18n/shop/ja.json");
+var  reg,suc,sub,ins;
 // === post ===
 
 var getEma = function(req, res, next) {
@@ -39,12 +38,16 @@ var chkIn = function(req, res, next) {
       db.insUsr(name, pss, email);
       console.log('=== ins!!! ===');
 
-reg="ご登録ありがとうございます。メールをご確認ください。";
+var shop=require("../../../i18n/shop/ja.json");
+sub=shop.reg1;
 suc=shop.reg1+shop.reg2+
 shop.name+name+shop.pss+pss+shop.mail+email+
-shop.reg3+shop.reg4+shop.reg5+
+shop.reg3+shop.reg4+shop.adr3+shop.reg5+
 shop.shop+shop.adr1+shop.adr2+shop.adr3;
+        ins=true;
     } catch (err) {
+
+        ins=false;
       console.log(err);
     }
   } else {
@@ -69,7 +72,7 @@ mailusr = db.mailUsr(email);
 var senEma = function(req, res, next) {
 var mes=name+"さま<br>"+suc;
 console.log('=== senEma =======================================');
-snde.trEma(email,reg,mes);
+snde.trEma(email,sub,mes);
 next()};
 
 var chk= function(req, res, next) {
@@ -84,10 +87,23 @@ var rcb = function(req, res) {
     name: name,
     email: email,
     chk: req.body.chk,
-    reg: reg,
+    ins: ins,
   }); //rend
 };
 
 router.post('/shop/usr/sup', [defIn, chkIn, chkUsr,senEma,chk,rcb]);
+
+// === get
+var gcb = function(req, res) {
+  res.render('shop/usr/sup', {
+    title: 'sign up',
+    name: name,
+    email: email,
+    chk: req.body.chk,
+    ins: ins,
+  }); //rend
+};
+
+router.post('/shop/usr/sup', [gcb]);
 
 module.exports = router;

@@ -11,17 +11,17 @@ var mailtmp, mailusr, mailadr;
 var mer = [],  suma = [],  sku_a = [];
 
 // === cred ===
-var getEma = function(req, res, next) {
+
 var cred = require('./js/cred');
+var getEma = function(req, res, next) {
 email = cred.ema(req);
 mailusr=  adb.mailUsr(email)
-next()};
+console.log(email)
+next()}
 
 var getUsr = function(req, res, next) {
-if(req.session.pss){
-if(req.session.pss==mailusr.pss){usr=mailusr.name}
+if(mailusr){usr=mailusr.name}
 else{usr=null;console.log("no usr")}
-}else{console.log("no pss")}
 next()}
 
 var getAdr = function(req, res, next) {
@@ -30,6 +30,7 @@ var getAdr = function(req, res, next) {
 
 var chk = function(req, res, next) {
   console.log(email);
+
 if (mailadr) {    console.log(mailadr)
   }else{    console.log("no adr")}
   console.log(mailusr);

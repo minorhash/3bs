@@ -113,6 +113,12 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
+// Handle 500
+app.use(function(err, req, res, next) {
+res.status(502);
+res.render('502', {title:'502: Internal Server Error', err: err});
+});
+
 //var ses,usr,title,sku,nam,pri,uni,sum,myerr;
 
 module.exports = app;

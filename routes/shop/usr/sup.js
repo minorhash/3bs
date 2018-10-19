@@ -6,8 +6,7 @@ var db = require('usrdb');
 var snde = require('snd-ema');
 
 var usr,name, pss, email, chk;
-var  reg,suc,sub;
-var shop=require("../../../i18n/shop/ja.json");
+var  reg,suc,sub,ins;
 // === post ===
 
 var getEma = function(req, res, next) {
@@ -39,13 +38,16 @@ var chkIn = function(req, res, next) {
       db.insUsr(name, pss, email);
       console.log('=== ins!!! ===');
 
-sub="ご登録ありがとうございます。";
+var shop=require("../../../i18n/shop/ja.json");
+sub=shop.reg1;
 suc=shop.reg1+shop.reg2+
 shop.name+name+shop.pss+pss+shop.mail+email+
-shop.reg3+shop.reg4+shop.reg5+
-            shop.ln1+
+shop.reg3+shop.reg4+shop.adr3+shop.reg5+
 shop.shop+shop.adr1+shop.adr2+shop.adr3;
+        ins=true;
     } catch (err) {
+
+        ins=false;
       console.log(err);
     }
   } else {
@@ -85,7 +87,7 @@ var rcb = function(req, res) {
     name: name,
     email: email,
     chk: req.body.chk,
-    reg: reg,
+    ins: ins,
   }); //rend
 };
 
@@ -98,7 +100,7 @@ var gcb = function(req, res) {
     name: name,
     email: email,
     chk: req.body.chk,
-    reg: reg,
+    ins: ins,
   }); //rend
 };
 

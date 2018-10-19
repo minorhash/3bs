@@ -22,7 +22,7 @@ var cred = require("./js/cred");
 var getEma = function(req, res, next) {
 email = cred.ema(req);
 mailusr=  adb.mailUsr(email)
-    console.log(email)
+console.log(email)
 next()}
 
 var getUsr = function(req, res, next) {

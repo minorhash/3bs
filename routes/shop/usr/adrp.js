@@ -8,7 +8,7 @@ var cnf= require('../son/aid.json');
 // === glob
 var usr,name, pss, email, reg, mailadr;
 var phn, zip, pref, sta, city, ln1, ln2, chk;
-var suc,reg;
+var suc,ins;
 var shop=require("../../../i18n/shop/ja.json");
 // === post ===
 
@@ -64,10 +64,10 @@ suc=shop.adr1+shop.reg2+
 shop.zip+zip+shop.sta+sta+shop.city+city+shop.str1+ln1+shop.str2+ln2+
 shop.reg4+shop.reg5+
 shop.shop+shop.adr1+shop.adr2+shop.adr3;
-        reg = shop.rega;
+        ins= true;
       } catch (err) {
         console.log(err);
-        reg = 'err';
+       ins=false;
       }
     } else {
       console.log('no input');
@@ -96,7 +96,7 @@ var rcb = function(req, res) {
     name: usr,
     email: email,
     chk: req.body.chk,
-    reg: reg,
+    ins: ins,
   }); //rend
 };
 
@@ -108,7 +108,7 @@ var gcb = function(req, res) {
     name: usr,
     email: email,
     chk: req.body.chk,
-    reg: reg,
+    ins: ins,
   }); //rend
 };
 router.get('/shop/usr/adr_reg', [getEma,getUsr,defIn, emaAdr, insAdr, senEma, gcb]);

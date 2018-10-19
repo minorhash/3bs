@@ -12,7 +12,7 @@ var email, dat, pid, str, mai, mnt, usr, sku;
 var mailusr;
 var inspid, getpid, selpid, strbuy, strite;
 var buy, ite, oite,gpid
-var mes
+var mes,sub
 var cnf=require("../son/cnf.json")
 //var sec=cnf.sec
 var sec=cnf.skl
@@ -74,15 +74,9 @@ mes=usr+"様<br>"
 +i18.adr1+i18.adr2+i18.adr3
 }
 
-//console.log(mes)
-console.log('=== senEma =======================================');
-//email="jinjasaisen@gmail.com"
-var sub=i18.buy
-snde.trEma(email,sub,mes);
+//snde.trEma(email,sub,mes);
 
 })
-
-
 //adb.insPid(email,pid,res.body.amount,JSON.stringify(res.body.order.items),utc,res.body.order.shipping,utc);
 } else {
 //var    pid = 'pay_Wz8zdysAAF0AirLI'
@@ -92,7 +86,7 @@ next()};
 var senEma = function(req, res, next) {
 console.log('=== senEma =======================================');
 //email="jinjasaisen@gmail.com"
-var sub=i18.buy
+sub=i18.buy
 snde.trEma(email,sub,mes);
 next()};
 

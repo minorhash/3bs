@@ -12,9 +12,9 @@ var sum,suma,item=[]
 var cnf=require("../son/pal.json")
 
 paypal.configure({
-mode: cnf.sand,
-client_id:cnf.tid,
-client_secret:cnf.tsc
+mode: cnf.live,
+client_id:cnf.lid,
+client_secret:cnf.lsc
 })
 
 // === db
@@ -111,8 +111,9 @@ var mes=usr+"様<br>"
     +i18.lin1
 +i18.ship1+i18.ship2+i18.ship3
 +i18.ship4+i18.ship5
-+i18.misc+i18.lin1+i18.auto1+i18.auto2+i18.lin1
-+i18.adr1+i18.adr2+i18.adr3
++i18.misc+i18.lin1+i18.auto1+i18.auto2
+        +i18.lin1
++i18.shop+i18.adr1+i18.adr2+i18.adr3
 }
 
 console.log('=== senEma =======================================');

@@ -19,8 +19,8 @@ var db = require("cardb")
 
 // post ======================================
 var getEma = function(req, res, next) {
-    var cred = require("../js/cred")
-    email = cred.ema(req)
+var cred = require("../js/cred")
+email = cred.ema(req)
 mailusr=  adb.mailUsr(email)
     next()
 } //getEma

@@ -13,7 +13,6 @@ var mailusr;
 var inspid, getpid, selpid, strbuy, strite;
 var buy, ite, oite,gpid
 var mes
-var i18=require("../../../i18n/shop/ja.json")
 var cnf=require("../son/cnf.json")
 //var sec=cnf.sec
 var sec=cnf.skl
@@ -57,8 +56,10 @@ adb.insPid(email,pid,res.body.amount,JSON.stringify(res.body.buyer),JSON.stringi
 oite=res.body.order.items
 console.log(oite)
 
+var i18=require("../../../i18n/shop/ja.json")
 for(var i=0;i<oite.length;i++){
 mes=usr+"様<br>"
++"paidy ご購入<br>"
 +i18.cau1+i18.cau2+i18.cau3
     +i18.lin1
 +i18.cont+i18.pid+":"+pid+"<br>"

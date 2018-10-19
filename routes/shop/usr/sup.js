@@ -39,10 +39,12 @@ var chkIn = function(req, res, next) {
       console.log('=== ins!!! ===');
 
 var shop=require("../../../i18n/shop/ja.json");
-sub=shop.reg1;
+sub=shop.reg0;
 suc=shop.reg1+shop.reg2+
+            shop.lin1+
 shop.name+name+shop.pss+pss+shop.mail+email+
 shop.reg3+shop.reg4+shop.adr3+shop.reg5+
+            shop.lin1+
 shop.shop+shop.adr1+shop.adr2+shop.adr3;
         ins=true;
     } catch (err) {

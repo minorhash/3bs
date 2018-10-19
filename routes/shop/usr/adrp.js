@@ -9,7 +9,6 @@ var cnf= require('../son/aid.json');
 var usr,name, pss, email, reg, mailadr;
 var phn, zip, pref, sta, city, ln1, ln2, chk;
 var suc,ins,sub;
-var shop=require("../../../i18n/shop/ja.json");
 // === post ===
 
 var getEma = function(req, res, next) {
@@ -59,27 +58,29 @@ var insAdr = function(req, res, next) {
       try {
         db.insAdr(email, phn, ln1, ln2,city,sta,zip);
 
-        console.log('=== ins!!! ===');
-suc=shop.reg1+shop.reg2+
+console.log('=== ins!!! ===');
+
+var shop=require("../../../i18n/shop/ja.json");
+sub=shop.reg0;
+suc=shop.rega+shop.reg2+
 shop.zip+zip+shop.sta+sta+shop.city+city+shop.str1+ln1+shop.str2+ln2+
 shop.reg4+shop.reg5+
 shop.shop+shop.adr1+shop.adr2+shop.adr3;
-        ins= true;
-      } catch (err) {
-        console.log(err);
-       ins=false;
-      }
-    } else {
-      console.log('no input');
-    }
-  }
+ins= true;
+} catch (err) {
+console.log(err);
+ins=false;
+}
+} else {
+console.log('no input');
+}
+}
   next();
 };
 
 var senEma = function(req, res, next) {
 var snde = require('snd-ema');
 var mes=usr+"さま<br>"+suc;
-    sub=shop.reg1;
 console.log('=== senEma =======================================');
 snde.trEma(email,sub,mes);
 next()};

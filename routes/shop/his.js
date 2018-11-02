@@ -64,6 +64,34 @@ age
 }//else
 next()}
 
+var capAut= function(req, res, next) {
+
+for (var i = 0; i < allpid.length; i++) {
+age
+.get('https://api.paidy.com/payments/'+allpid[i].pid)
+.set("Content-Type", "application/json")
+.set("Paidy-Version", "2018-04-10")
+.set("Authorization", "Bearer"+cnf.skl)
+.then(function(res){
+if(res.body.status=="authorized"){
+age
+.get('https://api.paidy.com/payments/'+allpid[i].pid)
+.set("Content-Type", "application/json")
+.set("Paidy-Version", "2018-04-10")
+.set("Authorization", "Bearer"+cnf.skl)
+.then(function(res){
+
+ console.log("captured!!!")
+})
+
+}else{
+ console.log("no auth")
+}
+
+})
+
+next()}
+
 var chkCap= function(req, res, next) {
 
 for (var i = 0; i < allpid.length; i++) {
@@ -75,7 +103,7 @@ age
 .then(function(res){
 
 //console.log(res.body)
-if(res.body.status=="authorized"){
+if(res.body.status=="closed"){
 
  if(res.body.captures.length!==0){
  console.log("cap!!!")
@@ -84,19 +112,11 @@ if(res.body.status=="authorized"){
 console.log(res.body.id)
 console.log("cancel")
 
-age
-.get('https://api.paidy.com/payments/'+allpid[i].pid+"/close")
-.set("Content-Type", "application/json")
-.set("Paidy-Version", "2018-04-10")
-.set("Authorization", "Bearer"+cnf.skl)
-.then(function(res){
+adb.delPid(allpid[i].pid)
 
- console.log("CANCELLED!!!")
-})
+}
 
- }
-
-}else{console.log("no auth")}
+}else{console.log("not closed")}
 
 })
 }//for

@@ -46,7 +46,7 @@
     "superagent": "^4.0.0-beta.5",
     "supertest": "^3.1.0",
     "supertest-session": "^3.3.0",
-    "usrdb": "^1.1.5"
+    "usrdb": "^1.1.6"
   },
   "devDependencies": {
     "eslint": "^5.7.0",

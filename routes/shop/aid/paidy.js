@@ -109,7 +109,7 @@ var putSku = function(req, res, next) {
 
 var getSon= function(req, res, next) {
 mailson=db.mailSon(email).son
-//console.log(mailson)
+console.log(mailson)
 next()};
 
 var chk = function(req, res, next) {

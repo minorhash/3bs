@@ -109,13 +109,12 @@ var putSku = function(req, res, next) {
 
 var getSon= function(req, res, next) {
 mailson=db.mailSon(email).son
-console.log(mailson)
 next()};
 
 var chk = function(req, res, next) {
 console.log('=== chk paidy ===');
 console.log(mailtmp);
-//console.log(mailson)
+console.log(mailson)
 console.log(tsum)
 next()};
 

@@ -64,6 +64,45 @@ age
 }//else
 next()}
 
+var chkCap= function(req, res, next) {
+
+for (var i = 0; i < allpid.length; i++) {
+age
+.get('https://api.paidy.com/payments/'+allpid[i].pid)
+.set("Content-Type", "application/json")
+.set("Paidy-Version", "2018-04-10")
+.set("Authorization", "Bearer"+cnf.skl)
+.then(function(res){
+
+//console.log(res.body)
+if(res.body.status=="authorized"){
+
+ if(res.body.captures.length!==0){
+ console.log("cap!!!")
+ }else{
+
+console.log(res.body.id)
+console.log("cancel")
+
+age
+.get('https://api.paidy.com/payments/'+allpid[i].pid+"/close")
+.set("Content-Type", "application/json")
+.set("Paidy-Version", "2018-04-10")
+.set("Authorization", "Bearer"+cnf.skl)
+.then(function(res){
+
+ console.log("CANCELLED!!!")
+})
+
+ }
+
+}else{console.log("no auth")}
+
+})
+}//for
+
+next()}
+
 var chk = function(req, res, next) {
 
 console.log("=== chk =====================")
@@ -80,7 +119,7 @@ allpal:allpal
 })
 }
 
-router.get("/shop/history", [getEma, getUsr, allPid, allPal,
+router.get("/shop/history", [getEma, getUsr, allPid, allPal,chkCap,
 chk, gcb])
 
 module.exports = router

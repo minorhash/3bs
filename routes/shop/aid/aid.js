@@ -8,8 +8,8 @@ var taid = aid.tmpAid();
 var cnf= require('../son/cnf.json');
 //var pub=cnf.pub
 var pub=cnf.pkl
-//var loc=cnf.loc
-var loc=cnf.axe
+var loc=cnf.loc
+//var loc=cnf.axe
 //var loc=cnf.tbs
 
 var cred = require('../js/cred');

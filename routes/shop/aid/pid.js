@@ -9,7 +9,7 @@ var snde = require('snd-ema');
 
 // === glob =============================
 var email, dat, pid, str, mai, mnt, usr, sku;
-var mailusr;
+var mailusr,mailadr;
 var inspid, getpid, selpid, strbuy, strite;
 var buy, ite, oite,gpid
 var mes,sub
@@ -29,6 +29,10 @@ if(req.session.pss){
 if(req.session.pss==mailusr.pss){usr=mailusr.name}
 else{usr=null;console.log("no usr")}
 }else{console.log("no pss")}
+next()};
+
+var getAdr= function(req, res, next) {
+
 next()};
 
 var putPid = function(req, res, next) {
@@ -63,23 +67,27 @@ adb.insPid(email,pid,res.body.amount,JSON.stringify(res.body.buyer),JSON.stringi
 
 var i18=require("../../../i18n/shop/ja.json")
 for(var i=0;i<oite.length;i++){
-mes=usr+"様<br>"
-+"paidy ご購入<br>"
-+i18.cau1+i18.cau2+i18.cau3
+mes=i18.lin1
++i18.cau1+i18.cau3
     +i18.lin1
++usr+"様<br><br>"
+    +i18.cau2+"<br>"
+    +i18.cau3+"<br>"
+    +i18.cau4+"<br>"
+
 +i18.cont+i18.pid+":"+pid+"<br>"
 +i18.title+":"+JSON.stringify(oite[i].title)+"<br>"
 +i18.sku+":"+JSON.stringify(oite[i].id)+"<br>"
 +i18.price+":"+JSON.stringify(oite[i].unit_price)+"<br>"
-+i18.unit+":"+JSON.stringify(oite[i].quantity)+"<br>"
-    +i18.lin1
++i18.unit+":"+JSON.stringify(oite[i].quantity)+"<br><br>"
+   +i18.pay +i18.aid
+
 +i18.ship1+i18.ship2+i18.ship3
 +i18.ship4+i18.ship5
 +i18.misc+i18.lin1+i18.auto1+i18.auto2+i18.lin1
 +i18.adr1+i18.adr2+i18.adr3
 }
 
-snde.trEma(email,sub,mes);
 
 })
 } else {
@@ -95,7 +103,7 @@ next()};
 
 var chk = function(req, res, next) {
   console.log('=== pid =======================================');
-//  console.log(mes);
+console.log(mailusr);
 };
 
 router.put('/shop/aid/pid', [getEma, getUsr,putPid,

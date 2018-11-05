@@ -106,15 +106,17 @@ age
 //console.log(res.body)
 if(res.body.status=="closed"){
 
- if(res.body.captures.length!==0){
- console.log("cap!!!")
- }else{
+if(res.body.captures.length!==0){
+console.log("cap!!!")
+}else{
 
 console.log(res.body.id)
 console.log("cancel")
 
-adb.delPid(allpid[i].pid)
 
+    var max=adb.getPid(res.body.id)
+    console.log(max)
+adb.delPid(res.body.id)
 }
 
 }else{console.log("not closed")}

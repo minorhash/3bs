@@ -48,18 +48,18 @@ age
 .set("Paidy-Version", "2018-04-10")
 .set("Authorization", "Bearer"+sec)
 .then(res => {
-    console.log(email)
-    console.log(pid)
-    console.log(tim)
+console.log(email)
+console.log(pid)
+console.log(tim)
 console.log(res.body.amount)
 console.log(res.body.buyer)
 
 oite=res.body.order.items
 console.log(oite)
 
-    try{
+try{
 adb.insPid(email,pid,res.body.amount,JSON.stringify(res.body.buyer),JSON.stringify(res.body.order.items),tim);
-    }catch(err){console.log(err)}
+}catch(err){console.log(err)}
 
 var i18=require("../../../i18n/shop/ja.json")
 for(var i=0;i<oite.length;i++){

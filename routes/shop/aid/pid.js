@@ -79,12 +79,10 @@ mes=usr+"様<br>"
 +i18.adr1+i18.adr2+i18.adr3
 }
 
-//snde.trEma(email,sub,mes);
+snde.trEma(email,sub,mes);
 
 })
-//adb.insPid(email,pid,res.body.amount,JSON.stringify(res.body.order.items),utc,res.body.order.shipping,utc);
 } else {
-//var    pid = 'pay_Wz8zdysAAF0AirLI'
 console.log("no pid");  }
 next()};
 

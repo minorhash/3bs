@@ -15,11 +15,12 @@ age
 .set("Authorization", "Bearer"+sec)
 .then(res => {
 if(res.body.status=="closed"){
-console.log("closed")
+console.log("already closed")
 console.log(res.body.id)
 }else{
 console.log("auth")
 console.log(res.body.id)
+    // closed
 age
 .post('https://api.paidy.com/payments/'+res.body.id+"/close")
 .set("Content-Type", "application/json")

@@ -67,6 +67,7 @@ adb.insPid(email,pid,res.body.amount,JSON.stringify(res.body.buyer),JSON.stringi
 
 var i18=require("../../../i18n/shop/ja.json")
 for(var i=0;i<oite.length;i++){
+
 mes=i18.lin1
 +i18.cau1+i18.cau3
     +i18.lin1
@@ -80,12 +81,13 @@ mes=i18.lin1
 +i18.sku+":"+JSON.stringify(oite[i].id)+"<br>"
 +i18.price+":"+JSON.stringify(oite[i].unit_price)+"<br>"
 +i18.unit+":"+JSON.stringify(oite[i].quantity)+"<br><br>"
-   +i18.pay +i18.aid
+   +i18.pay +i18.aid+"<br>"
 
 +i18.ship1+i18.ship2+i18.ship3
 +i18.ship4+i18.ship5
 +i18.misc+i18.lin1+i18.auto1+i18.auto2+i18.lin1
 +i18.adr1+i18.adr2+i18.adr3
+
 }
 
 

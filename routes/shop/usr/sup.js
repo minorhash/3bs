@@ -6,7 +6,9 @@ var db = require('usrdb');
 var snde = require('snd-ema');
 
 var usr,name, pss, email, chk;
-var  reg,suc,sub,ins;
+var  reg,suc,sub,ins=false;
+
+var shop=require("../../../i18n/shop/ja.json");
 // === post ===
 
 var getEma = function(req, res, next) {
@@ -34,11 +36,12 @@ var defIn = function(req, res, next) {
 var chkIn = function(req, res, next) {
   console.log('=== chkIn ===');
   if (name && pss && email && chk == 'yes') {
+
     try {
       db.insUsr(name, pss, email);
       console.log('=== ins!!! ===');
 
-var shop=require("../../../i18n/shop/ja.json");
+ins=true;
 sub=shop.reg0;
 suc=shop.reg1+shop.reg2+
             shop.lin1+
@@ -46,12 +49,10 @@ shop.name+name+shop.pss+pss+shop.mail+email+
 shop.reg3+shop.reg4+shop.adr3+shop.reg5+
             shop.lin1+
 shop.shop+shop.adr1+shop.adr2+shop.adr3;
-        ins=true;
-    } catch (err) {
-
+  } catch (err) {
         ins=false;
       console.log(err);
-    }
+  }
   } else {
     console.log('no input');
   }
@@ -72,9 +73,12 @@ mailusr = db.mailUsr(email);
 }; //chkUsr
 
 var senEma = function(req, res, next) {
-var mes=name+"さま<br>"+suc;
+    if(ins=true){
+var mes=name+"さま<br>"+ suc;
 console.log('=== senEma =======================================');
 snde.trEma(email,sub,mes);
+    }else{
+        console.log("false")}
 next()};
 
 var chk= function(req, res, next) {

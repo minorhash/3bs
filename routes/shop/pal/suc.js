@@ -8,13 +8,17 @@ var db = require("cardb")
 var usr,email,mailtmp,mer
 var pid,payerId,exeJson,getpal
 var sum,suma,item=[]
+var mes
 
 var cnf=require("../son/pal.json")
 
 paypal.configure({
-mode: cnf.live,
-client_id:cnf.lid,
-client_secret:cnf.lsc
+mode: cnf.sand,
+//mode: cnf.live,
+client_id:cnf.tid,
+//client_id:cnf.lid,
+client_secret:cnf.tsc
+//client_secret:cnf.lsc
 })
 
 // === db
@@ -99,8 +103,7 @@ adb.insPal(email,pay.id,ite,utc)
 var i18=require("../../../i18n/shop/ja.json")
 
 for(var i=0;i<item.length;i++){
-var mes=usr+"様<br>"
-+"paypal ご購入<br>"
+mes=usr+"様<br>"
 +i18.cau1+i18.cau2+i18.cau3
     +i18.lin1
 +i18.cont+i18.pid+":"+pid+"<br>"
@@ -108,6 +111,7 @@ var mes=usr+"様<br>"
 +i18.sku+": TMS-"+item[i].sku+"<br>"
 +i18.price+":"+parseInt(item[i].price).toLocaleString()+"円<br>"
 +i18.unit+":"+item[i].quantity+"<br>"
+   +i18.pay +i18.pal+"<br>"
     +i18.lin1
 +i18.ship1+i18.ship2+i18.ship3
 +i18.ship4+i18.ship5

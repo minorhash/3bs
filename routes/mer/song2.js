@@ -73,9 +73,9 @@ var cb = function(req, res, next) {
     song: song,
     song_a: song_a,
   };
-  res.render('mer/song_put', robj);
+  res.render('mer/song2', robj);
 };
 
-router.post('/mer/song_put', getEma, getUsr, getSku, chk, cb);
+router.post('/mer/song2', getEma, getUsr, getSku, chk, cb);
 
 module.exports = router;

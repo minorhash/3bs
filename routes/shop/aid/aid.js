@@ -83,13 +83,13 @@ var redSum = function(req, res, next) {
     }
     if (suma.length !== 0) {
       sum = suma.reduce(getSum);
-if(ind==0){tsum=sum+650;
+if(ind==0){tsum=sum*1.08+650;
 
 taid.buyer.email = email;
 taid.buyer.name1 = mailusr.name;
 taid.amount = tsum;
 }
-else{tsum=sum}
+else{tsum=sum*1.08}
     } else {
       console.log('no sum');
     }
@@ -205,6 +205,8 @@ console.log(cnf.loc)
 console.log(cnf.pkl)
 console.log(email)
 console.log(tsum)
+console.log("=== mailadr")
+console.log(mailadr)
 console.log(taid.amount)
 // console.log(taid.order.items)
 

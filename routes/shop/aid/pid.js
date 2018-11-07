@@ -11,11 +11,13 @@ var snde = require('snd-ema');
 var email, dat, pid, str, mai, mnt, usr, sku;
 var mailusr,mailadr;
 var inspid, getpid, selpid, strbuy, strite;
-var buy, ite, oite,gpid
-var mes,sub
-var cnf=require("../son/cnf.json")
-//var sec=cnf.sec
-var sec=cnf.skl
+var buy, ite, oite,gpid;
+var mes,sub;
+var sndboo=false;
+var mnt;
+var cnf=require("../son/cnf.json");
+//var sec=cnf.sec;
+var sec=cnf.skl;
 
 var cred = require('../js/cred');
 // === fun =============================
@@ -31,9 +33,16 @@ else{usr=null;console.log("no usr")}
 }else{console.log("no pss")}
 next()};
 
-var getAdr= function(req, res, next) {
+// adr
+var getAdr = function(req, res, next) {
+if(email){mailadr = adb.mailAdr(email);}
+else{console.log("no email for adr")}
 
+if (mailadr == null) {
+console.log('=== adr null ===');
+}
 next()};
+
 
 var putPid = function(req, res, next) {
 //res.redirect("pid")
@@ -56,17 +65,20 @@ console.log(email)
 console.log(pid)
 console.log(tim)
 console.log(res.body.amount)
+    mnt=res.body.amount;
 console.log(res.body.buyer)
 
 oite=res.body.order.items
 console.log(oite)
 
 try{
-adb.insPid(email,pid,res.body.amount,JSON.stringify(res.body.buyer),JSON.stringify(res.body.order.items),tim);
-}catch(err){console.log(err)}
+adb.insPid(email,pid,mnt,JSON.stringify(res.body.buyer),JSON.stringify(res.body.order.items),tim);
+sndboo=true;
+}catch(err){sndboo=false;
+console.log(err);}
 
+if(sndboo=true){
 var i18=require("../../../i18n/shop/ja.json")
-for(var i=0;i<oite.length;i++){
 
 mes=i18.lin1
 +i18.cau1+i18.cau3
@@ -76,12 +88,22 @@ mes=i18.lin1
     +i18.cau3+"<br>"
     +i18.cau4+"<br>"
 
+for(var i=0;i<oite.length;i++){
 +i18.cont+i18.pid+":"+pid+"<br>"
 +i18.title+":"+JSON.stringify(oite[i].title)+"<br>"
 +i18.sku+":"+JSON.stringify(oite[i].id)+"<br>"
 +i18.price+":"+JSON.stringify(oite[i].unit_price)+"<br>"
 +i18.unit+":"+JSON.stringify(oite[i].quantity)+"<br><br>"
+}
    +i18.pay +i18.aid+"<br>"
+   +i18.sub+mnt+"<br>"
+   +i18.tax+mnt*0.08+"<br>"
+   +i18.tot+mnt*1.08+"<br>"
+
++i18.send+"<br>"
++i18.zip+mailadr.zip+"<br>"
++i18.senadr+mailadr.sta+"&nbsp;"+mailadr.city+"&nbsp;"+mailadr.ln1+"&nbsp;"+mailadr.ln2+"<br>"
++i18.sentel+mailadr.tel+"<br>"
 
 +i18.ship1+i18.ship2+i18.ship3
 +i18.ship4+i18.ship5
@@ -99,13 +121,17 @@ next()};
 var senEma = function(req, res, next) {
 console.log('=== senEma =======================================');
 //email="jinjasaisen@gmail.com"
+    if(sndboo=true){
 sub=i18.buy
 snde.trEma(email,sub,mes);
+    }else{console.log("cant send email");}
 next()};
 
 var chk = function(req, res, next) {
-  console.log('=== pid =======================================');
+console.log('=== pid =======================================');
 console.log(mailusr);
+console.log("=== adr");
+console.log(mailadr);
 };
 
 router.put('/shop/aid/pid', [getEma, getUsr,putPid,

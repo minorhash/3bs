@@ -5,7 +5,7 @@
 
 <div class="row">
 
-<!--- side left ------->
+<!--- side left ----- -->
 <div class="well col-md-2 col-sm-12" style="color:black">
 <% if(usr!==null) {%> 
 <div class="label label-info">welcome:<%= usr%></div>
@@ -15,7 +15,7 @@
 <% include par/login %>
 <%} %>
 </div>
-<!--- side left ------->
+<!--- side left ----- -->
 
 <div class="well col-md-8 col-sm-12" style="color:black">
 <h3 class="text-center">
@@ -28,7 +28,7 @@ no title
 <br>
 <%if(usr!==null){%>
 <%if(typeof mer!=="undefined"){%>
-<form action="/mer/song_put" method="post">
+<form action="/mer/song2" method="post">
 品番:&nbsp;<select name="sku" >
 <%for(var i=0;i<mer.length;i++){%>
 <option value="<%=mer[i].sku%>"><%=mer[i].sku%></option>

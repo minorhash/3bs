@@ -54,7 +54,7 @@ var putMer = function(req, res, next) {
     db.relMer(rel, sku);
     db.catMer(cat, sku);
     db.desMer(des, sku);
-    db.sonMer(song, sku);
+    db.songMer(song, sku);
   } catch (err) {
     console.log(err)}
 

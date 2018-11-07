@@ -114,7 +114,6 @@ next()};
 var chk = function(req, res, next) {
 console.log('=== chk paidy ===');
 console.log(mailtmp);
-console.log(mailson)
 console.log(tsum)
 next()};
 
@@ -122,12 +121,13 @@ next()};
 
 var pcb = function(req, res, next) {
 res.render('shop/paidy', {
-seltmp: mailtmp,    sum: sum,    tsum: tsum,    mer: mer,email: email,mailson:mailson,usr: usr
+seltmp: mailtmp,    sum: sum,    tsum: tsum,    mer: mer,email: email,
+    usr: usr
 }); //rend
 };
 
 router.get('/shop/paidy',
-[  getEma,  getUsr,  getTmp,  getAdr,  putSum,  putMer,chkSh,redSum,  putSku,  getSon,
+[  getEma,  getUsr,  getTmp,  getAdr,  putSum,  putMer,chkSh,redSum,  putSku,
     chk,  pcb,]);
 //router.post('/shop/paidy', [getEma,getUsr,getTmp,getAdr,putSum,redSum,putSku,chk,pcb])
 

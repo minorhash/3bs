@@ -7,32 +7,46 @@ var adb = require('usrdb');
 var allmer = db.allMer();
 
 var email, allmer, usr, bool, myerr, mailusr;
-// === get
-var getEma = function(req, res, next) {
-  var cred = require('./js/cred');
-  email = cred.ema(req);
-  next();
-}; //getEma
+// === login ============================
+var cred = require("./js/cred");
 
-var getUsr = function(req, res, next) {
-  var cred = require('./js/cred');
-  usr = cred.usr(email);
+// === get
+
+var getEma = function(req, res, next) {
+  email = cred.ema(req);
+  mailusr = adb.mailUsr(email);
   next();
 };
+
+var getUsr = function(req, res, next) {
+  if (mailusr) {
+    usr = mailusr.name;
+    console.log( usr);
+  } else {
+    usr = null;
+    console.log("no usr");
+  }
+  next();
+};
+
 
 var chk = function(req, res, next) {
   console.log(email);
-  console.log(usr);
+  console.log("=== usr");
+  console.log(allmer);
   next();
 };
 
-var robj = {
-    title: 'merch admin',
-    usr: usr,
-    mer: allmer,
-  };
+
 var cb = function(req, res, next) {
-  res.render('mer', robj);
+var robj = {
+    title: 'get merch',
+    usr:usr,
+    email:email,
+    mer: allmer
+  };
+
+  res.render('mer',robj);
 };
 
 router.get('/mer', getEma, getUsr, chk, cb);
@@ -56,20 +70,21 @@ var getAdm = function(req, res, next) {
   if (email) {
     try {
       mailusr = adb.mailUsr(email);
+     usr = mailusr.name;
     } catch (err) {
-      myerr = err;
       console.log(err);
     }
-    if (mailusr && email == 'd1nesh@mail.com' && pss == 'chugta1') {
-      usr = mailusr.name;
-    } else {
-      console.log('no adm');
-    }
+    // if (mailusr && email == 'd1nesh@mail.com' && pss == 'chugta1') {
+    //   usr = mailusr.name;
+    // } else {
+    //   console.log('no adm');
+    // }
+
   } else {
     console.log('no email');
   }
   next();
-}; //getUsr
+}; //getAdm
 
 var chk = function(req, res, next) {
   console.log(email);
@@ -79,10 +94,10 @@ var chk = function(req, res, next) {
 };
 
 var rcb = function(req, res) {
-  var rob = { usr: usr, mer: allmer, err: myerr };
+  var rob = { usr: usr, title:"post usr", mer: allmer};
   res.render('mer', rob);
 };
 
-router.post('/mer', [getCok, getAdm, chk, rcb]);
+router.post('/mer', [getCok,getAdm, chk, rcb]);
 
 module.exports = router;

@@ -18,8 +18,8 @@
 <img src="../../img/cd/<%=sku%>.png"><br>
 sku:<%=sku%><br>
 
-song numbers:<%=song%>
-<form action="/mer/song_fin" method="post" >
+追加曲数:<%=song%>
+<form action="/mer/song3" method="post" >
 
 <input type="hidden" name="sku" value="<%=sku%>" ><br>
 <%for(var i=0;i<song_a.length;i++){%>
@@ -29,7 +29,7 @@ song numbers:<%=song%>
 <input type="submit" value="submit">
 </form>
 <%}%>
-をついか。
+を追加。
 </div><!-- /center-->
 
 </div><!-- /col8-->

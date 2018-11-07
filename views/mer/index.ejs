@@ -10,35 +10,38 @@
 <div class="container-fluid">
 <div class="row">
 
-<!-- side left ----- -->
+<!--- side left ----- -->
 <div class="well col-md-2 col-sm-12" style="color:black">
-<% if(usr) {%> 
+<% if(usr!==null) {%> 
 <div class="label label-info">welcome:<%= usr%></div>
 <br><br>
 <% include par/out %>
 <%}else{ %>
 <% include par/login %>
 <%} %>
+
 </div>
-<!-- side left ----- -->
+<!--- side left ----- -->
 
 <div class="col-sm-8" style="background-color:white;color:black">
-
 <%if(typeof mer!=="undefined"){%>
 
 <%for(var i=0;i<mer.length;i++){%>
 
 <div id="cd-col" class="well col-md-4 col-xs-12" style="height:100%" >
 
+<!-- <img src="../<%=mer[i].img%>" height="240" alt="img"> -->
+
 <form action="/mer/item<%=mer[i].sku%>" method="post">
-<input type="hidden" name="sku" value=<%=mer[i].sku%>>
+<input type="hidden" name="sku" value="<%=mer[i].sku%>">
 <div align="center">
 <input type="image" src="../<%=mer[i].img%>" height="240" alt="img">
-</div>
 <div class="style27"><%=mer[i].name%><br>
-TMS-<%=mer[i].sku%></div>
-
+TMS-<%=mer[i].sku%>
+</div>
+</div>
 </form>
+
 </div>
 <%}%>
 <%}%>

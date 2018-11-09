@@ -107,8 +107,7 @@ next()};
 
 // === chk ===============================
 var chk = function(req, res, next) {
-  console.log("=== cart ===================");
-  console.log(email);
+  console.log("=== get cart ===================");
   console.log("=== mailtmp ===");
   console.log(mailtmp);
   console.log(cla);
@@ -147,8 +146,6 @@ var insUpd = function(req, res, next) {
     if (ind == -1) {
       db.insTmp(email, sku, uni);
       var hea = res.headersSent;
-      console.log("=== head ==================");
-      console.log(hea);
       res.redirect("cart");
     } else {
 mailtmp=[]
@@ -171,7 +168,6 @@ var clrEma = function(req, res, next) {
     //    sku=null
     mailtmp = null;
     //console.log(mailtmp)
-    console.log("=== CLR! ==================");
     //res.redirect("cart")
   } else {    console.log("no clr");  }
   next()};
@@ -182,6 +178,14 @@ var putAid = function(req, res, next) {
   router.put("/shop/aid/aid");
   next()};
 
+// === chk ===============================
+var pchk = function(req, res, next) {
+  console.log("=== post cart ===================");
+  console.log(email);
+  console.log("=== mailtmp ===");
+  console.log(mailtmp);
+  console.log(cla);
+    next()};
 
 var pcb = function(req, res, next) {
   res.render("shop/cart", {
@@ -193,7 +197,7 @@ var pcb = function(req, res, next) {
 
 router.post("/shop/cart", [
   getEma,  getUsr,  getTmp,  getIte,  getSku, chkSh, insUpd,  clrEma,
-  chk,  pcb
+  pchk,  pcb
 ]);
 
 module.exports = router;

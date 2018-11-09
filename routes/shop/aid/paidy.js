@@ -87,8 +87,8 @@ var redSum = function(req, res, next) {
     }
     if (suma.length !== 0) {
       sum = suma.reduce(getSum);
-if(boo==0){tsum=sum+650}
-else{tsum=sum}
+if(boo==0){tsum=Math.round(sum*1.08)+650}
+else{tsum=Math.round(sum*1.08)}
     } else {
       console.log('no sum');
     }
@@ -127,7 +127,7 @@ seltmp: mailtmp,    sum: sum,    tsum: tsum,    mer: mer,email: email,
 };
 
 router.get('/shop/paidy',
-[  getEma,  getUsr,  getTmp,  getAdr,  putSum,  putMer,chkSh,redSum,  putSku,
+[  getEma,  getUsr,  getTmp,  getAdr,  putSum,  putMer,chkSh,redSum,  putSku,getSon,
     chk,  pcb,]);
 //router.post('/shop/paidy', [getEma,getUsr,getTmp,getAdr,putSum,redSum,putSku,chk,pcb])
 

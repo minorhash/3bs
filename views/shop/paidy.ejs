@@ -39,7 +39,9 @@
 <div class="pa2">
 商品名：&nbsp;  <%=mer[i].name%><br>
 商品番号: &nbsp; TMS-<%=seltmp[i].sku%><br>
-単価（税込）: &nbsp;<%=mer[i].pri.toLocaleString()%>円 <br>
+単価（税込）: &nbsp;<%=mer[i].pri.toLocaleString()%>  円<br>
+税:<%= Math.round(mer[i].pri*0.08).toLocaleString() %> 円<br>
+送料：650 円<br>
 注文数:&nbsp; <%=seltmp[i].uni%><br>
 
 <hr>
@@ -67,12 +69,12 @@
 
 <div class="pabox">
 <%if(sum){%>
-<%=sum.toLocaleString()%> 円
+<%= Math.round(sum*1.08).toLocaleString()%> 円
 
 <%}%></div>
 
 
-合計(税込）：
+合計：
 <%if(tsum){%>
 <%=tsum.toLocaleString()%> 円
 <%}%>

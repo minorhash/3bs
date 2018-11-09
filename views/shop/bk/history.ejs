@@ -5,8 +5,20 @@
 <div class="container-fluid">
 <div class="row">
 
+    <!-- lang -->
+<div align="right">
+<a class="<%=(lang=="ja"?"active":"")%>" href="history?clang=ja">
+<span class="flag-icon flag-icon-jp my-big"></span>
+</a>
+
+<a class="<%=(lang=="en"?"active":"")%>" href="history?clang=en">
+<span class="flag-icon flag-icon-gb my-big"></span>
+</a>
+</div>
+    <!-- lang -->
+
 <!--- side left ----- -->
-<div class="well col-md-2 col-sm-12" style="color:black">
+<div class="col-md-2 col-sm-12" style="color:black">
 <% if(usr) {%> 
 <div class="label label-info"><%= usr%>&nbsp;さん </div>
 <br><br>
@@ -19,15 +31,10 @@
 
 <!--- main ----- -->
 
-<div class="col-lg-8 col-sm-12" style="color:black">
+<div class="well col-lg-8 col-sm-12" style="color:black">
+<div class="box90"><%= shop.his %></div><br>
+
 <%if(usr){%>
-
-<div class="box90">購入履歴詳細</div><br>
-<%}else{%>
-ログインしてください。<br>
-
-<%}%>
-
 <!--- paypal----- -->
 
 
@@ -40,104 +47,113 @@
 <br>
 
 <font color="#0000ff">
-<u><b>&nbsp;&nbsp;&nbsp;&nbsp;購入日時：
+    <u><b>&nbsp;&nbsp;&nbsp;&nbsp;<%= shop.dat %>:
 <%=allpal[i].date%></b></u><br>
 </font>
 
-<u>&nbsp;&nbsp;&nbsp;&nbsp;注文番号：
+<u>&nbsp;&nbsp;&nbsp;&nbsp;<%= shop.pid %>:
 <%=allpal[i].tok%></u><br>
 <br>
+
+<%for(var j=0;j<opal[i].length;j++){%>
 
 <div class="col-md-3">
 <div valign="top" align="center">
 
-<img src="../img/cd/<%=opal[i][0].sku%>.png"><br>
+<img src="../img/cd/<%=opal[i][j].sku%>.png"><br>
 </div>
 </div>
 
 <div class="col-md-9">
 <div class="note">
 
-商品タイトル：<%= opal[i][0].name%><br>
-品番：TMS-&nbsp;<%= opal[i][0].sku%><br>
-商品単価：&nbsp;<%= (parseInt(opal[i][0].price)).toLocaleString()%>円<br>
-税：&nbsp;<%= opal[i][0].tax%><br>
-数量：<%= opal[i][0].quantity%><br>
+<%= shop.title %>：<%= opal[i][j].name%><br>
+    <%= shop.sku %>：TMS-&nbsp;<%= opal[i][j].sku%><br>
+    <%= shop.pri %>：&nbsp;<%= (parseInt(opal[i][j].price)).toLocaleString()%>
+<%= shop.yen %><br>
+    <%= shop.tax %>：&nbsp;<%= opal[i][j].tax%>
+<%= shop.yen %>
+    <br>
+    <%= shop.unit %>：<%= opal[i][j].quantity%><br>
 
 <% if((opal[i][0].price).length!==3){ %>
-
-送料：650円<br>
+<%= shop.ship %>：650
+<%= shop.yen %><br>
 <%}else{%>
-送料：0円<br>
-
+<%= shop.ship %>：0
+<%= shop.yen %><br>
 <%}%>
-合計金額：<%= ((parseInt(opal[i][0].price)+parseInt(opal[i][0].tax))*parseInt(opal[i][0].quantity)).toLocaleString()%>
-円
+<%= shop.unit %>：<%= ((parseInt(opal[i][j].price)+parseInt(opal[i][j].tax))*parseInt(opal[i][j].quantity)).toLocaleString()%>
+<%= shop.yen %>
 
 <div class="border-bottom"></div>
 </div>
 </div>
 <br><br>
 
-<%}%>
+<%}%><!-- for -->
+<%}%> <!-- for -->
 <%}else{%>
-no allpal
+<%= shop.npal %>
 <%}%>
 
-<br>
-<br>
+<br><br><br><br>
 
 
 <%if(allpid.length!==0){%>
 &nbsp;&nbsp;&nbsp;&nbsp;
 <h4><span class="label label-danger">paidy</span></h4>
+
+<br>
 <%for(var i=0;i<allpid.length;i++){%>
-
-
 <font color="red">
-<b><u>&nbsp;&nbsp;&nbsp;&nbsp;購入日時：
+
+<u><b>&nbsp;&nbsp;&nbsp;&nbsp;<%= shop.dat %>:
 <%=allpid[i].date%></u></b><br>
 </font>
 
-<u>&nbsp;&nbsp;&nbsp;&nbsp;注文番号：
+<u>&nbsp;&nbsp;&nbsp;&nbsp;<%= shop.pid %>:
 <%=allpid[i].pid%></u><br>
-<br>
 
-<%for (var j=0;j<oite[i].length;j++){%>
+<%for(var j=0;j<oite[i].length;j++){%>
 <div class="col-md-3">
 <div valign="top" align="center">
-<img src="../img/cd/<%=oite[i][j].id%>.png" width="150cm" height="150mm">
+<img src="../img/cd/<%=oite[i][j].id%>.png"><br>
 </div>
 </div>
 
 <div class="col-md-9">
 <div class="note">
-商品タイトル：<%=oite[i][j].title%><br>
-品番：TMS-&nbsp;<%=oite[i][j].id%>&nbsp; <br>
-商品単価：&nbsp;<%=oite[i][j].unit_price%>円&nbsp; (税抜）<br>
-数量：<%=oite[i][0].quantity%><br>
-<%if(allpid[i].ship==0){%>
-送料：<%=allpid[i].ship%>円<br>
+<%= shop.title %>:&nbsp;<%= oite[i][j].title%><br>
+<%= shop.sku %>:TMS-<%=oite[i][j].id%>&nbsp; <br>
+<%= shop.pri %>:&nbsp;<%=oite[i][j].unit_price.toLocaleString() %><%= shop.yen %>&nbsp;(<%= shop.ntax %>)<br>
+<%= shop.tax %>:&nbsp;<%= Math.round(parseInt(oite[i][j].unit_price)*0.08)%><br>
+<%= shop.unit %>:&nbsp;<%= oite[i][j].quantity%><br>
+<% if((oite[i][j].unit_price).toString().length!==3){ %>
+<%= shop.ship %>:650&nbsp;<%= shop.yen %><br>
 <%}else{%>
-送料：650円<br>
+<%= shop.ship %>:0&nbsp;<%= shop.yen %><br>
 <%}%>
-合計金額：<%=allpid[i].mnt.toLocaleString()%>円
+<%= shop.tot %>
+<%= Math.round(parseInt(oite[i][j].unit_price)*1.08*parseInt(oite[i][j].quantity)).toLocaleString() %>
+<%= shop.yen %>
+<br>
 <div class="border-bottom"></div>
 </div>
 </div>
-<%}%>
-
-<%}%>
+<br><br>
+<%}%><!-- for -->
+<%}%><!-- for -->
 <%}else{%>
+<%= shop.naid %>
+<%}%>
+<br><br>
+
+<%}else{%>
+<%= gis.login %>
 <%}%>
 
 
-<br>
-
-</div></div>
-
-
-</div>
 </div>
 
 <% include par/2side %>
@@ -150,7 +166,7 @@ no allpal
 
 <style="color:black">
 <form method="get" action="/shop">
-<button type="submit">ショップに戻る</button>
+<button type="submit"><%= shop.bck %></button>
 </form>
 
 </div>

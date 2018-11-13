@@ -22,7 +22,7 @@ var cred = require("./js/cred");
 var getEma = function(req, res, next) {
 email = cred.ema(req);
 mailusr=  adb.mailUsr(email)
-console.log(email)
+console.log("== cart get ema")
 next()}
 
 var getUsr = function(req, res, next) {
@@ -78,40 +78,37 @@ var chkSh = function(req, res, next) {
     boa.push(pat.test(skua[i]));
     }
 
-console.log(boa.indexOf(true))
 if(boa.indexOf(true)==-1){
-boo=1
-}else{boo=0}
+boo=false
+}else{boo=true}
 
 next()};
 
 var redSum = function(req, res, next) {
-  sum = null, tsum = null
-  function getSum(total, num) {    return total + num;  }
-  if (suma.length !== 0) {
-    sum = suma.reduce(getSum);
+sum = null, tsum = null
+function getSum(total, num) {    return total + num;  }
+if (suma.length !== 0) {
+sum = suma.reduce(getSum);
 
-if(boo==0){
-    console.log(boo)
-    tsum = sum + 650;
+if(boo==true){
+tsum = sum + 650;
 }else{tsum=sum;}
 
-} else {    console.log("no sum");  }
+}else {console.log("no sum");}
 next()};
 
 var getHea= function(req, res, next) {
 cla=req.header("accept-language");
-    console.log(cla);
 
 next()};
 
 // === chk ===============================
 var chk = function(req, res, next) {
-  console.log("=== get cart ===================");
+  console.log("=== get CART ===================");
+  console.log(email);
   console.log("=== mailtmp ===");
   console.log(mailtmp);
-  console.log(cla);
-    next()};
+  next()};
 
 // === rend
 var gcb = function(req, res) {
@@ -121,7 +118,7 @@ mer: mer,    sum: sum,tsum:tsum,boo:boo,   usr: usr,    email: email
 });
 };
 
-router.get("/shop/cart", [  getEma,  getUsr, getAdr, getTmp, getSku, putMer,  putSum,chkSh,  redSum,getHea,
+router.get("/shop/cart", [  getEma,  getUsr, getAdr, getTmp, getSku, putMer,  putSum,chkSh,  redSum,
 //router.get("/shop/cart", [  getEma,  getUsr,getAdr,getTmp,
 chk,  gcb
 ]);
@@ -145,7 +142,10 @@ var insUpd = function(req, res, next) {
     console.log(ind);
     if (ind == -1) {
       db.insTmp(email, sku, uni);
+<<<<<<< HEAD
       var hea = res.headersSent;
+=======
+>>>>>>> adr
       res.redirect("cart");
     } else {
 mailtmp=[]

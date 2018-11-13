@@ -9,6 +9,12 @@ var email="minorhash@gmail.com"
 
 var allpid=adb.allPid(email)
 console.log(allpid)
+var sec=cnf.sec
+//var sec=cnf.skl
+//var email="minorhash@gmail.com"
+var email="successful.payment@paidy.com"
+var allpid=adb.allPid(email)
+//console.log(allpid)
 
 for(var i=0;i<allpid.length;i++){
 

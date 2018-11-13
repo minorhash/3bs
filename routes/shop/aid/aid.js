@@ -86,10 +86,17 @@ taid.buyer.email = email;
 taid.buyer.name1 = mailusr.name;
 taid.amount = tsum;
 }
+<<<<<<< HEAD
 else{tsum=Math.round(sum*1.08)}
 } else {
 console.log('no sum');
 }
+=======
+else{tsum=sum}
+    } else {
+      console.log('NO sum');
+    }
+>>>>>>> adr
 
   next()};
 
@@ -102,7 +109,7 @@ var getTai = function(req, res, next) {
   if (mailadr) {
     taid.buyer.phone = mailadr.phn;
   } else {
-    console.log('=== mailadr null ===');
+    console.log('=== NO mailadr ===');
   }
 
   // === buyer_data ===
@@ -178,14 +185,11 @@ son=__dirname+"/../../../public/son/"+email+".js"
 
 fs.unlink(son,function(err) {
 if (err) {return console.log(err);    }
-else {console.log('no err');    }
-console.log('unlink!');
 });
 
 fs.writeFile(son, sson, function(err) {
 if (err) {return console.log(err);    }
-else {console.log('no err');    }
-console.log('The file was saved!');
+console.log('=== SAVED!');
 });
 
 }else{console.log("no mailadr")}
@@ -193,7 +197,12 @@ console.log('The file was saved!');
 next()};
 
 var chk = function(req, res, next) {
+<<<<<<< HEAD
 console.log('=== aid chk ====================================');
+=======
+console.log('=== put AID ====================================');
+console.log(ind)
+>>>>>>> adr
 console.log(loc)
 console.log(pub)
 console.log(email)

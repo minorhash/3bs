@@ -19,6 +19,7 @@ var sndboo=false;
 var cnf=require("../son/cnf.json");
 var sec=cnf.sec;
 //var sec=cnf.skl;
+var i18=require("../../../i18n/shop/ja.json")
 
 var cred = require('../js/cred');
 // === fun =============================
@@ -26,6 +27,7 @@ var getEma = function(req, res, next) {
 //email = cred.ema(req);
 email="jinjasaisen@gmail.com"
 mailusr=  adb.mailUsr(email)
+    console.log(mailusr)
 next()}; //getEma
 
 var getUsr = function(req, res, next) {
@@ -70,9 +72,11 @@ console.log(tim)
 console.log(res.body.amount)
     mnt=res.body.amount;
 console.log(res.body.buyer)
+try{
+adb.insPid(email,pid,res.body.amount,JSON.stringify(res.body.buyer),JSON.stringify(res.body.order.items),tim);
+}catch(err){console.log(err)}
 
 oite=res.body.order.items
-console.log(oite)
 
 try{
 adb.insPid(email,pid,mnt,JSON.stringify(res.body.buyer),JSON.stringify(res.body.order.items),tim);
@@ -120,7 +124,9 @@ if(sndboo==true){
 // }
 
 
-})
+})//then
+
+//adb.insPid(email,pid,res.body.amount,JSON.stringify(res.body.order.items),utc,res.body.order.shipping,utc);
 } else {
 console.log("no pid");  }
 next()};
@@ -131,6 +137,10 @@ console.log('=== senEma =======================================');
     if(sndboo=true){
 sub="subject";
 //sub=i18.buy
+email="jinjasaisen@gmail.com"
+console.log(email);
+var sub=i18.buy
+mes="mes"
 snde.trEma(email,sub,mes);
     }else{console.log("cant send email");}
 next()};
@@ -140,6 +150,7 @@ console.log('=== PID =======================================');
 console.log(mailusr);
 console.log("=== adr");
 console.log(mailadr);
+
 };
 
 router.put('/shop/aid/pid', [getEma, getUsr,getAdr,putPid,senEma,

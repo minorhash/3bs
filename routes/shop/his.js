@@ -23,10 +23,13 @@ next()}
 var getUsr = function(req, res, next) {
 if(mailusr){usr=mailusr.name}
 else{usr=null;console.log("no usr")}
+
+console.log("usr")
 next()};
 
 // === pal
 var allPal= function(req, res, next) {
+console.log("allpal")
     opal=[]
 try{
     allpal=adb.allPal(email)
@@ -35,7 +38,7 @@ try{
     console.log(allpal.length)
 }catch(err){console.log(err)}
 
-if(!allpal.length==0){
+if(allpal.length!==0){
 for(var i=0;i<allpal.length;i++){
     allpal[i]
 //opal.push(JSON.parse(allpal[i].ite))
@@ -53,7 +56,6 @@ console.log("=== no all pid ==================")
 }else{
 
 allpid= adb.allPid(email)
-console.log(sec)
 oite=[]
 for (var i = 0; i < allpid.length; i++) {
 oite.push(JSON.parse(allpid[i].ite))
@@ -78,14 +80,14 @@ age
 .get('https://api.paidy.com/payments/'+allpid[i].pid)
 .set("Content-Type", "application/json")
 .set("Paidy-Version", "2018-04-10")
-.set("Authorization", "Bearer"+cnf.skl)
+.set("Authorization", "Bearer"+sec)
 .then(function(res){
 if(res.body.status=="authorized"){
 age
 .get('https://api.paidy.com/payments/'+allpid[i].pid)
 .set("Content-Type", "application/json")
 .set("Paidy-Version", "2018-04-10")
-.set("Authorization", "Bearer"+cnf.skl)
+.set("Authorization", "Bearer"+sec)
 .then(function(res){
 
  console.log("captured!!!")
@@ -107,7 +109,7 @@ age
 .get('https://api.paidy.com/payments/'+allpid[i].pid)
 .set("Content-Type", "application/json")
 .set("Paidy-Version", "2018-04-10")
-.set("Authorization", "Bearer"+cnf.skl)
+.set("Authorization", "Bearer"+sec)
 .then(function(res){
 
 //console.log(res.body)
@@ -137,8 +139,11 @@ var chk = function(req, res, next) {
 
 console.log("=== chk =====================")
 console.log(opal)
+console.log("=== sec =====================")
+console.log(sec)
 console.log("=== oite =====")
 console.log(oite)
+console.log(sec)
 next()}
 
 var gcb = function(req, res) {

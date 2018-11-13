@@ -26,6 +26,10 @@ console.log(res.body.id)
 }
 }else{console.log("no allpid")}
 
+<<<<<<< HEAD
+=======
+// single
+>>>>>>> c21b94b75f3de31abc4cfbd4a89eaa8140b5dfef
 // var pay="pay_W9wFI1kAAFsAjO1O"
 
 // age

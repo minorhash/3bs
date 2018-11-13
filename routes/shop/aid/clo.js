@@ -8,7 +8,20 @@ var email="successful.payment@paidy.com"
 //var email="minorhash@gmail.com"
 
 // === pid ===
+
+var cnf=require("../son/cnf.json")
+//var sec=cnf.sec
+var sec=cnf.skl
+var email="minorhash@gmail.com"
+//var email="successful.payment@paidy.com"
+
 var allpid=adb.allPid(email)
+var sec=cnf.sec
+//var sec=cnf.skl
+//var email="minorhash@gmail.com"
+var email="successful.payment@paidy.com"
+var allpid=adb.allPid(email)
+//console.log(allpid)
 
 for(var i=0;i<allpid.length;i++){
 
@@ -25,6 +38,7 @@ console.log(res.body.id)
 console.log("auth")
 console.log(res.body.id)
     // closed
+
 age
 .post('https://api.paidy.com/payments/'+res.body.id+"/close")
 .set("Content-Type", "application/json")
@@ -34,14 +48,15 @@ age
 console.log(res.body.order.items)
 })
 
-}
-})
+}//else
+
+})//then
 
 }//for
-//var pay="pay_W8k-XUYAAKQAj38h"
-// var pay="pay_W8heHEYAAKQAjsHp"
+
+// var pid="pay_W-OsHlUAAFkAfXVd"
 // age
-// .post('https://api.paidy.com/payments/'+pay+"/close")
+// .get('https://api.paidy.com/payments/'+pid)
 // .set("Content-Type", "application/json")
 // .set("Paidy-Version", "2018-04-10")
 // .set("Authorization", "Bearer"+sec)

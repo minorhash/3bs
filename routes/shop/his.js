@@ -33,7 +33,6 @@ console.log("allpal")
     opal=[]
 try{
     allpal=adb.allPal(email)
-    console.log("=== allpal ")
     console.log(allpal)
     console.log(allpal.length)
 }catch(err){console.log(err)}
@@ -137,7 +136,7 @@ next()}
 
 var chk = function(req, res, next) {
 
-console.log("=== chk =====================")
+console.log("=== HIS chk =====================")
 console.log(opal)
 console.log("=== sec =====================")
 console.log(sec)

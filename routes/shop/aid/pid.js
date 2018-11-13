@@ -19,10 +19,7 @@ var sndboo=false;
 var cnf=require("../son/cnf.json");
 var sec=cnf.sec;
 //var sec=cnf.skl;
-<<<<<<< HEAD
-=======
 var i18=require("../../../i18n/shop/ja.json")
->>>>>>> c21b94b75f3de31abc4cfbd4a89eaa8140b5dfef
 
 var cred = require('../js/cred');
 // === fun =============================
@@ -53,14 +50,9 @@ next()};
 var putPid = function(req, res, next) {
 //res.redirect("pid")
 
-<<<<<<< HEAD
 console.log('=== putPid ===');
 console.log(req.body.id);
 //console.log(req.body);
-=======
-console.log(req.body.id);
-console.log(req.body);
->>>>>>> c21b94b75f3de31abc4cfbd4a89eaa8140b5dfef
 
 var utc = new Date().toJSON().slice(0,10).replace(/-/g,"/")
 var tim=utc.replace(/\//g,"-")
@@ -80,11 +72,6 @@ console.log(pid)
 console.log(tim)
 console.log(res.body.amount)
     mnt=res.body.amount;
-console.log(res.body.buyer)
-try{
-adb.insPid(email,pid,res.body.amount,JSON.stringify(res.body.buyer),JSON.stringify(res.body.order.items),tim);
-}catch(err){console.log(err)}
-
 oite=res.body.order.items
 
 try{
@@ -95,44 +82,22 @@ console.log(sndboo)
 }catch(err){sndboo=false;
 console.log(err);}
 
-<<<<<<< HEAD
 if(sndboo=true){
 
-// var i18=require("../../../i18n/shop/ja.json")
-var i18=require("./ja.json")
+var i18=require("../../../i18n/shop/ja.json")
 mes=i18.lin1
 // +i18.cau1+i18.cau3
 //     +i18.lin1
 // +usr+"様<br><br>"
 //     +i18.cau2+"<br>"    +i18.cau3+"<br>"    +i18.cau4+"<br>"
 
-// for(var i=0;i<oite.length;i++){
-// +i18.cont+i18.pid+":"+pid+"<br>"
-=======
-if(sndboo==true){
-    mes=sndboo
-}
-// if(oite){
-// var i18=require("../../../i18n/shop/ja.json")
-
-// mes=i18.lin1
-// +i18.cau1+i18.cau3
-//     +i18.lin1
-// +usr+"様<br><br>"
-//     +i18.cau2+"<br>"
-//     +i18.cau3+"<br>"
-//     +i18.cau4+"<br>"
-
-// +i18.cont+i18.pid+":"+pid+"<br>"
 
 // for(var i=0;i<oite.length;i++){
->>>>>>> c21b94b75f3de31abc4cfbd4a89eaa8140b5dfef
 // +i18.title+":"+JSON.stringify(oite[i].title)+"<br>"
 // +i18.sku+":"+JSON.stringify(oite[i].id)+"<br>"
 // +i18.price+":"+JSON.stringify(oite[i].unit_price)+"<br>"
 // +i18.unit+":"+JSON.stringify(oite[i].quantity)+"<br><br>"
 // }
-<<<<<<< HEAD
    // +i18.pay +i18.aid+"<br>"
    // +i18.sub+mnt+"<br>"
    // +i18.tax+mnt*0.08+"<br>"
@@ -142,7 +107,6 @@ if(sndboo==true){
 // +i18.zip+mailadr.zip+"<br>"
 // +i18.senadr+mailadr.sta+"&nbsp;"+mailadr.city+"&nbsp;"+mailadr.ln1+"&nbsp;"+mailadr.ln2+"<br>"
 // +i18.sentel+mailadr.tel+"<br>"
-=======
 //    +i18.pay +i18.aid+"<br>"
 //    +i18.sub+mnt+"<br>"
 //    +i18.tax+Math.round(mnt*0.08)+"<br>"
@@ -152,25 +116,18 @@ if(sndboo==true){
 // // +i18.zip+mailadr.zip+"<br>"
 // // +i18.senadr+mailadr.sta+"&nbsp;"+mailadr.city+"&nbsp;"+mailadr.ln1+"&nbsp;"+mailadr.ln2+"<br>"
 // // +i18.sentel+mailadr.tel+"<br>"
->>>>>>> c21b94b75f3de31abc4cfbd4a89eaa8140b5dfef
 
 // +i18.ship1+i18.ship2+i18.ship3
 // +i18.ship4+i18.ship5
 // +i18.misc+i18.lin1+i18.auto1+i18.auto2+i18.lin1
 // +i18.adr1+i18.adr2+i18.adr3
 
-<<<<<<< HEAD
 }
-
-})
-=======
-// }
 
 
 })//then
 
 //adb.insPid(email,pid,res.body.amount,JSON.stringify(res.body.order.items),utc,res.body.order.shipping,utc);
->>>>>>> c21b94b75f3de31abc4cfbd4a89eaa8140b5dfef
 } else {
 console.log("no pid");  }
 next()};
@@ -181,22 +138,11 @@ console.log('=== senEma =======================================');
 console.log(mes);
 email="jinjasaisen@gmail.com"
     if(sndboo=true){
-<<<<<<< HEAD
 //sub=i18.buy
         sub="subject"
         try{snde.trEma(email,sub,mes);}
         catch(err){console.log(err)}
     }else{console.log("sndboo is false");}
-=======
-sub="subject";
-//sub=i18.buy
-email="jinjasaisen@gmail.com"
-console.log(email);
-var sub=i18.buy
-mes="mes"
-snde.trEma(email,sub,mes);
-    }else{console.log("cant send email");}
->>>>>>> c21b94b75f3de31abc4cfbd4a89eaa8140b5dfef
 next()};
 
 var chk = function(req, res, next) {

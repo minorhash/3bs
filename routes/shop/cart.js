@@ -141,12 +141,11 @@ var insUpd = function(req, res, next) {
     var ind = skua.indexOf(num);
     console.log(ind);
     if (ind == -1) {
+
       db.insTmp(email, sku, uni);
-<<<<<<< HEAD
-      var hea = res.headersSent;
-=======
->>>>>>> adr
+
       res.redirect("cart");
+
     } else {
 mailtmp=[]
         skua=[],boa=[]

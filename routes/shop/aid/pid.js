@@ -136,7 +136,7 @@ snde.trEma(email,sub,mes);
 next()};
 
 var chk = function(req, res, next) {
-console.log('=== pid =======================================');
+console.log('=== PID =======================================');
 console.log(mailusr);
 console.log("=== adr");
 console.log(mailadr);

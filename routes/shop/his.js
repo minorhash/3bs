@@ -67,7 +67,7 @@ next()}
 
 var chk = function(req, res, next) {
 
-console.log("=== chk =====================")
+console.log("=== HIS chk =====================")
 console.log(opal)
 console.log("=== oite =====")
 console.log(oite)

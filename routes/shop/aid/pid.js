@@ -89,7 +89,7 @@ snde.trEma(email,sub,mes);
 next()};
 
 var chk = function(req, res, next) {
-  console.log('=== PID =======================================');
+console.log('=== PID =======================================');
 
 };
 

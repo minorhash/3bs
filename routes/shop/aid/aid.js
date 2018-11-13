@@ -9,8 +9,9 @@ var taid = aid.tmpAid();
 var cnf= require('../son/cnf.json');
 var pub=cnf.pub
 //var pub=cnf.pkl
-var loc=cnf.loc
-//var loc=cnf.axe
+//var loc=cnf.loc
+var loc=cnf.axe
+//var loc=cnf.loc
 //var loc=cnf.tbs
 
 var cred = require('../js/cred');
@@ -77,6 +78,9 @@ var putSum = function(req, res, next) {
 var redSum = function(req, res, next) {
     function getSum(total, num) {
       return total + num;
+    }
+    if (suma.length !== 0) {
+      sum = suma.reduce(getSum);
 }
 if (suma.length !== 0) {
 sum = suma.reduce(getSum);
@@ -205,6 +209,6 @@ console.log(taid.order.tax)
 router.put('/shop/aid/aid',
 //[  getEma,  getUsr,  getAdr,getTmp,putMer,chkSh,putSum,redSum,getTai,putTai,
 [  getEma,  getUsr,  getAdr,getTmp,putMer,chkSh,putSum,redSum,getTai,putTai,fsSon,
-    chk]); //put
+chk]); //put
 
 module.exports = router;

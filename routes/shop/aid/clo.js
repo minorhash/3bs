@@ -1,10 +1,12 @@
 var adb = require('usrdb');
 var age=require("superagent")
 var cnf=require("../son/cnf.json")
-//var sec=cnf.sec
-var sec=cnf.skl
-var email="minorhash@gmail.com"
+var sec=cnf.sec
+//var sec=cnf.skl
+//var email="minorhash@gmail.com"
+var email="successful.payment@paidy.com"
 var allpid=adb.allPid(email)
+//console.log(allpid)
 
 for(var i=0;i<allpid.length;i++){
 

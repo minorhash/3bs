@@ -88,7 +88,7 @@
     <%=stax%>
     &nbsp;<%= shop.yen %> </h4>
 
-<%if(boo==0){%>
+<%if(boo==true){%>
 <h4>&nbsp;<%= shop.ship %>&nbsp;:  650 &nbsp;<%= shop.yen %> </h4>
 <%}else{%><h4>&nbsp;<%= shop.ship %>&nbsp;:  0 &nbsp;<%= shop.yen %> </h4>
 
@@ -175,8 +175,8 @@ no sum
 
 <script>
     
-<!-- var loc= "http://localhost:3023" -->
-var loc= "https://3axe.tmsmusic.tokyo"
+<!-- var loc= "https://3axe.tmsmusic.tokyo" -->
+var loc= "http://localhost:3023"
 
 var xhr = new XMLHttpRequest();
 xhr.open("PUT", loc+"/shop/aid/aid", true);

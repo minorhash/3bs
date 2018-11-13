@@ -6,8 +6,8 @@ var adb = require('usrdb');
 var aid = require('aidy');
 var taid = aid.tmpAid();
 var cnf= require('../son/cnf.json');
-//var pub=cnf.pub
-var pub=cnf.pkl
+var pub=cnf.pub
+//var pub=cnf.pkl
 //var loc=cnf.loc
 var loc=cnf.axe
 //var loc=cnf.tbs
@@ -57,14 +57,11 @@ var chkSh= function(req, res, next) {
 boa=[]
 for(var i=0;i<skua.length;i++){
 
-console.log("=== chk dl ===")
 var pat=/^\d{3}$/;
 var test=pat.test(skua[i])
 boa.push(test)
 }
 ind=boa.indexOf(true)
-    console.log("ind")
-    console.log(ind)
 
 next()};
 
@@ -73,7 +70,6 @@ var putSum = function(req, res, next) {
   for (var i = 0; i < mailtmp.length; i++) {
     suma[i] = mailtmp[i].uni * mer[i].pri;
   }
-console.log("=== putsum===")
   next()};
 // === chk dl ===
 
@@ -91,10 +87,9 @@ taid.amount = tsum;
 }
 else{tsum=sum}
     } else {
-      console.log('no sum');
+      console.log('NO sum');
     }
 
-console.log("=== red sum ===")
   next()};
 
 var getTai = function(req, res, next) {
@@ -106,7 +101,7 @@ var getTai = function(req, res, next) {
   if (mailadr) {
     taid.buyer.phone = mailadr.phn;
   } else {
-    console.log('=== mailadr null ===');
+    console.log('=== NO mailadr ===');
   }
 
   // === buyer_data ===
@@ -116,8 +111,6 @@ var getTai = function(req, res, next) {
   taid.buyer_data.last_order_amount = tsum;
   taid.buyer_data.last_order_at = d.getDate();
 
-console.log("=== get tai ===")
-console.log(taid)
   next()};
 
 //=============================================== putTai
@@ -147,7 +140,6 @@ unit_price: mer[i].pri,
      console.log('=== mailadr null ===');
  }
 
-console.log("=== put tai ===")
 next()};
 
 var fsSon = function(req, res, next) {
@@ -184,25 +176,22 @@ son=__dirname+"/../../../public/son/"+email+".js"
 
 fs.unlink(son,function(err) {
 if (err) {return console.log(err);    }
-else {console.log('no err');    }
-console.log('unlink!');
 });
 
 fs.writeFile(son, sson, function(err) {
 if (err) {return console.log(err);    }
-else {console.log('no err');    }
-console.log('The file was saved!');
+console.log('=== SAVED!');
 });
 
 }else{console.log("no mailadr")}
 
-console.log("=== fsson ===")
 next()};
 
 var chk = function(req, res, next) {
-console.log('=== aid ====================================');
-console.log(cnf.loc)
-console.log(cnf.pkl)
+console.log('=== put AID ====================================');
+console.log(ind)
+console.log(loc)
+console.log(pub)
 console.log(email)
 console.log(tsum)
 console.log(taid.amount)

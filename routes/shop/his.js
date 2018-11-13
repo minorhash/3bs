@@ -5,6 +5,8 @@ var adb = require("usrdb")
 
 var age=require("superagent")
 var cnf=require("./son/aid.json")
+//var sec=cnf.skl
+var sec=cnf.sec
 // === glob ============================
 var email, usr
 var selpid, allpid,allnow,allpal
@@ -46,7 +48,6 @@ console.log("=== no all pid ==================")
 }else{
 
 allpid= adb.allPid(email)
-console.log(cnf.skl)
 oite=[]
 for (var i = 0; i < allpid.length; i++) {
 oite.push(JSON.parse(allpid[i].ite))
@@ -55,7 +56,7 @@ age
 .get('https://api.paidy.com/payments/'+allpid[i].pid)
 .set("Content-Type", "application/json")
 .set("Paidy-Version", "2018-04-10")
-.set("Authorization", "Bearer"+cnf.skl)
+.set("Authorization", "Bearer"+sec)
 .then(function(res){
 //console.log(res.body.order.shipping)
 })
@@ -70,6 +71,7 @@ console.log("=== chk =====================")
 console.log(opal)
 console.log("=== oite =====")
 console.log(oite)
+console.log(sec)
 next()}
 
 var gcb = function(req, res) {

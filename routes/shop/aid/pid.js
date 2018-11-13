@@ -15,14 +15,15 @@ var buy, ite, oite,gpid
 var mes
 var i18=require("../../../i18n/shop/ja.json")
 var cnf=require("../son/cnf.json")
-//var sec=cnf.sec
-var sec=cnf.skl
+var sec=cnf.sec
+//var sec=cnf.skl
 
 var cred = require('../js/cred');
 // === fun =============================
 var getEma = function(req, res, next) {
 email = cred.ema(req);
 mailusr=  adb.mailUsr(email)
+    console.log(mailusr)
 next()}; //getEma
 
 var getUsr = function(req, res, next) {
@@ -41,9 +42,6 @@ var utc = new Date().toJSON().slice(0,10).replace(/-/g,"/")
 var tim=utc.replace(/\//g,"-")
 if (req.body && email) {
     pid = req.body.id;
-    console.log(email)
-    console.log(pid)
-    console.log(tim)
 
 age
 .get('https://api.paidy.com/payments/'+pid)
@@ -51,11 +49,11 @@ age
 .set("Paidy-Version", "2018-04-10")
 .set("Authorization", "Bearer"+sec)
 .then(res => {
-console.log(res.body.order.items)
+try{
 adb.insPid(email,pid,res.body.amount,JSON.stringify(res.body.buyer),JSON.stringify(res.body.order.items),tim);
+}catch(err){console.log(err)}
 
 oite=res.body.order.items
-console.log(oite)
 
 for(var i=0;i<oite.length;i++){
 mes=usr+"様<br>"
@@ -73,14 +71,7 @@ mes=usr+"様<br>"
 +i18.adr1+i18.adr2+i18.adr3
 }
 
-//console.log(mes)
-console.log('=== senEma =======================================');
-//email="jinjasaisen@gmail.com"
-var sub=i18.buy
-snde.trEma(email,sub,mes);
-
-})
-
+})//then
 
 //adb.insPid(email,pid,res.body.amount,JSON.stringify(res.body.order.items),utc,res.body.order.shipping,utc);
 } else {
@@ -90,14 +81,16 @@ next()};
 
 var senEma = function(req, res, next) {
 console.log('=== senEma =======================================');
-//email="jinjasaisen@gmail.com"
+email="jinjasaisen@gmail.com"
+console.log(email);
 var sub=i18.buy
+mes="mes"
 snde.trEma(email,sub,mes);
 next()};
 
 var chk = function(req, res, next) {
   console.log('=== PID =======================================');
-  console.log(mes);
+
 };
 
 router.put('/shop/aid/pid', [getEma, getUsr,putPid,

@@ -86,18 +86,10 @@ taid.buyer.email = email;
 taid.buyer.name1 = mailusr.name;
 taid.amount = tsum;
 }
-<<<<<<< HEAD
 else{tsum=Math.round(sum*1.08)}
 } else {
 console.log('no sum');
 }
-=======
-else{tsum=sum}
-    } else {
-      console.log('NO sum');
-    }
->>>>>>> adr
-
   next()};
 
 var getTai = function(req, res, next) {
@@ -197,12 +189,8 @@ console.log('=== SAVED!');
 next()};
 
 var chk = function(req, res, next) {
-<<<<<<< HEAD
-console.log('=== aid chk ====================================');
-=======
 console.log('=== put AID ====================================');
 console.log(ind)
->>>>>>> adr
 console.log(loc)
 console.log(pub)
 console.log(email)

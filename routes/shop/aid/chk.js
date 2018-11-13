@@ -26,22 +26,22 @@ console.log(res.body.id)
 }
 }else{console.log("no allpid")}
 
-var pay="pay_W9wFI1kAAFsAjO1O"
+// var pay="pay_W9wFI1kAAFsAjO1O"
 
-age
-.get('https://api.paidy.com/payments/'+pay)
-.set("Content-Type", "application/json")
-.set("Paidy-Version", "2018-04-10")
-.set("Authorization", "Bearer"+sec)
-.then(res => {
-if(res.body.captures.length!==0){
-console.log("cap")
-console.log(res.body.captures)
-}else{
-console.log("cap arr:")
-console.log(res.body.captures)
-}
-})
+// age
+// .get('https://api.paidy.com/payments/'+pay)
+// .set("Content-Type", "application/json")
+// .set("Paidy-Version", "2018-04-10")
+// .set("Authorization", "Bearer"+sec)
+// .then(res => {
+// if(res.body.captures.length!==0){
+// console.log("cap")
+// console.log(res.body.captures)
+// }else{
+// console.log("cap arr:")
+// console.log(res.body.captures)
+// }
+// })
 
 //var pay="pay_W8k-XUYAAKQAj38h"
 // var pay="pay_W8heHEYAAKQAjsHp"

@@ -5,6 +5,8 @@ var adb = require("usrdb")
 
 var age=require("superagent")
 var cnf=require("./son/aid.json")
+var sec=cnf.sec
+//var sec=cnf.skl
 // === glob ============================
 var email, usr
 var selpid, allpid,allnow,allpal
@@ -26,12 +28,17 @@ next()};
 // === pal
 var allPal= function(req, res, next) {
     opal=[]
-
+try{
     allpal=adb.allPal(email)
+    console.log("=== allpal ")
+    console.log(allpal)
+    console.log(allpal.length)
+}catch(err){console.log(err)}
 
 if(!allpal.length==0){
 for(var i=0;i<allpal.length;i++){
-opal.push(JSON.parse(allpal[i].ite))
+    allpal[i]
+//opal.push(JSON.parse(allpal[i].ite))
 }
 }else{console.log("no allpal")}
 
@@ -46,7 +53,7 @@ console.log("=== no all pid ==================")
 }else{
 
 allpid= adb.allPid(email)
-console.log(cnf.skl)
+console.log(sec)
 oite=[]
 for (var i = 0; i < allpid.length; i++) {
 oite.push(JSON.parse(allpid[i].ite))
@@ -55,7 +62,7 @@ age
 .get('https://api.paidy.com/payments/'+allpid[i].pid)
 .set("Content-Type", "application/json")
 .set("Paidy-Version", "2018-04-10")
-.set("Authorization", "Bearer"+cnf.skl)
+.set("Authorization", "Bearer"+sec)
 .then(function(res){
 //console.log(res.body.order.shipping)
 })
@@ -114,9 +121,9 @@ console.log(res.body.id)
 console.log("cancel")
 
 
-    var max=adb.getPid(res.body.id)
-    console.log(max)
-adb.delPid(res.body.id)
+// var max=adb.getPid(res.body.id)
+// console.log(max)
+//adb.delPid(res.body.id)
 }
 
 }else{console.log("not closed")}

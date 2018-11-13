@@ -6,10 +6,10 @@ var adb = require('usrdb');
 var aid = require('aidy');
 var taid = aid.tmpAid();
 var cnf= require('../son/cnf.json');
-//var pub=cnf.pub
-var pub=cnf.pkl
-var loc=cnf.loc
-//var loc=cnf.axe
+var pub=cnf.pub
+//var pub=cnf.pkl
+//var loc=cnf.loc
+var loc=cnf.axe
 //var loc=cnf.tbs
 
 var cred = require('../js/cred');
@@ -83,13 +83,13 @@ var redSum = function(req, res, next) {
     }
     if (suma.length !== 0) {
       sum = suma.reduce(getSum);
-if(ind==0){tsum=sum*1.08+650;
+if(ind==0){tsum=Math.round(sum*1.08)+650;
 
 taid.buyer.email = email;
 taid.buyer.name1 = mailusr.name;
 taid.amount = tsum;
 }
-else{tsum=sum*1.08}
+else{tsum=Math.round(sum*1.08)}
     } else {
       console.log('no sum');
     }
@@ -122,6 +122,7 @@ console.log(taid)
 
 //=============================================== putTai
 var putTai = function(req, res, next) {
+    taid.order.tax=Math.round(sum*0.08)
 //ind=-1
  if(ind==0){  taid.order.shipping = 650;}
  else{  taid.order.shipping = 0;}
@@ -201,8 +202,8 @@ next()};
 
 var chk = function(req, res, next) {
 console.log('=== aid ====================================');
-console.log(cnf.loc)
-console.log(cnf.pkl)
+console.log(loc)
+console.log(pub)
 console.log(email)
 console.log(tsum)
 console.log("=== mailadr")
@@ -215,6 +216,6 @@ console.log(taid.amount)
 router.put('/shop/aid/aid',
 //[  getEma,  getUsr,  getAdr,getTmp,putMer,chkSh,putSum,redSum,getTai,putTai,
 [  getEma,  getUsr,  getAdr,getTmp,putMer,chkSh,putSum,redSum,getTai,putTai,fsSon,
-    chk]); //put
+chk]); //put
 
 module.exports = router;

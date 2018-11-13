@@ -38,65 +38,7 @@
 <!--- paypal----- -->
 
 
-<%if(allpal.length!==0){%>
-&nbsp;&nbsp;&nbsp;&nbsp;
-
-<h4><span class="label label-info">paypal</span></h4>
-<%for(var i=0;i<allpal.length;i++){%>
-
-<br>
-
-<font color="#0000ff">
-    <u><b>&nbsp;&nbsp;&nbsp;&nbsp;<%= shop.dat %>:
-<%=allpal[i].date%></b></u><br>
-</font>
-
-<u>&nbsp;&nbsp;&nbsp;&nbsp;<%= shop.pid %>:
-<%=allpal[i].tok%></u><br>
-<br>
-
-<%for(var j=0;j<opal[i].length;j++){%>
-
-<div class="col-md-3">
-<div valign="top" align="center">
-
-<img src="../img/cd/<%=opal[i][j].sku%>.png"><br>
-</div>
-</div>
-
-<div class="col-md-9">
-<div class="note">
-
-<%= shop.title %>：<%= opal[i][j].name%><br>
-    <%= shop.sku %>：TMS-&nbsp;<%= opal[i][j].sku%><br>
-    <%= shop.pri %>：&nbsp;<%= (parseInt(opal[i][j].price)).toLocaleString()%>
-<%= shop.yen %><br>
-    <%= shop.tax %>：&nbsp;<%= opal[i][j].tax%>
-<%= shop.yen %>
-    <br>
-    <%= shop.unit %>：<%= opal[i][j].quantity%><br>
-
-<% if((opal[i][0].price).length!==3){ %>
-<%= shop.ship %>：650
-<%= shop.yen %><br>
-<%}else{%>
-<%= shop.ship %>：0
-<%= shop.yen %><br>
-<%}%>
-<%= shop.unit %>：<%= ((parseInt(opal[i][j].price)+parseInt(opal[i][j].tax))*parseInt(opal[i][j].quantity)).toLocaleString()%>
-<%= shop.yen %>
-
-<div class="border-bottom"></div>
-</div>
-</div>
-<br><br>
-
-<%}%><!-- for -->
-<%}%> <!-- for -->
-<%}else{%>
-<%= shop.npal %>
-<%}%>
-
+<!--- paypal----- -->
 <br><br><br><br>
 
 

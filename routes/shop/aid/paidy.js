@@ -65,7 +65,6 @@ skua.push(mer[i].sku)
 
 var chkSh= function(req, res, next) {
 
-console.log("=== chk ship  ===")
 boa=[]
 for(var i=0;i<skua.length;i++){
 
@@ -74,10 +73,7 @@ var test=pat.test(skua[i])
 console.log(test)
 boa.push(test)
 }
-console.log(boa)
 boo=boa.indexOf(true)
-console.log("boo")
-console.log(boo)
 
 next()};
 
@@ -112,7 +108,7 @@ mailson=db.mailSon(email).son
 next()};
 
 var chk = function(req, res, next) {
-console.log('=== chk paidy ===');
+console.log('=== PAIDY chk ===');
 console.log(mailtmp);
 console.log(tsum)
 next()};

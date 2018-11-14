@@ -25,12 +25,10 @@ var getUsr = function(req, res, next) {
 if(mailusr){usr=mailusr.name}
 else{usr=null;console.log("no usr")}
 
-console.log("usr")
 next()};
 
 // === pal
 var allPal= function(req, res, next) {
-console.log("allpal")
     opal=[]
 
     allpal=adb.allPal(email)
@@ -133,7 +131,8 @@ next()}
 
 var chk = function(req, res, next) {
 
-console.log("=== chk =====================")
+console.log("=== HIS chk =====================")
+console.log("opal")
 console.log(opal)
 console.log("=== sec =====================")
 console.log(sec)

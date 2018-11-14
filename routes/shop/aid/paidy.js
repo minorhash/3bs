@@ -110,6 +110,7 @@ next()};
 var chk = function(req, res, next) {
 console.log('=== PAIDY chk ===');
 console.log(mailtmp);
+console.log(sum)
 console.log(tsum)
 next()};
 

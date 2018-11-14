@@ -137,22 +137,19 @@ console.log('=== senEma =======================================');
 //mes="message"
 console.log(mes);
 email="jinjasaisen@gmail.com"
-    if(sndboo=true){
+if(sndboo=true){
 //sub=i18.buy
-        sub="subject"
-        try{snde.trEma(email,sub,mes);}
-        catch(err){console.log(err)}
-    }else{console.log("sndboo is false");}
+sub="subject"
+try{snde.trEma(email,sub,mes);}
+catch(err){console.log(err)}
+}else{console.log("sndboo is false");}
 next()};
 
 var chk = function(req, res, next) {
 console.log('=== PID =======================================');
-<<<<<<< HEAD
 console.log(mailusr);
 console.log("=== adr");
 console.log(mailadr);
-=======
->>>>>>> adr
 
 };
 

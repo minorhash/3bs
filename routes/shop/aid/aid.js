@@ -83,13 +83,14 @@ var redSum = function(req, res, next) {
 }
 if (suma.length !== 0) {
 sum = suma.reduce(getSum);
-if(ind==0){tsum=Math.round(sum*1.08)+650;
+//if(ind==0){tsum=Math.round(sum*1.08)+650;
+if(ind==0){tsum=Math.round(sum)+650;
 
 taid.buyer.email = email;
 taid.buyer.name1 = mailusr.name;
 taid.amount = tsum;
 }
-else{tsum=Math.round(sum*1.08)}
+else{tsum=Math.round(sum)}
 } else {
 console.log('no sum');
 }
@@ -119,7 +120,7 @@ var getTai = function(req, res, next) {
 
 //=============================================== putTai
 var putTai = function(req, res, next) {
-    taid.order.tax=Math.round(sum*0.08);
+    //taid.order.tax=Math.round(sum*0.08);
 //ind=-1
  if(ind==0){  taid.order.shipping = 650;}
  else{  taid.order.shipping = 0;}

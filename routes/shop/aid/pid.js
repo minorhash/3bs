@@ -24,10 +24,10 @@ var i18=require("../../../i18n/shop/ja.json")
 var cred = require('../js/cred');
 // === fun =============================
 var getEma = function(req, res, next) {
-//email = cred.ema(req);
-email="jinjasaisen@gmail.com"
+email = cred.ema(req);
+//email="jinjasaisen@gmail.com"
 mailusr=  adb.mailUsr(email)
-    console.log(mailusr)
+console.log(mailusr)
 next()}; //getEma
 
 var getUsr = function(req, res, next) {

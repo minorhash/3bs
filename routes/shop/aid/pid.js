@@ -50,8 +50,9 @@ next()};
 var putPid = function(req, res, next) {
 //res.redirect("pid")
 
+console.log('=== putPid ===');
 console.log(req.body.id);
-console.log(req.body);
+//console.log(req.body);
 
 var utc = new Date().toJSON().slice(0,10).replace(/-/g,"/")
 var tim=utc.replace(/\//g,"-")
@@ -71,34 +72,25 @@ console.log(pid)
 console.log(tim)
 console.log(res.body.amount)
     mnt=res.body.amount;
-console.log(res.body.buyer)
-try{
-adb.insPid(email,pid,res.body.amount,JSON.stringify(res.body.buyer),JSON.stringify(res.body.order.items),tim);
-}catch(err){console.log(err)}
-
 oite=res.body.order.items
 
 try{
 adb.insPid(email,pid,mnt,JSON.stringify(res.body.buyer),JSON.stringify(res.body.order.items),tim);
 sndboo=true;
+console.log("=== sndboo ")
+console.log(sndboo)
 }catch(err){sndboo=false;
 console.log(err);}
 
-if(sndboo==true){
-    mes=sndboo
-}
-// if(oite){
-// var i18=require("../../../i18n/shop/ja.json")
+if(sndboo=true){
 
-// mes=i18.lin1
+var i18=require("../../../i18n/shop/ja.json")
+mes=i18.lin1
 // +i18.cau1+i18.cau3
 //     +i18.lin1
 // +usr+"様<br><br>"
-//     +i18.cau2+"<br>"
-//     +i18.cau3+"<br>"
-//     +i18.cau4+"<br>"
+//     +i18.cau2+"<br>"    +i18.cau3+"<br>"    +i18.cau4+"<br>"
 
-// +i18.cont+i18.pid+":"+pid+"<br>"
 
 // for(var i=0;i<oite.length;i++){
 // +i18.title+":"+JSON.stringify(oite[i].title)+"<br>"
@@ -106,6 +98,15 @@ if(sndboo==true){
 // +i18.price+":"+JSON.stringify(oite[i].unit_price)+"<br>"
 // +i18.unit+":"+JSON.stringify(oite[i].quantity)+"<br><br>"
 // }
+   // +i18.pay +i18.aid+"<br>"
+   // +i18.sub+mnt+"<br>"
+   // +i18.tax+mnt*0.08+"<br>"
+   // +i18.tot+mnt*1.08+"<br>"
+
+//+i18.send+"<br>"
+// +i18.zip+mailadr.zip+"<br>"
+// +i18.senadr+mailadr.sta+"&nbsp;"+mailadr.city+"&nbsp;"+mailadr.ln1+"&nbsp;"+mailadr.ln2+"<br>"
+// +i18.sentel+mailadr.tel+"<br>"
 //    +i18.pay +i18.aid+"<br>"
 //    +i18.sub+mnt+"<br>"
 //    +i18.tax+Math.round(mnt*0.08)+"<br>"
@@ -121,7 +122,7 @@ if(sndboo==true){
 // +i18.misc+i18.lin1+i18.auto1+i18.auto2+i18.lin1
 // +i18.adr1+i18.adr2+i18.adr3
 
-// }
+}
 
 
 })//then
@@ -133,16 +134,15 @@ next()};
 
 var senEma = function(req, res, next) {
 console.log('=== senEma =======================================');
-//email="jinjasaisen@gmail.com"
-    if(sndboo=true){
-sub="subject";
-//sub=i18.buy
+//mes="message"
+console.log(mes);
 email="jinjasaisen@gmail.com"
-console.log(email);
-var sub=i18.buy
-mes="mes"
-snde.trEma(email,sub,mes);
-    }else{console.log("cant send email");}
+    if(sndboo=true){
+//sub=i18.buy
+        sub="subject"
+        try{snde.trEma(email,sub,mes);}
+        catch(err){console.log(err)}
+    }else{console.log("sndboo is false");}
 next()};
 
 var chk = function(req, res, next) {

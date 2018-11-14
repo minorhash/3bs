@@ -7,7 +7,6 @@ var age=require("superagent")
 var cnf=require("./son/aid.json")
 var sec=cnf.sec
 //var sec=cnf.skl
-var sec=cnf.sec
 // === glob ============================
 var email, usr
 var selpid, allpid,allnow,allpal
@@ -30,12 +29,16 @@ next()};
 // === pal
 var allPal= function(req, res, next) {
     opal=[]
-
+try{
     allpal=adb.allPal(email)
+    console.log(allpal)
+    console.log(allpal.length)
+}catch(err){console.log(err)}
 
 if(allpal.length!==0){
 for(var i=0;i<allpal.length;i++){
-opal.push(JSON.parse(allpal[i].ite))
+    allpal[i]
+//opal.push(JSON.parse(allpal[i].ite))
 }
 }else{console.log("no allpal")}
 
@@ -117,9 +120,9 @@ console.log(res.body.id)
 console.log("cancel")
 
 
-    var max=adb.getPid(res.body.id)
-    console.log(max)
-adb.delPid(res.body.id)
+// var max=adb.getPid(res.body.id)
+// console.log(max)
+//adb.delPid(res.body.id)
 }
 
 }else{console.log("not closed")}
@@ -132,7 +135,6 @@ next()}
 var chk = function(req, res, next) {
 
 console.log("=== HIS chk =====================")
-console.log("opal")
 console.log(opal)
 console.log("=== sec =====================")
 console.log(sec)

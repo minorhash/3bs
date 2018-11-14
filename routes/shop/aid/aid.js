@@ -77,6 +77,9 @@ var putSum = function(req, res, next) {
 var redSum = function(req, res, next) {
     function getSum(total, num) {
       return total + num;
+    }
+    if (suma.length !== 0) {
+      sum = suma.reduce(getSum);
 }
 if (suma.length !== 0) {
 sum = suma.reduce(getSum);
@@ -206,6 +209,6 @@ console.log("=== mailadr")
 router.put('/shop/aid/aid',
 //[  getEma,  getUsr,  getAdr,getTmp,putMer,chkSh,putSum,redSum,getTai,putTai,
 [  getEma,  getUsr,  getAdr,getTmp,putMer,chkSh,putSum,redSum,getTai,putTai,fsSon,
-    chk]); //put
+chk]); //put
 
 module.exports = router;

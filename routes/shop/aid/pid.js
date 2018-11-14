@@ -147,9 +147,12 @@ next()};
 
 var chk = function(req, res, next) {
 console.log('=== PID =======================================');
+<<<<<<< HEAD
 console.log(mailusr);
 console.log("=== adr");
 console.log(mailadr);
+=======
+>>>>>>> adr
 
 };
 

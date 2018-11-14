@@ -31,9 +31,9 @@ var allPal= function(req, res, next) {
     opal=[]
 try{
     allpal=adb.allPal(email)
-    console.log(allpal)
-    console.log(allpal.length)
 }catch(err){console.log(err)}
+
+allpal=adb.allPal(email)
 
 if(allpal.length!==0){
 for(var i=0;i<allpal.length;i++){
@@ -56,7 +56,7 @@ allpid= adb.allPid(email)
 oite=[]
 for (var i = 0; i < allpid.length; i++) {
 oite.push(JSON.parse(allpid[i].ite))
-            console.log(allpid[i].pid)
+
 age
 .get('https://api.paidy.com/payments/'+allpid[i].pid)
 .set("Content-Type", "application/json")

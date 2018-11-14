@@ -6,6 +6,8 @@ var adb = require('usrdb');
 var aid = require('aidy');
 var taid = aid.tmpAid();
 var cnf= require('../son/aid.json');
+var pub=cnf.pub;
+//var pub=cnf.pkl;
 
 var cred = require('../js/cred');
 // === put ===
@@ -114,6 +116,7 @@ var getTai = function(req, res, next) {
 
 //=============================================== putTai
 var putTai = function(req, res, next) {
+    taid.order.tax=Math.round(sum*0.08);
 //ind=-1
 if(ind==0){  taid.order.shipping = 650;}
 else{  taid.order.shipping = 0;}
@@ -147,7 +150,7 @@ if(mailadr){
 var str = JSON.stringify(taid);
 
 sson=    'var config={"api_key":"' +
-    cnf.pkl +
+    pub +
     '",' +
     '"closed":function(cb){var xhr = new XMLHttpRequest();' +
     'xhr.open("PUT","'+cnf.loc+

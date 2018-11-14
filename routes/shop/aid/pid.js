@@ -14,6 +14,8 @@ var inspid, getpid, selpid, strbuy, strite;
 var buy, ite, oite,gpid
 
 var cnf=require("../son/aid.json")
+var sec=cnf.sec;
+//var sec=cnf.skl;
 
 var cred = require('../js/cred');
 // === fun =============================
@@ -43,7 +45,7 @@ age
 .get('https://api.paidy.com/payments/'+pid)
 .set("Content-Type", "application/json")
 .set("Paidy-Version", "2018-04-10")
-.set("Authorization", "Bearer"+cnf.skl)
+.set("Authorization", "Bearer"+sec)
 .then(res => {
 adb.insPid(email,pid,res.body.amount,JSON.stringify(res.body.order.items),utc,res.body.order.shipping);
 })

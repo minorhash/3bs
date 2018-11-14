@@ -6,6 +6,7 @@ var adb = require('usrdb');
 var aid = require('aidy');
 var taid = aid.tmpAid();
 var cnf= require('../son/aid.json');
+var pub=cnf.pub;
 
 var cred = require('../js/cred');
 // === put ===
@@ -144,7 +145,7 @@ if(mailadr){
 var str = JSON.stringify(taid);
 
 sson=    'var config={"api_key":"' +
-    cnf.pkl +
+    pub+
     '",' +
     '"closed":function(cb){var xhr = new XMLHttpRequest();' +
     'xhr.open("PUT","'+cnf.loc+

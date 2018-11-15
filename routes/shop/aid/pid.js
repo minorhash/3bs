@@ -35,7 +35,7 @@ var putPid = function(req, res, next) {
 
 console.log('=== putPid ===');
 
-var utc = new Date().toJSON().slice(0,10).replace(/-/g,"/")
+var utc = new Date().toJSON().slice(0,10);
 if (req.body && email) {
 pid = req.body.id;
 
@@ -45,14 +45,17 @@ age
 .set("Paidy-Version", "2018-04-10")
 .set("Authorization", "Bearer"+sec)
 .then(res => {
-adb.insPid(email,pid,res.body.amount,JSON.stringify(res.body.order.items),utc,res.body.order.shipping);
+    console.log(res.body.buyer);
+adb.insPid(email,pid,res.body.amount,
+    JSON.stringify(res.body.buyer),
+    JSON.stringify(res.body.order.items),
+    utc);
 
 })
 } else {
 //var    pid = 'pay_Wz8zdysAAF0AirLI'
 console.log("no pid");  }
 next()};
-
 
 var getPid= function(req, res, next) {
 gpid=adb.getPid(email)
@@ -63,7 +66,7 @@ next()};
 var senEma = function(req, res, next) {
 console.log('=== senEma =======================================');
 var i18=require("../../../i18n/shop/ja.json")
-var eto="jinjasaisen@gmail.com"
+var email="jinjasaisen@gmail.com"
 
 var sub=i18.buy
 var mes=usr+"様<br>"
@@ -82,11 +85,12 @@ next()};
 var chk = function(req, res, next) {
   console.log('=== pid =======================================');
   console.log(email);
-  console.log(req.body);
-  console.log(req.body.id);
   console.log(pid);
 };
 
-router.put('/shop/aid/pid', [getEma, getUsr,putPid,
-    chk]);
-module.exports = router;
+router.put('/shop/aid/pid',
+[getEma, getUsr,putPid,getPid,
+    chk]
+);
+
+    module.exports = router;

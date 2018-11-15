@@ -30,10 +30,8 @@ var allPid = function(req, res, next) {
     }else{
 
         allpid= adb.allPid(email)
-
-            console.log(cnf.skl)
         oite=[]
-        for (var i = 0; i < allpid.length; i++) {
+for (var i = 0; i < allpid.length; i++) {
             oite.push(JSON.parse(allpid[i].ite))
             console.log(allpid[i].pid)
 age
@@ -45,8 +43,8 @@ age
 console.log(res.body.order.shipping)
 
 })
+}//for
 
-}
 }
 next()}
 
@@ -66,7 +64,7 @@ next()}
 var chk = function(req, res, next) {
 
 console.log("=== chk =====================")
-console.log(opal)
+console.log(allpid)
 // console.log(allpal)
 // console.log(ship)
 //console.log(oite)
@@ -80,7 +78,7 @@ allpal:allpal
 })
 }
 
-router.get("/shop/history", [getEma, getUsr, allPid, allPal,
+router.get("/shop/history", [getEma, getUsr,allPid,
     chk, gcb])
 
 module.exports = router

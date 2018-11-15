@@ -92,6 +92,7 @@ var rcb = function(req, res) {
   res.render('shop', rob);
 };
 
-router.post('/shop', [getCok, getUsr, chk, rcb]);
+var fun=[getCok, getUsr, chk, rcb]
+router.post('/shop', fun);
 
 module.exports = router;

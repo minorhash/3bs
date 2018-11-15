@@ -36,10 +36,8 @@ var putPid = function(req, res, next) {
 console.log('=== putPid ===');
 
 var utc = new Date().toJSON().slice(0,10).replace(/-/g,"/")
-  if (req.body && email) {
-    pid = req.body.id;
-    console.log(email)
-    console.log(pid)
+if (req.body && email) {
+pid = req.body.id;
 
 age
 .get('https://api.paidy.com/payments/'+pid)
@@ -84,11 +82,11 @@ next()};
 var chk = function(req, res, next) {
   console.log('=== pid =======================================');
   console.log(email);
+  console.log(req.body);
+  console.log(req.body.id);
   console.log(pid);
-  console.log(oite[0]);
-  console.log(ite);
 };
 
-router.put('/shop/aid/pid', [getEma, getUsr, getPid,putPid,senEma,
+router.put('/shop/aid/pid', [getEma, getUsr,putPid,
     chk]);
 module.exports = router;

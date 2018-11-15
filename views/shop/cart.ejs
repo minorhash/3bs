@@ -88,8 +88,8 @@
 <%if(sum){%>
 <h4>&nbsp;商品小計&nbsp; (税抜)&nbsp;:  <%=sum.toLocaleString()%> &nbsp;円 </h3>
 <h4>&nbsp;消費税計&nbsp;&nbsp;:  <% var stax=Math.round(sum*0.08)%> 
-    <%=stax%>
-    &nbsp;円 </h4>
+<%=stax%>
+&nbsp;円 </h4>
 
 <%if(boo){%>
 <h4>&nbsp;送料&nbsp;:  650 &nbsp;円 </h4>
@@ -127,7 +127,6 @@ no sum
 <form action="/shop/paypal/pay" method="get">
 <button type="submit" >PayPal</button>
 <h4>&nbsp;（クレジットカード決済）</form></h4>
-
 
 <br>
 
@@ -176,12 +175,4 @@ no sum
 
 <div class="footer"><% include par/foot %></div>
 
-<script>
-
-var xhr = new XMLHttpRequest();
-xhr.open("PUT", "http://localhost:3023/shop/aid/aid", true);
-xhr.setRequestHeader('Content-Type', 'application/json');
-xhr.send();
-
-</script>
 

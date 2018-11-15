@@ -15,7 +15,7 @@ var email, usr, sku, sum,tsum,adr
 var son,    sson
 var boa,ind
 var mailtmp, mailusr, mailadr,mailson;
-var mer = [],  suma = [],  skua = [],ite=[]
+var mer = [],  suma = [],  skua = []
 
 var getEma = function(req, res, next) {
 email = cred.ema(req);
@@ -34,7 +34,7 @@ else{console.log("no email for adr")}
   if (mailadr == null) {
     console.log('=== adr null ===');
   }
-next()};
+  next()};
 
 var getTmp = function(req, res, next) {
     mailtmp = db.mailTmp(email);
@@ -139,6 +139,54 @@ unit_price: mer[i].pri,
 
 next()};
 
+var fsSon = function(req, res, next) {
+
+if(mailadr){
+var str = JSON.stringify(taid);
+
+sson=    'var config={"api_key":"' +
+    pub+
+    '",' +
+    '"closed":function(cb){var xhr = new XMLHttpRequest();' +
+    'xhr.open("PUT","'+cnf.loc+
+     '/shop/aid/pid", true);' +
+    'xhr.setRequestHeader("Content-Type", "application/json");' +
+    'xhr.send(JSON.stringify(cb));}};' +
+    'var hand=Paidy.configure(config);' +
+    'function paidyPay(){' +
+    'var load=' +
+    str +
+    ';' +
+    'hand.launch(load);};';
+
+db.insSon(email, sson);
+
+var fs = require('fs');
+son=__dirname+"/../../../public/son/"+email+".js"
+
+//son=__dirname+"/"+email+".js"
+
+// fs.stat(son, function(err, stats) {
+// if(err){throw err}
+// console.log(son);
+// })
+
+fs.unlink(son,function(err) {
+if (err) {return console.log(err);    }
+else {console.log('no err');    }
+console.log('unlink!');
+});
+
+fs.writeFile(son, sson, function(err) {
+if (err) {return console.log(err);    }
+else {console.log('no err');    }
+console.log('The file was saved!');
+});
+
+}else{console.log("no mailadr")}
+
+next()};
+
 var chk = function(req, res, next) {
 console.log('=== aid ====================================');
 //console.log(son)
@@ -146,27 +194,12 @@ console.log(cnf.pkl)
 console.log(email)
 console.log(tsum)
 console.log(taid.amount)
-console.log(mer)
-console.log(mailadr)
-console.log(taid.order.shipping)
 console.log(taid.order.items)
 
-next()};
+};
 
-var gcb = function(req, res) {
-res.render("shop/paidy", {
-    title: "paidy", email:email,usr: usr,
-seltmp:mailtmp,mer:mer,
-    mailadr:mailadr,ite:taid.order.items,
-    sum:sum,tsum:tsum,
-    pub:pub,ship:taid.order.shipping
-
-})
-}
-
-router.get("/shop/paidy",
- [  getEma,  getUsr,  getAdr,getTmp,putMer,chkSh,putSum,redSum,getTai,putTai,
-    chk,gcb]); //put
-
+router.put('/shop/aid/aid',
+[  getEma,  getUsr,  getAdr,getTmp,putMer,chkSh,putSum,redSum,getTai,putTai,fsSon,
+    chk]); //put
 
 module.exports = router;

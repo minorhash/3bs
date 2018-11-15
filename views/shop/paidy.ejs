@@ -12,13 +12,6 @@
 
 <% include par/out %>
 
-<!-- <script> -->
-<!-- var xhr = new XMLHttpRequest(); -->
-<!-- xhr.open("PUT", "http://localhost:3023/shop/aid/cli", true); -->
-<!-- xhr.setRequestHeader('Content-Type', 'application/json'); -->
-<!-- xhr.send(); -->
-<!-- </script> -->
-
 <%}else{ %>
 <% include par/login %>
 <%} %>
@@ -27,10 +20,8 @@
 <!--- main ----- -->
 
 <div class="col-sm-6 col-sm-12" style="color:black">
-
 <p class="box90">&nbsp;注文内容ご確認ページ（Paidy決済ご希望の方用）</p>
 <br>
-
 
 <div class="col-md-12" style="color:black"  >
 <%for(var i=0;i<seltmp.length;i++){%>
@@ -94,6 +85,14 @@
 
 <div class="row"></div>
 
+    <% for(var i=0;i<ite.length;i++){ %>
+            {
+"id":"<%= ite[i].id %>",
+"quantity":"<%= ite[i].quantity %>",
+"title":"<%= ite[i].title %>",
+"unit_price":"<%= ite[i].unit_price %>"
+       },
+    <% } %>
 
 
 <p class="pa1">
@@ -106,7 +105,72 @@ Paidyのアカウントにてログインし、お手続きください。</p>
 <div align="right">
 <button id="paidy-checkout-button" onclick="paidyPay()">Paidyで決済する</button>
 <script type="text/javascript" src="https://apps.paidy.com/"></script>
-<script type="text/javascript" src="../../son/<%=email%>.js"></script>
+   <script type="text/javascript">
+
+var config={
+"api_key":"<%= pub %>",
+"logo_url":"http://www.paidy.com/images/logo.png",
+"closed":function(cb){
+
+var loc= "http://localhost:3023";
+
+var xhr = new XMLHttpRequest();
+xhr.open("PUT", loc+"/shop/aid/pid", true);
+xhr.setRequestHeader('Content-Type', 'application/json');
+xhr.send(JSON.stringify(cb));
+
+
+}
+};
+var paidyHandler=Paidy.configure(config);
+function paidyPay(){
+var payload={
+"amount":<%= tsum %>,
+"currency":"JPY",
+"store_name":"axell store",
+"buyer":{
+"email":"<%= email %>",
+"name1":"<%= usr %>",
+"phone":"<%= mailadr.phn %>"
+},
+"buyer_data":{
+"user_id":"yamada_taro",
+"age":29,
+"order_count":1000,
+"ltv":250000,
+"last_order_amount":20000,
+"last_order_at":20
+},
+"order":{
+
+"items":[
+    <% for(var i=0;i<ite.length;i++){ %>
+            {
+"id":"<%= ite[i].id %>",
+"quantity":"<%= ite[i].quantity %>",
+"title":"<%= ite[i].title %>",
+"unit_price":"<%= ite[i].unit_price %>"
+       },
+    <% } %>
+],
+"order_ref":"88e021674",
+"shipping":<%= ship %>,
+"tax":0
+},
+"shipping_address":{
+"line1":"<%= mailadr.ln1 %>",
+"line2":"<%= mailadr.ln2 %>",
+"city":"<%= mailadr.city %>",
+"state":"<%= mailadr.state%>",
+"zip":"<%= mailadr.zip%>"
+},
+"description":"axell store"
+};
+paidyHandler.launch(payload);
+};
+
+
+</script>
 
 </div>
 

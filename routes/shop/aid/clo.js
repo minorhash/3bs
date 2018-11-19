@@ -10,7 +10,7 @@ var email="successful.payment@paidy.com"
 // === pid ===
 
 var allpid=adb.allPid(email)
-console.log(allpid)
+//console.log(allpid)
 
 for(var i=0;i<allpid.length;i++){
 
@@ -22,7 +22,6 @@ age
 .then(res => {
 if(res.body.status=="closed"){
 console.log("already closed")
-console.log(res.body)
 }else{
 console.log("auth")
 console.log(res.body.id)
@@ -34,7 +33,7 @@ age
 .set("Paidy-Version", "2018-04-10")
 .set("Authorization", "Bearer"+sec)
 .then(res => {
-console.log(res.body.order.items)
+console.log(res.body.id)
 })
 
 }//else

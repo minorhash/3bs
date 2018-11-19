@@ -45,9 +45,9 @@ age
 .set("Paidy-Version", "2018-04-10")
 .set("Authorization", "Bearer"+sec)
 .then(res => {
-    console.log(res.body.buyer);
+    //console.log(res.body.buyer);
 adb.insPid(email,pid,res.body.amount,
-    JSON.stringify(res.body.buyer),
+    JSON.stringify(res.body.buyer_data),
     JSON.stringify(res.body.order.items),
     utc);
 
@@ -69,8 +69,13 @@ var i18=require("../../../i18n/shop/ja.json")
 var email="jinjasaisen@gmail.com"
 
 var sub=i18.buy
-var mes=usr+"様<br>"
-+i18.cau1+i18.cau2+i18.cau3
+var mes=
+        +18.lin1
++i18.cau1+i18.cau2
+        +18.lin1+"<br>"
+        +usr+"様<br>"
+
+        +i18.cau3
 +i18.cont+i18.pid+":"+pid+"<br>"
 
 
@@ -83,14 +88,14 @@ snde.trEma(email,sub,mes);
 next()};
 
 var chk = function(req, res, next) {
-  console.log('=== pid =======================================');
+  console.log('=== PID =======================================');
   console.log(email);
   console.log(pid);
 };
 
-router.put('/shop/aid/pid',
-[getEma, getUsr,putPid,getPid,
-    chk]
-);
+var fun=
+[getEma, getUsr,putPid,getPid,senEma,
+chk]
+router.put('/shop/aid/pid',fun);
 
     module.exports = router;

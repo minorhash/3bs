@@ -13,7 +13,7 @@ var cred = require('../js/cred');
 
 var email, usr, sku, sum,tsum,adr
 var son,    sson
-var boa,ind
+var boa,ind,tax
 var mailtmp, mailusr, mailadr,mailson;
 var mer = [],  suma = [],  skua = [],ite=[]
 
@@ -78,13 +78,17 @@ var redSum = function(req, res, next) {
     }
     if (suma.length !== 0) {
       sum = suma.reduce(getSum);
-if(ind==0){tsum=sum+650;
+tax=Math.round(sum*0.08)
+if(ind!==-1){tsum=sum+tax+650;
 
 // taid.buyer.email = email;
 // taid.buyer.name1 = mailusr.name;
-// taid.amount = tsum;
+taid.amount = tsum;
 }
-else{tsum=sum}
+else{tsum=Math.round(sum*1.08)
+taid.amount = tsum;
+
+}
     } else {
       console.log('no sum');
     }
@@ -112,8 +116,9 @@ var getTai = function(req, res, next) {
 
 //=============================================== putTai
 var putTai = function(req, res, next) {
-//ind=-1
-if(ind==0){  taid.order.shipping = 650;}
+taid.order.tax=Math.round(sum*0.08)
+
+if(ind!==-1){  taid.order.shipping = 650;}
 else{  taid.order.shipping = 0;}
 
 for (var i = 0; i < mer.length; i++) {
@@ -142,31 +147,31 @@ next()};
 var chk = function(req, res, next) {
 console.log('=== aid ====================================');
 //console.log(son)
-console.log(cnf.pkl)
+console.log(pub)
 console.log(email)
 console.log(tsum)
 console.log(taid.amount)
-console.log(mer)
-console.log(mailadr)
+//console.log(mer)
+//console.log(mailadr)
 console.log(taid.order.shipping)
+console.log(taid.order.tax)
 console.log(taid.order.items)
 
 next()};
 
 var gcb = function(req, res) {
 res.render("shop/paidy", {
-    title: "paidy", email:email,usr: usr,
+title: "paidy", email:email,usr: usr,
 seltmp:mailtmp,mer:mer,
-    mailadr:mailadr,ite:taid.order.items,
-    sum:sum,tsum:tsum,
-    pub:pub,ship:taid.order.shipping
+mailadr:mailadr,ite:taid.order.items,
+sum:sum,tsum:tsum,tax:tax,
+pub:pub,ship:taid.order.shipping
 
 })
 }
-
-router.get("/shop/paidy",
- [  getEma,  getUsr,  getAdr,getTmp,putMer,chkSh,putSum,redSum,getTai,putTai,
-    chk,gcb]); //put
+var fun= [  getEma,  getUsr,  getAdr,getTmp,putMer,chkSh,putSum,redSum,getTai,putTai,
+    chk,gcb]
+router.get("/shop/paidy",fun); //put
 
 
 module.exports = router;

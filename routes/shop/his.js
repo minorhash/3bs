@@ -40,7 +40,7 @@ age
 .set("Paidy-Version", "2018-04-10")
 .set("Authorization", "Bearer"+cnf.skl)
 .then(function(res){
-console.log(res.body.order.shipping)
+//console.log(res.body.order.shipping)
 
 })
 }//for
@@ -64,9 +64,9 @@ next()}
 var chk = function(req, res, next) {
 
 console.log("=== HIS chk =====================")
-console.log(allpid)
 // console.log(allpal)
 // console.log(ship)
+//console.log(ite)
 //console.log(oite)
 next()}
 

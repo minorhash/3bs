@@ -37,7 +37,7 @@
 <div class="pa2">
 商品名：&nbsp;  <%=mer[i].name%><br>
 商品番号: &nbsp; TMS-<%=seltmp[i].sku%><br>
-単価（税込）: &nbsp;<%=mer[i].pri.toLocaleString()%>円 <br>
+単価（税込）: &nbsp;<%= Math.round((mer[i].pri)*1.08).toLocaleString()%>円 <br>
 注文数:&nbsp; <%=seltmp[i].uni%><br>
 
 <hr>
@@ -65,7 +65,7 @@
 
 <div class="pabox">
 <%if(sum){%>
-<%=sum.toLocaleString()%> 円
+<%= Math.round(sum*1.08).toLocaleString()%> 円
 
 <%}%></div>
 
@@ -145,7 +145,7 @@ var payload={
 ],
 "order_ref":"88e021674",
 "shipping":<%= ship %>,
-"tax":0
+"tax":<%= tax %>
 },
 "shipping_address":{
 "line1":"<%= mailadr.ln1 %>",

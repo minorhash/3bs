@@ -47,11 +47,12 @@ age
 .then(res => {
     //console.log(res.body.buyer);
 adb.insPid(email,pid,res.body.amount,
-    JSON.stringify(res.body.buyer_data),
-    JSON.stringify(res.body.order.items),
-    utc);
+JSON.stringify(res.body.buyer),
+JSON.stringify(res.body.order.items),
+utc);
 
 })
+
 } else {
 //var    pid = 'pay_Wz8zdysAAF0AirLI'
 console.log("no pid");  }
@@ -70,28 +71,49 @@ var email="jinjasaisen@gmail.com"
 
 var sub=i18.buy
 var mes=
-        +i18.lin1
+i18.lin1
 +i18.cau1
         +i18.lin1+"<br>"
         +usr+"様<br><br>"
 +i18.cau2+"<br><br>"
         +i18.cau3
-        +i18.cau4
+        +i18.cau4+"<br>"
 +i18.cont+"<br><br>"
-        +i18.pid+":"+pid+"<br>"
++i18.pid+":"+pid+"<br>"
++ite.replace(/,/g,",<br>")
+.replace(/\}/g,"")
+.replace(/\{/g,"")
+.replace(/\[/g,"")
+.replace(/\]/g,"")
+.replace(/title/g,"タイトル")
+.replace(/id/g,"品番")
+.replace(/unit_price/g,"税抜価格")
+.replace(/quantity/g,"数量")
+
+
+// for(var i=0;i<oite.length;i++){
+// +oite[i].title+"<br>"
+// }
 
 +i18.ship1+i18.ship2+i18.ship3
 +i18.ship4+i18.ship5
 +i18.misc+i18.lin1+i18.auto1+i18.auto2+i18.lin1
 +i18.adr1+i18.adr2+i18.adr3
 
+
+if(pid){
 snde.trEma(email,sub,mes);
+}else{console.log("no pid")}
+
 next()};
 
 var chk = function(req, res, next) {
   console.log('=== PID =======================================');
   console.log(email);
   console.log(pid);
+  console.log(ite);
+  console.log(oite);
+  console.log('=== PID =======================================');
 };
 
 var fun=

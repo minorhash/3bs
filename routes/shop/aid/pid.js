@@ -71,13 +71,14 @@ var email="jinjasaisen@gmail.com"
 var sub=i18.buy
 var mes=
         +18.lin1
-+i18.cau1+i18.cau2
++i18.cau1
         +18.lin1+"<br>"
-        +usr+"様<br>"
-
+        +usr+"様<br><br>"
++i18.cau2+"<br><br>"
         +i18.cau3
-+i18.cont+i18.pid+":"+pid+"<br>"
-
+        +i18.cau4
++i18.cont+"<br><br>"
+        +i18.pid+":"+pid+"<br>"
 
 +i18.ship1+i18.ship2+i18.ship3
 +i18.ship4+i18.ship5

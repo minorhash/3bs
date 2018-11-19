@@ -70,9 +70,9 @@ var email="jinjasaisen@gmail.com"
 
 var sub=i18.buy
 var mes=
-        +18.lin1
+        +i18.lin1
 +i18.cau1
-        +18.lin1+"<br>"
+        +i18.lin1+"<br>"
         +usr+"様<br><br>"
 +i18.cau2+"<br><br>"
         +i18.cau3

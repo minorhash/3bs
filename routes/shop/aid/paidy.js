@@ -145,7 +145,7 @@ unit_price: mer[i].pri,
 next()};
 
 var chk = function(req, res, next) {
-console.log('=== aid ====================================');
+console.log('=== PAIDY ====================================');
 //console.log(son)
 console.log(pub)
 console.log(email)

@@ -59,51 +59,67 @@ console.log("no pid");  }
 next()};
 
 var getPid= function(req, res, next) {
-gpid=adb.getPid(email)
-ite=gpid.ite
-oite=JSON.parse(ite)
+//gpid=adb.pidPid(pid)
+
+console.log(pid)
+console.log(ite)
+//ite=gpid.ite
+//oite=JSON.parse(ite)
 next()};
 
 var senEma = function(req, res, next) {
 console.log('=== senEma =======================================');
 var i18=require("../../../i18n/shop/ja.json")
-var email="jinjasaisen@gmail.com"
+age
+.get('https://api.paidy.com/payments/'+pid)
+.set("Content-Type", "application/json")
+.set("Paidy-Version", "2018-04-10")
+.set("Authorization", "Bearer"+sec)
+.then(res => {
+    //console.log(res.body.buyer);
+//var email="jinjasaisen@gmail.com"
 
 var sub=i18.buy
+
 var mes=
 i18.lin1
 +i18.cau1
-        +i18.lin1+"<br>"
-        +usr+"様<br><br>"
++i18.lin1+"<br>"
++usr+"様<br><br>"
 +i18.cau2+"<br><br>"
-        +i18.cau3
-        +i18.cau4+"<br>"
-+i18.cont+"<br><br>"
-+i18.pid+":"+pid+"<br>"
-+ite.replace(/,/g,",<br>")
-.replace(/\}/g,"")
-.replace(/\{/g,"")
-.replace(/\[/g,"")
-.replace(/\]/g,"")
-.replace(/title/g,"タイトル")
-.replace(/id/g,"品番")
-.replace(/unit_price/g,"税抜価格")
-.replace(/quantity/g,"数量")
++i18.cau3
++i18.cau4+"<br>"
 
++i18.cont+"<br>"
++i18.pid+pid+"<br>"
++"<br>"
 
-// for(var i=0;i<oite.length;i++){
-// +oite[i].title+"<br>"
-// }
-
-+i18.ship1+i18.ship2+i18.ship3
+var loo="";
+oite=res.body.order.items
+for(var i=0;i<oite.length;i++){
+loo+=
+i18.sku+oite[i].id+"<br>"
++i18.title+oite[i].title+"<br>"
++i18.price+oite[i].unit_price+"<br>"
++i18.unit+oite[i].quantity+"<br>"
+    +i18.lin1
+}
+var ship=
+i18.ship1+i18.ship2+i18.ship3
 +i18.ship4+i18.ship5
 +i18.misc+i18.lin1+i18.auto1+i18.auto2+i18.lin1
 +i18.adr1+i18.adr2+i18.adr3
 
+var fin=mes+loo+ship
+
 
 if(pid){
-snde.trEma(email,sub,mes);
+snde.trEma(email,sub,fin);
 }else{console.log("no pid")}
+
+
+})
+
 
 next()};
 
@@ -111,13 +127,11 @@ var chk = function(req, res, next) {
   console.log('=== PID =======================================');
   console.log(email);
   console.log(pid);
-  console.log(ite);
-  console.log(oite);
   console.log('=== PID =======================================');
 };
 
 var fun=
-[getEma, getUsr,putPid,getPid,senEma,
+[getEma, getUsr,putPid,senEma,
 chk]
 router.put('/shop/aid/pid',fun);
 

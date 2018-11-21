@@ -102,7 +102,7 @@ i18.sku+oite[i].id+"<br>"
 +i18.title+oite[i].title+"<br>"
 +i18.price+oite[i].unit_price+"<br>"
 +i18.unit+oite[i].quantity+"<br>"
-    +i18.lin1
++i18.lin1
 }
 var ship=
 i18.ship1+i18.ship2+i18.ship3

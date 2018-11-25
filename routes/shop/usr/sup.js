@@ -5,7 +5,8 @@ var db = require('usrdb');
 // == mail
 var snde = require('snd-ema');
 
-var usr,name, pss, email, chk, reg;
+var usr,name, pss, email, chk;
+var mes,reg;
 // === post ===
 
 var getEma = function(req, res, next) {
@@ -59,8 +60,21 @@ mailusr = db.mailUsr(email);
   next()}; //chkUsr
 
 var senEma = function(req, res, next) {
-var mes=name+"サマ<br>"+reg
+var i18=require("../../../i18n/usr/ja.json")
+
+console.log(i18.reg)
+
+reg=i18.reg
+mes=i18.lin1+i18.auto1+i18.auto2+i18.lin1
++name+"さま<br>"
++i18.reg2+"<br>"
++i18.cont
++i18.name+fun.name+"<br>"
++i18.pss+fun.pss+"<br>"
++"email:"+email
+
 console.log('=== senEma =======================================');
+
 snde.trEma(email,reg,mes);
 next()};
 

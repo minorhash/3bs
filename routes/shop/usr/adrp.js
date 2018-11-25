@@ -8,6 +8,7 @@ var cnf= require('../son/aid.json');
 // === glob
 var name, pss, email, reg, mailadr;
 var phn, zip, pref, sta, city, ln1, ln2, chk;
+var mes,reg;
 // === post ===
 
 var getEma = function(req, res, next) {
@@ -72,14 +73,26 @@ var insAdr = function(req, res, next) {
 
 var senEma = function(req, res, next) {
 var snde = require('snd-ema');
-var mes=usr+"さま<br>"+reg
-    +"<br>郵便："+zip
-    +"<br>都道府県："+sta
-    +"<br>市町村："+city
-    +"<br>番地："+ln1
-    +"<br>"+ln2
+var i18=require("../../../i18n/usr/ja.json")
+
+reg=i18.reg
+mes=i18.lin1+i18.auto1+i18.auto2+i18.lin1
++usr.name+"さま<br>"
++i18.reg2+"<br>"
++i18.cont
++i18.phn+fun.phn+"<br>"
++i18.zip+fun.zip+"<br>"
++i18.sta+fun.sta+"<br>"
++i18.city+fun.city+"<br>"
++i18.ln1+fun.ln1+"<br>"
++i18.ln2+fun.ln2+"<br>"
++"email:"+email
+
 console.log('=== senEma =======================================');
+    try{
 snde.trEma(email,reg,mes);
+    }catch(err){console.log(err)}
+
 next()};
 
 var chk= function(req, res, next) {

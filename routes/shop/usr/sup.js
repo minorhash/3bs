@@ -56,8 +56,7 @@ mailusr = db.mailUsr(email);
   } else {
     console.log('no req.body.email');
   }
-  next();
-}; //chkUsr
+  next()}; //chkUsr
 
 var senEma = function(req, res, next) {
 var mes=name+"サマ<br>"+reg

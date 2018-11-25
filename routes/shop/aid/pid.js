@@ -69,7 +69,6 @@ next()};
 
 var senEma = function(req, res, next) {
 console.log('=== senEma =======================================');
-var i18=require("../../../i18n/shop/ja.json")
 age
 .get('https://api.paidy.com/payments/'+pid)
 .set("Content-Type", "application/json")
@@ -79,6 +78,7 @@ age
     //console.log(res.body.buyer);
 //var email="jinjasaisen@gmail.com"
 
+var i18=require("../../../i18n/shop/ja.json")
 var sub=i18.buy
 
 var mes=

@@ -142,10 +142,14 @@ var insUpd = function(req, res, next) {
     console.log(ind);
     if (ind == -1) {
       db.insTmp(email, sku, uni);
-      var hea = res.headersSent;
-      console.log("=== head ==================");
-      console.log(hea);
-      res.redirect("cart");
+var age=require("superagent");
+age
+        .put("cart")
+        .then(res=>{
+console.log(res)
+        })
+      //res.redirect("cart");
+
     } else {
 mailtmp=[]
         skua=[],boa=[]

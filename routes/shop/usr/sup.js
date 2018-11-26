@@ -6,7 +6,7 @@ var db = require('usrdb');
 var snde = require('snd-ema');
 
 var usr,name, pss, email, chk;
-var mes,reg;
+var mes,sub,reg;
 // === post ===
 
 var getEma = function(req, res, next) {
@@ -37,7 +37,6 @@ var chkIn = function(req, res, next) {
     try {
       db.insUsr(name, pss, email);
       console.log('=== ins!!! ===');
-      reg = 'ご登録ありがとうございます。';
     } catch (err) {
       console.log(err);
     }
@@ -51,6 +50,7 @@ var chkUsr = function(req, res, next) {
   if (email) {
     try {
 mailusr = db.mailUsr(email);
+        console.log(mailusr)
     } catch (err) {
       console.log(err);
     }
@@ -63,19 +63,23 @@ var senEma = function(req, res, next) {
 var i18=require("../../../i18n/usr/ja.json")
 
 console.log(i18.reg)
+sub=i18.reg;
+reg=i18.reg+i18.ml1
 
-reg=i18.reg
 mes=i18.lin1+i18.auto1+i18.auto2+i18.lin1
 +name+"さま<br>"
 +i18.reg2+"<br>"
 +i18.cont
-+i18.name+fun.name+"<br>"
-+i18.pss+fun.pss+"<br>"
++i18.name+name+"<br>"
++i18.pss+pss+"<br>"
 +"email:"+email
 
 console.log('=== senEma =======================================');
-
-snde.trEma(email,reg,mes);
+if(mailusr.name){
+    try{
+snde.trEma(email,sub,mes);
+    }catch(err){console.log(err)}
+}else{console.log("no email")}
 next()};
 
 var chk= function(req, res, next) {

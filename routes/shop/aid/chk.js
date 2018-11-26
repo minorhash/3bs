@@ -2,8 +2,8 @@ var adb = require('usrdb');
 var age=require("superagent")
 // === cnf ===
 var cnf=require("../son/cnf.json")
-//var sec=cnf.sec
-var sec=cnf.skl
+var sec=cnf.sec
+//var sec=cnf.skl
 //var email="successful.payment@paidy.com"
 var email="minorhash@gmail.com"
 
@@ -25,16 +25,7 @@ console.log("already closed")
 }else{
 console.log("auth")
 console.log(res.body.id)
-    // closed
-
-age
-.post('https://api.paidy.com/payments/'+res.body.id+"/close")
-.set("Content-Type", "application/json")
-.set("Paidy-Version", "2018-04-10")
-.set("Authorization", "Bearer"+sec)
-.then(res => {
-console.log(res.body.id)
-})
+// closed
 
 }//else
 
@@ -42,13 +33,4 @@ console.log(res.body.id)
 
 }//for
 
-// var pid="pay_W-OsHlUAAFkAfXVd"
-// age
-// .get('https://api.paidy.com/payments/'+pid)
-// .set("Content-Type", "application/json")
-// .set("Paidy-Version", "2018-04-10")
-// .set("Authorization", "Bearer"+sec)
-// .then(res => {
-// console.log(res.body.order.items)
-// })
 

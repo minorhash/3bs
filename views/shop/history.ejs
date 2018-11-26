@@ -41,11 +41,11 @@
 
 <font color="#0000ff">
 <u><b>&nbsp;&nbsp;&nbsp;&nbsp;購入日時：
-<%=allpal[i].date%></b></u><br>
+<%=allpal[i].utc %></b></u><br>
 </font>
 
 <u>&nbsp;&nbsp;&nbsp;&nbsp;注文番号：
-<%=allpal[i].tok%></u><br>
+<%=allpal[i].id %></u><br>
 <br>
 <%for (var j=0;j<opal[i].length;j++){%>
 <div class="col-md-3">
@@ -59,19 +59,24 @@
 
 商品タイトル：<%=opal[i][j].name%><br>
 品番：TMS-&nbsp;<%=opal[i][j].sku%>&nbsp; <br>
-商品単価：&nbsp;<%=opal[i][j].price%>円&nbsp; (税抜）<br>
+商品単価：&nbsp;<%= Number(opal[i][j].price).toLocaleString() %><%= shop.yen %>&nbsp; (税抜）<br>
+税：&nbsp;<%= (opal[i][j].tax).toLocaleString() %>円&nbsp;<br>
 数量：<%=opal[i][j].quantity%><br>
-送料：650円<br>
-合計金額：
+<br><br>
 <div class="border-bottom"></div>
 </div>
+
 </div>
-<br><br>
 <%}%>
+
+送料：650円<br>
+小計：<%= Math.round((allpal[i].mnt)*1.08).toLocaleString() %><%= shop.yen %><br>
+合計：<%= (Math.round((allpal[i].mnt)*1.08)+650).toLocaleString() %><%= shop.yen %>
 
 <%}%>
 <%}else{%>
 <%}%>
+
 
 <br>
 <br>
@@ -104,7 +109,7 @@
 <div class="note">
 商品タイトル：<%=oite[i][j].title%><br>
 品番：TMS-&nbsp;<%=oite[i][j].id%>&nbsp; <br>
-商品単価：&nbsp;<%=oite[i][j].unit_price%>円&nbsp; (税抜）<br>
+商品単価：&nbsp;<%= (oite[i][j].unit_price).toLocaleString() %>円&nbsp; (税抜）<br>
 数量：<%=oite[i][0].quantity%><br>
 <%if(allpid[i].ship==0){%>
 送料：<%=allpid[i].ship%>円<br>

@@ -142,21 +142,11 @@ var insUpd = function(req, res, next) {
     console.log(ind);
     if (ind == -1) {
       db.insTmp(email, sku, uni);
-var age=require("superagent");
-age
-        .put("cart")
-        .then(res=>{
-console.log(res)
-        })
-      //res.redirect("cart");
-
-    } else {
+} else {
 mailtmp=[]
-        skua=[],boa=[]
+skua=[],boa=[]
       db.updTmp(uni, email, sku);
       db.delUni()
-      var hea = res.headersSent;
-      console.log(hea);
       res.redirect("cart");
     } //ind
   } else {
@@ -176,17 +166,11 @@ var clrEma = function(req, res, next) {
   } else {    console.log("no clr");  }
   next()};
 
-// === aid ===============================
-
-var putAid = function(req, res, next) {
-  router.put("/shop/aid/aid");
-  next()};
-
 
 var pcb = function(req, res, next) {
   res.render("shop/cart", {
-    seltmp: mailtmp,    sum: sum,    mer: mer,    usr: usr,
-    email: email
+      seltmp: mailtmp,    sum: sum, tsum:tsum,   mer: mer,    usr: usr,
+    email: email,boo:boo
   }); //rend
 };
 

@@ -65,14 +65,14 @@ var redSum = function(req, res, next) {
     next()}
 
 var getPid= function(req, res, next) {
-    pid = req.query.paymentId
+pid = req.query.paymentId
 console.log(pid)
-    payerId = req.query.PayerID
-    exeJson = {
-        payer_id: payerId,
-        transactions: [{amount: {currency: "JPY",total: sum}}],
-    }
-    next()}
+payerId = req.query.PayerID
+exeJson = {
+payer_id: payerId,
+transactions: [{amount: {currency: "JPY",total: sum}}],
+}
+next()}
 
 var chk= function(req, res, next) {
     console.log("=== suc ===")
@@ -81,65 +81,92 @@ var chk= function(req, res, next) {
     next()}
 
 var exePal= function(req, res) {
-var utc = new Date().toJSON().slice(0,10).replace(/-/g,"/")
-var reg="ご購入ありがとうございました。"
+var utc = new Date().toJSON().slice(0,10)
 var snde = require('snd-ema');
 
 paypal.payment.execute(pid, exeJson, function(error, pay) {
 if (error) {console.log("exe fail");
 res.redirect("/shop/cart")
-}
-else {
+}else {
 item=    pay.transactions[0].item_list.items
 
-
-    //for(var i=0;i<pay.transactions[0].item_list.items;i++){
+//for(var i=0;i<pay.transactions[0].item_list.items;i++){
 var ite=    JSON.stringify(pay.transactions[0].item_list.items)
 
-var tit=[]
-for(var i=0;i<item.length;i++){
-tit.push("name+:"+item[i].name)
-}
-
+// var tit=[]
+// for(var i=0;i<item.length;i++){
+// tit.push("name+:"+item[i].name)
+// }
+try{
+adb.insPal(email,pay.id,sum,ite,utc)
+}catch(err){console.log(err)}
+console.log(pay)
 console.log(pay.id)
-adb.insPal(email,pay.id,ite,utc)
-console.log(item.name)
+console.log(item)
+
+var i18=require("../../../i18n/shop/ja.json")
+
+var sub=i18.buy
 
 res.render("shop/paypal/success", {
 usr:usr,
-title:reg,
+title:i18.buy,
 pid: pid,
 payid:payerId,
 pay:pay,
-item:ite
+item:item
 })
-var mes=usr+"様<br>"+reg
 
-var shop=require("../son/ema.json")
-var toe="jinjasaisen@gmail.com"
-var mes=usr+"様<br>"+reg
-+shop.cau1
-+shop.cau2
-+shop.cau3
-+"<br>注文id:"+pid
-for(var i=0;i<item;i++){
-+"<br>タイトル:"+item[i].name
-+"<br>品番:"+item[i].sku
-+"<br>価格:"+item[i].price
-+"<br>数量:"+item[i].quantity
+var mes=
+i18.lin1
++i18.cau1
++i18.lin1+"<br>"
++usr+"様<br><br>"
++i18.cau2+"<br><br>"
++i18.cau3
++i18.cau4+"<br>"
+
++i18.cont+"<br>"
++i18.pid+pid+"<br><br>"
+
+var loo="";
+for(var i=0;i<item.length;i++){
+loo+=
+i18.title+item[i].name+"<br>"
++i18.sku+item[i].sku+"<br>"
++i18.price+(item[i].price).toLocaleString()+i18.yen+"<br>"
++i18.tax+(item[i].tax).toLocaleString()+i18.yen+"<br>"
++i18.unit+item[i].quantity+"<br>"
 }
+var msum=i18.lin1+i18.sub+(Math.round(sum*1.08)-650).toLocaleString()+i18.yen+"<br>"
++i18.cour+650+i18.yen+"<br>"
++i18.sum+sum.toLocaleString()+i18.yen+"<br>"
++i18.pay+"paypal<br><br>"
 
-var toe="jinjasaisen@gmail.com"
+var ship=
+i18.ship1+i18.ship2+i18.ship3
++i18.ship4+i18.ship5
++i18.misc+i18.lin1+i18.auto1+i18.auto2+i18.lin1
++i18.adr1+i18.adr2+i18.adr3
+
+var fin=mes+loo+msum+ship
+
 console.log('=== senEma =======================================');
-snde.trEma(email,reg,mes);
+try{
+snde.trEma(email,sub,fin);
+}catch(err){console.log(err)}
 //}
 }//else
-snde.trEma(toe,reg,mes);
 
 })
-}
+}//exePal
 
-router.get("/shop/paypal/success", [getEma,getUsr,getTmp,putMer,putSum,redSum,getPid,
-exePal,chk])
+var chk= function(req, res) {
+console.log("=== PAL SUC ===")
+console.log(item)
+}
+var arr=[getEma,getUsr,getTmp,putMer,putSum,redSum,getPid,
+exePal,chk]
+router.get("/shop/paypal/success", arr)
 
 module.exports = router

@@ -14,7 +14,8 @@ var inspid, getpid, selpid, strbuy, strite;
 var buy, ite, oite,gpid
 
 var cnf=require("../son/aid.json")
-var sec=cnf.sec;
+//var sec=cnf.sec;
+var sec=cnf.skl;
 
 var cred = require('../js/cred');
 // === fun =============================
@@ -91,26 +92,31 @@ i18.lin1
 +i18.cau4+"<br>"
 
 +i18.cont+"<br>"
-+i18.pid+pid+"<br>"
-+"<br>"
++i18.pid+pid+"<br><br>"
 
 var loo="";
 oite=res.body.order.items
+
 for(var i=0;i<oite.length;i++){
 loo+=
 i18.sku+oite[i].id+"<br>"
 +i18.title+oite[i].title+"<br>"
-+i18.price+oite[i].unit_price+"<br>"
++i18.price+(oite[i].unit_price).toLocaleString()+i18.yen+"<br>"
 +i18.unit+oite[i].quantity+"<br>"
 +i18.lin1
 }
+
+var msum=i18.sub+(res.body.amount-650).toLocaleString()+i18.yen+"<br>"
++i18.cour+650+i18.yen
++i18.sum+(res.body.amount).toLocaleString()+"<br>"
++i18.pay+"paidy"
 var ship=
 i18.ship1+i18.ship2+i18.ship3
 +i18.ship4+i18.ship5
 +i18.misc+i18.lin1+i18.auto1+i18.auto2+i18.lin1
 +i18.adr1+i18.adr2+i18.adr3
 
-var fin=mes+loo+ship
+var fin=mes+loo+msum+ship
 
 
 if(pid){

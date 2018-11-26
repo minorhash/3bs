@@ -64,10 +64,9 @@ next()}
 var chk = function(req, res, next) {
 
 console.log("=== HIS chk =====================")
-// console.log(allpal)
-// console.log(ship)
-//console.log(ite)
-//console.log(oite)
+ console.log(allpal)
+console.log(ite)
+console.log(oite)
 next()}
 
 var gcb = function(req, res) {
@@ -77,7 +76,7 @@ allpid: allpid, allnow: allnow, oite: oite,opal:opal,
 allpal:allpal
 })
 }
-var fun=[getEma, getUsr,allPid,
+var fun=[getEma, getUsr,allPid,allPal,
     chk, gcb]
 router.get("/shop/history",fun )
 

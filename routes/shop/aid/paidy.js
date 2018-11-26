@@ -6,7 +6,8 @@ var adb = require('usrdb');
 var aid = require('aidy');
 var taid = aid.tmpAid();
 var cnf= require('../son/aid.json');
-var pub=cnf.pub;
+//var pub=cnf.pub;
+var pub=cnf.pkl;
 
 var cred = require('../js/cred');
 // === put ===

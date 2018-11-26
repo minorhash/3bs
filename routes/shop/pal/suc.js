@@ -133,7 +133,7 @@ var loo="";
 for(var i=0;i<item.length;i++){
 loo+=
 i18.title+item[i].name+"<br>"
-+i18.sku+item[i].sku+"<br>"
++i18.sku+"tms-"+item[i].sku+"<br>"
 +i18.price+(item[i].price).toLocaleString()+i18.yen+"<br>"
 +i18.tax+(item[i].tax).toLocaleString()+i18.yen+"<br>"
 +i18.unit+item[i].quantity+"<br>"

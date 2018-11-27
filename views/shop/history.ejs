@@ -54,7 +54,7 @@
 </div>
 </div>
 
-<div class="col-md-9">
+<div class="well col-md-9">
 <div class="note">
 
 商品タイトル：<%=opal[i][j].name%><br>
@@ -65,21 +65,19 @@
 <br><br>
 <div class="border-bottom"></div>
 </div>
-
 </div>
-<%}%>
+送料：650<%= shop.yen %><br>
+小計：<%= Math.round((allpal[i].sum)*1.08).toLocaleString() %><%= shop.yen %><br>
+合計：<%= (Math.round((allpal[i].sum)*1.08)+650).toLocaleString() %><%= shop.yen %>
 
-送料：650円<br>
-小計：<%= Math.round((allpal[i].mnt)*1.08).toLocaleString() %><%= shop.yen %><br>
-合計：<%= (Math.round((allpal[i].mnt)*1.08)+650).toLocaleString() %><%= shop.yen %>
+<%}%>
 
 <%}%>
 <%}else{%>
+no allpal
 <%}%>
 
-
-<br>
-<br>
+<br><br>
 
 
 <%if(allpid && allpid.length!==0){%>
@@ -111,20 +109,25 @@
 品番：TMS-&nbsp;<%=oite[i][j].id%>&nbsp; <br>
 商品単価：&nbsp;<%= (oite[i][j].unit_price).toLocaleString() %>円&nbsp; (税抜）<br>
 数量：<%=oite[i][0].quantity%><br>
+
+<div class="border-bottom"></div>
+
+</div>
+</div>
+<%}%>
+
 <%if(allpid[i].ship==0){%>
 送料：<%=allpid[i].ship%>円<br>
 <%}else{%>
 送料：650円<br>
 <%}%>
-合計金額：<%=allpid[i].mnt.toLocaleString()%>円
-<div class="border-bottom"></div>
-</div>
-</div>
-<%}%>
+合計金額：<%=allpid[i].mnt.toLocaleString()%>円<br>
+
 <%}%>
 
 <%}%>
 <%}else{%>
+no allpid
 <%}%>
 
 

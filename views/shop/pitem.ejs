@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<% include par/head %>
+<body>
+
+<!--menu-->
+<% include par/nav %>
+<!--menu-->
+
+<div class="container-fluid">
+<div class="row">
+
+<!--- ------------------------------------- side left ---- -->
+<div class="col-md-2 col-sm-12" style="color:black">
+<% if(usr) {%> 
+<h5><div class="label label-info"> &nbsp;<%= usr%>&nbsp; さん </div></h5>
+<br><br>
+<% include par/out %>
+<%}else{ %>
+<% include par/login %>
+<%} %>
+</div>
+<!--- ------------------------------------- main ----- -->
+
+<div id="cd-col" class="col-md-10 col-xs-12" style="color:black">
+
+<div class="col-md-3" style="color:black">
+<div align="center"><img src="../img/cd/<%=mer.sku%>.png">
+<h5>商品番号：TMS-<%=mer.sku%><br>
+発売日：<%=mer.rel%></div></h5>
+
+
+</div>
+
+<div class="col-md-6" style="color:black">
+<h5><%=mer.cat%><br></h5>
+<h4><%=mer.name%><br></h4>
+
+<div class="box88">
+<p>収録曲</p></div>
+
+<div class="note">
+<%if(typeof song!="undefined"|| typeof song!==null){%>
+<%for(var i in song){%>
+<%var num=parseInt(i) %>
+<%=num+1%>.&nbsp;<%=song[i]%><br>
+<%}%>
+<%}%>
+</div>
+
+<br><br>
+
+<div align="center" style="color:black">
+<style="color:black">
+<form method="get" action="/shop">
+<button type="submit">ショップに戻る</button>
+</form>
+</div>
+
+<br><br>
+
+</div>
+
+<div class="col-md-3" style="color:black">
+
+<div class="box94">
+<div align="center"><h4>価格:&nbsp;
+<%=mer.pri.toLocaleString()%>円&nbsp;(+税)</h4> 
+<div style="line-height:10px">別途送料有</div>
+
+
+<hr>
+<form action="/shop/cart" method="post">
+<input type="hidden" name="sku" value=<%=mer.sku%>>
+数量:
+<input id="number" type="number" name="uni" value="1" min="0" step="1"><br><br>
+&nbsp;&nbsp;
+<button type="submit">カートに入れる</button>
+</form>
+
+<br>
+<a href="/mail" target="_blank">
+<i class="far fa-envelope"> &nbsp; 商品に関する問合せ</a></i>
+
+</div></div>
+
+
+
+
+
+
+</div><!-- cd-col -->
+</div><!-- row -->
+
+</div><!-- main-col -->
+
+</div><!--row-->
+
+<hr>
+
+<div class="row">
+<div class="col-sm-2"></div>
+<div class="col-sm-8" style="color:black">
+
+<div class="box90">
+<p>商品紹介</p></div>
+<br>
+<div class="left">
+ &nbsp;&nbsp;
+<%=mer.des%></div>
+
+<div class="col-sm-3"></div>
+</div>
+</div>
+
+
+
+
+
+</div><!-- /container -->
+
+<br><br><br><br><br><br><br><br><br><br>
+
+<div class="footer">
+<% include par/foot %>
+</div>
+
+
+</body>
+

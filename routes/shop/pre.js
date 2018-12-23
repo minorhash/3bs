@@ -4,11 +4,11 @@ var router = express.Router();
 // == sess =============================
 var db = require('cardb'),
 adb = require('usrdb')
-
 var email,pss, usr,coo;
-var allmer, mailusr,catpre;
-allmer = db.allMer();
-catpre=db.catPre("pre")
+var allmer, mailusr,premer;
+
+allmer = db.allMer()
+premer = db.preMer("pre")
 
 // === login ============================
 var cred = require('./js/cred');
@@ -29,20 +29,21 @@ var chk = function(req, res, next) {
   console.log('=== get shop ===');
   console.log(email);
   console.log(usr);
-  console.log(catpre)
   console.log(mailusr)
+  console.log(premer)
   next();
 }; //chkEma
 
 var rcb = function(req, res) {
-  res.render('shop', {
+  res.render('shop/pre', {
     title: 'shop',
-    mer: allmer,catpre:catpre,
+    mer: allmer,
+    premer: premer,
     usr: usr,
     err: myerr,
   });
 };
-router.get('/shop', [getEma, getUsr, chk, rcb]);
+router.get('/shop/pre', [getEma, getUsr, chk, rcb]);
 
 // == post ==================================
 
@@ -90,10 +91,10 @@ next()};
 
 var rcb = function(req, res) {
   var rob = { usr: usr, mer: allmer, err: myerr };
-  res.render('shop', rob);
+  res.render('shop/pre', rob);
 };
 
 var fun=[getCok, getUsr, chk, rcb]
-router.post('/shop', fun);
+router.post('/shop/pre', fun);
 
 module.exports = router;
